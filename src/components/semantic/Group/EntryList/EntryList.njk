@@ -1,0 +1,162 @@
+{#
+ # @prop {type} ***
+ #}
+{%- import "src/components/primitive/Text/Label/Label.njk" as Label -%}
+{%- import "src/components/primitive/Media/Image/Image.njk" as Image -%}
+{%- macro render( props ) -%}
+  {%- set locale = props.locale | default('ja') -%}
+  {%- set contentsType = props.contentsType -%}
+  {%- set items = props.items -%}
+  {%- set addClass = props.addClass -%}
+  <ul class="c-entryList{{' ' ~ addClass if addClass}}{{ ' c-entryList--event' if contentsType == 'event'}}">
+    {%- if items -%}
+      {%- for item in items -%}
+        <li class="c-entryList__item">
+          <a href="{{ item.url }}" class="c-entryList__link">
+            {%- if contentsType !== 'event' -%}
+              {%- if item.url -%}
+                <div class="c-entryList__date">
+                  <time class="c-entryList__dateTime"
+                        datetime="{{ item.date | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">
+                        {{ item.dateEn if item.dateEn else item.date }}
+                  </time>
+                </div>
+                <div class="c-entryList__body">
+                  <div class="c-entryList__text">
+                    {{ item.titleEn if item.titleEn else item.title }}
+                  </div>
+                  {%- if item.tags -%}
+                    <div class="c-entryList__tags">
+                      {%- if item.tagsEn -%}
+                        {%- for tag in item.tagsEn -%}
+                          {{ Label.render({
+                                                  text: tag.label,
+                                                  color: tag.color | default('') 
+                          }) }}
+                        {%- endfor -%}
+                      {%- else -%}
+                        {%- for tag in item.tags -%}
+                          {{ Label.render({
+                                                  text: tag.label,
+                                                  color: tag.color | default('') 
+                          }) }}
+                        {%- endfor -%}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                  <svg class="c-entryList__icon icon" aria-hidden="true" role="img">
+                    <use xlink:href="/assets/img/sprite.svg#chevron_right"></use>
+                  </svg>
+                </div>
+              {%- else -%}
+                <div class="c-entryList__text">{{ item.title }}</div>
+              {%- endif -%}
+            {%- else -%}
+              <div class="c-entryList__schedule">
+                <time class="c-entryList__scheduleStart"
+                      datetime="{{ item.startDate | replace(r/（[^）]*）/g, '') | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">
+                  {%- if item.startDateEn -%}
+                    <span class="c-entryList__scheduleEn">{{ item.startDateEn }}</span>
+                    <span class="c-entryList__scheduleYear">{{ item.startDate | replace(r/年.*$/, '') }}</span>
+                  {%- else -%}
+                    <span class="c-entryList__scheduleYear">{{ item.startDate | replace(r/年.*$/, '年') }}</span>
+                    {{ item.startDate | replace(r/年0/g, '年') | replace(r/月0/g, '月') | replace(r/^\d{4}年/, '') }}
+                  {%- endif -%}
+                </time>
+                {%- if item.endDate -%}
+                  <time class="c-entryList__scheduleEnd"
+                        datetime="{{ item.endDate | replace(r/（[^）]*）/g, '') | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">
+                    {%- if item.endDateEn -%}
+                      <span class="c-entryList__scheduleEn">{{ item.endDateEn }}</span>
+                      <span class="c-entryList__scheduleYear">{{ item.endDate | replace(r/年.*$/, '') }}</span>
+                    {%- else -%}
+                      <span class="c-entryList__scheduleYear">{{ item.endDate | replace(r/年.*$/, '年') }}</span>
+                      {{ item.endDate | replace(r/年0/g, '年') | replace(r/月0/g, '月') | replace(r/^\d{4}年/, '') }}
+                    {%- endif -%}
+                  </time>
+                {%- endif -%}
+              </div>
+              <div class="c-entryList__image">
+                {{ Image.render({
+                                src: item.imageSrc,
+                                alt: item.imageAlt,
+                                width: item.imageSidth,
+                                height: item.iamgeHeight
+                                }) }}
+              </div>
+              <div class="c-entryList__data">
+                {# タイトル #}
+                {%- if item.titleEn -%}
+                <div class="c-entryList__title">{{ item.titleEn }}</div>
+                {%- else -%}
+                <div class="c-entryList__title">{{ item.title }}</div>
+                {%- endif -%}
+                <div class="c-entryList__period">
+                  <svg class="icon c-entryList__dataIcon" role="img">
+                    <use xlink:href="/assets/img/sprite.svg#calendar"></use>
+                  </svg>
+                  <time class="c-entryList__periodStart"
+                        datetime="{{ item.startDate | replace(r/（[^）]*）/g, '') | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">
+                    {%- if item.startDateEn -%}
+                      {{ item.startDateEn }}, {{ item.startDate | replace(r/年.*$/, '') }}
+                    {%- else -%}
+                      {{ item.startDate | replace(r/年0/g, '年') | replace(r/月0/g, '月') }}
+                    {%- endif -%}
+                  </time>
+                  {%- if item.endDate -%}
+                    {{ '〜' if locale == 'ja' else ' - ' }}
+                    <time class="c-entryList__periodEnd"
+                          datetime="{{ item.endDate | replace(r/（[^）]*）/g, '') | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">
+                      {%- if item.endDateEn -%}
+                        {{ item.endDateEn }}, {{ item.endDate | replace(r/年.*$/, '') }}
+                      {%- else -%}
+                        {{ item.endDate | replace(r/年0/g, '年') | replace(r/月0/g, '月') }}
+                      {%- endif -%}
+                    </time>
+                  {%- endif -%}
+                </div>
+                <div class="c-entryList__time">
+                  <svg class="icon c-entryList__dataIcon" role="img">
+                    <use xlink:href="/assets/img/sprite.svg#clock"></use>
+                  </svg>
+                  <time class="c-entryList__timeStart" datetime="{{ item.startTime }}">{{ item.startTime }}</time>
+                  <time class="c-entryList__timeEnd" datetime="{{ item.endTime }}">{{ item.endTime }}</time>
+                </div>
+                <p class="c-entryList__venue">
+                  <svg class="icon c-entryList__dataIcon" role="img">
+                    <use xlink:href="/assets/img/sprite.svg#location"></use>
+                  </svg>
+                  {{  item.venueEn if item.venueEn else item.venue }}
+                </p>
+                <div class="c-entryList__tags">
+                {%- if item.tagsEn -%}
+                  {%- for tag in item.tagsEn -%}
+                    {{ Label.render({
+                        text: tag.label,
+                        color: tag.color | default('') 
+                    }) }}
+                  {%- endfor -%}
+                {%- else -%}
+                  {%- for tag in item.tags -%}
+                    {{ Label.render({
+                        text: tag.label,
+                        color: tag.color | default('') 
+                    }) }}
+                  {%- endfor -%}
+                {%- endif -%}
+                </div>
+                <svg class="c-entryList__icon icon" aria-hidden="true" role="img">
+                  <use xlink:href="/assets/img/sprite.svg#chevron_right"></use>
+                </svg>
+              </div>
+            {%- endif -%}
+          </a>
+        </li>
+        {%- if loop.last -%}
+        </ul>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+</ul>
+{%- endmacro -%}
+{%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

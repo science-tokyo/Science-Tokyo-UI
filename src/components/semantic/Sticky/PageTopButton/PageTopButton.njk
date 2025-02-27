@@ -1,0 +1,12 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+{% set addClass = props.addClass %}
+<a class="c-pageTop{{' ' ~ addClass if addClass}}" href="#top" aria-label="ページトップへ戻る" data-js-pagetop>
+  <svg class="icon" role="img" aria-hidden="true">
+    <use xlink:href="/assets/img/sprite.svg#arrow_up"></use>
+  </svg>
+</a>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

@@ -1,0 +1,31 @@
+{/* Paragraph.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as ParagraphStories from './Paragraph.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Paragraph" of={ParagraphStories} />
+
+# 段落 Paragraph
+
+テキストを表示するためのコンポーネントです。  
+基本文字スタイル、強調文字スタイル、キャッチコピースタイルを選択出来ます。
+
+## 原則
+
+- 本文の文字サイズはデフォルト設定の「M」サイズを使用します。
+- 個別のセマンティックコンポーネントに内包するテキスト要素においては、「M」サイズ以外の文字サイズを使用しています。
+- 段落内で文字を強調する必要がある場合は、「太字文字スタイル」を使用します。
+- 段落タグ内には、インラインで記述するHTMLタグを内包できます。ただし、対応するスタイルを個別に用意はしていません。
+  - 太字文字
+    - HTMLでは`<em>`, `<strong>`で再現されます。
+  - イタリック
+    - HTMLでは`<i>`で再現されます。
+  - 上付き文字・下付き文字
+    - HTMLでは上付き文字は`<sub>`、下付き文字は`<sup>`で再現されます。
+
+<Canvas />
+<Controls />
+
+<Stories />

@@ -1,0 +1,23 @@
+{/* Select.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as SelectStories from './Select.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Select" of={SelectStories} />
+
+# セレクトボックス Select
+
+プルダウン形式の複数項目から、単一ないし複数の項目を選択できるコンポーネントです。
+
+## 原則
+
+- 項目ラベル、入力必須項目、サポートテキストは入力を補助する要素がコンポーネントに予め用意されていますが、必要に応じて表示／非表示を切り替えて利用します。
+- 利用不可（Disabled）の状態を表示させる際は、サポートテキストを利用してユーザーに利用することができない理由を知らせる必要があります。
+- ユーザーがクリックするまで、選択肢のすべてを認識できない場合があることへの考慮が必要です。また、クリック後に表示される選択肢は利用するブラウザに依存した表示がされます。
+
+<Canvas />
+<Controls />
+
+<Stories />

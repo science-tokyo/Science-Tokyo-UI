@@ -1,0 +1,75 @@
+@use '../../../../scss/globals/base/' as *;
+
+.c-form {
+  &__body {
+    margin-top: var(--semantic-space-inner-ll);
+  }
+  // ラベル
+  &__label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-block: 0 var(--semantic-space-inner-s);
+    &Text {
+      @include txt($t-titleS);
+    }
+  }
+  // 必須ラベル
+  &__required {
+    margin-left: 8px;
+    color: var(--ui-text-status-caution);
+    @include txt($t-labelM);
+  }
+  // 説明文
+  &__description {
+    display: block;
+    @include txt($t-bodySS);
+    color: var(--ui-text-light);
+    width: 100%;
+    margin-top: var(--semantic-space-inner-s);
+  }
+  &__item {
+    &__input {
+      position: relative;
+      .c-input {
+        padding-right: calc(
+          (var(--semantic-space-inner-s) * 2) +
+            (var(--semantic-space-inner-m) * 2) + var(--semantic-size-icon-mml)
+        );
+      }
+      .icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--semantic-size-icon-mml);
+        height: var(--semantic-size-icon-mml);
+        &:nth-last-child(2) {
+          right: calc(
+            var(--semantic-space-inner-s) + var(--semantic-size-icon-mml) +
+              var(--semantic-space-inner-m)
+          );
+        }
+        &:nth-last-child(1) {
+          right: var(--semantic-space-inner-m);
+        }
+      }
+    }
+  }
+  // エラーテキスト
+  &__error {
+    color: var(--ui-text-status-caution);
+    @include txt($t-bodySS);
+    margin-top: var(--semantic-space-inner-s);
+  }
+  &__footer {
+    margin-top: var(--semantic-space-inner-ll);
+    display: flex;
+    gap: var(--semantic-space-inner-l);
+    @include bp(sm) {
+      flex-direction: column;
+    }
+    & > .c-button {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set type = props.type %}
+  {% set src = props.src %}
+  {% set embedCode = props.embedCode %}
+  {% set caption = props.caption %}
+  {% set aspectRatio = props.aspectRatio %}
+  {% set size = props.size %}
+  {% set addClass = props.addClass %}
+  {%- set multiple = props.multiple -%}
+  {%- set items = props.items -%}
+  {%- set columnsNumber = props.columnsNumber | default(2) -%}
+  {%- set columnsNumberMedium = props.columnsNumberMedium | default('') -%}
+  {%- set columnsNumberSmall = props.columnsNumberSmall | default(1) -%}
+  {%- if multiple -%}
+    <div class="c-videoGroup{{' ' ~ addClass if addClass}}">
+      <div class="grid{{' grid--cols' ~ columnsNumber if columnsNumber}}{{' md:grid--cols' ~ columnsNumberMedium if columnsNumberMedium}}{{' sm:grid--cols' ~ columnsNumberSmall if columnsNumberSmall}}">
+        {%- for item in items -%}
+          <div class="grid__col">
+            <div class="c-video{{' c-video--size' ~ item.size if item.size }}{{' ' ~ item.addClass if item.addClass}}">
+              <div class="c-video__inner{{' c-video__inner--aspectRatio' ~ item.aspectRatio if item.aspectRatio }}">
+                {% if item.type == 'video' %}
+                  <video src="{{ item.src }}" controls>
+                  </video>
+                {% endif %}
+                {% if item.type == 'iframe' %}{{ item.embedCode | safe }}{% endif %}
+              </div>
+              {% if item.caption %}<div class="c-video__caption">{{ item.caption }}</div>{% endif %}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- else -%}
+    <div class="c-video{{' c-video--size' ~ size if size }}{{' ' ~ addClass if addClass}}">
+      <div class="c-video__inner{{' c-video__inner--aspectRatio' ~ aspectRatio if aspectRatio }}">
+        {% if type == 'video' %}
+          <video src="{{ src }}" controls>
+          </video>
+        {% endif %}
+        {% if type == 'iframe' %}{{ embedCode | safe }}{% endif %}
+      </div>
+      {% if caption %}<div class="c-video__caption">{{ caption }}</div>{% endif %}
+    </div>
+  {% endif %}
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

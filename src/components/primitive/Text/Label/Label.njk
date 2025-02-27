@@ -1,0 +1,73 @@
+{#
+ # @prop {type} ***
+ #}
+{%- macro render( props ) -%}
+  {%- set text = props.text -%}
+  {%- set size = props.size -%}
+  {%- set color = props.color -%}
+  {%- set leftIcon = props.leftIcon -%}
+  {%- set rightIcon = props.rightIcon -%}
+  {%- set fontWeight = props.fontWeight -%}
+  {%- set href = props.href -%}
+  {%- set multiple = props.multiple -%}
+  {%- set multipleLabels = props.multipleLabels | default(
+    [
+    {
+    text: 'ラベルテキスト1',
+    href: '#'
+    },
+    {
+    text: 'ラベルテキスト2'
+    }
+    ]
+    ) -%}
+  {%- set addClass = props.addClass -%}
+  {%- set tag = 'a' if href else 'span' -%}
+  {%- if multiple -%}
+    <div class="c-labelGroup{{' ' ~ addClass if addClass}}">
+      {%- for label in multipleLabels -%}
+        {%- set labelTag = 'a' if label.href else 'span' -%}
+        <{{ labelTag }}{{ " href=" ~ label.href if label.href}} class="c-label{{ " c-label--size" ~ label.size if label.size}}{{ " c-label--color" ~ label.color if label.color}}{{ ' c-label--weight' ~ label.fontWeight if label.fontWeight }}">
+        {%- if label.leftIcon -%}
+          <svg class="c-label__icon c-label__icon--left icon"
+               aria-hidden="true"
+               role="img">
+            <use xlink:href="/assets/img/sprite.svg#{{ label.leftIcon }}"></use>
+          </svg>
+        {%- endif -%}
+        <span class="c-label__text">{{ label.text }}</span>
+        {%- if rightIcon -%}
+          <svg class="c-label__icon c-label__icon--right icon"
+               aria-hidden="true"
+               role="img">
+            <use xlink:href="/assets/img/sprite.svg#{{ label.rightIcon }}"></use>
+          </svg>
+        {%- endif -%}
+        </{{ labelTag }}>
+      {%- endfor -%}
+    </div>
+  {%- else -%}
+  {%- if href -%}
+    <{{ tag }} href="{{ href }}" class="c-label{{ " c-label--size" ~ size if size}}{{ " c-label--color" ~ color if color}}{{' ' ~ addClass if addClass}}{{ ' c-label--weight' ~ fontWeight if fontWeight }}">
+  {% else %}
+    <{{ tag }} class="c-label{{ " c-label--size" ~ size if size}}{{ " c-label--color" ~ color if color}}{{' ' ~ addClass if addClass}}{{ ' c-label--weight' ~ fontWeight if fontWeight }}">
+  {% endif %}
+    {%- if leftIcon -%}
+      <svg class="c-label__icon c-label__icon--left icon"
+           aria-hidden="true"
+           role="img">
+        <use xlink:href="/assets/img/sprite.svg#{{ leftIcon }}"></use>
+      </svg>
+    {%- endif -%}
+    <span class="c-label__text">{{ text }}</span>
+    {%- if rightIcon -%}
+      <svg class="c-label__icon c-label__icon--right icon"
+           aria-hidden="true"
+           role="img">
+        <use xlink:href="/assets/img/sprite.svg#{{ rightIcon }}"></use>
+      </svg>
+    {%- endif -%}
+    </{{ tag }}>
+  {%- endif -%}
+{%- endmacro -%}
+{%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

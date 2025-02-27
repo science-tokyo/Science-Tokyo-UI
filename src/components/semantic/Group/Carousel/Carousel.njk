@@ -1,0 +1,115 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/primitive/Media/Image/Image.njk" as Image %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{% import "src/components/semantic/Group/Hero/Hero.njk" as Hero %}
+{%- macro render( props ) -%}
+  {%- set id = props.id -%}
+  {%- set contentsType = props.contentsType | default('default') -%}
+  {%- set carouselPageTitle = props.carouselPageTitle | default('') -%}
+  {%- set carouselLabel = props.carouselLabel | default('カルーセルの概要') -%}
+  {%- set carouselItemNum = props.carouselItemNum | default('1') -%}
+  {%- set carouselItems = props.carouselItems | default([
+    '<figure class="c-image c-image--fullWidth">
+    <picture>
+      <source srcset="//picsum.photos/600/600?random=1"
+              media="(max-width: 767px)"
+              width="600"
+              height="600" />
+      <source srcset="//picsum.photos/800/600?random=1"
+              media="(max-width: 1024px)"
+              width="800"
+              height="600" />
+      <img src="//picsum.photos/1600/900?random=1"
+           width="1600"
+           height="900"
+           alt="Placeholder Image" />
+    </picture>
+  </figure>',
+  '<figure class="c-image c-image--fullWidth">
+  <picture>
+    <source srcset="//picsum.photos/600/600?random=2"
+            media="(max-width: 767px)"
+            width="600"
+            height="600" />
+    <source srcset="//picsum.photos/800/600?random=2"
+            media="(max-width: 1024px)"
+            width="800"
+            height="600" />
+    <img src="//picsum.photos/1600/900?random=2"
+         width="1600"
+         height="900"
+         alt="Placeholder Image" />
+  </picture>
+  </figure>'
+  ]) -%}
+{%- set autoplay = props.autoplay | default('true') -%}
+{%- set loop = props.loop | default('true') -%}
+{%- set addClass = props.addClass -%}
+{%- set addId = props.addId -%}
+<section {{' id=' ~ addId if addId}} class="splide c-carousel{{' ' ~ addClass if addClass}} c-carousel{{'--' ~ contentsType if contentsType }}" aria-label="{{ carouselLabel if carouselLabel }}" data-js-carousel="{{ carouselItemNum }}" data-js-carousel-auto="{{ autoplay }}" data-js-carousel-loop="{{ loop }}" data-js-carousel-pagination="{{ "false" if contentsType == 'tile' else "true" }}">
+  {%- if carouselPageTitle -%}
+    {{ Heading.render({ "headingLevel": 1, "tag": "h1", "text": carouselPageTitle, "addClass": "c-carousel__title" }) }}
+  {%- endif -%}
+  <div class="splide__track">
+    <ul class="splide__list">
+      {%- for item in carouselItems -%}
+          <li class="splide__slide">
+            {%- if "toString" in item-%}
+              {%- if contentsType === 'tile' -%}
+                {{
+                  Card.render(item)
+                }}
+              {%- elif contentsType === 'hero' -%}
+                {{
+                  Hero.render(item)
+                }}
+              {%- else -%}
+                {{
+                  Image.render(item)
+                }}
+              {%- endif -%}
+            {%- else -%}
+              {{ item | safe }}
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+    </ul>
+  </div>
+  <div class="c-carousel__controller">
+    <div class="splide__arrows">
+      <button class="splide__arrow splide__arrow--prev">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21"><path d="m16.84 10.91-6.838-6.838-1.484 1.463 4.332 4.333H3.333v2.083h9.517l-4.332 4.332 1.484 1.463 6.837-6.837Z"/></svg>
+      </button>
+    </div>
+    <div class="splide__controls">
+      {%- if autoplay -%}
+      <button class="splide__toggle is-active"
+              type="button"
+              aria-controls="toggle-track"
+              aria-label="Pause autoplay">
+        <svg class="splide__toggle__play"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+          <path d="m22 12-20 11v-22l10 5.5z"></path>
+        </svg>
+        <svg class="splide__toggle__pause"
+             viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="m2 1v22h7v-22zm13 0v22h7v-22z"></path>
+        </svg>
+      </button>
+      {%- endif %}
+      <ul class="splide__pagination"></ul>
+    </div>
+    <div class="splide__arrows">
+      <button class="splide__arrow splide__arrow--next">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 21"><path d="m16.84 10.91-6.838-6.838-1.484 1.463 4.332 4.333H3.333v2.083h9.517l-4.332 4.332 1.484 1.463 6.837-6.837Z"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+{%- endmacro -%}
+{%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

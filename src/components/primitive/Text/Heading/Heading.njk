@@ -1,0 +1,82 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph %}
+{% import "src/components/primitive/Text/Label/Label.njk" as Label %}
+{%- macro render( props ) -%}
+{%- set type = props.type | default('normal') -%}
+{%- set tag = props.tag | default('h1') -%}
+{%- set headingLevel = props.headingLevel | default(1) -%}
+{%- set gradation = props.gradation -%}
+{%- set text = props.text | default('Heading') -%}
+{%- set shoulder = props.shoulder -%}
+{%- set lead = props.lead -%}
+{% set publishDate = props.publishDate | default('YYYY年MM月DD日') %}
+{% set updateDate = props.updateDate | default('YYYY年MM月DD日') %}
+{% set copyText = props.copyText | default('') %}
+{% set multipleLabels = props.multipleLabels| default(
+    [
+      {
+        text: 'メディア種別',
+        href: '#'
+      },
+      {
+        text: 'タグ分類',
+        href: '#'
+      },
+      {
+        text: 'タグ分類',
+        href: '#'
+      }
+    ]
+  ) %}
+{%- set addClass = props.addClass | default('') -%}
+{%- set addId = props.addId | default('') -%}
+{% if type == 'normal' %}
+<div {{ ' id=' ~ addId if addId }} class="c-heading c-heading--h{{ headingLevel }}{{'Normal' if gradation === false}}{{' ' ~ addClass if addClass}}">
+  <div class="c-heading__inner">
+    {% if tag !== '' %}
+      <{{ tag }} class="c-heading__label">{{ text }}</{{ tag }}>
+    {% else %}
+      <h{{ headingLevel }} class="c-heading__label">{{ text }}</h{{ headingLevel }}>
+    {% endif %}
+    {% if shoulder %}<p class="c-heading__shoulder">{{ shoulder }}</p>{% endif %}
+    {% if lead %}<p class="c-heading__lead">{{ lead }}</p>{% endif %}
+  </div>
+</div>
+{% else %}
+<div class="c-mediaHeading{{' ' ~ addClass if addClass}}">
+  <div class="c-heading c-heading--h1 c-mediaHeading__title">
+    <div class="c-heading__inner">
+      <h1 class="c-heading__label">{{ text }}</h1>
+      {% if shoulder %}<p class="c-heading__shoulder">{{ shoulder }}</p>{% endif %}
+    </div>
+  </div>
+  <div class="c-mediaHeading__meta">
+    {%- if publishDateEn -%}
+      {{ Paragraph.render({"text": publishDateEn , "addClass": "c-mediaHeading_publishDate" }) }}
+    {%- else -%}
+      {{ Paragraph.render({"text": publishDate ~ '公開', "addClass": "c-mediaHeading_publishDate" }) }}
+    {%- endif -%}
+    {%- if updateDateEn -%}
+      {{ Paragraph.render({"text": 'Updated ' ~ updateDateEn, "addClass": "c-mediaHeading_updateDate" }) }}
+    {%- else -%}
+      {{ Paragraph.render({"text": updateDate ~ '更新', "addClass": "c-mediaHeading_updateDate" }) }}
+    {%- endif -%}
+  </div>
+  <div class="c-mediaHeading__copy">
+    {{ Paragraph.render({
+          "text": copyText,
+          "fontWeight": "Bold",
+          "addClass": "c-mediaHeading__copyText"
+          }) }}
+  </div>
+  {{ Label.render({
+      multiple: true,
+      multipleLabels: multipleLabels,
+      addClass: "c-mediaHeading__labels"
+      }) }}
+</div>
+{% endif %}
+{%- endmacro -%}
+{%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

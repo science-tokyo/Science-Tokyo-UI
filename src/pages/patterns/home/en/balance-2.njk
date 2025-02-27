@@ -1,0 +1,170 @@
+---
+layout: layouts/base.njk
+title: ホームパターン：バランス型②（英語）
+description: ページパターン：ホームパターン：バランス型②（英語）
+permalink: /page-patterns/home/en/balance-2.html
+lang: en
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Media/Image/Image.njk" as Image %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{% import "src/components/semantic/Group/EntryList/EntryList.njk" as EntryList %}
+{% import "src/components/semantic/Group/Carousel/Carousel.njk" as Carousel %}
+{% import "src/components/semantic/Group/PickupContents/PickupContents.njk" as PickupContents %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    <div class="grid grid--itemsCenter grid--noGutter grid--fullWidth md:grid--dirColumnReverse">
+      <div class="grid__col grid__col--span3 md:grid__col--span12 grid__col--justifyCenter u-flex u-flex--column u-flex--itemsCenter">
+        <div class="u-px-ll">
+          <h1 class="c-paragraph c-paragraph--copyM c-paragraph--weightBlack">Site title</h1>
+          <p class="c-paragraph">
+            Read. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi.
+          </p>
+        </div>
+      </div>
+      <div class="grid__col grid__col--span9 md:grid__col--span12">
+        {{ Carousel.render({
+                "contentsType": "default",
+                "carouselContents": "hero",
+                "carouselPageTitle": "",
+                "carouselItems": [
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "© Caption Curabitur tempor quis eros",
+                "width": 1440,
+                "height": 810
+                },
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "© Caption Curabitur tempor quis eros",
+                "width": 1440,
+                "height": 810
+                },
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "© Caption Curabitur tempor quis eros",
+                "width": 1440,
+                "height": 810
+                }
+        ]
+        }) }}
+      </div>
+    </div>
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros tempus lacinia.",
+      "tag": "h2",
+      "headingLevel": 2
+    }) }}
+    {{ EntryList.render({
+      "items": [
+        {
+          "date": "October 1, 2024",
+          "tags": [
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            }
+          ],
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis ",
+          "url": "#"
+        },
+        {
+          "date": "October 1, 2024",
+          "tags": [
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            }
+          ],
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis ",
+          "url": "#"
+        },
+        {
+          "date": "October 1, 2024",
+          "tags": [
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            }
+          ],
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis ",
+          "url": "#"
+        }
+      ]
+    }) }}
+    <div class="grid grid--justifyCenter u-mt-ll">
+      <div class="grid__col grid__col--span8 sm:grid__col--span8">
+        {{ Button.render({"label": "Button", "href": "#", "fixed": true}) }}
+      </div>
+    </div>
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros tempus lacinia.",
+      "tag": "h2",
+      "headingLevel": 2
+    }) }}
+    {{ PickupContents.render({
+      "title": "Pickup contents - Catchcopy",
+      "description": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum. ",
+      "buttonLabel": "Button",
+      "href": "#",
+      "external": false,
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "imagePosRight": false,
+      "imageCaption": true
+    }) }}
+    {{ PickupContents.render({
+      "title": "Pickup contents - Catchcopy",
+      "description": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum. ",
+      "buttonLabel": "Button",
+      "href": "#",
+      "external": false,
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "imagePosRight": true,
+      "imageCaption": true
+    }) }}
+    {{ PickupContents.render({
+      "title": "Pickup contents - Catchcopy",
+      "description": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum. ",
+      "buttonLabel": "Button",
+      "href": "#",
+      "external": false,
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "imagePosRight": false,
+      "imageCaption": true
+    }) }}
+    {{ PickupContents.render({
+      "title": "Pickup contents - Catchcopy",
+      "description": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum. ",
+      "buttonLabel": "Button",
+      "href": "#",
+      "external": true,
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "imagePosRight": true,
+      "imageCaption": true
+    }) }}
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

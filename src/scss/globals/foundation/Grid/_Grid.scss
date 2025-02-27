@@ -1,0 +1,138 @@
+@use '../../../globals/base/' as *;
+@use 'sass:math';
+$lgColumns: 12;
+$mdColumns: $lgColumns;
+$smColumns: 8;
+@mixin gridParentSetting($columns) {
+  &--cols {
+    @for $i from 1 through $columns {
+      &#{$i} {
+        .grid__col {
+          flex: 0 0 math.div(100%, $i);
+          width: math.div(100%, $i);
+        }
+      }
+    }
+  }
+}
+@mixin gridColSetting($columns) {
+  &__col {
+    @for $i from 1 through $columns {
+      &--span#{$i} {
+        flex: 0 0 math.div(100%, $columns) * $i;
+        width: math.div(100%, $columns) * $i;
+      }
+      @for $j from 1 through $columns {
+        &Content--span#{$i}in#{$j} {
+          width: calc(
+            math.div(
+                math.div(100%, $columns) * $i,
+                math.div(100%, $columns) * $j
+              ) *
+              100% -
+              (calc(var(--semantic-space-inner-ll) / 2))
+          );
+        }
+      }
+    }
+    @for $i from 1 through 20 {
+      &--per#{$i * 5} {
+        flex: 0 0 percentage(math.div($i * 5, 100));
+        width: percentage(math.div($i * 5, 100));
+      }
+    }
+  }
+}
+@mixin gridUtils() {
+  &--noGutter {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    .grid__col {
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+    }
+  }
+  &--dir {
+    &Row {
+      flex-direction: row;
+    }
+    &RowReverse {
+      flex-direction: row-reverse;
+    }
+    &Column {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+    &ColumnReverse {
+      flex-direction: column-reverse;
+      flex-wrap: nowrap;
+    }
+  }
+  @include flexAlign;
+}
+
+.grid {
+  @include gridUtils;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--semantic-space-inner-ll) / 2 * -1);
+  margin-right: calc(var(--semantic-space-inner-ll) / 2 * -1);
+  row-gap: var(--semantic-space-inner-ll);
+  align-items: stretch;
+  @include bp(sm) {
+    margin-left: calc(var(--semantic-space-inner-m) / 2 * -1);
+    margin-right: calc(var(--semantic-space-inner-m) / 2 * -1);
+    row-gap: var(--semantic-space-inner-l);
+  }
+  + .grid {
+    margin-top: var(--semantic-space-inner-ll);
+    @include bp(sm) {
+      margin-top: var(--semantic-space-inner-l);
+    }
+  }
+  @include gridParentSetting($lgColumns);
+  &__col {
+    width: 100%;
+    flex: 1 0 auto;
+    padding-left: calc(var(--semantic-space-inner-ll) / 2);
+    padding-right: calc(var(--semantic-space-inner-ll) / 2);
+  }
+  @include gridColSetting($lgColumns);
+  &__col {
+    @include bp(sm) {
+      padding-left: calc(var(--semantic-space-inner-m) / 2);
+      padding-right: calc(var(--semantic-space-inner-m) / 2);
+      @for $i from 1 through $smColumns {
+        &--span#{$i} {
+          flex: 0 0 math.div(100%, $smColumns) * $i;
+          width: math.div(100%, $smColumns) * $i;
+        }
+        @for $j from 1 through $smColumns {
+          &Content--span#{$i}in#{$j} {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  &--fullWidth {
+    @include fullWidth;
+  }
+}
+
+.md\:grid {
+  @include bp(md) {
+    @include gridUtils;
+    @include gridParentSetting($mdColumns);
+    @include gridColSetting($mdColumns);
+  }
+}
+.sm\:grid {
+  @include bp(sm) {
+    @include gridUtils;
+    @include gridParentSetting($smColumns);
+    @include gridColSetting($smColumns);
+  }
+}

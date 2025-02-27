@@ -1,0 +1,56 @@
+{#
+ # @prop {boolean} [caption=true]
+ # @prop {select} [headerPosition="Top"] - "Top", "Left", "Top-Left"
+ # @prop {boolean} [layoutFixed=false]
+ #}
+{% macro render(props) %}
+  {% set caption = props.caption | default("テーブルのキャプション") %}
+  {% set headerPosition = props.headerPosition | default("Top") %}
+  {% set layoutFixed = props.layoutFixed | default(false) %}
+  {% set layout = props.layout | default('') %}
+  {% set addClass = props.addClass %}
+  {% set contents = props.contents | default(
+      [
+        ["テキストが入ります。", "テキストが入ります。テキストが入ります。テキストが入ります。", "テキストが入ります。テキストが入ります。"],
+        ["テキストが入ります。", "テキストが入ります。テキストが入ります。テキストが入ります。", "テキストが入ります。テキストが入ります。"],
+        ["テキストが入ります。", "テキストが入ります。テキストが入ります。テキストが入ります。", "テキストが入ります。テキストが入ります。"],
+        ["テキストが入ります。", "テキストが入ります。テキストが入ります。テキストが入ります。", "テキストが入ります。テキストが入ります。"]
+      ]
+    ) %}
+  <div class="c-table{{ ' c-table--fixed' if layoutFixed }}{{' c-table--' ~ layout if layout}}{{' ' ~ addClass if addClass}}">
+    <table class="c-table__content">
+      {%- if props.caption -%}
+        <caption class="c-table__caption">{{ props.caption }}</caption>
+      {%- endif -%}
+      {% for row in contents %}
+        {%- if loop.first and (headerPosition == 'Top' or headerPosition == 'Top-Left') -%}
+          <thead class="c-table__head">
+            <tr>
+              {%- for cell in row -%}
+                <th>{{ cell| safe }}</th>
+              {%- endfor -%}
+            </tr>
+          </thead>
+          <tbody class="c-table__body">
+          {%- else -%}
+            {%- if loop.first -%}
+              <tbody class="c-table__body">
+              {%- endif -%}
+              <tr>
+                {%- for cell in row -%}
+                  {%- if loop.first and (headerPosition == 'Left' or headerPosition == 'Top-Left') -%}
+                    <th class="c-table__headCell">{{ cell| safe }}</th>
+                  {%- else -%}
+                    <td>{{ cell| safe }}</td>
+                  {%- endif -%}
+                {%- endfor -%}
+              </tr>
+              {%- if loop.last -%}
+              </tbody>
+            {%- endif -%}
+          {%- endif -%}
+        {% endfor %}
+      </table>
+    </div>
+  {% endmacro %}
+  {% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

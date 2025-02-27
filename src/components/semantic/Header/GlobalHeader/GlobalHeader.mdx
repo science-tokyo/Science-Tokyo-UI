@@ -1,0 +1,26 @@
+{/* GlobalHeader.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as GlobalHeaderStories from './GlobalHeader.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="GlobalHeader" of={GlobalHeaderStories} />
+
+# グローバルヘッダー Global header
+
+Science TokyoのWebサイトで共通で利用することを想定したヘッダーです。
+
+## 原則
+
+- isct.ac.jpドメイン内で公開するScience TokyoのWebサイトで必ず利用することを想定しています。
+- グローバルヘッダーナビゲーションと組み合わせて利用する必要があります。
+- 全ての要素の見た目、機能を変更せずに、ページの最上部に表示します。
+- サイト名の表示が必要な場合、Science Tokyoロゴマークとは別に指定のテキストで表示します。
+- サイト名の表示位置はScience Tokyoロゴマークの右ですが、画面幅により収まらない場合はロゴマーク下の決められた位置に表示されます。
+  - 学内関係者は、ロゴマークとサイト名の併記について「<a href="https://design-system.isct.ac.jp/ja/brand/communication/organization/#%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%81%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE%E4%BD%B5%E8%A8%98%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3" target="_blank">スペースがない場合の併記パターン</a>」を必ず確認してください。
+- サブメニューは、サイトごとに指定可能ですが、検索・言語切り替えは固定メニューです。
+  - サブメニューの項目数は可変です。テキスト量やレイアウトへの影響を鑑みて設定してください。
+  - 日本語／Englishの切り替えでいずれかの言語が選択されているステータスとなります。選択中の言語が太字で表現されます。
+
+<Canvas />

@@ -1,0 +1,23 @@
+{/* Textarea.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as TextareaStories from './Textarea.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Textarea" of={TextareaStories} />
+
+# テキストエリア Textarea
+
+ユーザーが文章や複数行のテキストを入力するためのコンポーネントです。
+
+## 原則
+
+- 横幅は任意で設定することが可能です。
+- 項目ラベル、入力必須項目、サポートテキストは入力を補助する要素がコンポーネントに予め用意されていますが、必要に応じて表示／非表示を切り替えて利用します。
+- 利用不可（Disabled）の状態を表示させる際は、サポートテキストを利用してユーザーに利用することができない理由を知らせる必要があります。
+
+<Canvas />
+<Controls />
+
+<Stories />

@@ -1,0 +1,24 @@
+{/* OrderList.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as OrderListStories from './OrderList.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="OrderList" of={OrderListStories} />
+
+# 順序付きリスト Order list
+
+順序付きのリストを表示するためのコンポーネントです。2桁までの順序表示に対応しています。  
+注釈文のリストや、階層化したリストの入れ子表示などにも対応しています。
+
+## 原則
+
+- 2桁までの順序表示に対応しています。
+- 注釈は、日本語の場合「※（米印）」、英語の場合「*（アスタリスク）」で表現します。
+- リスト内にリストを入れ子にして階層化する場合はインデントで表現します。
+
+<Canvas />
+<Controls />
+
+<Stories />

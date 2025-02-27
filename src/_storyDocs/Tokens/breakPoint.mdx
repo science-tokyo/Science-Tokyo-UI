@@ -1,0 +1,22 @@
+{/* breakPoint.mdx */}
+import { Meta } from '@storybook/blocks';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Tokens/ブレイクポイント Break point" />
+
+# ブレイクポイント Break point
+
+ウィンドウサイズに応じてスタイルを変更するためのブレイクポイントを設定。  
+lg（デスクトップ）・md（タブレット）・sm（モバイル） の3つの画面サイズによって、各コンポーネントのレイアウトが変化します。  
+Mixinを使用してブレイクポイントごとのスタイルを適用します。Mixinの詳細は`_mixin.scss`を参照してください。
+
+- lg（デスクトップ）: 1025px〜
+- md（タブレット）: 768px〜1024px
+- sm（モバイル）: 〜767px
+
+```scss
+@include bp(sm) {
+  // ここにスタイルを記述
+}
+```

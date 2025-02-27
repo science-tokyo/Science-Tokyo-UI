@@ -1,0 +1,94 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+
+.c-paragraph {
+  @include txt($t-bodyM);
+  margin-bottom: 0;
+  @include dm;
+  &--size {
+    &LL {
+      @include txt($t-bodyLL);
+    }
+    &L {
+      @include txt($t-bodyL);
+    }
+    &M {
+      @include txt($t-bodyM);
+    }
+    &S {
+      @include txt($t-bodyS);
+    }
+    &SS {
+      @include txt($t-bodySS);
+    }
+    &SSS {
+      @include txt($t-labelS);
+    }
+  }
+  &--copy {
+    &LL {
+      @include txt($t-displayS-light);
+      @include bp(sm) {
+        @include txt($t-headingL-light);
+      }
+      + [class*='c-'] {
+        margin-top: var(--semantic-space-inner-l);
+        @include bp(sm) {
+          margin-top: var(--semantic-space-inner-m);
+        }
+      }
+    }
+    &L {
+      @include txt($t-headingL-light);
+      @include bp(sm) {
+        @include txt($t-headingM-light);
+      }
+      + [class*='c-'] {
+        margin-top: var(--semantic-space-inner-l);
+        @include bp(sm) {
+          margin-top: var(--semantic-space-inner-m);
+        }
+      }
+    }
+    &M {
+      @include txt($t-headingM-light);
+      @include bp(sm) {
+        @include txt($t-headingS-light);
+      }
+      + [class*='c-'] {
+        margin-top: var(--semantic-space-inner-l);
+        @include bp(sm) {
+          margin-top: var(--semantic-space-inner-m);
+        }
+      }
+    }
+  }
+  &--align {
+    &Left {
+      text-align: left;
+    }
+    &Center {
+      text-align: center;
+    }
+    &Right {
+      text-align: right;
+    }
+  }
+  &--weight {
+    &Light {
+      font-weight: map.get($font-weight, light);
+    }
+    &Regular {
+      font-weight: map.get($font-weight, regular);
+    }
+    &Medium {
+      font-weight: map.get($font-weight, medium);
+    }
+    &Bold {
+      font-weight: map.get($font-weight, bold);
+    }
+    &Black {
+      font-weight: map.get($font-weight, black);
+    }
+  }
+}

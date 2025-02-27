@@ -1,0 +1,654 @@
+@use 'sass:map';
+
+@function deep-map-merge($map1, $map2) {
+  @each $key, $value in $map2 {
+    $original-value: map-get($map1, $key);
+    $merged-value: if(
+      type-of($original-value) == 'map' and type-of($value) == 'map',
+      deep-map-merge($original-value, $value),
+      $value
+    );
+    $map1: map-merge(
+      $map1,
+      (
+        $key: $merged-value
+      )
+    );
+  }
+  @return $map1;
+}
+
+$font-weight: (
+  thin: 100,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semiBold: 600,
+  bold: 700,
+  extraBold: 800,
+  black: 900
+);
+/*
+ * 和文フォントの書式
+ */
+$t-displayL: (
+  font-size: 60px,
+  line-height: 88px,
+  letter-spacing: 2.6px,
+  font-weight: map.get($font-weight, regular),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 60px,
+    line-height: 80px,
+    letter-spacing: 1.8px
+  )
+);
+$t-displayM: (
+  font-size: 48px,
+  line-height: 72px,
+  letter-spacing: 1.8px,
+  font-weight: map.get($font-weight, regular),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 48px,
+    line-height: 64px,
+    letter-spacing: 1px
+  )
+);
+$t-displayS: (
+  font-size: 40px,
+  line-height: 56px,
+  letter-spacing: 1.7px,
+  font-weight: map.get($font-weight, regular),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 40px,
+    line-height: 52px,
+    letter-spacing: 0.85px
+  )
+);
+$t-headingL: (
+  font-size: 32px,
+  line-height: 48px,
+  letter-spacing: 1.55px,
+  font-weight: map.get($font-weight, regular),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 32px,
+    line-height: 44px,
+    letter-spacing: 0.75px
+  )
+);
+$t-headingM: (
+  font-size: 28px,
+  line-height: 40px,
+  letter-spacing: 1.4px,
+  font-weight: map.get($font-weight, regular),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 30px,
+    line-height: 40px,
+    letter-spacing: 0.5px
+  )
+);
+$t-headingS: (
+  font-size: 24px,
+  line-height: 32px,
+  letter-spacing: 1.32px,
+  font-weight: map.get($font-weight, regular),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 24px,
+    line-height: 36px,
+    letter-spacing: 0.4px
+  )
+);
+$t-titleL: (
+  font-size: 22px,
+  line-height: 32px,
+  letter-spacing: 1.31px,
+  font-weight: map.get($font-weight, regular),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 22px,
+    line-height: 32px,
+    letter-spacing: 0.48px
+  )
+);
+$t-titleM: (
+  font-size: 18.29px,
+  line-height: 24px,
+  letter-spacing: 1.2px,
+  font-weight: map.get($font-weight, medium),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 18.29px,
+    line-height: 24px,
+    letter-spacing: 0.4px
+  )
+);
+$t-titleS: (
+  font-size: 16px,
+  line-height: 20px,
+  letter-spacing: 1px,
+  font-weight: map.get($font-weight, medium),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 16px,
+    line-height: 22px,
+    letter-spacing: 0.36px
+  )
+);
+$t-bodyLL: (
+  font-size: 20px,
+  line-height: 35px,
+  letter-spacing: 0,
+  font-weight: map.get($font-weight, regular),
+  en: (
+    font-size: 20px,
+    line-height: 35px,
+    letter-spacing: 0
+  )
+);
+$t-bodyL: (
+  font-size: 18.29px,
+  line-height: 32px,
+  letter-spacing: 0,
+  font-weight: map.get($font-weight, regular),
+  en: (
+    font-size: 18.29px,
+    line-height: 32px,
+    letter-spacing: 0
+  )
+);
+$t-bodyM: (
+  font-size: 16px,
+  line-height: 28px,
+  letter-spacing: 0,
+  font-weight: map.get($font-weight, regular),
+  en: (
+    font-size: 16px,
+    line-height: 28px,
+    letter-spacing: 0
+  )
+);
+$t-bodyS: (
+  font-size: 14px,
+  line-height: 24px,
+  letter-spacing: 0,
+  font-weight: map.get($font-weight, regular),
+  en: (
+    font-size: 14px,
+    line-height: 24px,
+    letter-spacing: 0
+  )
+);
+$t-bodySS: (
+  font-size: 12px,
+  line-height: 20px,
+  letter-spacing: 0,
+  font-weight: map.get($font-weight, regular),
+  en: (
+    font-size: 12px,
+    line-height: 20px,
+    letter-spacing: 0
+  )
+);
+$t-labelL: (
+  font-size: 14px,
+  line-height: 20px,
+  letter-spacing: 0.5px,
+  font-weight: map.get($font-weight, medium),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 14px,
+    line-height: 20px,
+    letter-spacing: 0.4px
+  )
+);
+$t-labelM: (
+  font-size: 12px,
+  line-height: 16px,
+  letter-spacing: 0.25px,
+  font-weight: map.get($font-weight, medium),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 12px,
+    line-height: 16px,
+    letter-spacing: 0.2px
+  )
+);
+$t-labelS: (
+  font-size: 11px,
+  line-height: 14px,
+  letter-spacing: 0.2px,
+  font-weight: map.get($font-weight, medium),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 11px,
+    line-height: 14px,
+    letter-spacing: 0.17px
+  )
+);
+$t-labelSS: (
+  font-size: 10px,
+  line-height: 12px,
+  letter-spacing: 0.17px,
+  font-weight: map.get($font-weight, regular),
+  font-feature-settings: 'palt',
+  en: (
+    font-size: 10px,
+    line-height: 12px,
+    letter-spacing: 0.12px
+  )
+);
+/* bold */
+$t-displayL-bold: deep-map-merge(
+  $t-displayL,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-displayM-bold: deep-map-merge(
+  $t-displayM,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-displayS-bold: deep-map-merge(
+  $t-displayS,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-headingL-bold: deep-map-merge(
+  $t-headingL,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-headingM-bold: deep-map-merge(
+  $t-headingM,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-headingS-bold: deep-map-merge(
+  $t-headingS,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-titleL-bold: deep-map-merge(
+  $t-titleL,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-titleM-bold: deep-map-merge(
+  $t-titleM,
+  (
+    font-weight: map.get($font-weight, extraBold),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-titleS-bold: deep-map-merge(
+  $t-titleS,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-bodyLL-bold: deep-map-merge(
+  $t-bodyLL,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-bodyL-bold: deep-map-merge(
+  $t-bodyL,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-bodyM-bold: deep-map-merge(
+  $t-bodyM,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-bodyS-bold: deep-map-merge(
+  $t-bodyS,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-bodySS-bold: deep-map-merge(
+  $t-bodySS,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-labelL-bold: deep-map-merge(
+  $t-labelL,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-labelM-bold: deep-map-merge(
+  $t-labelM,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-labelS-bold: deep-map-merge(
+  $t-labelS,
+  (
+    font-weight: map.get($font-weight, bold)
+  )
+);
+$t-labelSS-bold: deep-map-merge(
+  $t-labelSS,
+  (
+    font-weight: map.get($font-weight, semiBold),
+    en: (
+      font-weight: map.get($font-weight, medium)
+    )
+  )
+);
+/* black */
+$t-displayL-black: deep-map-merge(
+  $t-displayL,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-displayM-black: deep-map-merge(
+  $t-displayM,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-displayS-black: deep-map-merge(
+  $t-displayS,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-headingL-black: deep-map-merge(
+  $t-headingL,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-headingM-black: deep-map-merge(
+  $t-headingM,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-headingS-black: deep-map-merge(
+  $t-headingS,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-titleL-black: deep-map-merge(
+  $t-titleL,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-titleM-black: deep-map-merge(
+  $t-titleM,
+  (
+    font-weight: map.get($font-weight, extrabold),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-titleS-black: deep-map-merge(
+  $t-titleS,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-bodyLL-black: deep-map-merge(
+  $t-bodyLL,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-bodyL-black: deep-map-merge(
+  $t-bodyL,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-bodyM-black: deep-map-merge(
+  $t-bodyM,
+  (
+    font-weight: map.get($font-weight, black),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-bodyS-black: deep-map-merge(
+  $t-bodyS,
+  (
+    font-weight: map.get($font-weight, extraBold),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-bodySS-black: deep-map-merge(
+  $t-bodySS,
+  (
+    font-weight: map.get($font-weight, extraBold),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-labelL-black: deep-map-merge(
+  $t-labelL,
+  (
+    font-weight: map.get($font-weight, extraBold),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-labelM-black: deep-map-merge(
+  $t-labelM,
+  (
+    font-weight: map.get($font-weight, extraBold),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-labelS-black: deep-map-merge(
+  $t-labelS,
+  (
+    font-weight: map.get($font-weight, extraBold),
+    en: (
+      font-weight: map.get($font-weight, bold)
+    )
+  )
+);
+$t-labelSS-black: deep-map-merge(
+  $t-labelSS,
+  (
+    font-weight: map.get($font-weight, extraBold),
+    en: (
+      font-weight: map.get($font-weight, medium)
+    )
+  )
+);
+/* light */
+$t-displayL-light: deep-map-merge(
+  $t-displayL,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-displayM-light: deep-map-merge(
+  $t-displayM,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-displayS-light: deep-map-merge(
+  $t-displayS,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-headingL-light: deep-map-merge(
+  $t-headingL,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-headingM-light: deep-map-merge(
+  $t-headingM,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-headingS-light: deep-map-merge(
+  $t-headingS,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-titleL-light: deep-map-merge(
+  $t-titleL,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-titleM-light: deep-map-merge(
+  $t-titleM,
+  (
+    font-weight: map.get($font-weight, regular)
+  )
+);
+$t-titleS-light: deep-map-merge(
+  $t-titleS,
+  (
+    font-weight: map.get($font-weight, regular)
+  )
+);
+$t-bodyLL-light: deep-map-merge(
+  $t-bodyLL,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-bodyL-light: deep-map-merge(
+  $t-bodyL,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-bodyM-light: deep-map-merge(
+  $t-bodyM,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-bodyS-light: deep-map-merge(
+  $t-bodyS,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-bodySS-light: deep-map-merge(
+  $t-bodySS,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+$t-labelL-light: deep-map-merge(
+  $t-labelL,
+  (
+    font-weight: map.get($font-weight, regular)
+  )
+);
+$t-labelM-light: deep-map-merge(
+  $t-labelM,
+  (
+    font-weight: map.get($font-weight, regular)
+  )
+);
+$t-labelS-light: deep-map-merge(
+  $t-labelS,
+  (
+    font-weight: map.get($font-weight, regular)
+  )
+);
+$t-labelSS-light: deep-map-merge(
+  $t-labelSS,
+  (
+    font-weight: map.get($font-weight, light)
+  )
+);
+/* semiBold */
+$t-headingS-semiBold: deep-map-merge(
+  $t-headingS,
+  (
+    font-weight: map.get($font-weight, semiBold)
+  )
+);
+$t-titleL-semiBold: deep-map-merge(
+  $t-titleL,
+  (
+    font-weight: map.get($font-weight, semiBold)
+  )
+);
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: map.get($font-weight, regular);
+  text-underline-offset: 0.15em;
+}
+html[lang='en'] body {
+  font-family: 'Hind', sans-serif;
+}

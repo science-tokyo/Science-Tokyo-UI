@@ -1,0 +1,43 @@
+@use '../../../../scss/globals/base/' as *;
+.c-importantNotice {
+  @include dm;
+  &:first-child {
+    margin-top: var(--semantic-space-inner-ll);
+    @include bp(sm) {
+      margin-top: var(--semantic-space-inner-m);
+    }
+  }
+  padding: var(--semantic-space-inner-s) var(--semantic-space-inner-l)
+    var(--semantic-space-inner-m) var(--semantic-space-inner-l);
+  border-radius: var(--semantic-corner-radius-ll);
+  border: var(--semantic-line-thickness-bold) solid
+    var(--ui-line-status-caution);
+  @include bp(sm) {
+    padding: var(--semantic-space-inner-sss) var(--semantic-space-inner-m)
+      var(--semantic-space-inner-mms) var(--semantic-space-inner-m);
+  }
+  &__heading {
+    margin: 0;
+    color: var(--ui-text-status-caution);
+    padding: var(--semantic-space-inner-m) 0 var(--semantic-space-inner-sss);
+    @include txt($t-titleM-bold);
+    @include bp(sm) {
+      @include txt($t-titleS-bold);
+    }
+  }
+  &__body {
+    margin-top: var(--semantic-space-inner-s);
+    @include bp(sm) {
+      margin-top: var(--semantic-space-inner-m);
+    }
+    .c-entryList {
+      border: 0;
+      &__item {
+        border: 0;
+      }
+      &__link {
+        padding-block: var(--semantic-space-inner-s);
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+.c-facilityList {
+  display: flex;
+  gap: var(--semantic-space-inner-l);
+  @include dm;
+  @include bp(sm) {
+    flex-direction: column;
+    gap: var(--semantic-space-inner-m);
+  }
+  &__body {
+    width: 68.75%;
+    @include bp(sm) {
+      width: 100%;
+    }
+  }
+  &__title {
+    @include txt($t-titleS-bold);
+    margin-top: 0;
+    padding-top: var(--semantic-space-inner-s);
+  }
+  &__description {
+    @include txt($t-bodyS);
+    margin-top: var(--semantic-space-inner-s);
+  }
+  &__items {
+    @include txt($t-bodyS);
+    margin-top: var(--semantic-space-inner-ml);
+    .c-definitionList__item {
+      flex-wrap: wrap;
+      align-items: baseline;
+      flex-direction: row;
+    }
+    .c-list {
+      display: block;
+      flex-wrap: wrap;
+      &__item {
+        @include txt($t-bodyS);
+        margin-top: 0;
+        display: inline;
+        &::before {
+          content: none;
+        }
+        &:last-child {
+          &::after {
+            content: none;
+          }
+        }
+        &::after {
+          content: '／';
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  // &__address {
+  //   margin-top: var(--semantic-space-inner-s);
+  //   &Item {
+  //     display: flex;
+  //     align-items: center;
+  //   }
+  //   &Label {
+  //     width: 5em;
+  //   }
+  // }
+  // &__access {
+  //   margin-top: var(--semantic-space-inner-s);
+  // }
+  &__button {
+    width: auto;
+    margin-top: var(--semantic-space-inner-m);
+    min-width: 84px;
+    min-height: 48px;
+    padding: var(--semantic-space-inner-mms) var(--semantic-space-inner-l);
+  }
+  &__map {
+    width: 31.25%;
+    @include bp(sm) {
+      width: 100%;
+    }
+  }
+}

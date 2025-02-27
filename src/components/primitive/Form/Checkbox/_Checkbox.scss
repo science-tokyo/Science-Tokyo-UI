@@ -1,0 +1,62 @@
+@use '../../../../scss/globals/base/' as *;
+
+.c-checkboxGroup {
+  &--disabled {
+    color: var(--ui-text-status-disabled);
+    .c-checkbox {
+      input[type='checkbox'] {
+        border-color: var(--ui-icon-status-disabled);
+      }
+    }
+  }
+  &--error {
+    color: var(--ui-text-status-caution);
+    .c-checkbox {
+      input[type='checkbox'] {
+        border-color: var(--ui-line-status-caution);
+      }
+    }
+  }
+}
+.c-checkbox {
+  display: flex;
+  align-items: center;
+  column-gap: var(--semantic-space-inner-s);
+  padding-block: var(--semantic-space-inner-ms);
+  @include txt($t-titleM);
+  input[type='checkbox'] {
+    appearance: none;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    border: 2px solid #000;
+    border-radius: 3px;
+    &:focus-visible {
+      outline: 2px solid var(--ui-line-status-focus);
+      outline-offset: 4px;
+      border-radius: 1px;
+    }
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+    &:checked {
+      border-color: var(--ui-icon-default);
+      background-color: var(--ui-icon-default);
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 5px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(-45deg) translate(-1px, -6px);
+      }
+    }
+    & + label {
+      @include txt($t-titleM);
+    }
+  }
+}

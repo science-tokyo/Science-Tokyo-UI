@@ -1,0 +1,46 @@
+{#
+ # @prop {boolead} [disabled="false"] - 入力を無効にする
+ # @prop {boolead} [required="false"] - 入力を必須にする
+ # @prop {boolead} [error="false"] - エラー状態にする
+ #}
+{% macro render( props ) %}
+  {%- set class_error = {
+    input: " c-input--error" if props.error
+    } -%}
+  {%- set class_disabled = {
+    label: " c-form__label--disabled" if props.disabled
+    } -%}
+  {%- set attr_disabled = "disabled" if props.disabled -%}
+  {%- set attr_required = "required" if props.required -%}
+  {% set label = props.label | default('ラベル') %}
+  {% set description = props.description | default('入力項目の説明文が入ります。') %}
+  {% set errorText = props.errorText | default('エラーテキストが入ります。') %}
+  {% set placeholder = props.placeholder | default('入力してください') %}
+  {% set closeIcon = props.closeIcon %}
+  {% set rightIcon = props.rightIcon %}
+  {% set addClass = props.addClass %}
+  <div class="c-form__item{{' ' ~ addClass if addClass}}">
+    {%- if label -%}
+      <label class="c-form__label{{ class_disabled.label }}" for="input-text">
+        <span class="c-form__labelText">{{ label }}</span>
+        {%- if props.required -%}<span class="c-form__required">必須</span>{%- endif -%}
+        <span class="c-form__description">{{ description }}</span>
+      </label>
+    {%- endif -%}
+    <div class="c-form__item__input">
+      <input class="c-input{{ class_error.input }}" type="text" id="input-text" {{ attr_disabled }} {{ attr_required }} placeholder="{{ placeholder }}" />
+      {% if closeIcon -%}
+        <svg class="icon" aria-hidden="true" role="img">
+          <use xlink:href="/assets/img/sprite.svg#close"></use>
+        </svg>
+      {%- endif %}
+      {% if rightIcon -%}
+        <svg class="icon" aria-hidden="true" role="img">
+          <use xlink:href="/assets/img/sprite.svg#{{ rightIcon }}"></use>
+        </svg>
+      {%- endif %}
+    </div>
+    {% if props.error %}<p class="c-form__error">{{ errorText }}</p>{% endif %}
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

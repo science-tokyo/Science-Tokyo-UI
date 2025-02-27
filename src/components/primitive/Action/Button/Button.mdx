@@ -1,0 +1,30 @@
+{/* Button.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as ButtonStories from './Button.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Button" of={ButtonStories} />
+
+# ボタン Button
+
+ボタンを表示するためのコンポーネントです。  
+主にページの移動、ファイルダウンロード、ウィンドウ開閉、状態変更などに使用します。
+
+## 原則
+
+- スタイルは「プライマリ」「セカンダリ」「ターシャリ」の3種類あります。標準的なボタンは「セカンダリ」を選択してください。
+- 幅や高さ以外の形状は変更せずに利用します。
+- 幅や高さの管理方法は2種類あります。
+  - 固定幅ボタン：レイアウトに応じて固定幅を選択するボタン。単独で配置する際に利用します。
+  - 可変幅ボタン：中に入る文字列の数や改行に応じて幅が可変するボタン。他のコンポーネントに内包する際に利用します。
+- ボタンの前後にはアイコンを挿入できますが、以下の制限があります。
+  - 前後のアイコンは同時に両方表示させることはできません。
+  - ラベルの前は「arrow_left」のみが設定できます。
+  - ラベルの後は「chevron_right」「arrow_right」「arrow_down」「arrow_up」「new_window」「pdf（file」のみが設定できます。
+
+<Canvas />
+<Controls />
+
+<Stories />

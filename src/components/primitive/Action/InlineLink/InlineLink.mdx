@@ -1,0 +1,21 @@
+{/* InlineLink.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as InlineLinkStories from './InlineLink.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="InlineLink" of={InlineLinkStories} />
+
+# インラインリンク Inline link
+
+文中にリンクを設定する場合のスタイルです。文字サイズに関わらず適用されます。  
+レイアウト上、周囲の要素と独立して配置する場合はユーティリティリンクを使用します。
+
+## 原則
+
+- インラインリンクの文字色と下線のスタイルは変更することはできません。
+- インラインリンクには末尾にアイコンが設定できます。外部リンクに対しては「new_window」アイコンを、リンク先がPDFやワードファイルなどのドキュメントのダウンロードの場合は「pdf（file）」を設定します。同一サイト内へのリンクの場合はアイコンを設定しません。
+
+<Canvas />
+<Controls />

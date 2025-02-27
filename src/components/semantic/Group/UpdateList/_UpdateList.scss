@@ -1,0 +1,36 @@
+@use '../../../../scss/globals/base/' as *;
+.c-updateHistory {
+  @include dm;
+  margin-top: calc(
+    var(--semantic-space-inner-ll) + var(--semantic-space-outer-ss)
+  );
+  border: var(--semantic-line-thickness-default) solid
+    var(--ui-line-status-link);
+  padding: var(--semantic-space-inner-lll) var(--semantic-space-inner-llll);
+  border-radius: var(--semantic-corner-radius-ll);
+  @include bp(sm) {
+    margin-top: calc(
+      var(--semantic-space-inner-l) + var(--semantic-space-outer-ss)
+    );
+    padding: var(--semantic-space-inner-l);
+  }
+  &__heading {
+    margin-top: 0;
+    padding-bottom: var(--semantic-space-inner-s);
+    @include txt($t-headingM-bold);
+    @include bp(sm) {
+      @include txt($t-headingS-bold);
+    }
+  }
+  &__body {
+    margin-top: var(--semantic-space-inner-ll);
+    @include bp(sm) {
+      margin-top: var(--semantic-space-inner-s);
+    }
+    .c-list {
+      @include bp(sm) {
+        @include txt($t-bodyS);
+      }
+    }
+  }
+}

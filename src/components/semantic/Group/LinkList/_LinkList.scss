@@ -1,0 +1,91 @@
+@use '../../../../scss/globals/base/' as *;
+.c-linkList {
+  $_root: &;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--semantic-space-inner-ms);
+  padding-left: 0;
+  margin-bottom: 0;
+  @include dm;
+  &--horizontal {
+    flex-direction: row;
+    gap: var(--semantic-space-inner-l);
+    @include bp(sm) {
+      flex-direction: column;
+    }
+  }
+  &__item {
+    list-style-type: none;
+    @include bp(sm) {
+      width: 100%;
+    }
+    .c-utilityLink {
+      display: block;
+    }
+  }
+}
+
+.c-linkList--button {
+  flex-direction: row;
+  gap: var(--semantic-space-inner-ll);
+  @include bp(sm) {
+    flex-direction: column;
+  }
+  .c-linkList {
+    &__item {
+      width: calc(33.3333% - var(--semantic-space-inner-ll) * 2 / 3);
+      @include bp(sm) {
+        width: 100%;
+      }
+    }
+    &__link {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: var(--semantic-space-inner-m);
+      min-height: 96px;
+      .icon {
+        width: var(--semantic-size-icon-mml);
+        height: var(--semantic-size-icon-mml);
+        html[lang='en'] & {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+.c-linkList--related {
+  flex-direction: column;
+  gap: var(--semantic-space-inner-ms);
+  .c-linkList {
+    &__item {
+      @include bp(sm) {
+        width: 100%;
+      }
+    }
+    &__link {
+      width: 100%;
+      background-color: var(--ui-background-emphasize-mid-tertiary);
+      padding: var(--semantic-space-hairline-l) var(--semantic-space-inner-s);
+      justify-content: space-between;
+      border-radius: var(--semantic-corner-radius-ms);
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--ui-background-emphasize-mid-quaternary);
+        }
+      }
+      &:active {
+        background-color: var(--ui-background-emphasize-mid-quaternary);
+      }
+      .c-link__icon {
+        flex: none;
+      }
+    }
+  }
+}
+
+.c-linkListSection {
+  @include dm;
+}

@@ -1,0 +1,52 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set tabs = props.tabs | default(
+      [
+        {
+          tabId: "tab-1",
+          contentName: "tab_content01",
+          label: "タブラベル1",
+          content: "タブコンテンツ1:コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。",
+          isActive: true
+        },
+        {
+          tabId: "tab-2",
+          contentName: "tab_content02",
+          label: "タブラベル2",
+          content: "タブコンテンツ2:コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。",
+          isActive: false
+        }
+      ]
+    ) %}
+  {% set addClass = props.addClass %}
+  <div class="c-tab{{' ' ~ addClass if addClass}}" data-js-tab>
+    <div class="c-tab__head" role="tablist">
+      <div class="c-tab__tabs">
+        {% for tab in tabs %}
+          <button id="{{ tab.tabId }}"
+                  class="c-tab__trigger{{ ' is-active' if tab.isActive }}"
+                  type="button"
+                  data-js-tab-trigger="{{ tab.contentName }}"
+                  role="tab"
+                  aria-selected="{{ tab.isActive }}">{{ tab.label }}</button>
+        {% endfor %}
+      </div>
+      <!-- /.c-tab__tabs -->
+    </div>
+    <!-- /.c-tab__head -->
+    <div class="c-tab__contentArea">
+      {% for tab in tabs %}
+        <div class="c-tab__content{{ ' is-active' if tab.isActive }}"
+             data-js-tab-content="{{ tab.contentName }}"
+             role="tabpanel"
+             aria-labelledby="{{ tab.tabId }}">{{ tab.content }}</div>
+        <!-- /.c-tab__content -->
+      {% endfor %}
+    </div>
+    <!-- /.c-tab__contents -->
+  </div>
+  <!-- /.c-tab -->
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

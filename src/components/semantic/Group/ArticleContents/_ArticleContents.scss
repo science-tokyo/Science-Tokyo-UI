@@ -1,0 +1,33 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+.c-articleContents {
+  @include dm;
+  .grid {
+    row-gap: var(--semantic-space-inner-l);
+  }
+  &__conversations {
+    > * + * {
+      margin-top: var(--semantic-space-inner-ll);
+    }
+  }
+  &__conversation {
+    @include dm;
+    &Name {
+      display: inline;
+      @include txt($t-bodyM-bold);
+      margin-right: 2em;
+    }
+    &Text {
+      display: inline;
+    }
+  }
+  &__link {
+    margin-top: var(--semantic-space-inner-l);
+    @include bp(sm) {
+      margin-top: var(--semantic-space-inner-m);
+    }
+    & + & {
+      margin-top: var(--semantic-space-inner-s);
+    }
+  }
+}

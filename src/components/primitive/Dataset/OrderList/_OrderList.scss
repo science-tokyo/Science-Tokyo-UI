@@ -1,0 +1,65 @@
+@use '../../../../scss/globals/base/' as *;
+
+.c-orderList {
+  $_root: &;
+  list-style: auto;
+  counter-reset: listItem;
+  padding-left: 0;
+  margin: 0;
+  @include dm;
+  @include txt($t-bodyM);
+  &--size {
+    &L {
+      #{$_root}__item {
+        @include txt($t-bodyL);
+      }
+    }
+    &M {
+      #{$_root}__item {
+        @include txt($t-bodyM);
+      }
+    }
+    &S {
+      #{$_root}__item {
+        @include txt($t-bodyS);
+        &::before {
+          margin-right: var(--semantic-space-inner-ss);
+        }
+      }
+    }
+  }
+  &__item {
+    #{$_root} > & {
+      display: flex;
+      counter-increment: listItem;
+      &:not(:first-child) {
+        margin-top: var(--semantic-space-inner-s);
+      }
+      &::before {
+        padding-left: var(--semantic-space-inner-s);
+        content: counter(listItem) '.';
+        margin-right: var(--semantic-space-hairline-s);
+      }
+      .c-orderList,
+      .c-list {
+        margin-top: var(--semantic-space-inner-s);
+      }
+    }
+  }
+  &--notes {
+    > #{$_root}__item {
+      &::before {
+        content: '※' counter(listItem);
+        width: auto;
+        padding-left: 0;
+        padding-right: var(--semantic-space-inner-s);
+        margin-right: var(--semantic-space-inner-sss);
+        background-color: transparent;
+        html[lang='en'] & {
+          content: '*' counter(listItem);
+          padding-left: var(--semantic-space-inner-s);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{#
+ # @prop {type} ***
+ #}
+{%- import "src/components/primitive/Action/UtilityLink/UtilityLink.njk" as UtilityLink -%}
+{%- import "src/components/primitive/Action/Button/Button.njk" as Button -%}
+{%- import "src/components/primitive/Text/Heading/Heading.njk" as Heading -%}
+{%- macro render( props ) -%}
+  {%- set type = props.type | default('') -%}
+  {%- set isSection = props.isSection | default(false) -%}
+  {%- set sectionTitle = props.sectionTitle | default('') -%}
+  {%- set links = props.links |default([
+    {
+    "text": "リンクテキスト",
+    "href": "#",
+    "external": false,
+    "rightIcon": false
+    },
+    {
+    "text": "リンクテキスト",
+    "ref": "#",
+    "external": false,
+    "rightIcon": false
+    }
+    ]) -%}
+  {% set layout = props.layout %}
+  {%- if isSection -%}
+    <section class="c-linkListSection">
+      {{ Heading.render({ "headingLevel": 2, "tag": "h2", "text": sectionTitle, "addClass": "c-linkListSection__title" }) }}
+    {%- endif -%}
+    <ul class="c-linkList{{ ' c-linkList--' ~ type if type }}{{ ' c-linkList--' ~ layout if layout }}">
+      {%- for link in links -%}
+        <li class="c-linkList__item">
+          {%- if type == "button" -%}
+            {{ Button.render({
+                        "type": "link",
+                        "label": link.text,
+                        "href": link.href,
+                        "external": link.external,
+                        "rightIcon": link.rightIcon,
+                        "fullWidth": true,
+                        "style": "secondary",
+                        "addClass": "c-linkList__link"
+                        }) }}
+          {%- else -%}
+            {{ UtilityLink.render({
+                        "label": link.text,
+                        "href": link.href,
+                        "external": link.external,
+                        "rightIcon": link.rightIcon,
+                        "addClass": "c-linkList__link"
+                        }) }}
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if isSection -%}
+    </section>
+  {%- endif -%}
+{%- endmacro -%}
+{%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

@@ -1,0 +1,200 @@
+@use '../../scss/globals/base/' as *;
+@use 'sass:map';
+.docs-typography_fontWeight,
+.docs-typography_fontStyle {
+  padding: 20px !important;
+  border: 1px solid hsla(203, 50%, 30%, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0;
+  .c-definitionList__term {
+    min-width: 140px;
+    font-weight: map.get($font-weight, regular);
+    color: var(--mono-800);
+  }
+  &:not(.lang\:en) {
+    .c-definitionList__description {
+      & > p {
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 40px;
+        line-height: 56px;
+        letter-spacing: 1.7px;
+        font-feature-settings: 'palt';
+      }
+    }
+  }
+  &.lang\:en {
+    .c-definitionList__description {
+      & > p {
+        font-family: 'Hind', sans-serif;
+        font-size: 40px;
+        line-height: 52px;
+        letter-spacing: 0.85px;
+      }
+    }
+  }
+}
+.docs-typography_fontWeight {
+  .c-definitionList__item {
+    + .c-definitionList__item {
+      margin-top: var(--semantic-space-inner-l);
+    }
+  }
+  .c-definitionList__description {
+    &.docs-typography_fontWeight-thin {
+      font-weight: map.get($font-weight, thin);
+    }
+    &.docs-typography_fontWeight-light {
+      font-weight: map.get($font-weight, light);
+    }
+    &.docs-typography_fontWeight-regular {
+      font-weight: map.get($font-weight, regular);
+    }
+    &.docs-typography_fontWeight-medium {
+      font-weight: map.get($font-weight, medium);
+    }
+    &.docs-typography_fontWeight-semiBold {
+      font-weight: map.get($font-weight, semiBold);
+    }
+    &.docs-typography_fontWeight-bold {
+      font-weight: map.get($font-weight, bold);
+    }
+    &.docs-typography_fontWeight-extraBold {
+      font-weight: map.get($font-weight, extraBold);
+    }
+    &.docs-typography_fontWeight-black {
+      font-weight: map.get($font-weight, black);
+    }
+  }
+}
+.docs-typography_fontStyle {
+  .c-definitionList__item {
+    align-items: baseline;
+    margin-top: 0;
+  }
+  .c-definitionList__description {
+    overflow: hidden;
+    margin-bottom: 0;
+    > p {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  // 日本語のフォントスタイル適用
+  &:not(.lang\:en) {
+    .c-definitionList__description {
+      &.docs-typography_fontStyle-displayL > p {
+        @include txt($t-displayL);
+      }
+      &.docs-typography_fontStyle-displayM > p {
+        @include txt($t-displayM);
+      }
+      &.docs-typography_fontStyle-displayS > p {
+        @include txt($t-displayS);
+      }
+      &.docs-typography_fontStyle-headingL > p {
+        @include txt($t-headingL);
+      }
+      &.docs-typography_fontStyle-headingM > p {
+        @include txt($t-headingM);
+      }
+      &.docs-typography_fontStyle-headingS > p {
+        @include txt($t-headingS);
+      }
+      &.docs-typography_fontStyle-titleL > p {
+        @include txt($t-titleL);
+      }
+      &.docs-typography_fontStyle-titleM > p {
+        @include txt($t-titleM);
+      }
+      &.docs-typography_fontStyle-titleS > p {
+        @include txt($t-titleS);
+      }
+      &.docs-typography_fontStyle-bodyLL > p {
+        @include txt($t-bodyLL);
+      }
+      &.docs-typography_fontStyle-bodyL > p {
+        @include txt($t-bodyL);
+      }
+      &.docs-typography_fontStyle-bodyM > p {
+        @include txt($t-bodyM);
+      }
+      &.docs-typography_fontStyle-bodyS > p {
+        @include txt($t-bodyS);
+      }
+      &.docs-typography_fontStyle-bodySS > p {
+        @include txt($t-bodySS);
+      }
+      &.docs-typography_fontStyle-labelL > p {
+        @include txt($t-labelL);
+      }
+      &.docs-typography_fontStyle-labelM > p {
+        @include txt($t-labelM);
+      }
+      &.docs-typography_fontStyle-labelS > p {
+        @include txt($t-labelS);
+      }
+      &.docs-typography_fontStyle-labelSS > p {
+        @include txt($t-labelSS);
+      }
+    }
+  }
+  // 英語のフォントスタイル適用
+  &.lang\:en {
+    .c-definitionList__description {
+      &.docs-typography_fontStyle-displayL > p {
+        @include ex(map.get($t-displayL, en));
+      }
+      &.docs-typography_fontStyle-displayM > p {
+        @include ex(map.get($t-displayM, en));
+      }
+      &.docs-typography_fontStyle-displayS > p {
+        @include ex(map.get($t-displayS, en));
+      }
+      &.docs-typography_fontStyle-headingL > p {
+        @include ex(map.get($t-headingL, en));
+      }
+      &.docs-typography_fontStyle-headingM > p {
+        @include ex(map.get($t-headingM, en));
+      }
+      &.docs-typography_fontStyle-headingS > p {
+        @include ex(map.get($t-headingS, en));
+      }
+      &.docs-typography_fontStyle-titleL > p {
+        @include ex(map.get($t-titleL, en));
+      }
+      &.docs-typography_fontStyle-titleM > p {
+        @include ex(map.get($t-titleM, en));
+      }
+      &.docs-typography_fontStyle-titleS > p {
+        @include ex(map.get($t-titleS, en));
+      }
+      &.docs-typography_fontStyle-bodyLL > p {
+        @include ex(map.get($t-bodyLL, en));
+      }
+      &.docs-typography_fontStyle-bodyL > p {
+        @include ex(map.get($t-bodyL, en));
+      }
+      &.docs-typography_fontStyle-bodyM > p {
+        @include ex(map.get($t-bodyM, en));
+      }
+      &.docs-typography_fontStyle-bodyS > p {
+        @include ex(map.get($t-bodyS, en));
+      }
+      &.docs-typography_fontStyle-bodySS > p {
+        @include ex(map.get($t-bodySS, en));
+      }
+      &.docs-typography_fontStyle-labelL > p {
+        @include ex(map.get($t-labelL, en));
+      }
+      &.docs-typography_fontStyle-labelM > p {
+        @include ex(map.get($t-labelM, en));
+      }
+      &.docs-typography_fontStyle-labelS > p {
+        @include ex(map.get($t-labelS, en));
+      }
+      &.docs-typography_fontStyle-labelSS > p {
+        @include ex(map.get($t-labelSS, en));
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{#
+ # @prop {boolead} [disabled="false"] - 入力を無効にする
+ # @prop {boolead} [required="false"] - 入力を必須にする
+ # @prop {boolead} [error="false"] - エラー状態にする
+ #}
+{% macro render( props ) %}
+  {%- set class_error = {
+    input: "c-input--error" if props.error
+    } -%}
+  {%- set class_disabled = {
+    label: "c-form__label--disabled" if props.disabled
+    } -%}
+  {%- set attr_disabled = "disabled" if props.disabled -%}
+  {%- set attr_required = "required" if props.required -%}
+  {% set label = props.label | default('ラベル') %}
+  {% set description = props.description | default('入力項目の説明文が入ります。') %}
+  {% set errorText = props.errorText | default('エラーテキストが入ります。') %}
+  {% set placeholder = props.placeholder | default('入力してください') %}
+  {% set addClass = props.addClass %}
+  <div class="c-form__item{{' ' ~ addClass if addClass}}">
+    <label class="c-form__label {{ class_disabled.label }}" for="input-textarea">
+      <span class="c-form__labelText">{{ label }}</span>
+      {%- if props.required -%}<span class="c-form__required">必須</span>{%- endif -%}
+      <span class="c-form__description">{{ description }}</span>
+    </label>
+    <textarea class="c-input {{class_error.input}}" id="input-textarea" cols="50" rows="5" {{ attr_disabled }} {{ attr_required }} placeholder="{{ placeholder }}"></textarea>
+    {% if props.error %}<p class="c-form__error">{{ errorText }}</p>{% endif %}
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

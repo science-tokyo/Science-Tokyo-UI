@@ -1,0 +1,243 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="コーディングガイド" />
+
+# コーディングガイド
+
+## HTML
+
+- 作成したいページパターンに対応するテンプレートを`page-patterns`配下から複製し、任意の名称を付与します。
+- HTMLファイルのテキストやアセットを編集します。
+- 必要に応じて、Storybook上を参照してHTMLファイルにコンポーネントHTMLを追加します。
+
+### HTML基本仕様
+
+- **文書型定義:** HTML Living Standard
+- **文字コード:** UTF-8
+- **大文字小文字:** 基本小文字を使用。別単語が連なる場合はキャメルケースでの記述。
+- **ファイル参照パス:** 基本はサイトルート相対パス
+
+## CSS（SCSS）
+
+SCSSファイルは以下の形で構成されます。
+
+1. **Globals**
+   1. **Base** - `src/scss/globals/base/*.scss`
+      - リセットCSSや基本スタイル
+   2. **Variables** - `src/scss/globals/variables/*/.scss`
+      - カラーやタイポグラフィ、スペーシングなどの変数
+   3. **Foundation** - `src/scss/globals/foundation/**/*.scss`
+      - レイアウトなど基盤となる共通スタイル
+2. **Object**
+   1. **Component** - `src/components/**/*.scss`
+      - ページ内で使われるコンポーネントスタイル
+   2. **Utility** - `src/scss/utilities/**/*/.scss`
+      - コンポーネントに追加付与して調整するユーティリティスタイル
+
+### Class 命名規則
+
+BEM システムのシンタックスである、Block、Element、Modifier に分類して構成される規則を採用します。
+
+命名規則は次のパターンに従います。
+
+```scss
+.prefix-block {
+}
+.prefix-block__element {
+}
+.prefix-block--modifier {
+}
+.prefix-block__element--modifier {
+}
+```
+
+Block、Element、Modifier の名称を 2 単語以上で付与する場合は、キャメルケースを用います。
+
+```scss
+.c-datePicker__inputLabel--disabled {
+}
+```
+
+### Object のプレフィックス
+
+Object レイヤーの中で分類されるモジュールに対し、役割を明確にするためにプレフィックスを付与します。
+
+- **Component:** `c-*`
+- **Utility:** `u-*`
+
+### コンポーネント間のカスケーディング
+
+コンポーネント間のカスケーディングは、基本的に避けることを目指します。
+
+❌`.c-card`内の`.c-image`のスタイルを変更する
+
+```html
+<div class="c-card">
+  <div class="c-image">
+    <img src="thumb.png" />
+  </div>
+  <div class="c-card__body">...</div>
+</div>
+```
+
+```css
+.c-card > .c-image {
+  margin-top: 0; // cancel 'c-image' margin
+}
+```
+
+このようなパターンを実現する場合、詳細度の低下を防ぐ Element や Modifier を用いた拡張を検討します。
+
+✅`.c-card`に Element を追加する
+
+```html
+<div class="c-card">
+  <div class="c-card__image c-image">
+    <img src="thumb.png" />
+  </div>
+  <div class="c-card__body">...</div>
+</div>
+```
+
+```css
+.c-card__image {
+  margin-top: 0; // cancel 'c-image' margin
+}
+```
+
+✅`.c-image`に Modifier を追加する
+
+```html
+<div class="c-card">
+  <div class="c-image c-image--noMargin">
+    <img src="thumb.png" />
+  </div>
+  <div class="c-card__body">...</div>
+</div>
+```
+
+```css
+.c-image--noMargin {
+  margin-top: 0; // cancel 'c-image' margin
+}
+```
+
+ただし、デザイン再現のためにパターンが多岐にわたる場合は、詳細度を複雑化させない範囲でコンポーネント間のカスケーディングを許容します。
+
+```css
+.c-card {
+  margin-top: 24px;
+}
+.c-card__title {
+  font-size: 1.25rem;
+}
+.c-form .c-card {
+  margin-top: 0;
+}
+.c-form .c-card__title {
+  font-size: 1rem;
+}
+```
+
+### コンポーネント内のカスケーディング
+
+コンポーネント間と異なり、コンポーネント内のカスケーディングは許容します。
+
+```html
+<div class="c-card">
+  <div class="c-card__image">
+    <img src="thumb.png" />
+  </div>
+  <div class="c-card__body">...</div>
+</div>
+```
+
+```css
+.c-card__image > img {
+  display: block;
+}
+```
+
+---
+
+## TypeScript
+
+TypeScriptファイルは以下の形で構成されます。  
+変更は不可とし、新たにスクリプトを追加する場合は`src/assets/ts`ディレクトリに新規ファイルを作成します。
+
+### ファイル構成
+
+- `src/assets/ts/main.ts`:  
+  エントリーポイントとなるスクリプトです。各モジュールをインポートします。
+- `src/assets/ts/modules/`:  
+  各機能をモジュール化した TypeScript ファイルを格納するディレクトリです。ファイル名は機能に応じて命名されています。
+
+### バンドルについて
+
+- TypeScript を JavaScript にコンパイルし、バンドルして利用します。 バンドルツールには Webpack を使用しています。
+- バンドルされたファイルは`dist/`ディレクトリに出力されます。 設定については`webpack.config.js`を参照してください。
+
+### モジュールについて
+
+モジュールはプロジェクト内の再利用可能な機能を整理するための単位です。各ファイルは以下のような構造になっています。
+
+- モジュールの例：  
+  各モジュールでは export を使用して関数をエクスポートします。これにより、他のファイルからインポートして使用可能です。
+
+  ```typescript
+  // src/assets/ts/modules/sample.ts
+  export function sampleFunction() {
+    // ここに処理を記述
+  }
+  ```
+
+- エントリーポイントでの利用例：  
+  エントリーポイントで各モジュールを import し、必要に応じて初期化や設定を行います。
+
+  ```typescript
+  import { sampleFunction } from './modules/sample';
+  sampleFunction();
+  ```
+
+#### モジュール一覧
+
+- `cnt.tab.ts`: 複数のタブ間でのコンテンツ表示の切り替えを管理します。
+
+- `cnt.smoothScroll.ts`: ページ内リンクのスムーズスクロールを提供します。
+
+- `cnt.sideNavigation.ts`: サイドナビゲーションの開閉動作やモバイルデバイスでの表示切り替えを管理します。
+
+- `cnt.modal.ts`: モーダルウィンドウの開閉を管理します。
+
+- `cnt.globalHeader.ts`: スクロール時のヘッダーの挙動やメニュー展開を管理します。
+
+- `cnt.accordion.ts`: アコーディオンメニューの展開・折りたたみ機能を提供します。
+
+### 基本的なTypeScript記法
+
+- 型定義：明示的な型アノテーションを使用して型の安全性を確保します。
+  ```typescript
+  let count: number = 0;
+  let message: string = 'Hello, TypeScript!';
+  ```
+- インターフェース：オブジェクトの構造を定義し、型の一貫性を促進します。
+  ```typescript
+  interface User {
+    id: number;
+    name: string;
+  }
+  const user: User = { id: 1, name: 'John' };
+  ```
+- 関数：パラメーターと戻り値の型アノテーションを含めます。
+  ```typescript
+  function add(a: number, b: number): number {
+    return a + b;
+  }
+  ```
+- モジュール：コードの再利用と整理を可能にします。
+  ```typescript
+  import { add } from './math';
+  console.log(add(2, 3));
+  ```
+
+---

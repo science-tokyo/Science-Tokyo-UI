@@ -1,0 +1,35 @@
+@use '../../globals/base/' as *;
+
+@mixin loop {
+  &flex {
+    display: flex;
+    &--row {
+      flex-direction: row;
+      &Reverse {
+        flex-direction: row-reverse;
+      }
+    }
+    &--column {
+      flex-direction: column;
+      &Reverse {
+        flex-direction: column-reverse;
+      }
+    }
+    @include flexAlign;
+  }
+}
+
+.u- {
+  @include loop;
+}
+
+.md\:u- {
+  @include bp(md) {
+    @include loop;
+  }
+}
+.sm\:u- {
+  @include bp(sm) {
+    @include loop;
+  }
+}

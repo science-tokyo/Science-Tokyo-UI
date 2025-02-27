@@ -1,0 +1,22 @@
+{/* Elevation.mdx */}
+import { Meta } from '@storybook/blocks';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Tokens/エレベーション Elevation" />
+
+# エレベーション Elevation
+
+ドロップシャドウを用いて要素が重なった場合の階層構造や奥行きを視覚的に表現することで、視認性の向上を図ることができます。  
+2段階のエレベーション表現を提供し、ドロップシャドウを利用して奥行きを表現。  
+以下のCSS変数でエレベーションを設定できます。詳細は`_var_numbers.scss`を参照してください。
+
+```scss
+box-shadow: var(--elevation-lv1);
+```
+
+<ul class="docs-elevation">
+  <li>なし</li>
+  <li class="docs-elevation_lv1">--elevation-lv1</li>
+  <li class="docs-elevation_lv2">--elevation-lv2</li>
+</ul>

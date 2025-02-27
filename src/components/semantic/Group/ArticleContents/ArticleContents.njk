@@ -1,0 +1,86 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Media/Image/Image.njk" as Image %}
+{% import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph %}
+{% import "src/components/primitive/Action/UtilityLink/UtilityLink.njk" as UtilityLink %}
+{% macro render( props ) %}
+  {% set size = props.size | default("L") %}
+  {% set imagePosRight = props.imagePosRight %}
+  {% set copyText = props.copyText %}
+  {% set copySize = props.copySize %}
+  {% set text = props.text %}
+  {% set links = props.links %}
+  {% set conversations = props.conversations %}
+  {% set isImage = props.isImage | default(true) %}
+  {% set imageSrc = props.imageSrc | default("//placehold.jp/720x600.png") %}
+  {% set imageWidth = props.imageWidth | default("720") %}
+  {% set imageHeight = props.imageHeight | default("600") %}
+  {% set imageAlt = props.imageAlt | default("画像のalt") %}
+  {% set imageCaption = props.imageCaption | default(false) %}
+  {% set responsiveImage = props.responsiveImage %}
+  {% set srcsetSmall = props.srcsetSmall %}
+  {% set widthSmall = props.widthSmall %}
+  {% set heightSmall = props.heightSmall %}
+  {% set srcsetMedium = props.srcsetMedium %}
+  {% set widthMedium = props.widthMedium %}
+  {% set heightMedium = props.heightMedium %}
+  <div class="c-articleContents">
+    <div class="grid grid--justifyCenter{{ ' grid--dirRow' if imagePosRight else ' grid--dirRowReverse' }}{{ '' if isImage else ' grid--cols1'}}">
+      <div class="grid__col{{' grid__col--span6' if size=='L' else ' grid__col--span8'}} md:grid__col--span12">
+        <div class="c-articleContents__body">
+          {%- if copyText -%}
+            {{ Paragraph.render({
+                        "text": copyText,
+                        "isCopy": true,
+                        "copySize": copySize,
+                        "addClass": "c-articleContents__copy"
+                        }) }}
+          {%- endif -%}
+          {%- if conversations -%}
+            <div class="c-articleContents__conversations">
+              {%- for conversation in conversations -%}
+                <p class="c-articleContents__conversation">
+                  <span class="c-articleContents__conversationName">{{ conversation.name }}</span>
+                  <span class="c-articleContents__conversationText">{{ conversation.text }}</span>
+                </p>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          {%- if text -%}
+            {{ Paragraph.render({
+                        "text": text, "addClass": "c-articleContents__text"
+                        }) }}
+          {%- endif -%}
+          {%- for link in links -%}
+            {%- if link.label -%}
+              {{ Paragraph.render({"text": UtilityLink.render({"label": link.label, "url": link.url, "external": link.external, "rightIcon": link.rightIcon}) , "addClass": "c-articleContents__link" }) }}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+      {%- if isImage -%}
+        <div class="grid__col{{' grid__col--span6' if size=='L' else ' grid__col--span4'}} md:grid__col--span12">
+          <div class="c-articleContents__image">
+            {{ Image.render({
+                        src: imageSrc,
+                        width: imageWidth,
+                        height: imageHeight,
+                        alt: imageAlt,
+                        caption: imageCaption,
+                        responsiveImage: responsiveImage,
+                        srcsetSmall: srcsetSmall,
+                        widthSmall: widthSmall,
+                        heightSmall: heightSmall,
+                        srcsetMedium: srcsetMedium,
+                        widthMedium: widthMedium,
+                        heightMedium: heightMedium,
+                        fullWidth: true
+                        }) }}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

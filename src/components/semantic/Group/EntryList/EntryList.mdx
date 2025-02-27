@@ -1,0 +1,23 @@
+{/* EntryList.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as EntryListStories from './EntryList.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="EntryList" of={EntryListStories} />
+
+# 記事リスト Entry list
+
+日付情報（投稿日や開催日）を構成要素に含み、時間軸で見せるコンポーネントです。
+
+## 原則
+
+- 「デフォルト」タイプは「公開日」「タイトル」「カテゴリー」で構成されています。
+	- 基本的には公開日を基準に降順で表示されます。
+- 日付の表記はデザインシステムサイトのライティングガイドラインの章（<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/japanese#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">日本語</a>／<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/english#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">英語</a>）をご確認ください。
+- 「イベント」タイプは「開催日（大）」「アイキャッチ」「タイトル」「開催日（小）」「時間」「場所」「カテゴリー」で構成されています。
+	- イベントの開催開始日を基準に降順で表示されます。
+	- 開催日は必ず記載してください。連日の場合は開催開始日と終了日を記載してください。ただし連続しない複数開催日の記載は表現できません。
+
+<Stories />

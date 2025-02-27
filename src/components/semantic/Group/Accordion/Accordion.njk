@@ -1,0 +1,89 @@
+{#
+ # @prop {boolean} [icon=true] - アイコン画像を表示するかどうか
+ #}
+{% macro render( props ) %}
+  {% set qaStyle = props.qaStyle %}
+  {% set triggerLabel = props.triggerLabel | default('ダミーテキストはどのような場合に使用されますか。') %}
+  {% set triggerIcon = props.triggerIcon | default('') %}
+  {% set content = props.content | default('<p class="c-paragraph">ダミーテキストは、デザインやレイアウトの作成時に使用される仮の文章です。ダミーテキストを使用すると、デザインの全体像を評価したり、テキストの配置や長さを確認したりすることができます。ダミーテキストは実際の文章ではないので、内容には意味がありません。</p>') %}
+  {% set contentIcon = props.contentIcon | default('') %}
+  {% set defaultOpen = props.defaultOpen %}
+  {% set multiple = props.multiple %}
+  {% set openAll = props.openAll %}
+  {% set contents = props.contents | default(
+      [
+        {
+          triggerLabel: "ダミーテキストはどのような場合に使用されますか。",
+          content:
+          '<p class="c-paragraph">ダミーテキストは、デザインやレイアウトの作成時に使用される仮の文章です。ダミーテキストを使用すると、デザインの全体像を評価したり、テキストの配置や長さを確認したりすることができます。ダミーテキストは実際の文章ではないので、内容には意味がありません。</p>'
+        },
+        {
+          triggerLabel: "ダミーテキストはどのような場合に使用されますか。",
+          content:
+          '<p class="c-paragraph">ダミーテキストは、デザインやレイアウトの作成時に使用される仮の文章です。ダミーテキストを使用すると、デザインの全体像を評価したり、テキストの配置や長さを確認したりすることができます。ダミーテキストは実際の文章ではないので、内容には意味がありません。</p>'
+        }
+      ]
+    ) %}
+  {% set addClass = props.addClass %}
+  {% set addId = props.addId %}
+  <div class="c-accordion__container" data-js-accordion-container>
+    {%- if multiple -%}
+      {%- if openAll -%}
+        <div class="c-accordion__button">
+          <button class="c-button c-button--secondary c-button--sizeS"
+                  data-js-accordion-toggle-all="{{ 'isOpen' if defaultOpen }}">すべて開く</button>
+        </div>
+      {%- endif -%}
+      {% for item in contents %}
+        <details class="c-accordion{{' ' ~ item.addClass if item.addClass}}{{' c-accordion--qa' if qaStyle}}" role="group" data-js-accordion{{' open="true"' if defaultOpen}}{{ ' id=' ~ item.addId if item.addId}}>
+          <summary class="c-accordion__trigger" role="button" data-js-accordion-trigger>
+            {%- if item.triggerIcon -%}
+              <svg class="c-accordion__triggerIcon icon" aria-hidden="true" role="img">
+                <use xlink:href="/assets/img/sprite.svg#{{ item.triggerIcon }}"></use>
+              </svg>
+            {%- endif -%}
+            {%- if item.triggerMeta -%}
+              <span class="c-accordion__number">{{ item.triggerMeta }}</span>
+            {%- endif -%}
+            <p class="c-accordion__label">{{ item.triggerLabel }}</p>
+          </summary>
+          <div class="c-accordion__content" data-js-accordion-target>
+            <div class="c-accordion__content__inner">
+              {% if item.contentIcon %}
+                <svg class="c-accordion__contentIcon icon" aria-hidden="true" role="img">
+                  <use xlink:href="/assets/img/sprite.svg#{{ item.contentIcon }}"></use>
+                </svg>
+              {% endif %}
+              {%- if item.contentMeta -%}
+                <span class="c-accordion__number">{{ item.contentMeta }}</span>
+              {%- endif -%}
+              <div class="c-accordion__body">{{ item.content | safe }}</div>
+            </div>
+          </div>
+        </details>
+      {%- endfor -%}
+    {%- else -%}
+      <details class="c-accordion{{' ' ~ addClass if addClass}}{{' c-accordion--qa' if qaStyle}}" role="group" data-js-accordion{{ ' id='~ addId if addId}}>
+        <summary class="c-accordion__trigger" role="button" data-js-accordion-trigger>
+          {%- if triggerIcon -%}
+            <svg class="c-accordion__triggerIcon icon" aria-hidden="true" role="img">
+              <use xlink:href="/assets/img/sprite.svg#{{ triggerIcon }}"></use>
+            </svg>
+          {%- endif -%}
+          <p class="c-accordion__label">{{ triggerLabel }}</p>
+        </summary>
+        <div class="c-accordion__content" data-js-accordion-target>
+          <div class="c-accordion__content__inner">
+            {% if contentIcon %}
+              <svg class="c-accordion__contentIcon icon" aria-hidden="true" role="img">
+                <use xlink:href="/assets/img/sprite.svg#{{ contentIcon }}"></use>
+              </svg>
+            {% endif %}
+            <div class="c-accordion__body">{{ content | safe }}</div>
+          </div>
+        </div>
+      </details>
+    {% endif %}
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

@@ -1,0 +1,25 @@
+{/* SiteFooter.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as SiteFooterStories from './SiteFooter.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="SiteFooter" of={SiteFooterStories} />
+
+# グローバルフッターナビゲーション Global footer navigation
+
+グローバルフッターの直上に配置するページ下部のナビゲーションです。
+
+## 原則
+
+- isct.ac.jpドメイン内で公開するScience TokyoのWebサイトで必ず利用することを想定しています。
+- パンくずリストには、トップページまでの階層構造を表示します。
+- サイト名の表示が必要な場合、Science Tokyoロゴマークとは別に指定のテキストで表示します。
+- サイト名の表示位置はScience Tokyoロゴマークの右ですが、画面幅により収まらない場合はロゴマーク下の決められた位置に表示されます。
+  - 学内関係者は、ロゴマークとサイト名の併記について「<a href="https://design-system.isct.ac.jp/ja/brand/communication/organization/#%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%81%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE%E4%BD%B5%E8%A8%98%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3" target="_blank">スペースがない場合の併記パターン</a>」を必ず確認してください。
+- メニューには、グローバルメニューやサブメニューに加えて、サイトごとに任意の項目を追加します。
+- メニューの項目数や内容はサイトごとに可変です。テキスト量やレイアウトへの影響も考慮して設定してください。
+
+<Canvas />
+<Controls />

@@ -1,0 +1,294 @@
+---
+layout: layouts/base.njk
+title: ファクト情報詳細パターン：施設・設備型
+description: ページパターン：ファクト情報詳細パターン：施設・設備型
+permalink: /page-patterns/fact/facility.html
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{% import "src/components/primitive/Action/UtilityLink/UtilityLink.njk" as UtilityLink %}
+{% import "src/components/primitive/Dataset/Table/Table.njk" as Table %}
+{% import "src/components/primitive/Dataset/List/List.njk" as List %}
+{% import "src/components/primitive/Media/Image/Image.njk" as Image %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph %}
+{% import "src/components/semantic/Group/AnchorLink/AnchorLink.njk" as AnchorLink %}
+{% import "src/components/semantic/Group/Carousel/Carousel.njk" as Carousel %}
+{% import "src/components/semantic/Group/ContactList/ContactList.njk" as ContactList %}
+{% import "src/components/semantic/Group/FacilityList/FacilityList.njk" as FacilityList %}
+{% import "src/components/semantic/Group/LinkList/LinkList.njk" as LinkList %}
+{% import "src/components/semantic/Group/PickupContents/PickupContents.njk" as PickupContents %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({
+      "text": "ページタイトル　ファクト情報詳細型：施設・設備型",
+      "tag": "h1",
+      "headingLevel": "1",
+      "lead": "リード文「自然界はどのようにしてできているのだろう?」という基本的な原理"
+    }) }}
+    {{ AnchorLink.render({
+      "multiple": true,
+      "items": [
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "見出しテキスト h2「自然界はどのようにしてできて",
+      "tag": "h2",
+      "headingLevel": 2,
+      "lead": "リード文「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ FacilityList.render({
+        "title": '施設・設備名 「自然界はどのようにしてできて',
+        "description":
+        "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+        "address": '東京都目黒区大岡山2丁目12-1',
+        "tel": '03-3XXXX-XXXX',
+        "href": '#',
+        "buttonLabel": 'Google Mapsで見る',
+        "external": false,
+        "mapEmbedCode":
+        '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6065.130754054877!2d139.67980080649278!3d35.6055073284914!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f88b899cc553%3A0x5d0763367373fca5!2z5p2x5Lqs5bel5qWt5aSn5a2m!5e0!3m2!1sja!2sjp!4v1718307435430!5m2!1sja!2sjp"
+            width="600"
+            height="450"
+            style="border:0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>'
+        }) }}
+    {{ Image.render({
+      "multiple": false,
+      "src": "/assets/img/img-campus.webp",
+      "width": 960,
+      "height": 540,
+      "alt": "画像のキャプションが入ります画像のキャプションが入ります",
+      "size": "L",
+      "caption": true,
+      "responsiveImage": false
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ List.render({
+      "items": [
+        "リストアイテム「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+        "リストアイテム「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+        "リストアイテム「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+      ]
+    }) }}
+    {{ UtilityLink.render({
+      "multiple": true,
+      "layout": "horizontal",
+      "items": [
+        {
+          "href": "#",
+          "label": "リンクテキスト",
+          "rightIcon": "chevron_right"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ LinkList.render({
+      "type": "related",
+      "links": [
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心を",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「リンクテキスト「自然界はどのようにして",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどの",
+          "external": true
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ PickupContents.render({
+      "type": "",
+      "title": "Pickupコンテンツ-キャッチコピー",
+      "titleTag": "p",
+      "description": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 960,
+      "imageHeight": 540,
+      "responsiveImage": false,
+      "buttonLabel": "ボタン",
+      "href": "#",
+      "rightIcon": "chevron_right"
+    }) }}
+    <div class="contentArea__bottom">
+      <div class="grid grid--justifyCenter">
+        <div class="grid__col grid__col--span8 sm:grid__col--span8">
+          {{ Button.render({"label": "（同階層のインデックスページ）へ", "href": "#", "fixed": true, "leftIcon": "arrow_left"}) }}
+        </div>
+      </div>
+    </div>
+    <!-- /.contentArea__bottom -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->
+<aside class="contentFooter">
+  <div class="container">
+    {{ Heading.render({"text": "関連コンテンツ", "tag": "h2", "headingLevel": 2}) }}
+    {{ LinkList.render({
+      "type": "related",
+      "links": [
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心を",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「リンクテキスト「自然界はどのようにして",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどの",
+          "external": true
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "研究トピックス", "tag": "h2", "headingLevel": 2}) }}
+    {{ Carousel.render({
+        "contentsType": "tile",
+        "autoplay": false,
+        "loop": false,
+        "carouselItemNum": 3,
+        "carouselItems": [
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        }
+    ]
+    })
+    }}
+  </div>
+  <!-- /.container -->
+</aside>
+<!-- /.contentFooter -->

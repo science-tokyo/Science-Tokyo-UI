@@ -1,0 +1,59 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+
+.c-breadcrumb {
+  color: var(--ui-text-inverted);
+  background-color: var(--ui-background-brand-primary);
+  &__nav {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: var(--semantic-space-inner-ll);
+    @include bp(md) {
+      padding-inline: var(--semantic-space-inner-m);
+    }
+  }
+  &__list {
+    margin: 0;
+    padding: var(--semantic-space-inner-ss) 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--semantic-space-inner-mms);
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    &:not(:first-child) {
+      &::before {
+        content: '';
+        margin-right: var(--semantic-space-inner-mms);
+        width: 46px;
+        height: 1px;
+        background: var(--ui-line-white-transparent-ultra-light);
+      }
+    }
+  }
+  &__link {
+    @include txt($t-bodyS);
+    color: currentColor;
+    border-radius: var(--semantic-corner-radius-s);
+    text-decoration: none;
+    @media (hover: hover) {
+      &:hover {
+        color: var(--ui-text-status-hover);
+        background-color: var(--ui-background-emphasize-mid-tertiary);
+      }
+    }
+    &:active {
+      color: var(--ui-text-status-active);
+      background-color: var(--ui-background-emphasize-mid-quaternary);
+    }
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--ui-line-status-focus);
+      outline: 2px solid var(--primitive-canary-700);
+    }
+  }
+  &__text {
+    @include txt($t-labelL-bold);
+  }
+}

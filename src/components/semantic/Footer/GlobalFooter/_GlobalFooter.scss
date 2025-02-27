@@ -1,0 +1,59 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+
+.c-globalFooter {
+  color: var(--ui-text-inverted);
+  background-color: var(--ui-background-brand-primary);
+  &__inner {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-block: 0 var(--semantic-space-inner-mms);
+    padding-inline: var(--semantic-space-inner-ll);
+    @include bp(md) {
+      padding: var(--semantic-space-inner-ll) var(--semantic-space-inner-s)
+        var(--semantic-space-inner-s) var(--semantic-space-inner-s);
+    }
+  }
+  &__link {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--semantic-space-inner-l);
+    flex-wrap: wrap;
+    padding-block: var(--semantic-space-inner-ms);
+    @include bp(md) {
+      gap: var(--semantic-space-inner-s) var(--semantic-space-inner-ml);
+      padding: var(--semantic-space-inner-s);
+    }
+    &Item {
+      @include txt($t-bodySS);
+      color: currentColor;
+      border-radius: var(--semantic-corner-radius-s);
+      text-decoration: none;
+      @media (hover: hover) {
+        &:hover {
+          color: var(--ui-text-status-hover);
+          background-color: var(--ui-background-emphasize-mid-tertiary);
+        }
+      }
+      &:active {
+        color: var(--ui-text-status-active);
+        background-color: var(--ui-background-emphasize-mid-quaternary);
+      }
+      &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--ui-line-status-focus);
+        outline: 2px solid var(--primitive-canary-700);
+      }
+    }
+  }
+  &__copy {
+    margin-top: var(--semantic-space-inner-sss);
+    @include txt($t-bodySS);
+    @include bp(md) {
+      margin-top: var(--semantic-space-inner-s);
+      padding-inline: var(--semantic-space-inner-s);
+    }
+  }
+}

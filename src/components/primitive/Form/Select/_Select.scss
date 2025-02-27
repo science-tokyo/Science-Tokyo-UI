@@ -1,0 +1,44 @@
+@use '../../../../scss/globals/base/' as *;
+.c-selectGroup {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: var(--semantic-size-icon-mml);
+    height: var(--semantic-size-icon-mml);
+    position: absolute;
+    top: calc(50% - 10px);
+    right: 16px;
+    background: url(/assets/img/icons/chevron_down.svg) no-repeat 0 0;
+    pointer-events: none;
+  }
+}
+.c-select {
+  appearance: none;
+  width: 100%;
+  padding-block: var(--semantic-space-inner-ms);
+  padding-left: var(--semantic-space-inner-m);
+  padding-right: calc(
+    var(--semantic-space-inner-m) + var(--semantic-size-icon-mml) +
+      var(--semantic-space-inner-s)
+  );
+  border-radius: var(--semantic-corner-radius-m);
+  border: var(--semantic-line-thickness-default) solid var(--ui-line-thick);
+  @include txt($t-bodyM);
+  &:focus-visible {
+    border-color: transparent;
+    outline: 4px solid var(--ui-line-status-focus);
+  }
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+  &[disabled] {
+    border-color: var(--ui-line-thick);
+    background-color: var(--ui-background-status-disabled);
+  }
+  &--error {
+    border-color: var(--ui-line-status-caution);
+  }
+}

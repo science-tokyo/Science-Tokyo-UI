@@ -1,0 +1,99 @@
+@use '../../../../scss/globals/base/' as *;
+// リンクエリア内に画像を含む場合のスタイル
+a[href]:has(.c-image) {
+  .c-image {
+    overflow: hidden;
+    img {
+      transition: transform 0.3s;
+    }
+  }
+  @media (hover: hover) {
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+.c-image {
+  margin-left: auto;
+  margin-right: auto;
+  @include dm;
+  &[class*='--size'] {
+    img {
+      width: 100%;
+    }
+  }
+  &--align {
+    &Left {
+      margin-left: 0;
+    }
+    &Center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &Right {
+      margin-right: 0;
+    }
+  }
+  &--size {
+    &SS {
+      width: 30%;
+      @include bp(sm) {
+        width: 50%;
+      }
+    }
+    &S {
+      width: 50%;
+      @include bp(sm) {
+        width: 65%;
+      }
+    }
+    &M {
+      width: 80%;
+      @include bp(sm) {
+        width: 80%;
+      }
+    }
+    &L {
+      width: 100%;
+    }
+    &LL {
+      width: 100%;
+      @include fullWidth;
+    }
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  &--fullWidth {
+    width: 100%;
+    img {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  &__caption {
+    margin-top: var(--semantic-space-inner-ss);
+    @include txt($t-labelM);
+  }
+}
+.c-imageGroup {
+  margin-top: var(--semantic-space-inner-l);
+  margin-top: var(--semantic-space-inner-ll);
+  &:first-child {
+    margin-top: 0;
+  }
+  @include bp(sm) {
+    margin-top: var(--semantic-space-inner-l);
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .c-image {
+    display: block;
+  }
+}

@@ -1,0 +1,116 @@
+@use '../../../../scss/globals/base/' as *;
+
+.c-accordion {
+  &__container {
+    @include dm;
+  }
+  $_root: &;
+  border-bottom: 1px solid #bdbdbd;
+  // Q&Aスタイル
+  &--qa {
+    #{$_root}__trigger {
+      &::after {
+        @include bp(sm) {
+          margin-top: -20px;
+        }
+      }
+    }
+    #{$_root}__number {
+      @include txt($t-bodyLL-bold);
+      width: 64px;
+      @include bp(sm) {
+        @include txt($t-labelL);
+        width: 100%;
+        margin-bottom: var(--semantic-space-inner-sss);
+      }
+    }
+  }
+  &__button {
+    text-align: right;
+    .c-button {
+      &::before {
+        content: '';
+        width: 24px;
+        height: 24px;
+        background-image: url(/assets/img/icons/chevron_down.svg);
+        background-size: contain;
+      }
+      @include bp(sm) {
+        width: auto;
+      }
+      &[data-js-accordion-toggle-all='expanded'] {
+        &::before {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  &__trigger {
+    display: flex;
+    align-items: center;
+    column-gap: var(--semantic-space-inner-ll);
+    padding-block: var(--semantic-space-inner-m);
+    padding-right: var(--semantic-space-inner-m);
+    cursor: pointer;
+    list-style: none;
+    &::-webkit-details-marker {
+      display: none;
+    }
+    @include txt($t-titleL);
+    @include bp(sm) {
+      @include txt($t-titleS);
+      column-gap: var(--semantic-space-inner-m);
+      flex-wrap: wrap;
+    }
+    &::after {
+      content: '';
+      width: 48px;
+      height: 48px;
+      background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2248%22%20height%3D%2248%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20clip-path%3D%22url(%23clip0_333_23347)%22%3E%3Cpath%20d%3D%22M24%2030.7997L12%2018.6663L13.3333%2017.333L24%2027.9997L34.6667%2017.333L36%2018.6663L24%2030.7997Z%22%20fill%3D%22%231A1A1A%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CclipPath%20id%3D%22clip0_333_23347%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20fill%3D%22white%22%20transform%3D%22translate(8%208)%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E');
+      @include bp(sm) {
+        width: 24px;
+        height: 24px;
+        background-size: contain;
+      }
+    }
+    &:focus-visible {
+      outline-color: var(--ui-line-status-focus);
+    }
+  }
+  &__triggerIcon,
+  &__contentIcon {
+    width: 36px;
+    height: 36px;
+  }
+  &__label,
+  &__body {
+    flex: 1;
+  }
+  &__label {
+    margin-top: 0;
+  }
+  &__content {
+    /* JSで高さをアニメーションさせるためにhiddenさせておく */
+    overflow: hidden;
+    &__inner {
+      display: flex;
+      align-items: flex-start;
+      column-gap: var(--semantic-space-inner-ll);
+      padding-top: var(--semantic-space-inner-m);
+      padding-bottom: var(--semantic-space-inner-l);
+      @include bp(sm) {
+        column-gap: var(--semantic-space-inner-m);
+        flex-wrap: wrap;
+      }
+    }
+  }
+  &__body {
+    *:first-child {
+      margin-top: 0;
+    }
+  }
+  /* 開いた状態のアイコンスタイル */
+  &[open] &__trigger::after {
+    transform: rotate(180deg);
+  }
+}

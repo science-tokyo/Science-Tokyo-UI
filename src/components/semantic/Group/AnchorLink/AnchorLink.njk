@@ -1,0 +1,25 @@
+{#
+ # @prop {type} ***
+#}
+{% import "src/components/primitive/Action/UtilityLink/UtilityLink.njk" as UtilityLink %}
+{% macro render( props ) %}
+  {% set href = props.href | default('#') %}
+  {% set label = props.label | default('アンカーリンク') %}
+  {% set multiple = props.multiple %}
+  {% set items = props.items %}
+  {% set addClass = props.addClass %}
+  {%- if multiple -%}
+    {{ UtilityLink.render({
+        multiple: multiple,
+        layout: 'horizontal',
+        items: items
+        }) }}
+  {%- else -%}
+    {{ UtilityLink.render({
+        "label": label,
+        "href": href,
+        "rightIcon": 'arrow_down'
+        }) }}
+  {%- endif -%}
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

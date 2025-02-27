@@ -1,0 +1,167 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+
+%linkStyle {
+  padding-inline: var(--semantic-space-inner-s);
+  text-decoration: none;
+  color: var(--ui-text-default);
+  border-radius: var(--semantic-corner-radius-s, 4px);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--ui-text-status-hover);
+      background-color: #fff;
+      background: var(--ui-background-emphasize-mid-tertiary);
+    }
+  }
+}
+.c-sideNavi {
+  $_root: &;
+  z-index: 15;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateX(calc(100% + 8px)) translateY(-50%);
+  @include bp(md) {
+    display: none;
+  }
+  &.is-open {
+    transform: translateX(0) translateY(-50%);
+    .c-sideNavi {
+      &__button {
+        .icon {
+          html[lang='en'] & {
+            margin-top: 0;
+          }
+        }
+        .c-iconButton {
+          border-radius: var(--semantic-corner-radius-ms);
+          .icon-open {
+            display: none;
+          }
+          .icon-close {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  &__button {
+    $_this: &;
+    border: none;
+    position: absolute;
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    .c-iconButton {
+      margin-top: 0;
+      box-shadow:
+        0px 1px 6px 0px rgba(0, 0, 0, 0.3),
+        0px 4px 16px 3px rgba(0, 0, 0, 0.1);
+      border-radius: 6px 0px 0px 6px;
+      .icon {
+        width: 1.25em;
+        height: 1.25em;
+        &-close {
+          display: none;
+        }
+      }
+    }
+  }
+  &__tab {
+    width: 174px;
+    padding-top: var(--semantic-space-inner-m);
+    padding-left: var(--semantic-space-inner-s);
+    border-top-left-radius: var(--semantic-corner-radius-ll);
+    border-bottom-left-radius: var(--semantic-corner-radius-ll);
+    background: var(--ui-background-ultra-light);
+    box-shadow:
+      0px 1px 6px 0px rgba(0, 0, 0, 0.3),
+      0px 4px 16px 3px rgba(0, 0, 0, 0.1);
+    html[lang='en'] & {
+      width: 186px;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--semantic-space-inner-mms);
+    list-style: none;
+    margin: 0;
+    padding: 0 var(--semantic-space-inner-sss) var(--semantic-space-inner-m) 0;
+    &Item {
+      @include txt($t-titleS-bold);
+      > a {
+        @extend %linkStyle;
+        display: flex;
+        gap: var(--semantic-space-hairline-m);
+        padding: var(--semantic-space-inner-ss) var(--semantic-space-inner-s);
+        .icon {
+          width: 1.25em;
+          height: 1.25em;
+        }
+      }
+    }
+  }
+  #{$_root}__sub {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--semantic-space-inner-ms);
+    &List {
+      display: flex;
+      flex-direction: column;
+      row-gap: var(--semantic-space-inner-s);
+      border-top: 1px solid var(--ui-line-default);
+      border-bottom: 1px solid var(--ui-line-default);
+      list-style: none;
+      margin: 0;
+      padding: 0 var(--semantic-space-inner-sss) 0 0;
+      padding-block: var(--semantic-space-inner-ms);
+      &Item {
+        @include txt($t-labelM-bold);
+        > a {
+          @extend %linkStyle;
+          display: flex;
+          padding: var(--semantic-space-inner-sss) var(--semantic-space-inner-s);
+        }
+      }
+    }
+  }
+  &__sitemap {
+    @include txt($t-labelM-bold);
+    padding-right: var(--semantic-space-inner-sss);
+    > a {
+      @extend %linkStyle;
+      display: flex;
+      padding: var(--semantic-space-inner-sss) var(--semantic-space-inner-s);
+    }
+  }
+  #{$_root}__snsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--semantic-space-inner-sss);
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: var(--semantic-space-inner-ms);
+    padding-bottom: var(--semantic-space-inner-mms);
+    border-top: 1px solid var(--ui-line-default);
+    .c-iconButton {
+      width: 36px;
+      min-height: 36px;
+      color: var(--ui-text-default);
+      background-color: transparent;
+      @media (hover: hover) {
+        &:hover {
+          color: var(--ui-text-status-hover);
+          background-color: var(--ui-background-emphasize-mid-tertiary);
+        }
+      }
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

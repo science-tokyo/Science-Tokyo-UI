@@ -1,0 +1,71 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+.c-globalHeader {
+  padding: var(--semantic-space-inner-s);
+  @include bp(md) {
+    padding: 0;
+  }
+  &__title {
+    @include bp(md) {
+      min-height: 50px;
+      padding-right: 97.4px;
+      html[lang='en'] & {
+        padding-right: 95.29px;
+      }
+    }
+  }
+  &__logo {
+    display: inline-flex;
+    align-items: flex-start;
+    color: var(--ui-text-brand-primary);
+    text-decoration: none;
+    @include bp(md) {
+      flex-wrap: wrap;
+    }
+    svg {
+      width: 262.44px;
+      height: auto;
+      padding: 14.297px 15.118px 8.396px 15.119px;
+      color: currentColor;
+      @include bp(md) {
+        width: 187.457px;
+        padding: 10.212px 10.798px 5.997px 10.799px;
+        margin-bottom: -16.073px;
+        html[lang='en'] & {
+          margin-bottom: -14.06px;
+          margin-right: -1.514px;
+        }
+      }
+    }
+  }
+  &__label {
+    margin-top: 0;
+    padding: 27.5px 18px 0px 13px;
+    font-feature-settings: 'palt' on;
+    font-size: 19.7px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 24px; /* 121.827% */
+    letter-spacing: 1.2px;
+    html[lang='en'] & {
+      padding: 31px 18px 0px 13px;
+      font-size: calc(26.5px / 1.06);
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: 0;
+    }
+    @include bp(md) {
+      padding: 19.643px 12.857px 13px 10.8px;
+      font-size: 14.071px;
+      line-height: 17.143px; /* 121.827% */
+      letter-spacing: 0.857px;
+      html[lang='en'] & {
+        font-size: calc(18.929px / 1.06);
+        line-height: 17.143px; /* 90.566% */
+        padding: 0;
+        padding: 22.14px 12.857px 6.92px 11.286px;
+        letter-spacing: 0;
+      }
+    }
+  }
+}

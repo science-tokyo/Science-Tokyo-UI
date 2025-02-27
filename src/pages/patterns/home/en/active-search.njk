@@ -1,0 +1,376 @@
+---
+layout: layouts/base.njk
+title: ホームパターン：能動探索型
+description: ページパターン：ホームパターン：能動探索型
+permalink: /page-patterns/home/en/active-search.html
+lang: en
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Media/Image/Image.njk" as Image %}
+{% import "src/components/primitive/Form/Input/Input.njk" as Input %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{% import "src/components/semantic/Group/EntryList/EntryList.njk" as EntryList %}
+{% import "src/components/semantic/Group/Carousel/Carousel.njk" as Carousel %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{% import "src/components/semantic/Group/LinkList/LinkList.njk" as LinkList %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    <div class="grid grid--itemsCenter grid--noGutter grid--fullWidth md:grid--dirColumnReverse">
+      <div class="grid__col grid__col--span3 md:grid__col--span12 grid__col--justifyCenter u-flex u-flex--column u-flex--itemsCenter">
+        <div class="u-px-ll">
+          <h1 class="c-paragraph c-paragraph--copyM c-paragraph--weightBlack">Site title</h1>
+          <p class="c-paragraph">
+            Read. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi.
+          </p>
+        </div>
+      </div>
+      <div class="grid__col grid__col--span9 md:grid__col--span12">
+        {{ Carousel.render({
+                "contentsType": "default",
+                "carouselContents": "hero",
+                "carouselPageTitle": "",
+                "carouselItems": [
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "© Caption Curabitur tempor quis eros",
+                "width": 1440,
+                "height": 810
+                },
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "© Caption Curabitur tempor quis eros",
+                "width": 1440,
+                "height": 810
+                },
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "© Caption Curabitur tempor quis eros",
+                "width": 1440,
+                "height": 810
+                }
+        ]
+        }) }}
+      </div>
+    </div>
+    {{ Heading.render({"text": "Heading text h2. Curabitur tempor quis eros", "tag": "h2", "headingLevel": 2}) }}
+    {{ EntryList.render({
+      "items": [
+        {
+          "date": "December 31, 2024",
+          "tags": [
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            }
+          ],
+          "title": "Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+          "url": "#"
+        },
+        {
+          "date": "December 31, 2024",
+          "tags": [
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            }
+          ],
+          "title": "Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+          "url": "#"
+        },
+        {
+          "date": "December 31, 2024",
+          "tags": [
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            },
+            {
+              "label": "Tag name"
+            }
+          ],
+          "title": "Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+          "url": "#"
+        }
+      ]
+    }) }}
+    <div class="grid grid--justifyCenter u-mt-ll">
+      <div class="grid__col grid__col--span8 sm:grid__col--span8">
+        {{ Button.render({"label": "ボタン", "href": "#", "fixed": true}) }}
+      </div>
+    </div>
+    {{ Heading.render({"text": "Heading text h2. Curabitur tempor quis eros", "tag": "h2", "headingLevel": 2}) }}
+    {{ Card.render({
+      "cardType": "default",
+      "multiple": true,
+      "columnsNumber": 3,
+      "columnsNumberSmall": 1,
+      "linkArea": "none",
+      "multipleCards": [
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": true,
+          "title": "Link text",
+          "titleTag": "h3",
+          "text": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. "
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text",
+          "titleTag": "h3",
+          "text": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. ",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text",
+          "titleTag": "h3",
+          "text": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. ",
+          "rightIcon": "pdf"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": true,
+          "title": "Link text",
+          "titleTag": "h3",
+          "text": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. "
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text",
+          "titleTag": "h3",
+          "text": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. ",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text",
+          "titleTag": "h3",
+          "text": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. ",
+          "rightIcon": "pdf"
+        }
+      ]
+    }) }}
+    <div class="grid grid--justifyCenter u-mt-ll">
+      <div class="grid__col grid__col--span8 sm:grid__col--span8">
+        {{ Input.render({"type": "text", "placeholder": "Keywords", "fixed": true, "label": "", "rightIcon": "search"}) }}
+      </div>
+    </div>
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros",
+      "tag": "h2",
+      "headingLevel": 2,
+      "lead": "Read. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum."
+    }) }}
+    {{ LinkList.render({
+      "type": "button",
+      "links": [
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "external": true
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "external": true
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "pdf"
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros",
+      "tag": "h2",
+      "headingLevel": 2,
+      "lead": "Read. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum."
+    }) }}
+    {{ LinkList.render({
+      "type": "button",
+      "links": [
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "external": true
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "external": true
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "pdf"
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros",
+      "tag": "h2",
+      "headingLevel": 2,
+      "lead": "Read. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum."
+    }) }}
+    {{ LinkList.render({
+      "type": "button",
+      "links": [
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "external": true
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "external": true
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "pdf"
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros",
+      "tag": "h2",
+      "headingLevel": 2,
+      "lead": "Read. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum."
+    }) }}
+    {{ LinkList.render({
+      "type": "button",
+      "links": [
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "external": true
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "external": true
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros",
+      "tag": "h2",
+      "headingLevel": 2,
+      "lead": "Read. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum venenatis. Suspendisse quis arcu sem. Aenean feugiat ex eu vestibulum vestibulum."
+    }) }}
+    {{ LinkList.render({
+      "type": "button",
+      "links": [
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "external": true
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "Link text",
+          "rightIcon": "chevron_right"
+        }
+      ]
+    }) }}
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

@@ -1,0 +1,356 @@
+{#
+ # @prop {type} ***
+ #}
+{%- import "src/components/primitive/Media/Image/Image.njk" as Image -%}
+{%- import "src/components/primitive/Text/Label/Label.njk" as Label -%}
+{%- macro render( props ) -%}
+  {%- set locale = props.locale -%}
+  {%- set linkArea = props.linkArea | default("card") -%}
+  {%- set blank = props.blank -%}
+  {%- set rightIcon = props.rightIcon | default("") -%}
+  {%- set href = props.href | default("#") -%}
+  {%- set title = props.title | default("タイトル") -%}
+  {%- set titleTag = props.titleTag | default("h2") -%}
+  {%- set subTitle = props.subTitle -%}
+  {%- set text = props.text | default("情に棹させば流される。智に働けば角が立つ。どこへ越しても住みにくいと悟った時、詩が生れて、画が出来る。とかくに人の世は住みにくい。意地を通せば窮屈だ。") -%}
+  {%- set startDate = props.startDate -%}
+  {%- set startDateEn = props.startDateEn -%}
+  {%- set endDate = props.endDate -%}
+  {%- set endDateEn = props.endDateEn -%}
+  {%- set place = props.place -%}
+  {%- set tags = props.tags -%}
+  {%- set cardType = props.cardType | default("") -%}
+  {%- set addContents = props.addContents | default("") -%}
+  {%- set imageSrc = props.imageSrc | default("//picsum.photos/800/450") -%}
+  {%- set imageWidth = props.imageWidth | default(800) -%}
+  {%- set imageHeight = props.imageHeight | default(450) -%}
+  {%- set imageAlt = props.imageAlt | default("画像のalt") -%}
+  {%- set addClass = props.addClass -%}
+  {%- set horizontal = props.horizontal -%}
+  {%- set multiple = props.multiple -%}
+  {%- set columnsNumber = props.columnsNumber -%}
+  {%- set columnsNumberMedium = props.columnsNumberMedium -%}
+  {%- set columnsNumberSmall = props.columnsNumberSmall -%}
+  {%- set multipleCards = props.multipleCards | default(
+    [
+    {
+    horizontal: true,
+    linkArea: "card",
+    href: "#",
+    blank: false,
+    rightIcon: "",
+    title: "タイトル1",
+    titleTag: "h3",
+    text:
+    "情に棹させば流される。智に働けば角が立つ。どこへ越しても住みにくいと悟った時、詩が生れて、画が出来る。とかくに人の世は住みにくい。意地を通せば窮屈だ。",
+    addContents: "",
+    imageSrc: "//picsum.photos/800/450?random=1",
+    imageWidth: 800,
+    imageHeight: 450,
+    imageAlt: "画像のalt"
+    },
+    {
+    horizontal: true,
+    linkArea: "card",
+    href: "#",
+    blank: false,
+    rightIcon: "",
+    title: "タイトル2",
+    titleTag: "h3",
+    text:
+    "情に棹させば流される。智に働けば角が立つ。どこへ越しても住みにくいと悟った時、詩が生れて、画が出来る。とかくに人の世は住みにくい。意地を通せば窮屈だ。",
+    addContents: "",
+    imageSrc: "//picsum.photos/800/450?random=2",
+    imageWidth: 800,
+    imageHeight: 450,
+    imageAlt: "画像のalt"
+    },
+    {
+    horizontal: true,
+    linkArea: "card",
+    href: "#",
+    blank: false,
+    rightIcon: "",
+    title: "タイトル3",
+    titleTag: "h3",
+    text:
+    "情に棹させば流される。智に働けば角が立つ。どこへ越しても住みにくいと悟った時、詩が生れて、画が出来る。とかくに人の世は住みにくい。意地を通せば窮屈だ。",
+    addContents: "",
+    imageSrc: "//picsum.photos/800/450?random=3",
+    imageWidth: 800,
+    imageHeight: 450,
+    imageAlt: "画像のalt"
+    },
+    {
+    horizontal: true,
+    linkArea: "card",
+    href: "#",
+    blank: false,
+    rightIcon: "",
+    title: "タイトル4",
+    titleTag: "h3",
+    text:
+    "情に棹させば流される。智に働けば角が立つ。どこへ越しても住みにくいと悟った時、詩が生れて、画が出来る。とかくに人の世は住みにくい。意地を通せば窮屈だ。",
+    addContents: "",
+    imageSrc: "//picsum.photos/800/450?random=4",
+    imageWidth: 800,
+    imageHeight: 450,
+    imageAlt: "画像のalt"
+    }
+    ]
+    ) -%}
+  {%- set addClass = props.addClass -%}
+  {%- if multiple -%}
+    <div class="c-cardGroup{{' ' ~ addClass if addClass}}">
+      <div class="grid{{' grid--cols' ~ columnsNumber if columnsNumber}}{{' md:grid--cols' ~ columnsNumberMedium if columnsNumberMedium}}{{' sm:grid--cols' ~ columnsNumberSmall if columnsNumberSmall}}">
+        {%- for card in multipleCards -%}
+          <div class="grid__col">
+            {%- if card.linkArea === 'card' -%}
+              {# カード全体をリンクにする #}
+              <a class="c-card{{' ' ~ card.addClass if card.addClass}}{{' c-card--horizontal' if card.horizontal}}{{' c-card--media' if cardType === 'media'}}{{' c-card--event' if cardType === 'event'}}{{' c-card--hierarchy' if cardType === 'hierarchy'}}" href="{{ card.href }}"{{ ' target=_blank' if card.blank }}>
+              {%- else -%}
+                <div class="c-card{{' ' ~ card.addClass if card.addClass}}{{' c-card--horizontal' if card.horizontal}}{{' c-card--media' if cardType === 'media'}}{{' c-card--event' if cardType === 'event'}}{{' c-card--hierarchy' if cardType === 'hierarchy'}}">
+                {%- endif -%}
+                <div class="c-card__body">
+                  <{{ card.titleTag }} class="c-card__title">
+                  {%- if card.linkArea === 'title' -%}
+                    <a href="{{ card.href }}"{{ ' target=_blank' if card.blank }}>
+                    {%- endif -%}
+                    {# タイトル #}
+                    {%- if card.titleEn -%}
+                    <span class="c-card__titleLabel">{{ card.titleEn }}</span>
+                    {%- else -%}
+                    <span class="c-card__titleLabel">{{ card.title }}</span>
+                    {%- endif -%}
+                    {# アイコン #}
+                    {%- if card.blank -%}
+                      <svg class="icon c-card__titleIcon" role="img" aria-label="新しいウインドウで開く">
+                        <use xlink:href="/assets/img/sprite.svg#new_window"></use>
+                      </svg>
+                    {%- elif card.rightIcon -%}
+                    {%- if card.rightIcon === 'pdf' -%}
+                      <svg class="icon c-card__titleIcon" role="img" aria-label="ファイルを開く">
+                        <use xlink:href="/assets/img/sprite.svg#{{ card.rightIcon }}"></use>
+                      </svg>
+                    {%- else -%}
+                      <svg class="icon c-card__titleIcon" role="img" aria-hidden="true">
+                        <use xlink:href="/assets/img/sprite.svg#{{ card.rightIcon }}"></use>
+                      </svg>
+                    {%- endif -%}
+                    {%- endif -%}
+                    {%- if card.linkArea === 'title' -%}
+                    </a>
+                  {%- endif -%}
+                  </{{ card.titleTag }}>
+                  {%- if card.subTitle -%}
+                    <p class="c-card__subTitle">{{ card.subTitle }}</p>
+                  {%- endif -%}
+                  {%- if card.text -%}
+                    <p class="c-card__text">{{ card.text }}</p>
+                  {%- endif -%}
+                  {%- if card.startDate -%}
+                    <p class="c-card__date">
+                      {%- if cardType !== 'media' -%}
+                        <svg class="icon c-card__bodyIcon" role="img">
+                          <use xlink:href="/assets/img/sprite.svg#calendar"></use>
+                        </svg>
+                      {%- endif -%}
+                      <time class="c-card__dateStart"
+                            datetime="{{ card.startDate | replace(r/（[^）]*）/g, '') | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">
+                        {%- if card.startDateEn -%}
+                          {{ card.startDateEn }}<span class="c-card__dateStartYear">{{ ', ' if cardType !== 'event' }}{{ card.startDate | replace(r/年.*$/, '') }}</span>
+                        {%- else -%}
+                          <span class="c-card__dateStartYear">{{ card.startDate | replace(r/年.*$/, '年') }}</span>{{ card.startDate | replace(r/年0/g, '年') | replace(r/月0/g, '月') | replace(r/^\d{4}年/, '') }}
+                        {%- endif -%}
+                      </time>
+                      {%- if card.endDate -%}
+                        {{ '〜' if locale === 'ja' else ' - ' }}
+                        <time class="c-card__dateEnd"
+      datetime="{{ card.endDate | replace(r/（[^）]*）/g, '') | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">
+                        {%- if card.endDateEn -%}
+                          {{ card.endDateEn }}<span class="c-card__dateEndYear">, {{ card.endDate | replace(r/年.*$/, '') }}</span>
+                        {%- else -%}
+                          <span class="c-card__dateEndYear">{{ card.endDate | replace(r/年.*$/, '年') }}</span>{{ card.endDate | replace(r/年0/g, '年') | replace(r/月0/g, '月') | replace(r/^\d{4}年/, '') }}
+                        {%- endif -%}
+                      </time>
+                    {%- endif -%}
+                  </p>
+                {%- endif -%}
+                {%- if card.time -%}
+                  <p class="c-card__time">
+                    <svg class="icon c-card__bodyIcon" role="img">
+                      <use xlink:href="/assets/img/sprite.svg#clock"></use>
+                    </svg>
+                    {{ card.time }}
+                  </p>
+                {%- endif -%}
+                {%- if card.place or card.placeEn -%}
+                  <p class="c-card__place">
+                    <svg class="icon c-card__bodyIcon" role="img">
+                      <use xlink:href="/assets/img/sprite.svg#location"></use>
+                    </svg>
+                    {{  card.placeEn if card.placeEn else card.place }}
+                  </p>
+                {%- endif -%}
+                {%- if card.addContents -%}
+                  <div class="c-card__addContents">{{ card.addContents | safe }}</div>
+                {%- endif -%}
+                {%- if card.tags or card.tagsEn -%}
+                  <div class="c-card__tag">
+                  {%- if card.tagsEn -%}
+                    {%- for tag in card.tagsEn -%}
+                      {{ Label.render({ text: tag }) }}
+                    {%- endfor -%}
+                  {%- else -%}
+                    {%- for tag in card.tags -%}
+                      {{ Label.render({ text: tag }) }}
+                    {%- endfor -%}
+                  {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+              {%- if card.imageSrc -%}
+                {%- if card.linkArea === 'title' -%}
+                  <a class="c-card__image" href="{{ card.href }}"{{ ' target=_blank' if card.blank }}>
+                  {%- else -%}
+                    <div class="c-card__image">
+                    {%- endif -%}
+                    {{ Image.render({
+                                        src: card.imageSrc,
+                                        width: card.imageWidth,
+                                        height: card.imageHeight,
+                                        alt: card.imageAlt
+                                        }) }}
+                    {%- if card.linkArea === 'title' -%}
+                    </a>
+                  {%- else -%}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+              {%- if card.linkArea === 'card' -%}
+              </a>
+            {%- else -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- else -%}
+{%- if linkArea === 'card' -%}
+{# カード全体をリンクにする #}
+<a class="c-card{{' ' ~ addClass if addClass}}{{' c-card--horizontal' if horizontal}}{{' c-card--media' if cardType === 'media'}}{{' c-card--event' if cardType === 'event'}}{{' c-card--hierarchy' if cardType === 'hierarchy'}}" href="{{ href }}"{{ ' target=_blank' if blank }}>
+{%- else -%}
+<div class="c-card{{' ' ~ addClass if addClass}}{{' c-card--horizontal' if horizontal}}{{' c-card--media' if cardType === 'media'}}{{' c-card--event' if cardType === 'event'}}{{' c-card--hierarchy' if cardType === 'hierarchy'}}">
+{%- endif -%}
+  <div class="c-card__body">
+    <{{ titleTag }} class="c-card__title">
+    {%- if linkArea === 'title' -%}
+      <a href="{{ href }}"{{ ' target=_blank' if blank }}>
+      {%- endif -%}
+      <span class="c-card__titleLabel">{{ title }}</span>
+      {%- if blank -%}
+        <svg class="icon c-card__titleIcon" role="img" aria-label="新しいウインドウで開く">
+          <use xlink:href="/assets/img/sprite.svg#new_window"></use>
+        </svg>
+      {%- elif rightIcon -%}
+      {%- if rightIcon === 'pdf' -%}
+        <svg class="icon c-card__titleIcon" role="img" aria-label="ファイルを開く">
+          <use xlink:href="/assets/img/sprite.svg#{{ rightIcon }}"></use>
+        </svg>
+      {%- else -%}
+        <svg class="icon c-card__titleIcon" role="img" aria-hidden="true">
+          <use xlink:href="/assets/img/sprite.svg#{{ rightIcon }}"></use>
+        </svg>
+      {%- endif -%}
+      {%- endif -%}
+      {%- if linkArea === 'title' -%}
+      </a>
+    {%- endif -%}
+    </{{ titleTag }}>
+    {%- if subTitle -%}
+    <p class="c-card__subTitle">{{ subTitle }}</p>
+    {%- endif -%}
+    {%- if text -%}
+    <p class="c-card__text">{{ text }}</p>
+    {%- endif -%}
+    {%- if startDate -%}
+      <p class="c-card__date">
+        {%- if cardType !== 'media' -%}
+          <svg class="icon c-card__bodyIcon" role="img">
+            <use xlink:href="/assets/img/sprite.svg#calendar"></use>
+          </svg>
+        {%- endif -%}
+        <time class="c-card__dateStart"
+              datetime="{{ startDate | replace(r/（[^）]*）/g, '') | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">
+          {%- if startDateEn -%}
+          {{ startDateEn }}<span class="c-card__dateStartYear">{{ ', ' if cardType !== 'event' }}{{ startDate | replace(r/年.*$/, '') }}</span>
+          {%- else -%}
+            <span class="c-card__dateStartYear">{{ startDate | replace(r/年.*$/, '年') }}</span>{{ startDate | replace(r/年0/g, '年') | replace(r/月0/g, '月') | replace(r/^\d{4}年/, '') }}
+          {%- endif -%}
+        </time>
+        {%- if endDate -%}
+          {{ '〜' if locale === 'ja' else ' - ' }}
+          <time class="c-card__dateEnd" datetime="{{ endDate | replace(r/（[^）]*）/g, '') | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">
+          {%- if endDateEn -%}
+            {{ endDateEn }}<span class="c-card__dateEndYear">{{ endDate | replace(r/年.*$/, '') }}</span>
+          {%- else -%}
+            <span class="c-card__dateEndYear">{{ endDate | replace(r/年0/g, '年') | replace(r/月0/g, '月') | replace(r/年.*$/, '年') }}</span>{{ endDate | replace(r/^\d{4}年/, '') }}
+          {%- endif -%}
+        </time>
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+    {%- if time -%}
+    <p class="c-card__time">
+      <svg class="icon c-card__bodyIcon" role="img">
+        <use xlink:href="/assets/img/sprite.svg#clock"></use>
+      </svg>
+      {{ time }}
+    </p>
+    {%- endif -%}
+    {%- if place -%}
+    <p class="c-card__place">
+      <svg class="icon c-card__bodyIcon" role="img">
+        <use xlink:href="/assets/img/sprite.svg#location"></use>
+      </svg>
+      {{ place }}
+    </p>
+    {%- endif -%}
+    {%- if addContents -%}
+    <div class="c-card__addContents">{{ addContents | safe }}</div>
+    {%- endif -%}
+    {%- if tags -%}
+    <div class="c-card__tag">
+      {%- for tag in tags -%}
+        {{ Label.render({text: tag}) }}
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </div>
+  {%- if imageSrc -%}
+  {%- if linkArea === 'title' -%}
+  <a class="c-card__image" href="{{ href }}"{{ ' target=_blank' if blank }}>
+  {%- else -%}
+  <div class="c-card__image">
+  {%- endif -%}
+    {{ Image.render({
+        src: imageSrc,
+        width: imageWidth,
+        height: imageHeight,
+        alt: imageAlt
+    }) }}
+  {%- if linkArea === 'title' -%}
+  </a>
+  {%- else -%}
+  </div>
+  {%- endif -%}
+  {%- endif -%}
+{%- if linkArea === 'card' -%}
+</a>
+{%- else -%}
+</div>
+{%- endif -%}
+{%- endif -%}
+{%- endmacro -%}
+{%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

@@ -1,0 +1,317 @@
+---
+layout: layouts/base.njk
+title: インデックスパターン：メディア情報一覧型
+description: ページパターン：インデックスパターン：メディア情報一覧型
+permalink: /page-patterns/index/media-list.html
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Action/Pagination/Pagination.njk" as Pagination %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({
+        text: title,
+        tag: "h1",
+        headingLevel: 1
+        }) }}
+    <div class="p-mediaIndex">
+      <div class="c-tab">
+        <div class="c-tab__head" role="tablist">
+          <div class="c-tab__tabs">
+            <button class="c-tab__trigger is-active" type="button" role="tab">ピックアップ</button>
+            <button class="c-tab__trigger" type="button" role="tab">ストーリー</button>
+            <button class="c-tab__trigger" type="button" role="tab">ニュース</button>
+            <button class="c-tab__trigger" type="button" role="tab">イベント</button>
+            <button class="c-tab__trigger" type="button" role="tab">お知らせ</button>
+            <button class="c-tab__trigger" type="button" role="tab">プレスリリース</button>
+            <button class="c-tab__trigger" type="button" role="tab" aria-selected="true">すべて</button>
+          </div>
+          <!-- /.c-tab__tabs -->
+        </div>
+        <!-- /.c-tab__head -->
+      </div>
+      <!-- /.c-tab -->
+      <div class="c-searchTool">
+        <div class="c-searchTool__header" data-js-search-sort="year">
+          <div class="c-searchTool__header__select">
+            <div class="c-selectGroup">
+              <select class="c-select" data-js-dateselect="">
+                <option value="">掲載年</option>
+                <option value="2024">2024年</option>
+                <option value="2023">2023年</option>
+                <option value="2022">2022年</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <fieldset class="c-searchTool__tagControls">
+          <legend>絞り込むキーワードを選択</legend>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグE
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグF
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグAA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグAB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグAC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグAD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグADA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグADAA
+          </label>
+        </fieldset>
+      </div>
+      <div class="p-mediaIndex__contents" data-js-contents-wrap>
+        {{ Card.render({
+          "cardType": "media",
+          "multiple": true,
+          "columnsNumber": 3,
+          "columnsNumberSmall": 1,
+          "linkArea": "none",
+          "multipleCards": [
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトル",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "tags": [
+                "タグテキスト",
+                "タグテキスト",
+                "タグテキスト",
+                "タグテキスト"
+              ],
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt"
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトルテキストタイトルテキストタイトルテキストタイトルテキスト",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキストA",
+                "タグテキスト",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトルテキストタイトルテキストタイトルテキストタイトルテキスト",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキストAA",
+                "タグテキストAAA",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトルテキストタイトルテキストタイトルテキストタイトルテキスト",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキストAA",
+                "タグテキストAAA",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトル",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキスト",
+                "タグテキスト",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトルテキストタイトルテキストタイトルテキストタイトルテキスト",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキストA",
+                "タグテキスト",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトルテキストタイトルテキストタイトルテキストタイトルテキスト",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキストAA",
+                "タグテキストAAA",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトルテキストタイトルテキストタイトルテキストタイトルテキスト",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキストAA",
+                "タグテキストAAA",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトル",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキスト",
+                "タグテキスト",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトルテキストタイトルテキストタイトルテキストタイトルテキスト",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキストA",
+                "タグテキスト",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "メディア情報タイトルテキストタイトルテキストタイトルテキストタイトルテキスト",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "タグテキストAA",
+                "タグテキストAAA",
+                "タグテキスト",
+                "タグテキスト"
+              ]
+            }
+          ]
+        }) 
+        }}
+      </div>
+      {{ Pagination.render({"currentPage": 1, "totalPages": 5}) }}
+    </div>
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

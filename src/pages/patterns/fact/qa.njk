@@ -1,0 +1,348 @@
+---
+layout: layouts/base.njk
+title: ファクト情報詳細パターン：Q＆A型
+description: ページパターン：ファクト情報詳細パターン：Q＆A型
+permalink: /page-patterns/fact/qa.html
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/semantic/Group/Accordion/Accordion.njk" as Accordion %}
+{% import "src/components/semantic/Group/AnchorLink/AnchorLink.njk" as AnchorLink %}
+{% import "src/components/semantic/Group/Carousel/Carousel.njk" as Carousel %}
+{% import "src/components/semantic/Group/LinkList/LinkList.njk" as LinkList %}
+{% import "src/components/semantic/Group/PickupContents/PickupContents.njk" as PickupContents %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({
+      "text": "ページタイトル　ファクト情報詳細型：Q&A型",
+      "tag": "h1",
+      "headingLevel": "1",
+      "lead": "リード文「自然界はどのようにしてできているのだろう?」という基本的な原理"
+    }) }}
+    {{ AnchorLink.render({
+      "multiple": true,
+      "items": [
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h2「自然界はどのようにしてできて", "tag": "h2", "headingLevel": 2}) }}
+    {{ Accordion.render({
+      "qaStyle": true,
+      "defaultOpen": false,
+      "multiple": true,
+      "contents": [
+        {
+          "triggerMeta": "Q001",
+          "contentMeta": "A001",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q002",
+          "contentMeta": "A002",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q003",
+          "contentMeta": "A003",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q004",
+          "contentMeta": "A004",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q005",
+          "contentMeta": "A005",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h2「自然界はどのようにしてできて", "tag": "h2", "headingLevel": 2}) }}
+    {{ Accordion.render({
+      "qaStyle": true,
+      "defaultOpen": false,
+      "multiple": true,
+      "contents": [
+        {
+          "triggerMeta": "Q001",
+          "contentMeta": "A001",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q002",
+          "contentMeta": "A002",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q003",
+          "contentMeta": "A003",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q004",
+          "contentMeta": "A004",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q005",
+          "contentMeta": "A005",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ LinkList.render({
+      "type": "related",
+      "links": [
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心を",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「リンクテキスト「自然界はどのようにして",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどの",
+          "external": true
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ PickupContents.render({
+      "type": "",
+      "title": "Pickupコンテンツ-キャッチコピー",
+      "titleTag": "p",
+      "description": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 960,
+      "imageHeight": 540,
+      "responsiveImage": false,
+      "buttonLabel": "ボタン",
+      "href": "#",
+      "rightIcon": "chevron_right"
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h2「自然界はどのようにしてできて", "tag": "h2", "headingLevel": 2}) }}
+    {{ Accordion.render({
+      "qaStyle": true,
+      "defaultOpen": false,
+      "multiple": true,
+      "contents": [
+        {
+          "triggerMeta": "Q001",
+          "contentMeta": "A001",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q002",
+          "contentMeta": "A002",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q003",
+          "contentMeta": "A003",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q004",
+          "contentMeta": "A004",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        },
+        {
+          "triggerMeta": "Q005",
+          "contentMeta": "A005",
+          "triggerLabel": "テキスト「自然界はどのようにしてできているのだろう?」",
+          "content": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+        }
+      ]
+    }) }}
+    <div class="contentArea__bottom">
+      <div class="grid grid--justifyCenter">
+        <div class="grid__col grid__col--span8 sm:grid__col--span8">
+          {{ Button.render({"label": "（同階層のインデックスページ）へ", "href": "#", "fixed": true, "leftIcon": "arrow_left"}) }}
+        </div>
+      </div>
+    </div>
+    <!-- /.contentArea__bottom -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->
+<aside class="contentFooter">
+  <div class="container">
+    {{ Heading.render({"text": "関連コンテンツ", "tag": "h2", "headingLevel": 2}) }}
+    {{ LinkList.render({
+      "type": "related",
+      "links": [
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心を",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「リンクテキスト「自然界はどのようにして",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどの",
+          "external": true
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "研究トピックス", "tag": "h2", "headingLevel": 2}) }}
+    {{ Carousel.render({
+        "contentsType": "tile",
+        "autoplay": false,
+        "loop": false,
+        "carouselItemNum": 3,
+        "carouselItems": [
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        }
+    ]
+    })
+    }}
+  </div>
+  <!-- /.container -->
+</aside>
+<!-- /.contentFooter -->

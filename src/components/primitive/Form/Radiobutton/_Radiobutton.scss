@@ -1,0 +1,59 @@
+@use '../../../../scss/globals/base/' as *;
+
+.c-radioGroup {
+  &--disabled {
+    color: var(--ui-text-status-disabled);
+    .c-radioButton {
+      input[type='radio'] {
+        border-color: var(--ui-icon-status-disabled);
+      }
+    }
+  }
+  &--error {
+    color: var(--ui-text-status-caution);
+    .c-radioButton {
+      input[type='radio'] {
+        border-color: var(--ui-line-status-caution);
+      }
+    }
+  }
+}
+.c-radioButton {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+  padding-block: 8px;
+  input[type='radio'] {
+    appearance: none;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    &:focus-visible {
+      outline: 2px solid var(--ui-line-status-focus);
+      outline-offset: 3px;
+    }
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+    &:checked {
+      border-color: var(--ui-icon-default);
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--ui-icon-default);
+      }
+    }
+    & + label {
+      @include txt($t-bodyM);
+    }
+  }
+}

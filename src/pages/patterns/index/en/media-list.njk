@@ -1,0 +1,329 @@
+---
+layout: layouts/base.njk
+title: インデックスパターン：メディア情報一覧型・英語版
+description: ページパターン：インデックスパターン：メディア情報一覧型
+permalink: /page-patterns/index/en/media-list.html
+lang: en
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Action/Pagination/Pagination.njk" as Pagination %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({
+        text: title,
+        tag: "h1",
+        headingLevel: 1
+        }) }}
+    <div class="p-mediaIndex">
+      <div class="c-tab">
+        <div class="c-tab__head" role="tablist">
+          <div class="c-tab__tabs">
+            <button class="c-tab__trigger is-active" type="button" role="tab">Top picks</button>
+            <button class="c-tab__trigger" type="button" role="tab">Stories</button>
+            <button class="c-tab__trigger" type="button" role="tab">News</button>
+            <button class="c-tab__trigger" type="button" role="tab">Events</button>
+            <button class="c-tab__trigger" type="button" role="tab">Announcements</button>
+            <button class="c-tab__trigger" type="button" role="tab">Press Releases</button>
+            <button class="c-tab__trigger" type="button" role="tab" aria-selected="true">All</button>
+          </div>
+          <!-- /.c-tab__tabs -->
+        </div>
+        <!-- /.c-tab__head -->
+      </div>
+      <!-- /.c-tab -->
+      <div class="c-searchTool">
+        <div class="c-searchTool__header" data-js-search-sort="year">
+          <div class="c-searchTool__header__select">
+            <div class="c-selectGroup">
+              <select class="c-select" data-js-dateselect="">
+                <option value="">Archives</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <fieldset class="c-searchTool__tagControls">
+          <legend>Narrow down the keywords</legend>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagE
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagF
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagADA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagADAA
+          </label>
+        </fieldset>
+      </div>
+      <div class="p-mediaIndex__contents" data-js-contents-wrap>
+        {{ Card.render({
+          "cardType": "media",
+          "multiple": true,
+          "columnsNumber": 3,
+          "columnsNumberSmall": 1,
+          "linkArea": "none",
+          "multipleCards": [
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "tags": [
+                "tag",
+                "tag",
+                "tag",
+                "tag"
+              ],
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt"
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title text text text text text text",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tagA",
+                "tag",
+                "tag",
+                "tag"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title text text text text text text",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tagAA",
+                "tagAAA",
+                "tag",
+                "tag"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title text text text text text text",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tagAA",
+                "tagAAA",
+                "tag",
+                "tag"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tag",
+                "tag",
+                "tag",
+                "tag"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title text text text text text text",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tagA",
+                "tag",
+                "tag",
+                "tag"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title text text text text text text",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tagAA",
+                "tagAAA",
+                "tag",
+                "tag"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title text text text text text text",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tagAA",
+                "tagAAA",
+                "tag",
+                "tag"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tag",
+                "tag",
+                "tag",
+                "tag"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title text text text text text text",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tagA",
+                "tag",
+                "tag",
+                "tag"
+              ]
+            },
+            {
+              "linkArea": "card",
+              "href": "#",
+              "blank": false,
+              "title": "Media Title text text text text text text",
+              "titleTag": "h3",
+              "startDate": "2024年12月31日",
+              "startDateEn": "December 31",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": 960,
+              "imageHeight": 540,
+              "imageAlt": "画像のalt",
+              "tags": [
+                "tagAA",
+                "tagAAA",
+                "tag",
+                "tag"
+              ]
+            }
+          ]
+        }) 
+        }}
+      </div>
+      {{ Pagination.render({"currentPage": 1, "totalPages": 5}) }}
+    </div>
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

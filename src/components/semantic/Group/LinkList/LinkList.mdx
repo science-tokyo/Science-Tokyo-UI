@@ -1,0 +1,21 @@
+{/* LinkList.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as LinkListStories from './LinkList.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="LinkList" of={LinkListStories} />
+
+# リンクリスト Link list
+
+複数のリンクを表示するコンポーネントです。
+
+## 原則
+
+- 「デフォルト」タイプは、縦並びのリンクのリストです。テキストリンクを縦積み、横並びを選択して表示します。
+- 「ボタン」タイプは、3カラムで横並びに表示します。
+- 「関連リンク」タイプは、縦並びのリンクリストです。本文の補足として関連するリンクを表示します。
+- 末尾にのみアイコンを設定できます。設定できるアイコンは[ユーティリティリンク](?path=/docs/プリミティブコンポーネント-primitive-アクション-action-ユーティリティリンク-utility-link--docs)のルールに準じます。
+
+<Canvas />

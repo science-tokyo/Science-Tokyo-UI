@@ -1,0 +1,137 @@
+{#
+ * @prop {string} [style=""]
+ * @prop {string} label
+ * @prop {string} [size=""]
+ * @prop {string} [leftIcon=""]
+ * @prop {string} [rightIcon=""]
+ * @prop {boolean} [disabled=false]
+ * @prop {boolean} [fixed=false]
+#}
+{% macro render( props ) %}
+  {% set type = props.type %}
+  {% set style = props.style %}
+  {% set size = props.size %}
+  {% set fixed = props.fixed %}
+  {% set scale = props.scale %}
+  {% set weight = props.weight %}
+  {% set disabled = props.disabled %}
+  {% set href = props.href | default("#") %}
+  {% set external = props.external %}
+  {% set leftIcon = props.leftIcon %}
+  {% set rightIcon = props.rightIcon %}
+  {% set multiple = props.multiple | default(false) %}
+  {% set multipleLayout = props.multipleLayout | default('horizontal') %}
+  {% set items = props.items | default([
+      {
+        type: 'link',
+        label: props.label,
+        href: props.href,
+        external: props.external,
+        size: props.size,
+        scale: props.scale,
+        style: props.style,
+        rightIcon: props.rightIcon
+      },
+      {
+        type: 'link',
+        label: props.label,
+        href: props.href,
+        external: props.external,
+        size: props.size,
+        scale: props.scale,
+        style: props.style,
+        rightIcon: props.rightIcon
+      }
+    ]) %}
+  {% set addClass = props.addClass %}
+  {%- if multiple -%}
+    <div class="c-buttonGroup{{ ' c-buttonGroup--horizontal' if multipleLayout == 'horizontal' }}">
+      {%- for item in items -%}
+        {%- if item.label -%}
+          {% if item.type == "link" %}
+            <a target="{{"_blank" if item.external}}" href="{{ item.href }}" class="c-button{{" c-button--disabled" if item.disabled}}{{ " c-button--" ~ item.style if item.style }}{{ " c-button--size" ~ item.size if item.size }}{{ " c-button--scale" ~ item.scale if item.scale }}{{ " c-button--fixed" if item.fixed }}{{ " c-button--weight" ~ item.weight if item.weight}}{{' ' ~ item.addClass if item.addClass}}">
+            {% else %}
+              <button {{ " disabled" if item.disabled }} class="c-button{{ " c-button--" ~ item.style if item.style }}{{ " c-button--size" ~ item.size if item.size }}{{ " c-button--scale" ~ item.scale if item.scale }}{{ " c-button--fixed" if item.fixed }}{{ " c-button--weight" ~ item.weight if item.weight}}{{' ' ~ item.addClass if item.addClass}}">
+              {% endif %}
+              {% if item.leftIcon -%}
+                <svg class="c-button__icon c-button__icon--left icon"
+                     aria-hidden="true"
+                     role="img">
+                  <use xlink:href="/assets/img/sprite.svg#{{ item.leftIcon }}"></use>
+                </svg>
+              {%- endif %}
+              <span class="c-button__label">{{ item.label }}</span>
+              {% if item.rightIcon -%}
+              {% if item.rightIcon === 'pdf' -%}
+                <svg class="c-button__icon c-button__icon--right icon"
+                     aria-label="ファイルを開く"
+                     role="img">
+                  <use xlink:href="/assets/img/sprite.svg#pdf"></use>
+                </svg>
+              {%- else -%}
+                <svg class="c-button__icon c-button__icon--right icon"
+                     aria-hidden="true"
+                     role="img">
+                  <use xlink:href="/assets/img/sprite.svg#{{ item.rightIcon }}"></use>
+                </svg>
+              {%- endif %}
+              {%- endif %}
+              {%- if item.external -%}
+                <svg class="c-button__icon c-button__icon--external icon"
+                     role="img"
+                     aria-label="新しいウインドウで開く">
+                  <use xlink:href="/assets/img/sprite.svg#new_window"></use>
+                </svg>
+              {%- endif -%}
+              {% if item.type == "link" %}
+              </a>
+            {% else %}
+            </button>
+          {% endif %}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- else -%}
+    {% if type == "link" %}
+      <a target="{{"_blank" if external}}" href="{{ href }}" class="c-button{{" c-button--disabled" if disabled}}{{ " c-button--" ~ style if style }}{{ " c-button--size" ~ size if size }}{{ " c-button--scale" ~ scale if scale }}{{ " c-button--fixed" if fixed }}{{ " c-button--weight" ~ weight if weight}}{{' ' ~ addClass if addClass}}">
+      {% else %}
+        <button {{ " disabled" if disabled }} class="c-button{{ " c-button--" ~ style if style }}{{ " c-button--size" ~ size if size }}{{ " c-button--scale" ~ scale if scale }}{{ " c-button--fixed" if fixed }}{{ " c-button--weight" ~ weight if weight}}{{' ' ~ addClass if addClass}}">
+        {% endif %}
+        {% if leftIcon -%}
+          <svg class="c-button__icon c-button__icon--left icon"
+               aria-hidden="true"
+               role="img">
+            <use xlink:href="/assets/img/sprite.svg#{{ props.leftIcon }}"></use>
+          </svg>
+        {%- endif %}
+        <span class="c-button__label">{{ props.label }}</span>
+        {% if rightIcon -%}
+        {% if rightIcon === 'pdf' -%}
+          <svg class="c-button__icon c-button__icon--right icon"
+                aria-label="ファイルを開く"
+                role="img">
+            <use xlink:href="/assets/img/sprite.svg#pdf"></use>
+          </svg>
+        {%- else -%}
+          <svg class="c-button__icon c-button__icon--right icon"
+                aria-hidden="true"
+                role="img">
+            <use xlink:href="/assets/img/sprite.svg#{{ rightIcon }}"></use>
+          </svg>
+        {%- endif %}
+        {%- endif %}
+        {%- if external -%}
+          <svg class="c-button__icon c-button__icon--external icon"
+               role="img"
+               aria-label="新しいウインドウで開く">
+            <use xlink:href="/assets/img/sprite.svg#new_window"></use>
+          </svg>
+        {%- endif -%}
+        {% if type == "link" %}
+        </a>
+      {% else %}
+      </button>
+    {% endif %}
+  {% endif %}
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

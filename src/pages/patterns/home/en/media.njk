@@ -1,0 +1,427 @@
+---
+layout: layouts/base.njk
+title: ホームパターン：メディア訴求優先型（英語）
+description: ページパターン：ホームパターン：メディア訴求優先型（英語）
+permalink: /page-patterns/home/en/media.html
+lang: en
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/media/Image/Image.njk" as Image %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{% import "src/components/semantic/Group/Carousel/Carousel.njk" as Carousel %}
+{% import "src/components/semantic/Group/ImportantNotice/ImportantNotice.njk" as ImportantNotice %}
+{% import "src/components/semantic/Group/PickupContents/PickupContents.njk" as PickupContents %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    <div class="grid grid--itemsCenter grid--noGutter grid--fullWidth md:grid--dirColumnReverse">
+      <div class="grid__col grid__col--span3 md:grid__col--span12 grid__col--justifyCenter u-flex u-flex--column u-flex--itemsCenter">
+        <div class="u-px-ll">
+          <h1 class="u-visuallyHidden">Science Tokyo</h1>
+          <p class="c-paragraph c-paragraph--copyM c-paragraph--weightBlack">Advancing science and human wellbeing</p>
+        </div>
+      </div>
+      <div class="grid__col grid__col--span9 md:grid__col--span12">
+        {{ Carousel.render({
+                "contentsType": "default",
+                "carouselContents": "hero",
+                "carouselPageTitle": "",
+                "carouselItems": [
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "© Caption Curabitur tempor quis eros",
+                "width": 1440,
+                "height": 810
+                },
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "© Caption Curabitur tempor quis eros",
+                "width": 1440,
+                "height": 810
+                },
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "© Caption Curabitur tempor quis eros",
+                "width": 1440,
+                "height": 810
+                }
+        ]
+        }) }}
+      </div>
+    </div>
+    {{ ImportantNotice.render({
+      "title": "Important Notice",
+      "items": [
+        {
+          "date": "December 31, 2024",
+          "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+          "url": "#"
+        },
+        {
+          "date": "December 31, 2024",
+          "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+          "url": "#"
+        },
+        {
+          "date": "December 31, 2024",
+          "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+          "url": "#"
+        }
+      ]
+    }) 
+    }}
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros tempus lacinia.",
+      "tag": "h2",
+      "headingLevel": 2
+    }) }}
+    {{ Card.render({
+      "cardType": "media",
+      "multiple": true,
+      "columnsNumber": 2,
+      "columnsNumberSmall": 1,
+      "linkArea": "none",
+      "multipleCards": [
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros tempus lacinia.",
+      "tag": "h2",
+      "headingLevel": 2
+    }) }}
+    {{ Card.render({
+      "cardType": "media",
+      "multiple": true,
+      "columnsNumber": 2,
+      "columnsNumberSmall": 1,
+      "linkArea": "none",
+      "multipleCards": [
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+          "titleTag": "h3",
+          "startDate": "October 1, 2024",
+          "tags": [
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag",
+            "Tag text tag"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "© Caption Curabitur tempor quis eros"
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros tempus lacinia.",
+      "tag": "h2",
+      "headingLevel": 2
+    }) }}
+    {{ PickupContents.render({
+      "type": "media",
+      "linkType": "area",
+      "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+      "titleTag": "p",
+      "mediaDate": "October 1, 2024",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 1440,
+      "imageHeight": 810,
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "responsiveImage": false,
+      "href": "#",
+      "mediaLabels": [
+        {
+          "text": "Tag text tag"
+        },
+        {
+          "text": "Tag text tag"
+        },
+        {
+          "text": "Tag text tag"
+        }
+      ]
+    }) }}
+    {{ PickupContents.render({
+      "type": "media",
+      "linkType": "area",
+      "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+      "titleTag": "p",
+      "mediaDate": "October 1, 2024",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 1440,
+      "imageHeight": 810,
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "responsiveImage": false,
+      "href": "#",
+      "mediaLabels": [
+        {
+          "text": "Tag text tag"
+        },
+        {
+          "text": "Tag text tag"
+        },
+        {
+          "text": "Tag text tag"
+        }
+      ]
+    }) }}
+    {{ PickupContents.render({
+      "type": "media",
+      "linkType": "area",
+      "title": "Link text. Curabitur tempor quis eros tempus lacinia. Nam bibendum",
+      "titleTag": "p",
+      "mediaDate": "October 1, 2024",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 1440,
+      "imageHeight": 810,
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "responsiveImage": false,
+      "href": "#",
+      "mediaLabels": [
+        {
+          "text": "Tag text tag"
+        },
+        {
+          "text": "Tag text tag"
+        },
+        {
+          "text": "Tag text tag"
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "Heading text h2. Curabitur tempor quis eros tempus lacinia.",
+      "tag": "h2",
+      "headingLevel": 2
+    }) }}
+    {{ PickupContents.render({
+      "title": "Catch copy. Curabitur tempor quis eros tempus lacinia. ",
+      "description": "Body text. Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam a convallis. Sed ut vulputate nisi.",
+      "buttonLabel": "Button",
+      "href": "#",
+      "external": false,
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "imagePosRight": false,
+      "imageCaption": false
+    }) }}
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

@@ -1,0 +1,210 @@
+{/* Typography.mdx */}
+import { Meta, Story } from '@storybook/blocks';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Tokens/タイポグラフィー Typography - English" />
+
+# タイポグラフィー Typography
+
+使用する文字サイズは、定義された範囲内で使用します。  
+統一されたタイポグラフィを維持するため、規定外のサイズは使用を避けてください。  
+文字サイズのルールに加え、html タグの lang 属性が ja の場合は、Noto Sans JP が適用され、  en の場合は Hind フォントが適用されます。
+
+## 太さ｜フォントウェイト
+
+文字ウェイトは以下の中のいずれかを使用します。  
+sass:mapで定義しています。`$font-weight`のキーに適用したいウェイトを指定します。
+
+```scss
+font-weight: map.get($font-weight, thin);
+```
+
+<dl class="c-definitionList docs-typography_fontWeight lang:en">
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">thin (100)</dt>
+    <dd class="c-definitionList__description docs-typography_fontWeight-thin">
+      Hind Thin
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">light (300)</dt>
+    <dd class="c-definitionList__description docs-typography_fontWeight-light">
+      Hind Light
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">regular (400)</dt>
+    <dd class="c-definitionList__description docs-typography_fontWeight-regular">
+      Hind Regular
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">medium (500)</dt>
+    <dd class="c-definitionList__description docs-typography_fontWeight-medium">
+      Hind Medium
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">bold (700)</dt>
+    <dd class="c-definitionList__description docs-typography_fontWeight-bold">
+      Hind Bold
+    </dd>
+  </div>
+</dl>
+
+## 基本文字スタイル
+
+文字スタイルは、文字サイズ（font-size）及び行間（line-height）、文字間（letter-spacing）、文字の太さ（font-weight）はセットで定義され、以下の種類が定義されます。  
+Mixinを使用してスタイルを適用します。各スタイルの詳細は`_typography.scss`を参照してください。
+
+```scss
+@include txt($t-displayL);
+```
+
+<dl class="c-definitionList docs-typography_fontStyle lang:en">
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-displayL（60px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-displayL">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-displayM（48px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-displayM">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-displayS（40px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-displayS">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item" style={{ marginTop: '24px' }}>
+    <dt class="c-definitionList__term">$t-headingL（32px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-headingL">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-headingM（28px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-headingM">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-headingS（24px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-headingS">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item" style={{ marginTop: '24px' }}>
+    <dt class="c-definitionList__term">$t-titleL（22px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-titleL">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-titleM（18.29px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-titleM">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-titleS（16px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-titleS">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item" style={{ marginTop: '24px' }}>
+    <dt class="c-definitionList__term">$t-bodyLL（20px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-bodyLL">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-bodyL（18.29px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-bodyL">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-bodyM（16px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-bodyM">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-bodyS（14px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-bodyS">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-bodySS（12px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-bodySS">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item" style={{ marginTop: '24px' }}>
+    <dt class="c-definitionList__term">$t-labelL（14px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-labelL">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-labelM（12px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-labelM">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-labelS（11px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-labelS">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+  <div class="c-definitionList__item">
+    <dt class="c-definitionList__term">$t-labelSS（10px）</dt>
+    <dd class="c-definitionList__description docs-typography_fontStyle-labelSS">
+      Curabitur tempor quis eros tempus lacinia. Nam bibendum pellentesque quam
+      a convallis. Sed ut vulputate nisi. Integer in felis sed leo vestibulum
+      venenatis.
+    </dd>
+  </div>
+</dl>

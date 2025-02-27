@@ -1,0 +1,25 @@
+{/* List.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as ListStories from './List.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="List" of={ListStories} />
+
+# 箇条書きリスト List
+
+箇条書きのリストを表示するためのコンポーネントです。  
+注釈文のリストや、階層化したリストの入れ子表示などにも対応しています。
+
+## 原則
+
+- 箇条書きの行頭には1項目を示す記号（バレット）を表示します。
+- 基本的に「・（中黒）」で表現します。
+- 注釈は、日本語の場合「※（米印）」、英語の場合「*（アスタリスク）」で表現します。
+- リスト内にリストを入れ子にして階層化する場合はインデントで表現します。
+
+<Canvas />
+<Controls />
+
+<Stories />

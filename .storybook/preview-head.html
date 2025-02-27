@@ -1,0 +1,59 @@
+<!-- https://storybook.js.org/docs/configure/story-rendering -->
+<style>
+  #storybook-docs h2 {
+    margin-top: 40px;
+  }
+  #story--tokens-レイアウトグリッド-layout-grid--equal-layout,
+  #story--tokens-レイアウトグリッド-layout-grid--span-layout,
+  #story--tokens-レイアウトグリッド-layout-grid--justify-content,
+  #story--tokens-レイアウトグリッド-layout-grid--align-items,
+  #story--tokens-レイアウトグリッド-layout-grid--flex-direction,
+  #story--tokens-レイアウトグリッド-layout-grid--percent-layout,
+  #story--tokens-レイアウトグリッド-layout-grid--no-gutter {
+    .grid .grid__col > div {
+      text-align: center;
+      border: 1px solid #000;
+      padding: 8px 0;
+      word-break: break-all;
+    }
+  }
+  #story--セマンティックコンポーネント-semantic-ヘッダー-header-グローバルヘッダー-global-header--default
+    .g-header.is-menuOpen
+    .c-globalNavigation__inner,
+  #story--セマンティックコンポーネント-semantic-ヘッダー-header-グローバルナビゲーション-global-navigation--default
+    .g-header.is-menuOpen
+    .c-globalNavigation__inner {
+    height: 30vh;
+  }
+  #story--セマンティックコンポーネント-semantic-スティッキー-sticky-ページトップボタン-page-top-button--default {
+    height: 100px;
+  }
+  #story--セマンティックコンポーネント-semantic-スティッキー-sticky-ページトップボタン-page-top-button--default
+    .c-pageTop,
+  #storybook-root .c-pageTop {
+    visibility: visible;
+    opacity: 1;
+  }
+  #story--セマンティックコンポーネント-semantic-スティッキー-sticky-サイドナビゲーション-side-navigation--default {
+    position: relative;
+    overflow: hidden;
+    height: 650px;
+  }
+  #story--セマンティックコンポーネント-semantic-スティッキー-sticky-サイドナビゲーション-side-navigation--default
+    .c-sideNavi {
+    position: absolute;
+  }
+  #story--セマンティックコンポーネント-semantic-グループ-group-ヒーロー画像-hero--default
+    .c-hero {
+    width: 100%;
+    margin-inline: auto;
+  }
+  #story--セマンティックコンポーネント-semantic-グループ-group-カルーセル-carousel--default
+    .c-carousel {
+    width: 100%;
+    margin-inline: auto;
+  }
+</style>
+<script>
+  document.documentElement.setAttribute('lang', 'ja');
+</script>

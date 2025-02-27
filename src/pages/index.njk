@@ -1,0 +1,201 @@
+---
+layout: layouts/base.njk
+title: Science Tokyo UI ページパターン
+description: descriptionを入れる。
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/semantic/Group/LinkList/LinkList.njk" as LinkList %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({"text": "Science Tokyo UI ページパターン", "tag": "h1", "headingLevel": 1}) }}
+    {{ Heading.render({"text": "テンプレート", "tag": "h2", "headingLevel": 2}) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "ブランクHTMLテンプレート",
+          "href": "page-patterns/blank.html"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "ホームパターン", "tag": "h2", "headingLevel": 2}) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "メディア訴求優先型",
+          "href": "page-patterns/home/media.html"
+        },
+        {
+          "text": "英語版",
+          "href": "page-patterns/home/en/media.html"
+        }
+      ]
+    }) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "バランス型①",
+          "href": "page-patterns/home/balance-1.html"
+        },
+        {
+          "text": "英語版",
+          "href": "page-patterns/home/en/balance-1.html"
+        }
+      ]
+    }) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "バランス型②",
+          "href": "page-patterns/home/balance-2.html"
+        },
+        {
+          "text": "英語版",
+          "href": "page-patterns/home/en/balance-2.html"
+        }
+      ]
+    }) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "能動探索型",
+          "href": "page-patterns/home/active-search.html"
+        },
+        {
+          "text": "英語版",
+          "href": "page-patterns/home/en/active-search.html"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "インデックスパターン", "tag": "h2", "headingLevel": 2}) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "コンテンツ訴求サマリー型",
+          "href": "page-patterns/index/content-summary.html"
+        },
+        {
+          "text": "コンテンツ訴求バランス型①",
+          "href": "page-patterns/index/content-balance-1.html"
+        },
+        {
+          "text": "コンテンツ訴求バランス型②",
+          "href": "page-patterns/index/content-balance-2.html"
+        },
+        {
+          "text": "テキスト誘導型",
+          "href": "page-patterns/index/text-guide.html"
+        },
+        {
+          "text": "人物一覧型",
+          "href": "page-patterns/index/people-list.html"
+        },
+        {
+          "text": "施設・設備一覧型",
+          "href": "page-patterns/index/facility-list.html"
+        },
+        {
+          "text": "検索結果一覧型",
+          "href": "page-patterns/index/search-results.html#gsc.tab=0&gsc.q=Science Tokyo"
+        }
+      ]
+    }) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "メディア情報一覧型",
+          "href": "page-patterns/index/media-list.html"
+        },
+        {
+          "text": "英語版",
+          "href": "page-patterns/index/en/media-list.html"
+        }
+      ]
+    }) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "イベント一覧型（全て表示）",
+          "href": "page-patterns/index/event-list.html"
+        },
+        {
+          "text": "英語版",
+          "href": "page-patterns/index/en/event-list.html"
+        }
+      ]
+    }) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "イベント一覧型（月別表示）",
+          "href": "page-patterns/index/event-list-month.html"
+        },
+        {
+          "text": "英語版",
+          "href": "page-patterns/index/en/event-list-month.html"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "ファクト情報詳細パターン", "tag": "h2", "headingLevel": 2}) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "汎用型",
+          "href": "page-patterns/fact/general.html"
+        },
+        {
+          "text": "人物紹介型",
+          "href": "page-patterns/fact/person.html"
+        },
+        {
+          "text": "施設・設備型",
+          "href": "page-patterns/fact/facility.html"
+        },
+        {
+          "text": "歴史・沿革型",
+          "href": "page-patterns/fact/history.html"
+        },
+        {
+          "text": "Q＆A型",
+          "href": "page-patterns/fact/qa.html"
+        },
+        {
+          "text": "お問い合わせ型",
+          "href": "page-patterns/fact/contact.html"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "メディア情報詳細パターン", "tag": "h2", "headingLevel": 2}) }}
+    {{ LinkList.render({
+      "layout": "horizontal",
+      "links": [
+        {
+          "text": "ニュース型",
+          "href": "page-patterns/media/news.html"
+        },
+        {
+          "text": "イベント型",
+          "href": "page-patterns/media/event.html"
+        },
+        {
+          "text": "ストーリー型",
+          "href": "page-patterns/media/story.html"
+        }
+      ]
+    }) }}
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

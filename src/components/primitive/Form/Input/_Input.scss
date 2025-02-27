@@ -1,0 +1,25 @@
+@use '../../../../scss/globals/base/' as *;
+.c-input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: var(--semantic-line-thickness-default) solid var(--ui-line-bold);
+  width: 100%;
+  @include txt($t-bodyM);
+  &::placeholder {
+    color: var(--ui-text-light);
+  }
+  &[disabled] {
+    border-color: var(--ui-line-thick);
+    background-color: var(--ui-background-status-disabled);
+    &::placeholder {
+      color: var(--ui-text-status-disabled);
+    }
+  }
+  &--error {
+    border-color: var(--ui-line-status-caution);
+  }
+  &:focus-visible {
+    border-color: transparent;
+    outline: 4px solid var(--ui-line-status-focus);
+  }
+}

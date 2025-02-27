@@ -1,0 +1,127 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{% import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph %}
+{% import "src/components/primitive/Media/Image/Image.njk" as Image %}
+{% import "src/components/primitive/Text/Label/Label.njk" as Label %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% macro render( props ) %}
+  {% set type = props.type %}
+  {% set linkType = props.linkType | default("button") %}
+  {% set title = props.title %}
+  {% set titleTag = props.titleTag | default("h2") %}
+  {% set shoulder = props.shoulder %}
+  {% set description = props.description %}
+  {% set mediaDate = props.mediaDate %}
+  {% set mediaLabels = props.mediaLabels %}
+  {% set contentsCopy = props.contentsCopy %}
+  {% set imageSrc = props.imageSrc | default("//picsum.photos/720/600") %}
+  {% set imageWidth = props.imageWidth | default("720") %}
+  {% set imageHeight = props.imageHeight | default("600") %}
+  {% set imageAlt = props.imageAlt | default("画像のalt") %}
+  {% set imageCaption = props.imageCaption | default(false) %}
+  {% set responsiveImage = props.responsiveImage %}
+  {% set srcsetSmall = props.srcsetSmall %}
+  {% set widthSmall = props.widthSmall %}
+  {% set heightSmall = props.heightSmall %}
+  {% set srcsetMedium = props.srcsetMedium %}
+  {% set widthMedium = props.widthMedium %}
+  {% set heightMedium = props.heightMedium %}
+  {% set imagePosRight = props.imagePosRight %}
+  {% set buttonLabel = props.buttonLabel | default("ボタンラベル") %}
+  {% set href = props.href | default("#") %}
+  {% set external = props.external %}
+  {% set addClass = props.addClass %}
+  <div class="c-pickupContents{{ ' c-pickupContents--' ~ type if type }}{{' ' ~ addClass if addClass}}">
+    {%- if type == "contents" %}
+      {{ Heading.render({
+            "text": title,
+            "tag": titleTag,
+            "headingLevel": 2,
+            "shoulder": shoulder}) 
+      }}
+    {%- endif -%}
+    {%- if linkType == "area" -%}
+      <a href="{{ href }}" class="c-pickupContents__inner{{ ' c-pickupContents__inner--imagePosRight' if imagePosRight }}"{{' target=_blank' if external}}>
+      {%- else -%}
+        <div class="c-pickupContents__inner{{ ' c-pickupContents__inner--imagePosRight' if imagePosRight }}">
+        {%- endif -%}
+        <div class="c-pickupContents__body">
+          {% if type != "contents" %}
+            <div class="c-pickupContents__title">
+              <{{ titleTag }} class="c-pickupContents__heading">{{ title if title }}</{{ titleTag }}>
+              {%- if shoulder -%}
+                <p class="c-pickupContents__shoulder">{{ shoulder if shoulder }}</p>
+              {%- endif -%}
+            </div>
+          {% endif %}
+          {%- if contentsCopy -%}
+            <div class="c-pickupContents__copy">
+              {{ Paragraph.render({
+                            text: contentsCopy,
+                            isCopy: true,
+                            copySize: "M"
+                            }) }}
+            </div>
+          {%- endif -%}
+          {%- if description -%}
+            <div class="c-pickupContents__description">
+              {{ Paragraph.render({
+                            text: description
+                            }) }}
+            </div>
+          {%- endif -%}
+          {%- if mediaDate -%}
+            <p class="c-pickupContents__date">
+              <time datetime="{{ mediaDate | replace(r/年|月|日/g, '-') | replace(r/-$/, '') }}">{{ mediaDate }}</time>
+            </p>
+          {%- endif -%}
+          {%- if mediaLabels -%}
+            <div class="c-pickupContents__labels">
+              {{ Label.render({
+                            multiple: true,
+                            multipleLabels: mediaLabels
+                            }) }}
+            </div>
+          {%- endif -%}
+          {%- if linkType == "button" -%}
+            <div class="c-pickupContents__button">
+              {%- set rightIconType = "" if external else "chevron_right" -%}
+              {{ Button.render({
+                            label: buttonLabel,
+                            mode: "primary",
+                            fullWidth: false,
+                            type: "link",
+                            external: external,
+                            href: href,
+                            rightIcon: rightIconType
+                            }) }}
+            </div>
+          {%- endif -%}
+        </div>
+        <div class="c-pickupContents__image">
+          {{ Image.render({
+                    src: imageSrc,
+                    width: imageWidth,
+                    height: imageHeight,
+                    alt: imageAlt,
+                    caption: imageCaption,
+                    responsiveImage: responsiveImage,
+                    srcsetSmall: srcsetSmall,
+                    widthSmall: widthSmall,
+                    heightSmall: heightSmall,
+                    srcsetMedium: srcsetMedium,
+                    widthMedium: widthMedium,
+                    heightMedium: heightMedium,
+                    fullWidth: true
+                    }) }}
+        </div>
+        {%- if linkType == "area" -%}
+        </a>
+      {%- else -%}
+      </div>
+    {%- endif -%}
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

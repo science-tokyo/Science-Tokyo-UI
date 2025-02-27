@@ -1,0 +1,95 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+.c-iconButtonGroup {
+  @include dm;
+  display: flex;
+  gap: var(--semantic-space-inner-m);
+  flex-direction: column;
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+.c-iconButton {
+  $_root: &;
+  padding: 0;
+  width: 56px;
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--semantic-corner-radius-pill);
+  @include txt($t-bodyL);
+  background-color: var(--ui-background-default);
+  color: var(--ui-text-status-link);
+  box-shadow: inset 0 0 0 1px var(--ui-line-status-link);
+  text-decoration: none;
+  @include dm;
+  cursor: pointer;
+  .c-iconButtonGroup & {
+    margin-top: 0;
+  }
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--ui-background-emphasize-mid-tertiary);
+    }
+  }
+  &:active {
+    background-color: var(--ui-background-emphasize-mid-quaternary);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--ui-line-status-focus);
+    outline-offset: 2px;
+  }
+  &:disabled,
+  &--disabled {
+    pointer-events: none;
+    &,
+    &:active,
+    &:focus,
+    &:focus-visible {
+      cursor: auto;
+      color: var(--ui-text-status-disabled);
+      box-shadow: inset 0 0 0 1px var(--ui-line-default);
+    }
+    @media (hover: hover) {
+      &:hover {
+        cursor: auto;
+        color: var(--ui-text-status-disabled);
+        box-shadow: inset 0 0 0 1px var(--ui-line-default);
+      }
+    }
+  }
+  &--square {
+    border-radius: var(--semantic-corner-radius-m);
+  }
+  &--noBorder {
+    box-shadow: none;
+  }
+  &--size {
+    &L {
+      &#{$_root}--square {
+        border-radius: var(--semantic-corner-radius-m);
+      }
+    }
+    &M {
+      width: 44px;
+      min-height: 44px;
+      @include txt($t-bodyM);
+      &#{$_root}--square {
+        border-radius: var(--semantic-corner-radius-ms);
+      }
+    }
+    &S {
+      width: 36px;
+      min-height: 36px;
+      @include txt($t-bodyM);
+      &#{$_root}--square {
+        border-radius: var(--semantic-corner-radius-ms);
+      }
+    }
+  }
+  @include bp(sm) {
+  }
+}

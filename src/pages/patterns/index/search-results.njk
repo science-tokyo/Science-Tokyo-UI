@@ -1,0 +1,35 @@
+---
+layout: layouts/base.njk
+title: インデックスパターン：検索結果一覧型
+description: ページパターン：インデックスパターン：検索結果一覧型
+permalink: /page-patterns/index/search-results.html
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph %}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({"text": "サイト内検索結果", "tag": "h1", "headingLevel": 1}) }}
+    <div class="c-search">
+      <script async="" src="https://cse.google.com/cse.js?cx=23ac754abc12a43b6"></script>
+      <div class="gcse-search" data-defaultToRefinement="すべての検索結果"></div>
+      {{ Paragraph.render({
+        "text": "※「本サイト内検索結果では、上部にキーワードに応じた広告が表示される場合があります。広告のリンク先は本学のサイトではありませんのでご注意ください。",
+        "addClass": "c-search__note"
+      }) }}
+    </div>
+    <div class="contentArea__bottom">
+      <div class="grid grid--justifyCenter">
+        <div class="grid__col grid__col--span8 sm:grid__col--span8">
+          {{ Button.render({"label": "トップページへ", "href": "#", "fixed": true, "leftIcon": "arrow_left"}) }}
+        </div>
+      </div>
+    </div>
+    <!-- /.contentArea__bottom -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

@@ -1,0 +1,94 @@
+{#
+ # @prop {type} ***
+#}
+{%- import "src/components/primitive/Action/Button/Button.njk" as Button -%}
+{%- import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph -%}
+{%- import "src/components/primitive/Media/Image/Image.njk" as Image -%}
+{%- import "src/components/primitive/Text/Label/Label.njk" as Label -%}
+{%- macro render( props ) -%}
+  {%- set contentsType = props.contentsType | default("") -%}
+  {%- set title = props.title | default("タイトル文字列") -%}
+  {%- set titleTag = props.titleTag | default("h1") -%}
+  {%- set shoulder = props.shoulder | default("ショルダー") -%}
+  {%- set subTitle = props.subTitle -%}
+  {%- set description = props.description | default("情に棹させば流される。智に働けば角が立つ。どこへ越しても住みにくいと悟った時、詩が生れて、画が出来る。とかくに人の世は住みにくい。意地を通せば窮屈だ。") -%}
+  {%- set date = props.date -%}
+  {%- set tags = props.tags -%}
+  {%- set imageSrc = props.imageSrc | default("//placehold.jp/1440x600.png") -%}
+  {%- set imageWidth = props.imageWidth | default("1440") -%}
+  {%- set imageHeight = props.imageHeight | default("600") -%}
+  {%- set imageAlt = props.imageAlt | default("画像のalt") -%}
+  {%- set responsiveImage = props.responsiveImage -%}
+  {%- set srcsetSmall = props.srcsetSmall -%}
+  {%- set widthSmall = props.widthSmall -%}
+  {%- set heightSmall = props.heightSmall -%}
+  {%- set srcsetMedium = props.srcsetMedium -%}
+  {%- set widthMedium = props.widthMedium -%}
+  {%- set heightMedium = props.heightMedium -%}
+  {%- set url = props.url | default("") -%}
+  {%- set external = props.external | default(false) -%}
+  {%- set addClass = props.addClass -%}
+  {%- if url !== '' -%}
+    <a class="c-hero{{' ' ~ addClass if addClass}}{{' c-hero--media' if contentsType === 'media'}}{{' c-hero--person' if contentsType === 'person'}}" href="{{ url }}"{{ 'target=_blank' if external }}>
+    {%- else -%}
+      <div class="c-hero{{' ' ~ addClass if addClass}}{{' c-hero--media' if contentsType === 'media'}}{{' c-hero--person' if contentsType === 'person'}}">
+      {%- endif -%}
+      <div class="c-hero__body">
+        {%- if  contentsType !== 'media' -%}
+          <div class="container">
+            <div class="grid grid--justifyStart sm:grid--justifyCenter">
+              <div class="grid__col grid__col--span8">
+                <div class="c-hero__title">
+                  <{{ titleTag }} class="c-hero__heading">{{ title if title }}</{{ titleTag }}>
+                  {%- if shoulder -%}
+                    <p class="c-hero__shoulder">{{ shoulder if shoulder }}</p>
+                  {%- endif -%}
+                </div>
+                {%- if subTitle -%}
+                  <p class="c-hero__subTitle">{{ subTitle }}</p>
+                {%- endif -%}
+                {%- if description -%}
+                  <div class="c-hero__description">
+                    {{ Paragraph.render({ text: description }) }}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- else -%}
+          <div class="c-hero__mediaInfo">
+            <div class="c-hero__title">
+              <{{ titleTag }} class="c-hero__heading">{{ title if title }}</{{ titleTag }}>
+            </div>
+            <time datetime="{{ date | replace(r/年|月|日/g, '-') | replace(r/-$/, '') if date }}">{{ date }}</time>
+            <div class="c-hero__mediaInfo__tag">
+              {%- for tag in tags -%}
+                {{ Label.render({
+                                text: tag
+                                }) }}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="c-hero__image">
+        {{ Image.render({
+                src: imageSrc,
+                width: imageWidth,
+                height: imageHeight,
+                alt: imageAlt,
+                responsiveImage: responsiveImage,
+                srcsetSmall: srcsetSmall,
+                widthSmall: widthSmall,
+                heightSmall: heightSmall,
+                srcsetMedium: srcsetMedium,
+                widthMedium: widthMedium,
+                heightMedium: heightMedium,
+                fullWidth: true
+                }) }}
+      </div>
+      {%- if url !== '' -%}
+      </a> {%- else -%} </div>
+    {%- endif -%}
+  {%- endmacro -%}
+  {%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

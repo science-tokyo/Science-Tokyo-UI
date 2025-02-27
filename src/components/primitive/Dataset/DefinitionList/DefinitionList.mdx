@@ -1,0 +1,22 @@
+{/* DefinitionList.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as DefinitionListStories from './DefinitionList.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="DefinitionList" of={DefinitionListStories} />
+
+# 定義リスト Definition list
+
+定義リストを表示するためのコンポーネントです。  
+用語（dt）と説明文（dd）で構成されるコンテンツで使用します。
+
+## 原則
+
+- 必ず用語（dt）と説明文（dd）で構成されるように利用ください。
+- 用語に挿入される文字列は現在6文字程度を想定しています。
+- それ以上の長さが必要な場合は、代替手段として見出しコンポーネントと段落コンポーネントを組み合わせることを提案します。
+
+<Canvas />
+<Controls />

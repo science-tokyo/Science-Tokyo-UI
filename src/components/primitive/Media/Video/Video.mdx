@@ -1,0 +1,25 @@
+{/* Video.mdx */}
+import { Canvas, Meta, Stories, Controls } from '@storybook/blocks';
+
+import * as VideoStories from './Video.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Video" of={VideoStories} />
+
+# ビデオ Video
+
+動画を表示するためのコンポーネントです。動画はYoutubeのEmbedによって再生されます。  
+「Speaker Deck」などのスライドをEmbedで埋め込むことも可能です。再生前の状態ではサムネイルが表示されます。
+
+## 原則
+
+- 再生前のサムネイルのサイズおよび、再生領域は16:9で表示されます。
+- 使用する動画は基本的に16:9の比率を推奨します。
+- サムネイルが設定されていることを推奨します。
+- 表示サイズは画像コンポーネントと同一の基準とします。
+
+<Canvas />
+<Controls />
+
+<Stories />

@@ -1,0 +1,37 @@
+{#
+ * @props {array} columnSettings
+ * @props {string} [justifyContent=""]
+ * @props {string} [alignItems=""]
+#}
+{% macro render( props ) %}
+{% set columnsNumber = props.columnsNumber %}
+{% set columnsNumberMedium = props.columnsNumberMedium %}
+{% set columnsNumberSmall = props.columnsNumberSmall %}
+{% set columnSettings = props.columnSettings | default(
+    [
+      {
+        html: '<div>column</div>',
+        span: "",
+        md: {
+          span: ""
+        },
+        sm: {
+          span: ""
+        }
+      }
+    ]
+  ) %}
+{% set justifyContent = props.justifyContent %}
+{% set noGutter = props.noGutter |default(false) %}
+{% set alignItems = props.alignItems %}
+{% set flexDirection = props.flexDirection %}
+{% set addClass = props.addClass %}
+<div class="grid{{' grid--justify' ~ justifyContent if justifyContent }}{{' grid--noGutter' if noGutter }}{{' grid--items' ~ alignItems if alignItems }}{{' grid--dir' ~ flexDirection if flexDirection }}{{' grid--cols' ~ columnsNumber if columnsNumber}}{{' md:grid--cols' ~ columnsNumberMedium if columnsNumberMedium}}{{' sm:grid--cols' ~ columnsNumberSmall if columnsNumberSmall}}{{' ' ~ addClass if addClass}}">
+  {%- for columnSetting in columnSettings %}
+  <div class="grid__col {{- ' grid__col--span' ~ columnSetting.span if columnSetting.span -}} {{- ' md:grid__col--span' ~ columnSetting.md.span if columnSetting.md.span -}} {{- ' sm:grid__col--span' ~ columnSetting.sm.span if columnSetting.sm.span -}}{{- ' grid__col--per' ~ columnSetting.per if columnSetting.per -}} {{- ' md:grid__col--per' ~ columnSetting.md.per if columnSetting.md.per -}} {{- ' sm:grid__col--per' ~ columnSetting.sm.per if columnSetting.sm.per -}} ">
+    {{ columnSetting.html | safe }}
+  </div>
+{%- endfor %}
+</div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

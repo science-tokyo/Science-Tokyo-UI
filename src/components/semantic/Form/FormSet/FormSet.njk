@@ -1,0 +1,176 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/primitive/Form/Input/Input.njk" as Input %}
+{% import "src/components/primitive/Form/Select/Select.njk" as Select %}
+{% import "src/components/primitive/Form/Radiobutton/Radiobutton.njk" as Radiobutton %}
+{% import "src/components/primitive/Form/Checkbox/Checkbox.njk" as Checkbox %}
+{% import "src/components/primitive/Form/Textarea/Textarea.njk" as Textarea %}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{% macro render( props ) %}
+  {% set formGroups = props.formGroups | default([
+      {
+        title: 'フォームセットタイトル',
+        titleTag: 'h2',
+        headingLevel: 2,
+        forms: [
+          {
+            columnSpan: 6,
+            columnSpanMedium: 6,
+            columnSpanSmall: 8,
+            component: 'Input',
+            label: 'ラベル',
+            placeholder: 'プレイスホルダー',
+            required: true
+          },
+          {
+            columnSpan: 6,
+            columnSpanMedium: 6,
+            columnSpanSmall: 8,
+            component: 'Input',
+            label: 'ラベル',
+            placeholder: 'プレイスホルダー',
+            required: true
+          },
+          {
+            columnSpan: 12,
+            component: 'Input',
+            label: 'ラベル',
+            placeholder: 'プレイスホルダー',
+            required: true
+          },
+          {
+            columnSpan: 12,
+            component: 'Select',
+            label: 'ラベル',
+            defaultText: 'デフォルトテキスト',
+            required: true
+          }
+        ]
+      },
+      {
+        title: 'フォームセットタイトル',
+        titleTag: 'h2',
+        headingLevel: 2,
+        forms: [
+          {
+            columnSpan: 6,
+            columnSpanMedium: 6,
+            columnSpanSmall: 8,
+            component: 'Radiobutton',
+            label: 'ラベル',
+            required: true,
+            radioItems: [
+              { id: 'radio1', name: 'radio_sample', value: '', label: '選択肢1' },
+              { id: 'radio2', name: 'radio_sample', value: '', label: '選択肢2' },
+              { id: 'radio3', name: 'radio_sample', value: '', label: '選択肢3' }
+            ]
+          },
+          {
+            columnSpan: 6,
+            columnSpanMedium: 6,
+            columnSpanSmall: 8,
+            component: 'Checkbox',
+            label: 'ラベル',
+            required: true,
+            checkboxItems: [
+              { id: 'checkbox1', name: 'checkbox_sample', value: '', label: '選択肢1' },
+              { id: 'checkbox2', name: 'checkbox_sample', value: '', label: '選択肢2' },
+              { id: 'checkbox3', name: 'checkbox_sample', value: '', label: '選択肢3' }
+            ]
+          },
+          {
+            columnSpan: 12,
+            component: 'Textarea',
+            label: 'ラベル',
+            defaultText: 'デフォルトテキスト',
+            required: true
+          }
+        ]
+      }
+    ]) %}
+  {% set buttonSubmit = props.buttonSubmit | default(
+      {
+        label: '送信',
+        type: 'button'
+      }
+    ) %}
+  {% set buttonCancel = props.buttonCancel | default(
+      {
+        label: 'キャンセル',
+        type: 'button',
+        style: 'secondary'
+      }
+    ) %}
+  {% set addClass = props.addClass %}
+  <div class="c-form{{' ' ~ addClass if addClass}}">
+    <form action="">
+      {%- for formGroup in formGroups -%}
+        {{ Heading.render({
+                tag: formGroup.titleTag,
+                headingLevel: formGroup.headingLevel,
+                text: formGroup.title
+                }) }}
+        <div class="c-form__body">
+          <div class="grid">
+            {%- for form in formGroup.forms -%}
+              <div class="grid__col{{ ' grid__col--span' ~ form.columnSpan if form.columnSpan }}{{ ' md:grid__col--span' ~ form.columnSpanMedium if form.columnSpanMedium }}{{ ' sm:grid__col--span' ~ form.columnSpanSmall if form.columnSpanSmall }}">
+                {%- if form.component == 'Input' -%}
+                  {{ Input.render({
+                                    label: form.label,
+                                    placeholder: form.placeholder,
+                                    required: form.required
+                                    }) }}
+                {%- elif form.component == 'Select' -%}
+                  {{ Select.render({
+                                    label: form.label,
+                                    defaultText: form.defaultText,
+                                    required: form.required
+                                    }) }}
+                {%- elif form.component == 'Radiobutton' -%}
+                  {{ Radiobutton.render({
+                                    label: form.label,
+                                    required: form.required,
+                                    radioItems: form.radioItems
+                                    }) }}
+                {%- elif form.component == 'Checkbox' -%}
+                  {{ Checkbox.render({
+                                    label: form.label,
+                                    required: form.required,
+                                    checkboxItems: form.checkboxItems
+                                    }) }}
+                {%- elif form.component == 'Textarea' -%}
+                  {{ Textarea.render({
+                                    label: form.label,
+                                    defaultText: form.defaultText,
+                                    required: form.required
+                                    }) }}
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endfor -%}
+      {% if buttonSubmit or buttonCancel %}
+        <div class="c-form__footer">
+          {%- if buttonCancel -%}
+            {{ Button.render({
+                        label: buttonCancel.label,
+                        style: buttonCancel.style,
+                        disabled: buttonCancel.disabled
+                        }) }}
+          {%- endif -%}
+          {%- if buttonSubmit -%}
+            {{ Button.render({
+                        label: buttonSubmit.label,
+                        style: buttonSubmit.style,
+                        disabled: buttonSubmit.disabled
+                        }) }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </form>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

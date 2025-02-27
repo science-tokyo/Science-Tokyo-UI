@@ -1,0 +1,16 @@
+.c-textarea {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--ui-line-bold);
+  &[disabled] {
+    border-color: var(--ui-line-thick);
+    background-color: var(--ui-background-status-disabled);
+  }
+  &--error {
+    border-color: var(--ui-line-status-caution);
+  }
+  &:focus-visible {
+    border: none;
+    outline: 4px solid var(--ui-line-status-focus);
+  }
+}

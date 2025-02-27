@@ -1,0 +1,317 @@
+@use '../../../../scss/globals/base/' as *;
+%controller_style {
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(
+        --ui-background-transparent-black-ultra-light,
+        rgba(0, 0, 0, 0.2)
+      ) !important;
+    }
+    &:active {
+      background-color: var(
+        --ui-background-transparent-black-light,
+        rgba(0, 0, 0, 0.4)
+      ) !important;
+    }
+  }
+  &:focus {
+    outline: none !important;
+  }
+  &:focus-visible {
+    outline: var(--semantic-line-thickness-bold) solid
+      var(--ui-line-status-focus) !important;
+    outline-offset: var(--semantic-line-thickness-bold) !important;
+  }
+}
+.c-carousel {
+  @include dm;
+  .splide__slide {
+    .c-image {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  &__controller {
+    .splide__arrow {
+      width: 44px;
+      height: 44px;
+      opacity: 1;
+      @media (hover: hover) {
+        &:hover:not(:disabled) {
+          opacity: 1;
+        }
+      }
+      @include bp(sm) {
+        background-color: transparent;
+      }
+      svg {
+        fill: var(--ui-surface-emphasize-mid-secondary);
+        @include bp(sm) {
+          fill: var(--ui-icon-status-link);
+        }
+      }
+      &:disabled {
+        display: none;
+      }
+      @extend %controller_style;
+    }
+    .splide__arrow--prev {
+      svg {
+        transform: scale(-1, 1);
+      }
+    }
+    .splide__controls {
+      display: flex;
+      align-items: center;
+      border-radius: 999px;
+      background-color: var(--ui-background-transparent-black-ultra-light);
+      @include bp(sm) {
+        background-color: transparent;
+      }
+    }
+    .splide__pagination {
+      position: relative;
+      bottom: 0;
+      padding: 0;
+      &__page {
+        @extend %controller_style;
+        width: 44px;
+        height: 44px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        opacity: 1;
+        @media (hover: hover) {
+          &:hover {
+            opacity: 1;
+          }
+        }
+        &::before {
+          content: '';
+          display: block;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background-color: #fff;
+          @include bp(sm) {
+            background-color: var(--ui-icon-ultra-light);
+          }
+        }
+        &.is-active {
+          transform: none;
+          background-color: transparent;
+          &::before {
+            width: 20px;
+            height: 20px;
+            @include bp(sm) {
+              background-color: var(--ui-icon-light);
+            }
+          }
+        }
+      }
+    }
+    .splide__toggle {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 12px;
+      border: none;
+      border-radius: 50%;
+      background-color: var(--ui-background-transparent-black-thin);
+      @extend %controller_style;
+      @include bp(sm) {
+        background-color: transparent;
+      }
+      svg {
+        width: 50%;
+        height: 50%;
+        fill: var(--ui-icon-inverted);
+        @include bp(sm) {
+          fill: var(--ui-icon-status-link);
+        }
+      }
+    }
+  }
+}
+.c-carousel--default,
+.c-carousel--hero {
+  @include fullWidth;
+  .grid__col & {
+    width: 100%;
+    margin-inline: auto;
+  }
+  .c-carousel__controller {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--semantic-space-inner-m);
+    justify-content: flex-start;
+    margin-right: auto;
+    margin-left: var(--semantic-space-inner-ll);
+    margin-top: -56px;
+    margin-bottom: 12px;
+    @include bp(sm) {
+      gap: 0;
+      justify-content: center;
+      position: initial;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 10px;
+    }
+    .splide__arrows {
+      border-radius: 50%;
+      background-color: var(--ui-background-transparent-black-ultra-light);
+      @include bp(sm) {
+        background-color: transparent;
+      }
+    }
+    .splide__arrow {
+      position: relative;
+      top: 0;
+      right: 0;
+      left: 0;
+      transform: none;
+      background-color: transparent;
+    }
+  }
+}
+.c-carousel--hero {
+  display: flex;
+  flex-direction: column;
+  &:first-child {
+    margin-top: 0;
+  }
+  .c-carousel__controller {
+    @include bp(sm) {
+      margin-top: 0;
+    }
+    .splide__controls,
+    .splide__arrows {
+      background-color: transparent;
+    }
+  }
+  .c-carousel__title {
+    margin-top: var(--semantic-space-inner-ll);
+    order: 1;
+    background: transparent;
+    @include bp(sm) {
+      margin-top: 0;
+    }
+    .c-heading__inner {
+      padding-top: var(--semantic-space-outer-ss);
+      padding-bottom: var(--semantic-space-inner-llll);
+      @include bp(sm) {
+        padding-block: var(--semantic-space-inner-ml);
+      }
+    }
+  }
+  .c-hero {
+    margin: 0;
+    width: 100%;
+    &__body {
+      padding-bottom: var(--semantic-space-outer-s);
+      @include bp(sm) {
+        padding-bottom: var(--semantic-space-inner-s);
+      }
+    }
+    &__image {
+      // 画面からタイトル等が見切れないようにするために高さを調整
+      // ビューポートの高さからヘッダーの高さを引いたものを最大の高さとする
+      img {
+        max-height: calc(100vh - 144px);
+        object-fit: cover;
+      }
+    }
+  }
+  &:not(.is-active) {
+    .c-hero__body {
+      padding-bottom: var(--semantic-space-inner-l);
+      @include bp(sm) {
+        padding-bottom: var(--semantic-space-inner-s);
+      }
+    }
+  }
+}
+.c-carousel--tile {
+  @include dm;
+  @include fullWidth;
+  padding-inline: 40px;
+  @include bp(sm) {
+    padding-inline: 0;
+  }
+  &.is-initialized:not(.is-active) {
+    @include bp(sm) {
+      margin-inline: auto;
+      width: 100%;
+    }
+    .splide__list {
+      display: flex;
+      gap: var(--semantic-space-inner-m);
+      @include bp(sm) {
+        flex-direction: column;
+        gap: var(--semantic-space-inner-l);
+      }
+    }
+    .splide__slide {
+      flex-shrink: 1;
+      width: calc((100% - var(--semantic-space-inner-m) * 2) / 3);
+      @include bp(sm) {
+        width: 100%;
+      }
+    }
+  }
+  .splide__track {
+    // @include container;
+    max-width: 960px;
+    margin-inline: auto;
+    overflow: visible;
+  }
+  .c-carousel__controller {
+    max-width: 960px;
+    margin: auto;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .splide__arrow {
+      pointer-events: all;
+      border: 1px solid var(--ui-line-status-link);
+      background-color: var(--ui-surface-default);
+      svg {
+        fill: var(--ui-icon-brand-primary);
+      }
+      &--prev {
+        left: -22px;
+        @include bp(md) {
+          left: var(--semantic-space-inner-m);
+        }
+      }
+      &--next {
+        right: -22px;
+        @include bp(md) {
+          right: var(--semantic-space-inner-m);
+        }
+      }
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(
+            --ui-background-emphasize-mid-tertiary
+          ) !important;
+        }
+      }
+      &:active {
+        background-color: var(
+          --ui-background-emphasize-mid-quaternary
+        ) !important;
+      }
+    }
+  }
+}

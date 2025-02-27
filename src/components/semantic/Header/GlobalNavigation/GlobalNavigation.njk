@@ -1,0 +1,201 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set locale = props.locale | default('ja') %}
+  <div class="c-globalNavigation">
+    <div class="c-globalNavigation__header">
+      <ul class="c-globalNavigation__navList">
+        {% for item in [a, b, c, d, f] %}
+          <li>
+            <a href="#">{{ 'グローバルメニュー' if locale === 'ja' else 'Global menu'}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <button class="c-globalNavigation__button"
+              aria-expanded="false"
+              aria-controls="menu"
+              data-js-menubtn>
+        <svg class="icon icon-menu" aria-hidden="true" role="img">
+          <use xlink:href="/assets/img/sprite.svg#menu"></use>
+        </svg>
+        <svg class="icon icon-close" aria-hidden="true" role="img">
+          <use xlink:href="/assets/img/sprite.svg#close"></use>
+        </svg>
+        <span class="label">Menu</span>
+      </button>
+    </div>
+    <div class="c-globalNavigation__inner">
+      <div class="c-globalNavigation__body">
+        <nav id="menu" class="c-globalNavigation__navMenu">
+          <ul class="c-globalNavigation__category">
+            {% for item in [a, b, c, d, f] %}
+              <li>
+                <a class="c-globalNavigation__categoryLink" href="">{{ 'グローバルメニュー' if locale === 'ja' else 'Global menu'}}
+                  <svg class="icon" aria-hidden="true" role="img">
+                    <use xlink:href="/assets/img/sprite.svg#chevron_right"></use>
+                  </svg>
+                </a>
+                <ul class="c-globalNavigation__lower">
+                  {% for item in [a, b, c, d, f] %}
+                    <li>
+                      <a href="">{{ 'メニュー' if locale === 'ja' else 'Menu'}}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+        <div class="c-globalNavigation__subMenu">
+          <ul class="c-globalNavigation__subMenuLink">
+            {% for item in [a, b, c] %}
+              <li>
+                <a href="">{{ 'サブメニュー' if locale === 'ja' else 'Submenu'}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+          <div class="c-globalNavigation__search">
+            <button class="c-globalNavigation__searchBtn"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="search_popup"
+                    data-js-search>
+              <svg class="icon" aria-hidden="true" role="img">
+                <use xlink:href="/assets/img/sprite.svg#search"></use>
+              </svg>
+              {{ '検索' if locale === 'ja' else 'Search'}}
+            </button>
+            <div class="c-globalNavigation__searchPopup" id="search_popup">
+              <p id="search_label" class="popup_label">{{ 'サイト内検索' if locale === 'ja' else 'Site search'}}</p>
+              <div class="popup_input">
+                <form action="">
+                  <input type="text"
+                         name="search"
+                         id="search"
+                         placeholder="{{ '検索キーワードを入力' if locale === 'ja' else 'Keywords'}}"
+                         aria-labelledby="search_label">
+                  <button type="submit" aria-label="検索ボタン">
+                    <svg class="icon" aria-hidden="true" role="img">
+                      <use xlink:href="/assets/img/sprite.svg#search"></use>
+                    </svg>
+                  </button>
+                </form>
+              </div>
+              <button class="popup_close"
+                      type="button"
+                      aria-label="検索メニューを閉じる"
+                      data-js-search-close>
+                <svg class="icon" aria-hidden="true" role="img">
+                  <use xlink:href="/assets/img/sprite.svg#close"></use>
+                </svg>
+              </button>
+            </div>
+            <div></div>
+          </div>
+          <div class="c-globalNavigation__lang">
+            <svg class="icon" aria-hidden="true" role="img">
+              <use xlink:href="/assets/img/sprite.svg#language"></use>
+            </svg>
+            {%- if locale === 'ja' -%}
+              <ul>
+                <li>
+                  <span class="is-current">日本語</span>
+                </li>
+                <li>
+                  <a href="">English</a>
+                </li>
+              </ul>
+            {%- else -%}
+              <ul>
+                <li>
+                  <a href="">日本語</a>
+                </li>
+                <li>
+                  <span class="is-current">English</span>
+                </li>
+              </ul>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+      <div class="c-globalNavigation__footer">
+        <ul class="c-globalNavigation__footerNav">
+          <li>
+            <a href="">
+              <svg class="icon" aria-hidden="true" role="img">
+                <use xlink:href="/assets/img/sprite.svg#home-fill"></use>
+              </svg>
+            Science Tokyo</a>
+          </li>
+          <li>
+            <a href="">{{ '受験生' if locale === 'ja' else 'Prospective students'}}</a>
+          </li>
+          <li>
+            <a href="">{{ '企業パートナー' if locale === 'ja' else 'Partners and entrepreneurs'}}</a>
+          </li>
+          <li>
+            <a href="">{{ '在学生' if locale === 'ja' else 'Current students'}}</a>
+          </li>
+          <li>
+            <a href="">{{ '病院をご利用の方' if locale === 'ja' else 'Hospital'}}</a>
+          </li>
+        </ul>
+        <div class="c-globalNavigation__footerSub">
+          <ul class="sublink__list">
+            <li>
+              <a href="">{{ 'アクセス' if locale === 'ja' else 'Access'}}</a>
+            </li>
+            <li>
+              <a href="">{{ '資料請求' if locale === 'ja' else 'Request documents'}}</a>
+            </li>
+            <li>
+              <a href="">{{ '総合お問い合わせ' if locale === 'ja' else 'General inquiries'}}</a>
+            </li>
+          </ul>
+          <div class="c-globalNavigation__sitemap">
+            <a href="">Science Toyko{{ 'サイトマップ' if locale === 'ja' else ' Science Tokyo Sitemap'}}</a>
+          </div>
+          <ul class="c-globalNavigation__snsLink">
+            <li>
+              <a href="">
+                <svg class="icon" aria-hidden="true" role="img">
+                  <use xlink:href="/assets/img/sprite.svg#BrandFacebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <svg class="icon" aria-hidden="true" role="img">
+                  <use xlink:href="/assets/img/sprite.svg#BrandX"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <svg class="icon" aria-hidden="true" role="img">
+                  <use xlink:href="/assets/img/sprite.svg#BrandLinkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <svg class="icon" aria-hidden="true" role="img">
+                  <use xlink:href="/assets/img/sprite.svg#BrandYoutube"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <svg class="icon" aria-hidden="true" role="img">
+                  <use xlink:href="/assets/img/sprite.svg#BrandInstagram"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

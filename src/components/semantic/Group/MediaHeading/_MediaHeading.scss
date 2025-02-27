@@ -1,0 +1,59 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+
+.c-mediaHeading {
+  display: flex;
+  flex-direction: column;
+  // @include dm;
+  margin-top: var(--semantic-space-outer-ss);
+  position: relative;
+  padding-bottom: var(--semantic-space-inner-l);
+  &__title {
+    width: 100%;
+    margin: 0;
+    background: transparent;
+  }
+  .c-heading__inner {
+    padding: 0;
+    max-width: none;
+  }
+  .c-heading__shoulder {
+    margin-bottom: var(--semantic-space-inner-ms);
+    @include txt($t-titleL-bold);
+  }
+  &__copy {
+    margin-top: var(--semantic-space-inner-ll);
+    &Text {
+      @include txt($t-bodyLL);
+    }
+  }
+  &__meta {
+    display: flex;
+    order: 1;
+    gap: var(--semantic-space-inner-l);
+    margin-top: 0;
+    position: absolute;
+    bottom: var(--semantic-space-inner-l);
+    right: 0;
+    padding-bottom: var(--semantic-space-inner-s);
+    @include bp(md) {
+      position: static;
+      margin-top: var(--semantic-space-inner-m);
+    }
+    > .c-paragraph {
+      margin-top: 0;
+      @include txt($t-labelM);
+    }
+  }
+  &__labels {
+    padding-right: 30%;
+    @include bp(md) {
+      padding-right: 0;
+    }
+    .c-label {
+      &__text {
+        @include txt($t-bodyS);
+      }
+    }
+  }
+}

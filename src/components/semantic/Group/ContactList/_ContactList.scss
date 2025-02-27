@@ -1,0 +1,42 @@
+@use '../../../../scss/globals/base/' as *;
+
+.c-contactList {
+  $_root: &;
+  display: flex;
+  gap: var(--semantic-space-inner-l);
+  flex-direction: column;
+  @include dm;
+  &--cols2 {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  &__item {
+    width: 100%;
+    #{$_root}--cols2 & {
+      width: 50%;
+      width: calc(50% - var(--semantic-space-inner-l) / 2);
+    }
+  }
+  &__data {
+    margin-top: var(--semantic-space-inner-m);
+    .c-definitionList__item {
+      flex-direction: row;
+    }
+  }
+  &__department,
+  &__name {
+    @include txt($t-titleM);
+    margin-top: var(--semantic-space-inner-s);
+  }
+  &__department {
+    .c-heading--h3 + & {
+      margin-top: var(--semantic-space-inner-ll);
+      @include bp(sm) {
+        margin-top: var(--semantic-space-inner-l);
+      }
+    }
+    .c-heading--h4 + & {
+      margin-top: var(--semantic-space-inner-m);
+    }
+  }
+}

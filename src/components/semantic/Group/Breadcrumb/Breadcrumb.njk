@@ -1,0 +1,29 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set items = props.items | default([
+      { label: "トップページ", href: "#" },
+      { label: "ページ1", href: "#" },
+      { label: "ページ2", href: "#" },
+      { label: "ページ3", href: "#" },
+      { label: "ページ4" }
+    ]) %}
+  {% set addClass = props.addClass %}
+  <div class="c-breadcrumb{{' ' ~ addClass if addClass}}">
+    <nav class="c-breadcrumb__nav">
+      <ol class="c-breadcrumb__list">
+        {% for item in items %}
+          <li class="c-breadcrumb__item">
+            {% if item.href %}
+              <a class="c-breadcrumb__link" href="{{ item.href }}">{{ item.label }}</a>
+            {% else %}
+              <span class="c-breadcrumb__text" aria-current="page">{{ item.label }}</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </nav>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

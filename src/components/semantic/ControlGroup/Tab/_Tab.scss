@@ -1,0 +1,66 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+
+.c-tab {
+  $_root: &;
+  @include dm;
+  &__tabs {
+    display: flex;
+    column-gap: var(--semantic-space-inner-sss);
+    overflow-x: scroll;
+    // スクロールバー非表示
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &::after {
+      content: '';
+      width: 100%;
+      border-bottom: var(--semantic-line-thickness-default) solid
+        var(--ui-line-default);
+    }
+  }
+  #{$_root} &__trigger {
+    @include txt($t-titleM);
+    cursor: pointer;
+    padding: 10px 8px;
+    border: none;
+    border-bottom: var(--semantic-line-thickness-default) solid
+      var(--ui-line-default);
+    background-color: transparent;
+    word-break: keep-all;
+    text-wrap: nowrap;
+    white-space: nowrap;
+    color: var(--ui-text-status-link);
+    @media (hover: hover) {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    @include bp(sm) {
+      @include txt($t-titleS);
+    }
+    &.is-active {
+      @include txt($t-titleM-bold);
+      border-bottom: var(--semantic-line-thickness-bold) solid
+        var(--ui-line-bold);
+      color: var(--ui-text-default);
+      @include bp(sm) {
+        @include txt($t-titleS-bold);
+      }
+    }
+    &:focus-visible {
+      outline: 2px solid var(--ui-line-status-focus);
+      outline-offset: -2px;
+    }
+  }
+  &__content {
+    display: none;
+    padding-top: var(--semantic-space-inner-s);
+    padding-inline: var(--semantic-space-inner-m);
+    &.is-active {
+      display: block;
+    }
+  }
+}

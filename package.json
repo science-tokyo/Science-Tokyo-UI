@@ -1,0 +1,51 @@
+{
+  "name": "science-tokyo-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "sass --style=compressed --no-source-map --watch src:dist",
+    "watch:eleventy": "npx @11ty/eleventy --serve",
+    "watch:webpack": "webpack --watch",
+    "build:sass": "sass --style=compressed --no-source-map src:dist",
+    "build:eleventy": "npx @11ty/eleventy",
+    "build:webpack": "webpack --mode=production",
+    "storybook": "storybook dev -p 6006",
+    "build:storybook": "storybook build -o dist/storybook/",
+    "start": "npm-run-all build:sass --parallel watch:* storybook -s ./public",
+    "build": "npm-run-all build:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@storybook/addon-a11y": "^8.4.7",
+    "@storybook/addon-essentials": "^8.0.0",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/blocks": "^8.0.0",
+    "@storybook/cli": "^8.0.0",
+    "@storybook/html": "^8.4.7",
+    "@storybook/html-webpack5": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@whitespace/storybook-addon-html": "^6.1.1",
+    "eleventy-sass": "^2.2.4",
+    "html-minifier-terser": "^7.2.0",
+    "js-beautify": "^1.15.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.0.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "sass": "^1.71.1",
+    "sass-loader": "^14.1.1",
+    "simple-nunjucks-loader": "^2.0.3",
+    "storybook": "^8.0.0",
+    "style-loader": "^3.3.4",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@splidejs/splide": "^4.1.4"
+  }
+}

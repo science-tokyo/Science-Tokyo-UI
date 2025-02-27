@@ -1,0 +1,21 @@
+{/* PageTopButton.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as PageTopButtonStories from './PageTopButton.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="PageTopButton" of={PageTopButtonStories} />
+
+# ページトップボタン Page top button
+
+スクロールしたページを最上部に戻すコンポーネントです。  
+一定のスクロール量で表示され、クリックするとスムーズにトップへ移動します。
+
+## 原則
+
+- ページの最上部では非表示となり、下にスクロールするとウィンドウの右下に表示されます。
+- ページ内要素と重なる場合はページトップボタンが上になります。
+- ステータスはプリミティブコンポーネントの[アイコンボタン](?path=/docs/プリミティブコンポーネント-primitive-アクション-action-アイコンボタン-icon-button--docs)に準じます。
+
+<Canvas />

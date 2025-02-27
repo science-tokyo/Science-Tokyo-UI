@@ -1,0 +1,24 @@
+{/* Blockquote.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as BlockquoteStories from './Blockquote.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Blockquote" of={BlockquoteStories} />
+
+# 引用 Blockquote
+
+本文とは別の出典から引用する文章を表示させる際に使用するコンポーネントです。
+
+## 原則
+
+- 引用文と引用元で構成され、これは必須で入力する必要があります。 
+- 引用元はリンクなしとリンクありを任意で選択することができます。 
+  - 引用元のリンクがある場合、外部ページと内部ページでアイコンを使い分けます。
+  - 引用元のリンクがない場合、出典元のドキュメントあるいは書籍の名称を記載します。
+
+<Canvas />
+<Controls />
+
+<Stories />

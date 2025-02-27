@@ -1,0 +1,247 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+.c-pickupContents {
+  $_root: &;
+  @include dm;
+  &--media,
+  &--related,
+  &--contents {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  &__inner {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: row-reverse;
+    column-gap: var(--semantic-space-inner-ll);
+    @include bp(sm) {
+      flex-direction: column;
+    }
+    &--imagePosRight {
+      flex-direction: row;
+      @include bp(sm) {
+        flex-direction: column;
+      }
+    }
+    #{$_root}--contents & {
+      flex-direction: column;
+    }
+  }
+  &__image {
+    flex-basis: 50%;
+    height: 100%;
+    #{$_root}--related & {
+      flex-basis: 33.333333%;
+    }
+    #{$_root}--contents & {
+      margin-top: var(--semantic-space-inner-l);
+    }
+    @include bp(sm) {
+      flex-basis: 100%;
+      margin-top: 0;
+      order: -1;
+    }
+  }
+  &__body {
+    flex-basis: 50%;
+    height: 100%;
+    @include bp(sm) {
+      width: 100%;
+    }
+    #{$_root}--related & {
+      flex-basis: 66.666666%;
+    }
+    // #{$_root}--related & {
+    //   padding-left: var(--semantic-space-inner-l);
+    //   padding-right: 0;
+    //   @include bp(sm) {
+    //     padding-right: 0;
+    //     padding-left: 0;
+    //   }
+    // }
+    #{$_root}--contents & {
+      margin-top: var(--semantic-space-inner-l);
+    }
+  }
+  &__title {
+    display: flex;
+    flex-direction: column-reverse;
+    @include bp(sm) {
+      margin-top: var(--semantic-space-inner-m);
+    }
+    + [class*='c-'] {
+      margin-top: var(--semantic-space-inner-l);
+      @include bp(sm) {
+        margin-top: var(--semantic-space-inner-m);
+      }
+    }
+  }
+  &__heading {
+    @include txt($t-headingM-light);
+    margin-top: 0;
+    @include bp(sm) {
+      @include txt($t-headingS-light);
+    }
+  }
+  &__shoulder {
+    @include txt($t-bodySS);
+    margin-bottom: var(--semantic-space-inner-s);
+    margin-top: 0;
+  }
+  &__description {
+    margin-top: var(--semantic-space-inner-s);
+    @include txt($t-bodyM);
+  }
+  &__button {
+    margin-top: var(--semantic-space-inner-ml);
+    @include bp(sm) {
+      margin-top: var(--semantic-space-inner-mms);
+    }
+    .c-button {
+      width: auto;
+    }
+  }
+}
+
+.c-pickupContents--media {
+  margin-inline: calc(var(--semantic-space-inner-ll) * -1);
+  width: calc(100% + (var(--semantic-space-inner-ll) * 2));
+  @include bp(sm) {
+    margin-inline: calc(var(--semantic-space-inner-m) * -1);
+    width: calc(100% + (var(--semantic-space-inner-m) * 2));
+  }
+  .c-pickupContents {
+    &__inner {
+      display: block;
+      position: relative;
+      text-decoration: none;
+      @include dm;
+      @include bp(sm) {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      @media (hover: hover) {
+        &:hover {
+          outline: solid var(--semantic-line-thickness-bold)
+            var(--ui-line-status-hover);
+          outline-offset: calc(var(--semantic-line-thickness-bold) * -1);
+          .c-pickupContents__body {
+            background-color: var(--ui-background-emphasize-mid-tertiary);
+          }
+          @include bp(sm) {
+            outline: none;
+          }
+        }
+      }
+      &:active {
+        outline-color: var(--ui-line-status-active);
+        outline-offset: calc(var(--semantic-line-thickness-bold) * -1);
+      }
+      &:focus-visible {
+        outline-color: var(--ui-line-status-focus);
+        outline-offset: calc(var(--semantic-line-thickness-bold) * -1);
+        @include bp(sm) {
+          outline-offset: 1px;
+        }
+      }
+    }
+    &__body {
+      z-index: 1;
+      position: absolute;
+      bottom: var(--semantic-space-inner-ll);
+      left: var(--semantic-space-inner-ll);
+      height: auto;
+      background-color: var(--ui-background-default);
+      padding: var(--semantic-space-inner-l);
+      max-width: 490px;
+      color: var(--ui-text-default);
+      @include bp(sm) {
+        position: static;
+        max-width: none;
+        margin-left: calc(var(--semantic-space-inner-m) * 1);
+        margin-right: calc(var(--semantic-space-inner-m) * -1);
+        margin-top: calc(var(--semantic-space-inner-m) * -1);
+        padding: var(--semantic-space-inner-m);
+        padding-right: calc(var(--semantic-space-inner-m) * 2);
+      }
+    }
+    &__title {
+      @include bp(sm) {
+        margin-top: 0;
+      }
+    }
+    &__heading {
+      @include txt($t-titleM-bold);
+      margin-top: 0;
+      @include bp(sm) {
+        @include txt($t-titleS-bold);
+      }
+    }
+    &__description {
+      margin-top: var(--semantic-space-inner-sss);
+      // display: -webkit-box;
+      // -webkit-box-orient: vertical;
+      // -webkit-line-clamp: 2;
+      // overflow: hidden;
+      > p {
+        @include bp(sm) {
+          @include txt($t-bodySS);
+          margin-top: var(--semantic-space-inner-ss);
+        }
+      }
+    }
+    &__date {
+      @include txt($t-labelL);
+      margin-top: var(--semantic-space-inner-ms);
+      @include bp(sm) {
+        margin-top: var(--semantic-space-inner-s);
+      }
+    }
+    &__labels {
+      margin-top: var(--semantic-space-inner-mms);
+      @include bp(sm) {
+        margin-top: var(--semantic-space-inner-m);
+      }
+    }
+    &__image {
+      .c-image {
+        img {
+          aspect-ratio: 16 / 9;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+.c-pickupContents--contents {
+  @include fullWidth;
+  background-color: var(--navy-50);
+  padding-block: var(--semantic-space-outer-ss);
+  @include bp(sm) {
+    padding-block: var(--semantic-space-inner-llll);
+  }
+  .c-pickupContents__inner,
+  .c-heading {
+    @include container;
+    @include bp(sm) {
+      width: 100%;
+    }
+  }
+  .c-heading {
+    padding-top: 0;
+  }
+  .c-pickupContents {
+    &__description {
+      margin-top: var(--semantic-space-inner-ll);
+    }
+    &__image {
+      @include bp(sm) {
+        order: unset;
+      }
+    }
+  }
+}

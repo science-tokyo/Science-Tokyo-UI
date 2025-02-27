@@ -1,0 +1,362 @@
+---
+layout: layouts/base.njk
+title: インデックスパターン：イベント一覧型（全て表示）・英語版
+description: ページパターン：インデックスパターン：イベント一覧型（全て表示）
+permalink: /page-patterns/index/en/event-list.html
+lang: en
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Action/Pagination/Pagination.njk" as Pagination %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({
+        text: title,
+        tag: "h1",
+        headingLevel: 1
+        }) }}
+    <div class="p-mediaIndex">
+      <div class="c-tab">
+        <div class="c-tab__head" role="tablist">
+          <div class="c-tab__tabs">
+            <button class="c-tab__trigger" type="button" role="tab">Top picks</button>
+            <button class="c-tab__trigger" type="button" role="tab">Stories</button>
+            <button class="c-tab__trigger" type="button" role="tab">News</button>
+            <button class="c-tab__trigger is-active" type="button" role="tab">Events</button>
+            <button class="c-tab__trigger" type="button" role="tab">Announcements</button>
+            <button class="c-tab__trigger" type="button" role="tab">Press Releases</button>
+            <button class="c-tab__trigger" type="button" role="tab" aria-selected="true">All</button>
+          </div>
+          <!-- /.c-tab__tabs -->
+        </div>
+        <!-- /.c-tab__head -->
+      </div>
+      <!-- /.c-tab -->
+      <div class="c-searchTool">
+        <div class="c-searchTool__header" data-js-search-sort="eventAll">
+          <div class="c-searchTool__header__link">
+            <a href="/page-patterns/index/en/event-list-month.html"
+               class="c-link c-utilityLink">
+              Monthly
+              <svg class="c-link__icon c-link__icon--right icon"
+                   aria-hidden="true"
+                   role="img">
+                <use xlink:href="/assets/img/sprite.svg#chevron_right"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <fieldset class="c-searchTool__tagControls">
+          <legend>Narrow down the keywords</legend>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagE
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagF
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagADA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagADAA
+          </label>
+        </fieldset>
+      </div>
+      <div class="p-mediaIndex__contents" data-js-contents-wrap>
+        {{ Card.render({
+                locale: lang,
+                cardType: 'default',
+                multiple: true,
+                columnsNumber: 3,
+                columnsNumberSmall: 1,
+                linkArea: 'none',
+                multipleCards: [
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title ',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title text text text text text text',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title text text text text text text',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title text text text text text text',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title ',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title text text text text text text',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title text text text text text text',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title text text text text text text',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title ',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title text text text text text text',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title text text text text text text',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                },
+                {
+                linkArea: 'card',
+                href: '#',
+                blank: false,
+                title:
+                'Media title text text text text text text',
+                titleTag: 'h3',
+                text: ' title text text text text text text title text text text text text text',
+                startDate: '2024年12月31日（月）',
+                startDateEn: 'December 31',
+                endDate: '2025年01月08日（木）',
+                endDateEn: 'January 1',
+                time: '10:00-21:00',
+                place: 'place name',
+                tags: ['tag', 'tag', 'tag'],
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: 960,
+                imageHeight: 540,
+                imageAlt: '画像のalt'
+                }
+                ]
+                }) 
+        }}
+      </div>
+      {{ Pagination.render({"currentPage": 1, "totalPages": 5}) }}
+    </div>
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

@@ -1,0 +1,24 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+{% set type = props.type | default('svg') %}
+{% set icon = props.icon %}
+  
+{%- if type == 'svg' %}
+<div style="font-size:48px;">
+  <svg class="icon" role="img">
+    <use xlink:href="/assets/img/sprite.svg#{{ icon }}"></use>
+  </svg>
+</div>
+{%- elif type == 'css' -%}
+<div style="font-size:48px;">
+  <span class="icon u-icon--{{ icon }}"></span>
+</div>
+{%- elif type == 'css-inverted' -%}
+<div class="grid__col" style="font-size:48px;background-color:#000;">
+  <span class="icon u-icon--{{ icon }} u-icon--inverted"></span>
+</div>
+{%- endif -%}
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

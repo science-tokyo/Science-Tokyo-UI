@@ -1,0 +1,77 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/primitive/Dataset/DefinitionList/DefinitionList.njk" as DefinitionList %}
+{% macro render( props ) %}
+  {%- set columnsNumber = props.columnsNumber | default(2) -%}
+  {%- set columnsNumberMedium = props.columnsNumberMedium | default('') -%}
+  {%- set columnsNumberSmall = props.columnsNumberSmall | default(1) -%}
+  {% set items = props.items | default([
+      {
+        "title": "お問い合わせ内容",
+        "tag": "h3",
+        "headingLevel": 3,
+        "department": "担当部署",
+        "name": "担当者名",
+        "address": "所在地に関する情報が入ります",
+        "tel": "00-0000-0000",
+        "fax": "00-0000-0000",
+        "email": "xxx@xxx.ac.jp"
+      },
+      {
+        "title": "お問い合わせ内容",
+        "tag": "h3",
+        "headingLevel": 3,
+        "department": "担当部署",
+        "name": "担当者名",
+        "address": "所在地に関する情報が入ります",
+        "tel": "00-0000-0000",
+        "fax": "00-0000-0000",
+        "email": "xxx@xxx.ac.jp"
+      }
+    ]) %}
+  {% set addClass = props.addClass %}
+  <div class="c-contactList{{ ' ' ~ addClass if addClass }}">
+    <div class="grid{{' grid--cols' ~ columnsNumber if columnsNumber}}{{' md:grid--cols' ~ columnsNumberMedium if columnsNumberMedium}}{{' sm:grid--cols' ~ columnsNumberSmall if columnsNumberSmall}}">
+      {% for item in items %}
+        <div class="grid__col">
+          <div class="c-contactList__item">
+            {%- set itemTelHTML = '<a class="c-link" href="tel:' ~ item.tel ~ '">' ~ item.tel ~ '</a>' if item.tel -%}
+            {%- set itemFaxHTML = '<a class="c-link" href="tel:' ~ item.fax ~ '">' ~ item.fax ~ '</a>' if item.fax -%}
+            {%- set itemEmailHTML = '<a class="c-link" href="mailto:' ~ item.email ~ '">' ~ item.email ~ '</a>' if item.email -%}
+            {%- if item.title -%}
+              {{ Heading.render({
+                            "text": item.title,
+                            "tag": item.tag,
+                            "headingLevel": item.headingLevel,
+                            "addClass": "c-contactList__heading"
+                            }) }}
+            {%- endif -%}
+            {%- if item.department -%}
+              {{ Paragraph.render({
+                            "text": item.department,
+                            "addClass": "c-contactList__department"
+                            }) }}
+            {%- endif -%}
+            {%- if item.name -%}
+              {{ Paragraph.render({
+                            "text": item.name,
+                            "addClass": "c-contactList__name"
+                            }) }}
+            {%- endif -%}
+            {{ DefinitionList.render({ "addClass": "c-contactList__data",
+                        "items": [
+                        { "term": "住所", "description": item.address },
+                        { "term": "Tel", "description": itemTelHTML },
+                        { "term": "Fax", "description": itemFaxHTML },
+                        { "term": "Email", "description": itemEmailHTML }
+                        ] }) }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

@@ -1,0 +1,20 @@
+{/* AnchorLink.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as AnchorLinkStories from './AnchorLink.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="AnchorLink" of={AnchorLinkStories} />
+
+# アンカーリンク Anchor link
+
+ページ内への特定の箇所にリンクを設定するコンポーネントです。  
+ページの上部に配置することを想定しています。
+
+## 原則
+
+- リンクテキストと移動先の文字列は一致させることが望ましいため、そのまま表示します。
+- 末尾にアイコンを表示させます。設定できるアイコンは[ユーティリティリンク](?path=/docs/プリミティブコンポーネント-primitive-アクション-action-ユーティリティリンク-utility-link--docs)の「arrow-bottom」のみです。
+
+<Canvas />

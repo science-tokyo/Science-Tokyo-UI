@@ -1,0 +1,19 @@
+{/* Accordion.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as AccordionStories from './Accordion.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Accordion" of={AccordionStories} />
+
+# アコーディオン Accordion
+
+内部のコンテンツを折りたたんで開閉表示させるコンポーネントです。  
+FAQのようなコンテンツを表示するときに使用します。
+
+## 原則
+
+行頭に数文字程度の任意のテキストを表示させることができます（例：Q1／A1、質問10／回答10など）。文章が入ることは想定していません。
+
+<Canvas />

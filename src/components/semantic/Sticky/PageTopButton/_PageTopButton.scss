@@ -1,0 +1,38 @@
+.c-pageTop {
+  z-index: 1;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  width: 56px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  color: var(--ui-icon-default);
+  background-color: var(--ui-background-default);
+  box-shadow:
+    0px 1px 6px 0px rgba(0, 0, 0, 0.3),
+    0px 4px 16px 3px rgba(0, 0, 0, 0.1);
+  border-radius: var(--semantic-corner-radius-pill);
+  transition: transform 0.4s ease-out;
+  visibility: hidden;
+  opacity: 0;
+  &.is-active {
+    visibility: visible;
+    opacity: 1;
+  }
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      transform: translateY(-5px);
+      background-color: var(--ui-background-emphasize-mid-tertiary);
+    }
+  }
+  &:active {
+    background-color: var(--ui-background-emphasize-mid-quaternary);
+  }
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+}

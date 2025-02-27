@@ -1,0 +1,23 @@
+{/* Checkbox.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as CheckboxStories from './Checkbox.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Checkbox" of={CheckboxStories} />
+
+# チェックボックス Checkbox
+
+単一ないし複数の選択肢から、独立して選択できるコンポーネントです。  
+設定の有効化やリストのフィルタリングなどにも使用されます。
+
+## 原則
+
+- 項目ラベル、入力必須項目、サポートテキストは入力を補助する要素がコンポーネントに予め用意されていますが、必要に応じて表示／非表示を切り替えて利用します。
+- 利用不可（Disabled）の状態を表示させる際は、サポートテキストを利用してユーザーに利用することができない理由を知らせる必要があります。
+
+<Canvas />
+<Controls />
+
+<Stories />

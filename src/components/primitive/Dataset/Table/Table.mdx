@@ -1,0 +1,32 @@
+{/* Table.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as TableStories from './Table.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Table" of={TableStories} />
+
+# テーブル Table
+
+テーブルヘッダーとテーブルデータで構成されます。  
+テーブルデータでは一部のコンポーネントを内包して表示することができます。
+
+## 原則
+
+- どのブレイクポイントでも同じレイアウトで表示します。
+- 表示領域に収まらない場合、初期表示は左揃えになり、横スクロールで確認できます。
+- 次のいずれかのテーブルヘッダーを使用してください。
+  - 行ヘッダー
+  - 列ヘッダー
+  - 行列ヘッダー
+- テーブルに内包できるコンポーネントは以下です。
+  - 段落
+  - 箇条書きリスト
+  - リンクリスト
+- 必要に応じて、テーブルキャプションを追加できます。
+
+<Canvas />
+<Controls />
+
+<Stories />

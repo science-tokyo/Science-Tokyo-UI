@@ -1,0 +1,20 @@
+{/* SideNavigation.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as SideNavigationStories from './SideNavigation.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="SideNavigation" of={SideNavigationStories} />
+
+# サイドナビゲーション Side navigation
+
+Science Tokyoのおもなサイトへのリンクを提供するナビゲーションです。
+
+## 原則
+
+- このコンポーネントは見た目も表示要素も変更は行いません。
+- 開閉状態の維持は、ユーザーが利用しているブラウザのsessionStorageに依存します。
+- ウィンドウ幅がlg（デスクトップ）のときのみ表示します。
+
+<Canvas />

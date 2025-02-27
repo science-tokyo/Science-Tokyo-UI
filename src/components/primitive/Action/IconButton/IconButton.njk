@@ -1,0 +1,85 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set type = props.type %}
+  {% set icon = props.icon %}
+  {% set label = props.label %}
+  {% set style = props.style %}
+  {% set noBorder = props.noBorder | default(false) %}
+  {% set size = props.size %}
+  {% set disabled = props.disabled %}
+  {% set href = props.href | default("#") %}
+  {% set external = props.external %}
+  {% set multiple = props.multiple | default(false) %}
+  {% set multipleLayout = props.multipleLayout | default('horizontal') %}
+  {% set items = props.items | default([
+      {
+        type: 'link',
+        label: props.label,
+        href: props.href,
+        external: props.external,
+        size: props.size,
+        style: props.style,
+        noBorder: props.noBorder,
+        rightIcon: props.rightIcon
+      },
+      {
+        type: 'link',
+        label: props.label,
+        href: props.href,
+        external: props.external,
+        size: props.size,
+        style: props.style,
+        noBorder: props.noBorder,
+        rightIcon: props.rightIcon
+      }
+    ]) %}
+  {% set addClass = props.addClass %}
+  {%- if multiple -%}
+    <div class="c-iconButtonGroup{{ ' c-iconButtonGroup--horizontal' if multipleLayout == 'horizontal' }}">
+      {%- for item in items -%}
+        {%- if item.icon -%}
+          <div class="c-iconButtonGroup__item">
+            {% if item.type == "link" %}
+              <a target="{{"_blank" if item.external}}" href="{{ item.href }}" class="c-iconButton{{" c-iconButton--disabled" if item.disabled}}{{ " c-iconButton--" ~ item.style if item.style }}{{ " c-iconButton--noBorder" if item.noBorder }}{{ " c-iconButton--size" ~ item.size if item.size }}{{' ' ~ item.addClass if item.addClass}}">
+              {% else %}
+                <button {{ " disabled" if item.disabled }} class="c-iconButton{{ " c-iconButton--" ~ item.style if item.style }}{{ " c-iconButton--noBorder" if item.noBorder }}{{ " c-iconButton--size" ~ item.size if item.size }}{{' ' ~ item.addClass if item.addClass}}">
+                {% endif %}
+                {% if item.label %}
+                  <span class="c-iconButton_icon">{{ item.label }}</span>
+                {% else %}
+                  <svg class="c-iconButton__icon icon" aria-hidden="true" role="img">
+                    <use xlink:href="/assets/img/sprite.svg#{{ item.icon }}"></use>
+                  </svg>
+                {% endif %}
+                {% if item.type == "link" %}
+                </a>
+              {% else %}
+              </button>
+            {% endif %}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- else -%}
+    {% if type == "link" %}
+      <a target="{{"_blank" if external}}" href="{{ href }}" class="c-iconButton{{" c-iconButton--disabled" if disabled}}{{ " c-iconButton--" ~ style if style }}{{ " c-iconButton--size" ~ size if size }}{{ " c-iconButton--noBorder" if noBorder }}{{' ' ~ addClass if addClass}}">
+      {% else %}
+        <button {{ " disabled" if disabled }} class="c-iconButton{{ " c-iconButton--" ~ style if style }}{{ " c-iconButton--size" ~ size if size }}{{ " c-iconButton--noBorder" if noBorder }}{{' ' ~ addClass if addClass}}">
+        {% endif %}
+        {% if label %}
+          <span class="c-iconButton_icon">{{ label }}</span>
+        {% else %}
+          <svg class="c-iconButton__icon icon" aria-hidden="true" role="img">
+            <use xlink:href="/assets/img/sprite.svg#{{ icon }}"></use>
+          </svg>
+        {% endif %}
+        {% if type == "link" %}
+        </a>
+      {% else %}
+      </button>
+    {% endif %}
+  {% endif %}
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

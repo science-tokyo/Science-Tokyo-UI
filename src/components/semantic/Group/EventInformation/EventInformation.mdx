@@ -1,0 +1,20 @@
+{/* EventInformation.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as EventInformationStories from './EventInformation.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="EventInformation" of={EventInformationStories} />
+
+# イベント情報 Event information
+
+イベントの概要（参加や申し込みに必要な情報）を表示するコンポーネントです。
+
+## 原則
+
+- 日付の表記はデザインシステムサイトのライティングガイドラインの章（<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/japanese#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">日本語</a>／<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/english#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">英語</a>）をご確認ください。
+- 開催日時、開催場所は必須項目ですが、それ以外の情報は任意で指定します。学内関係者はWeb運用ガイドラインで推奨表記をご確認ください。
+- 行動喚起（Call to action）を促したい際は、ボタンの利用を推奨します。
+
+<Canvas />

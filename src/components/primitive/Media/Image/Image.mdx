@@ -1,0 +1,18 @@
+{/* Image.mdx */}
+import { Canvas, Meta, Stories, Controls } from '@storybook/blocks';
+
+import * as ImageStories from './Image.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Image" of={ImageStories} />
+
+# 画像 Image
+
+画像を表示するためのコンポーネントです。  
+画像はコンポーネントとして定義されますが、他のコンポーネント内に挿入して1要素として扱うことも可能です。
+
+<Canvas />
+<Controls />
+
+<Stories />

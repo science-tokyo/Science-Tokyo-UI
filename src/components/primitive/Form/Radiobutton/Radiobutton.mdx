@@ -1,0 +1,22 @@
+{/* Radiobutton.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as RadiobuttonStories from './Radiobutton.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Radiobutton" of={RadiobuttonStories} />
+
+# ラジオボラン Radiobutton
+
+複数項目から1つを選択できるコンポーネントです。
+
+## 原則
+
+- 項目ラベル、入力必須項目、サポートテキストは入力を補助する要素がコンポーネントに予め用意されていますが、必要に応じて表示／非表示を切り替えて利用します。
+- 利用不可（Disabled）の状態を表示させる際は、サポートテキストを利用してユーザーに利用することができない理由を知らせる必要があります。
+
+<Canvas />
+<Controls />
+
+<Stories />

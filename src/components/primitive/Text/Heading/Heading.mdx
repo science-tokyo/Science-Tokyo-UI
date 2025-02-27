@@ -1,0 +1,24 @@
+{/* Heading.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as HeadingStories from './Heading.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Heading" of={HeadingStories} />
+
+# 見出し Heading
+
+見出しを表示するためのコンポーネントです。  
+併せて利用できる「ショルダー（見出しの上に表示）」「リード文（見出しの下に表示）」も用意しています。  
+h1は使用状況によって複数のスタイルを用意しています。
+
+## 原則
+
+- 見出しコンポーネントには「見出し」「ショルダー」「リード文」の3つの要素が含まれています。「ショルダー」「リード文」は任意で利用することが可能です。他の要素の追加はできません。
+- 見出し（h1〜h6）」のfont-weight（太さ）は、標準設定から変更して利用できません。
+
+<Canvas />
+<Controls />
+
+<Stories />

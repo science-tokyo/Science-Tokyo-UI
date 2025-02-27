@@ -1,0 +1,513 @@
+---
+layout: layouts/base.njk
+title: ファクト情報詳細パターン：汎用型
+description: ページパターン：ファクト情報詳細パターン：汎用型
+permalink: /page-patterns/fact/general.html
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{% import "src/components/primitive/Action/UtilityLink/UtilityLink.njk" as UtilityLink %}
+{% import "src/components/primitive/Dataset/List/List.njk" as List %}
+{% import "src/components/primitive/Dataset/Table/Table.njk" as Table %}
+{% import "src/components/primitive/Media/Image/Image.njk" as Image %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph %}
+{% import "src/components/semantic/Group/AnchorLink/AnchorLink.njk" as AnchorLink %}
+{% import "src/components/semantic/Group/ArticleContents/ArticleContents.njk" as ArticleContents %}
+{% import "src/components/semantic/Group/Carousel/Carousel.njk" as Carousel %}
+{% import "src/components/semantic/Group/ContactList/ContactList.njk" as ContactList %}
+{% import "src/components/semantic/Group/LinkList/LinkList.njk" as LinkList %}
+{% import "src/components/semantic/Group/PickupContents/PickupContents.njk" as PickupContents %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({
+      "text": "ページパターン：ファクト情報詳細パターン：汎用型",
+      "tag": "h1",
+      "headingLevel": "1",
+      "lead": "リード文「自然界はどのようにしてできているのだろう?」という基本的な原理"
+    }) }}
+    {{ AnchorLink.render({
+      "multiple": true,
+      "items": [
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        },
+        {
+          "href": "#",
+          "label": "アンカーリンク",
+          "rightIcon": "arrow_down"
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "見出しテキスト h2「自然界はどのようにしてできて",
+      "tag": "h2",
+      "headingLevel": 2,
+      "lead": "リード文「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。「自然界はどのようにしてできているのだろう?」という"
+    }) }}
+    {{ Heading.render({
+      "text": "見出しテキスト h3「自然界はどのようにしてできて",
+      "tag": "h3",
+      "headingLevel": 3,
+      "lead": "リード文「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。「自然界はどのようにしてできているのだろう?」という"
+    }) }}
+    {{ List.render({
+      "items": [
+        "リスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+        "リスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+        "リスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+      ]
+    }) }}
+    {{ List.render({
+      "isNotes": true,
+      "items": [
+        "注釈リスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+        "注釈リスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+      ]
+    }) }}
+    {{ UtilityLink.render({
+      "multiple": true,
+      "items": [
+        {
+          "href": "#",
+          "label": "リンクテキスト",
+          "rightIcon": "chevron_right"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h2「自然界はどのようにしてできて", "tag": "h2", "headingLevel": 2, "shoulder": "ショルダー"}) }}
+    {{ Paragraph.render({"text": "キャッチコピーM　工学は、人類を幸せにするための枠組である「文明」に貢献する学問です。", "isCopy": true, "copySize": "M"}) }}
+    {{ Paragraph.render({"text": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"}) }}
+    {{ Image.render({
+      "src": "/assets/img/img-campus.webp",
+      "width": 960,
+      "height": 540,
+      "alt": "画像のキャプションが入ります画像のキャプションが入ります",
+      "size": "L",
+      "caption": true,
+      "responsiveImage": false
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ ArticleContents.render({
+      "copyText": "記事コンテンツ-キャッチコピーM工学は、人類を幸せにするための枠組である「文明」に貢献する学問です。",
+      "copySize": "M",
+      "text": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+      "isImage": true,
+      "imagePosRight": false,
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 960,
+      "imageHeight": 540,
+      "imageCaption": true,
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "links": [
+        {
+          "label": "リンクテキスト",
+          "url": "#",
+          "external": true
+        },
+        {
+          "label": "リンクテキスト",
+          "url": "#",
+          "rightIcon": "chevron_right"
+        }
+      ]
+    }) }}
+    {{ ArticleContents.render({
+      "copyText": "記事コンテンツ-キャッチコピーM工学は、人類を幸せにするための枠組である「文明」に貢献する学問です。",
+      "copySize": "M",
+      "text": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+      "isImage": true,
+      "imagePosRight": true,
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 960,
+      "imageHeight": 540,
+      "imageCaption": true,
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "links": [
+        {
+          "label": "リンクテキスト",
+          "url": "#",
+          "external": true
+        },
+        {
+          "label": "リンクテキスト",
+          "url": "#",
+          "rightIcon": "chevron_right"
+        }
+      ]
+    }) }}
+    {{ Image.render({
+      "multiple": true,
+      "dataset": [
+        {
+          "columnsNumber": 2,
+          "columnsNumberSmall": 1,
+          "items": [
+            {
+              "src": "/assets/img/img-campus.webp",
+              "width": 960,
+              "height": 540,
+              "alt": "© Caption Curabitur tempor quis eros",
+              "fullWidth": true,
+              "caption": true
+            },
+            {
+              "src": "/assets/img/img-campus.webp",
+              "width": 960,
+              "height": 540,
+              "alt": "© Caption Curabitur tempor quis eros",
+              "fullWidth": true,
+              "caption": true
+            }
+          ]
+        }
+      ]
+    }) }}
+    {{ Heading.render({
+      "text": "見出しテキスト h2「自然界はどのようにしてできて",
+      "tag": "h2",
+      "headingLevel": 2,
+      "lead": "リード文「自然界はどのようにしてできているのだろう?」という基本的な原理"
+    }) }}
+    {{ Heading.render({
+      "text": "見出しテキスト h3「自然界はどのようにしてできて",
+      "tag": "h3",
+      "headingLevel": 3,
+      "lead": "リード文「自然界はどのようにしてできているのだろう?」という基本的な原理"
+    }) }}
+    {{ Table.render({
+      "headerPosition": "Left",
+      "layout": "firstQuarter",
+      "contents": [
+        [
+          "テーブルデータ",
+          "テーブルデータ"
+        ],
+        [
+          "テーブルデータ",
+          "テーブルデータ"
+        ],
+        [
+          "テーブルデータ",
+          "テーブルデータ"
+        ],
+        [
+          "テーブルデータ",
+          "テーブルデータ"
+        ]
+      ],
+      "layoutFixed": true
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h2「自然界はどのようにしてできて", "tag": "h2", "headingLevel": 2, "shoulder": "ショルダー"}) }}
+    {{ Paragraph.render({"text": "キャッチコピーM　工学は、人類を幸せにするための枠組である「文明」に貢献する学問です。", "isCopy": true, "copySize": "M"}) }}
+    {{ Paragraph.render({"text": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"}) }}
+    {{ Image.render({
+      "src": "/assets/img/img-campus.webp",
+      "width": 960,
+      "height": 540,
+      "alt": "画像のキャプションが入ります画像のキャプションが入ります",
+      "size": "L",
+      "caption": true,
+      "responsiveImage": false
+    }) }}
+    {{ UtilityLink.render({
+      "multiple": true,
+      "layout": "vertical",
+      "items": [
+        {
+          "href": "#",
+          "label": "リンクテキスト",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "label": "リンクテキスト",
+          "rightIcon": "chevron_right"
+        }
+      ]
+    }) }}
+    {{ ArticleContents.render({
+      "copyText": "記事コンテンツ-キャッチコピーM工学は、人類を幸せにするための枠組である「文明」に貢献する学問です。",
+      "copySize": "M",
+      "text": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+      "isImage": true,
+      "imagePosRight": false,
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 960,
+      "imageHeight": 540,
+      "imageCaption": true,
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "links": [
+        {
+          "label": "リンクテキスト",
+          "url": "#",
+          "external": true
+        },
+        {
+          "label": "リンクテキスト",
+          "url": "#",
+          "rightIcon": "chevron_right"
+        }
+      ]
+    }) }}
+    {{ ArticleContents.render({
+      "copyText": "記事コンテンツ-キャッチコピーM工学は、人類を幸せにするための枠組である「文明」に貢献する学問です。",
+      "copySize": "M",
+      "text": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+      "isImage": true,
+      "imagePosRight": true,
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 960,
+      "imageHeight": 540,
+      "imageCaption": true,
+      "imageAlt": "© Caption Curabitur tempor quis eros",
+      "links": [
+        {
+          "label": "リンクテキスト",
+          "url": "#",
+          "external": true
+        },
+        {
+          "label": "リンクテキスト",
+          "url": "#",
+          "rightIcon": "chevron_right"
+        }
+      ]
+    }) }}
+    {{ PickupContents.render({
+      "type": "contents",
+      "shoulder": "ショルダーコピー",
+      "title": "見出しテキスト h2 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+      "contentsCopy": "ピックアップキャッチコピー工学は、人類を幸せにするための枠組である「文明」に貢献する学問です。工学院は、機械系、システム制御系、電気電子系、情報通信系、経営工学系の5つの系と、その先の大学院課程からなり、",
+      "description": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。「自然界はどのようにしてできているのだろう?」という",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 960,
+      "imageHeight": 540,
+      "imageAlt": "©Gazou N Caption",
+      "responsiveImage": false,
+      "linkType": "none",
+      "imageCaption": true
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ LinkList.render({
+      "type": "related",
+      "links": [
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心を",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「リンクテキスト「自然界はどのようにして",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどの",
+          "external": true
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ PickupContents.render({
+      "type": "",
+      "title": "Pickupコンテンツ-キャッチコピー",
+      "titleTag": "p",
+      "description": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 960,
+      "imageHeight": 540,
+      "responsiveImage": false,
+      "buttonLabel": "ボタン",
+      "href": "#",
+      "rightIcon": "chevron_right"
+    }) }}
+    {{ Heading.render({"text": "見出しテキスト h3「自然界はどのようにしてできて", "tag": "h3", "headingLevel": 3}) }}
+    {{ ContactList.render({
+      "columnsNumber": "1",
+      "items": [
+        {
+          "tag": "h3",
+          "headingLevel": 3,
+          "department": "問い合わせ先組織名",
+          "address": "東京都目黒区大岡山2丁目12-1",
+          "tel": "03-XXXX-XXXX",
+          "fax": "03-XXXX-XXXX",
+          "email": "info-XXXX@isct.ac.jp"
+        },
+        {
+          "tag": "h3",
+          "headingLevel": 3,
+          "department": "問い合わせ先組織名",
+          "address": "東京都目黒区大岡山2丁目12-1",
+          "tel": "03-XXXX-XXXX",
+          "fax": "03-XXXX-XXXX",
+          "email": "info-XXXX@isct.ac.jp"
+        }
+      ]
+    }) }}
+    <div class="contentArea__bottom">
+      <div class="grid grid--justifyCenter">
+        <div class="grid__col grid__col--span8 sm:grid__col--span8">
+          {{ Button.render({"label": "（同階層のインデックスページ）へ", "href": "#", "fixed": true, "leftIcon": "arrow_left"}) }}
+        </div>
+      </div>
+    </div>
+    <!-- /.contentArea__bottom -->
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->
+<aside class="contentFooter">
+  <div class="container">
+    {{ Heading.render({"text": "関連コンテンツ", "tag": "h2", "headingLevel": 2}) }}
+    {{ LinkList.render({
+      "type": "related",
+      "links": [
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心を",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理",
+          "rightIcon": "chevron_right"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「リンクテキスト「自然界はどのようにして",
+          "rightIcon": "pdf"
+        },
+        {
+          "href": "#",
+          "text": "リンクテキスト「自然界はどの",
+          "external": true
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "研究トピックス", "tag": "h2", "headingLevel": 2}) }}
+    {{ Carousel.render({
+        "contentsType": "tile",
+        "autoplay": false,
+        "loop": false,
+        "carouselItemNum": 3,
+        "carouselItems": [
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        },
+        {
+        cardType: 'media',
+        linkArea: 'card',
+        href: '#',
+        blank: false,
+        title: 'リンクテキスト「自然界はどのようにしてできて',
+        titleTag: 'h3',
+        text: '',
+        startDate: '2024年12月31日',
+        tags: ['タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト', 'タグテキスト'],
+        imageSrc: '/assets/img/img-campus.webp',
+        imageWidth: 960,
+        imageHeight: 540,
+        imageAlt: '画像のalt'
+        }
+    ]
+    })
+    }}
+  </div>
+  <!-- /.container -->
+</aside>
+<!-- /.contentFooter -->

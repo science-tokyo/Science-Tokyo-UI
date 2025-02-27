@@ -1,0 +1,33 @@
+@use '../../scss/globals/base/' as *;
+@use 'sass:map';
+
+.docs-elevation {
+  list-style: none !important;
+  padding: 0 !important;
+  display: flex;
+  gap: var(--semantic-space-outer-s);
+  li {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: map.get($font-weight, bold);
+    gap: var(--semantic-space-inner-s);
+    &::before {
+      content: '';
+      display: block;
+      width: var(--semantic-size-section-ml);
+      height: var(--semantic-size-section-ml);
+      border-radius: var(--semantic-corner-radius-l);
+      border: var(--semantic-line-thickness-default) solid
+        var(--ui-line-brand-secondary);
+    }
+  }
+  &_lv1::before {
+    border: 0 !important;
+    box-shadow: var(--elevation-lv1);
+  }
+  &_lv2::before {
+    border: 0 !important;
+    box-shadow: var(--elevation-lv2);
+  }
+}

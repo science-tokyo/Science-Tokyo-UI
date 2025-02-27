@@ -1,0 +1,22 @@
+{/* Hero.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as HeroStories from './Hero.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Hero" of={HeroStories} />
+
+# ヒーロー画像 Hero
+
+ページの背景いっぱいに大きく画像を表示するコンポーネントです。  
+ページタイトルをグラフィック表現で惹きつけたい際に利用します。
+
+## 原則
+
+- ページの最上部に「[見出し h1](?path=/docs/プリミティブコンポーネント-primitive-テキスト-text-見出し-heading--docs#h1)」の代わりとして利用します。
+- 「デフォルト」タイプは、「タイトル」「リード文」を表示するセーフティエリアが画像の左下に設けられています。
+- 「人物」タイプは、「所属」「氏名」「役職名」を表示するセーフティエリアが画像左側に高さ中央揃えで設けられています。
+	- セーフティエリアの情報量を考慮し、画像はバストアップ程度の構図を推奨します。
+
+<Canvas />

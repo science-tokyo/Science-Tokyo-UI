@@ -1,0 +1,222 @@
+@use 'sass:map';
+@use '../../../../scss/globals/base/' as *;
+
+.c-heading {
+  $root: &;
+  @include dm;
+  &__inner {
+    display: flex;
+    flex-direction: column;
+  }
+  &__label {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  &__shoulder {
+    order: -1;
+    margin-top: 0;
+    @include txt($t-bodySS);
+    margin-bottom: var(--semantic-space-inner-s);
+    @include bp(sm) {
+      @include txt($t-labelSS);
+      margin-bottom: var(--semantic-space-inner-ss);
+    }
+  }
+  &--h1 {
+    @include fullWidth;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(241, 244, 252, 1) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    #{$root}__inner {
+      @include container;
+      padding-top: calc(
+        var(--semantic-space-outer-s) + var(--semantic-space-outer-ss)
+      );
+      padding-bottom: var(--semantic-space-outer-s);
+      @include bp(sm) {
+        padding-top: var(--semantic-space-outer-sss);
+        padding-bottom: var(--semantic-space-inner-l);
+      }
+    }
+    margin-top: var(--semantic-space-outer-ss);
+    &:first-child {
+      margin-top: 0;
+    }
+    @include bp(sm) {
+      margin-top: var(--semantic-space-outer-sss);
+    }
+    // &:first-child {
+    //   margin-top: 0;
+    // }
+    #{$root}__label {
+      @include txt($t-displayS-bold);
+      line-height: 1.5;
+      @include bp(sm) {
+        @include txt($t-headingM-bold);
+      }
+    }
+    #{$root}__shoulder {
+      order: -1;
+      @include txt($t-bodyM);
+      margin-bottom: var(--semantic-space-inner-m);
+      @include bp(sm) {
+        margin-bottom: var(--semantic-space-inner-mms);
+      }
+    }
+    #{$root}__lead {
+      @include txt($t-bodyM);
+      margin-top: var(--semantic-space-inner-ll);
+      @include bp(sm) {
+        margin-top: var(--semantic-space-inner-m);
+      }
+    }
+  }
+  &--h1Normal {
+    padding-top: var(--semantic-space-outer-ss);
+    padding-bottom: var(--semantic-space-inner-llll);
+    @include bp(sm) {
+      padding-top: var(--semantic-space-outer-ssss);
+      padding-bottom: var(--semantic-space-inner-l);
+    }
+    #{$root}__label {
+      @include txt($t-displayS-bold);
+      line-height: 1.5;
+      @include bp(sm) {
+        @include txt($t-headingM-bold);
+      }
+    }
+    #{$root}__shoulder {
+      order: -1;
+      @include txt($t-bodyM);
+      margin-bottom: var(--semantic-space-inner-m);
+      @include bp(sm) {
+        margin-bottom: var(--semantic-space-inner-mms);
+      }
+    }
+    #{$root}__lead {
+      @include txt($t-bodyM);
+      margin-top: var(--semantic-space-inner-ll);
+      @include bp(sm) {
+        margin-top: var(--semantic-space-inner-m);
+      }
+    }
+  }
+  &--h2 {
+    padding-top: var(--semantic-space-outer-ss);
+    padding-bottom: var(--semantic-space-inner-s);
+    @include bp(sm) {
+      padding-top: var(--semantic-space-inner-llll);
+      padding-bottom: var(--semantic-space-inner-s);
+    }
+    // &:first-child {
+    //   margin-top: 0;
+    // }
+    #{$root}__label {
+      @include txt($t-headingM-bold);
+      line-height: 1.4;
+      @include bp(sm) {
+        @include txt($t-headingS-bold);
+      }
+    }
+    #{$root}__shoulder {
+      @include txt($t-bodyS);
+      margin-bottom: var(--semantic-space-inner-m);
+      @include bp(sm) {
+        margin-bottom: var(--semantic-space-inner-ms);
+      }
+    }
+    #{$root}__lead {
+      @include txt($t-bodyM);
+      margin-top: var(--semantic-space-inner-l);
+      @include bp(sm) {
+        margin-top: var(--semantic-space-inner-mms);
+      }
+    }
+  }
+  &--h3 {
+    padding-top: var(--semantic-space-inner-l);
+    padding-bottom: var(--semantic-space-inner-ss);
+    @include bp(sm) {
+      padding-top: var(--semantic-space-inner-m);
+      padding-bottom: var(--semantic-space-inner-ss);
+    }
+    // &:first-child {
+    //   margin-top: 0;
+    // }
+    #{$root}__label {
+      @include txt($t-headingS-semiBold);
+      @include bp(sm) {
+        @include txt($t-titleL-semiBold);
+      }
+    }
+    #{$root}__shoulder {
+      @include txt($t-bodyS);
+      margin-bottom: var(--semantic-space-inner-ms);
+      @include bp(sm) {
+        @include txt($t-bodySS);
+        margin-bottom: var(--semantic-space-inner-s);
+      }
+    }
+    #{$root}__lead {
+      @include txt($t-bodyM);
+      margin-top: var(--semantic-space-inner-m);
+      @include bp(sm) {
+        margin-top: var(--semantic-space-inner-mms);
+      }
+    }
+  }
+  &--h4 {
+    padding-top: var(--semantic-space-inner-m);
+    padding-bottom: var(--semantic-space-inner-sss);
+    // &:first-child {
+    //   margin-top: 0;
+    // }
+    #{$root}__label {
+      @include txt($t-titleM-bold);
+      @include bp(sm) {
+        @include txt($t-titleS-bold);
+      }
+    }
+    #{$root}__lead {
+      @include txt($t-bodyM);
+      margin-top: var(--semantic-space-inner-s);
+    }
+  }
+  &--h5 {
+    padding-top: var(--semantic-space-inner-s);
+    padding-bottom: var(--semantic-space-inner-sss);
+    // &:first-child {
+    //   margin-top: 0;
+    // }
+    #{$root}__label {
+      @include txt($t-titleS-bold);
+      @include bp(sm) {
+        @include txt($t-labelL);
+      }
+    }
+    #{$root}__lead {
+      @include txt($t-bodyS);
+      margin-top: var(--semantic-space-inner-s);
+    }
+  }
+  &--h6 {
+    padding-top: var(--semantic-space-inner-s);
+    padding-bottom: var(--semantic-space-inner-sss);
+    // &:first-child {
+    //   margin-top: 0;
+    // }
+    #{$root}__label {
+      @include txt($t-titleS-bold);
+      @include bp(sm) {
+        @include txt($t-labelL);
+      }
+    }
+    #{$root}__lead {
+      @include txt($t-bodyS);
+      margin-top: var(--semantic-space-inner-s);
+    }
+  }
+}

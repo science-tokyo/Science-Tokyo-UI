@@ -1,0 +1,8 @@
+@use '../../../../scss/globals/base/' as *;
+
+.c-banner {
+  @include dm;
+  &__item {
+    flex: 1;
+  }
+}

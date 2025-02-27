@@ -1,0 +1,155 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+
+.c-utilityLinks,
+.c-utilityLinkGroup {
+  @include dm;
+  gap: var(--semantic-space-inner-m) var(--semantic-space-inner-l);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  @include bp(sm) {
+    gap: var(--semantic-space-inner-s) var(--semantic-space-inner-ml);
+  }
+  &--row,
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  &--vertical {
+    flex-direction: column;
+  }
+  &__item {
+    // flex: 1;
+  }
+  &--justify {
+    &Start {
+      justify-content: flex-start;
+    }
+    &Center {
+      justify-content: center;
+    }
+    &End {
+      justify-content: flex-end;
+    }
+  }
+  &--size {
+    &LL {
+      gap: var(--semantic-space-inner-m) var(--semantic-space-inner-l);
+    }
+    &L {
+      gap: var(--semantic-space-inner-mms) var(--semantic-space-inner-l);
+    }
+    &S {
+      gap: var(--semantic-space-inner-s) var(--semantic-space-inner-ml);
+    }
+    &SS {
+      gap: var(--semantic-space-inner-s) var(--semantic-space-inner-ml);
+    }
+  }
+}
+.c-utilityLink {
+  $_root: &;
+  display: inline-flex;
+  @include txt($t-bodyM);
+  border-radius: var(--semantic-corner-radius-ss);
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  &__icon,
+  > svg {
+    width: var(--semantic-size-icon-mml);
+    height: var(--semantic-size-icon-mml);
+    margin: 0;
+    flex: 1 0 auto;
+  }
+  &--weightBold {
+    @include txt($t-bodyM-bold);
+    text-decoration: none;
+  }
+  &--size {
+    &LL {
+      @include txt($t-bodyLL);
+      &#{$_root}--weightBold {
+        @include txt($t-bodyLL-bold);
+      }
+      & > svg {
+        width: var(--semantic-size-icon-l);
+        height: var(--semantic-size-icon-l);
+      }
+    }
+    &L {
+      @include txt($t-bodyL);
+      &#{$_root}--weightBold {
+        @include txt($t-bodyL-bold);
+      }
+      > svg {
+        width: var(--semantic-size-icon-ml);
+        height: var(--semantic-size-icon-ml);
+      }
+    }
+    &S {
+      @include txt($t-bodyS);
+      &#{$_root}--weightBold {
+        @include txt($t-bodyS-bold);
+      }
+      > svg {
+        width: var(--semantic-size-icon-m);
+        height: var(--semantic-size-icon-m);
+      }
+    }
+    &SS {
+      @include txt($t-bodySS);
+      &#{$_root}--weightBold {
+        @include txt($t-bodySS-bold);
+      }
+      > svg {
+        width: var(--semantic-size-icon-mms);
+        height: var(--semantic-size-icon-mms);
+      }
+    }
+  }
+  &--rounded,
+  &--bordered {
+    text-decoration: none;
+    padding: var(--semantic-space-hairline-m) var(--semantic-space-inner-ms);
+  }
+  &--bordered {
+    border-radius: var(--semantic-corner-radius-s);
+    border: 1px solid var(--ui-line-status-link);
+    &:focus-visible {
+      border-color: transparent;
+    }
+    &:visited {
+      border-color: var(--ui-line-status-visited);
+    }
+  }
+  &--rounded {
+    border-radius: var(--semantic-corner-radius-pill);
+  }
+  &--current {
+    background-color: var(--ui-background-brand-primary);
+    color: var(--ui-text-inverted);
+    border: 1px solid var(--ui-line-status-link);
+  }
+  &--fixed {
+    width: 100%;
+  }
+  &--align {
+    &Left {
+      justify-content: flex-start;
+    }
+    &Center {
+      justify-content: center;
+    }
+    &Right {
+      justify-content: flex-end;
+    }
+  }
+}

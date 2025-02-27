@@ -1,0 +1,404 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+
+<Meta title="Tokens/色 Color" />
+
+# 色 Color
+
+色はプリミティブトークンから定義され、直接UIに適用されるのではなく、セマンティックトークンをバリアブルを通じて利用します。  
+詳細は`_var_color.scss`を参照してください。
+
+## プリミティブトークン／Primitive token
+
+サイトで使用可能な配色の全貌です。UI（コンポーネント）に直接この色が設定されることはありません。  
+セマンティックトークンとして定義された値をコンポーネントに適用します。
+
+<ColorPalette>
+  <ColorItem
+    title="--indigo-[num]"
+    colors={{
+      '50': '#f5f9ff',
+      '100': '#dceafe',
+      '200': '#c4dafd',
+      '300': '#abc9fc',
+      '400': '#93b8fb',
+      '500': '#6590f2',
+      '600': '#3d6aea',
+      '700': '#1b49e1',
+      '800': '#0031d8',
+      '900': '#0015ba',
+      '1000': '#00019c',
+      '1100': '#0d017f',
+      '1200': '#160561'
+    }}
+  />
+  <ColorItem
+    title="--navy-[num]"
+    colors={{
+      '50': '#f9fbff',
+      '100': '#e4ebf6',
+      '200': '#cfdbed',
+      '300': '#bac9e2',
+      '400': '#a5b7d6',
+      '500': '#7f96c2',
+      '600': '#5f7ab6',
+      '700': '#435ea5',
+      '800': '#2d4590',
+      '900': '#1c3177',
+      '1000': '#11215b',
+      '1100': '#0a1541',
+      '1200': '#060d2b'
+    }}
+  />
+  <ColorItem
+    title="--blue-[num]"
+    colors={{
+      '50': '#f0f9ff',
+      '100': '#dcf0ff',
+      '1000': '#00428c',
+      '1100': '#00316a',
+      '1200': '#00234b',
+      '200': '#c0e4ff',
+      '300': '#97d3ff',
+      '400': '#57b8ff',
+      '500': '#39abff',
+      '600': '#008bf2',
+      '700': '#0877d7',
+      '800': '#0066be',
+      '900': '#0055ad'
+    }}
+  />
+  <ColorItem
+    title="--cyan-[num]"
+    colors={{
+      '100': '#c8f8ff',
+      '1000': '#006173',
+      '1100': '#004c59',
+      '1200': '#003741',
+      '200': '#99f2ff',
+      '300': '#79e2f2',
+      '400': '#2bc8e4',
+      '50': '#e6fcff',
+      '500': '#01b7d6',
+      '600': '#00a3bf',
+      '700': '#008da6',
+      '800': '#008299',
+      '900': '#006f83'
+    }}
+  />
+  <ColorItem
+    title="--green-[num]"
+    colors={{
+      '50': '#fefffd',
+      '100': '#f4feee',
+      '200': '#e8fedf',
+      '300': '#d8fbcd',
+      '400': '#c6f9bc',
+      '500': '#9cee98',
+      '600': '#75df7a',
+      '700': '#57cc66',
+      '800': '#3eb557',
+      '900': '#2c9a4a',
+      '1000': '#1e7c2d',
+      '1100': '#145e18',
+      '1200': '#11450e'
+    }}
+  />
+  <ColorItem
+    title="--lime-[num]"
+    colors={{
+      '50': '#fdffed',
+      '100': '#f5ffb9',
+      '200': '#eaff86',
+      '300': '#dcff5b',
+      '400': '#cdff30',
+      '500': '#bcf62a',
+      '600': '#ade830',
+      '700': '#98d124',
+      '800': '#81b619',
+      '900': '#699810',
+      '1000': '#527808',
+      '1100': '#3b5803',
+      '1200': '#293d00'
+    }}
+  />
+  <ColorItem
+    title="--yellow-[num]"
+    colors={{
+      '50': '#fffef6',
+      '100': '#fffbd5',
+      '200': '#fffab4',
+      '300': '#fff892',
+      '400': '#fff970',
+      '500': '#faf837',
+      '600': '#ebf000',
+      '700': '#d1dc00',
+      '800': '#b4c300',
+      '900': '#95a500',
+      '1000': '#758400',
+      '1100': '#566200',
+      '1200': '#394200'
+    }}
+  />
+  <ColorItem
+    title="--beige-[num]"
+    colors={{
+      '50': '#fffefd',
+      '100': '#fefcfa',
+      '200': '#fcfaf8',
+      '300': '#faf7f4',
+      '400': '#f7f5f1',
+      '500': '#f1ede7',
+      '600': '#e7e3d8',
+      '700': '#dad4c5',
+      '800': '#cac2ab',
+      '900': '#b5ab8b',
+      '1000': '#9e9267',
+      '1100': '#867946',
+      '1200': '#70622a'
+    }}
+  />
+  <ColorItem
+    title="--canary-[num]"
+    colors={{
+      '100': '#ffeddb',
+      '1000': '#a28901',
+      '1100': '#7b6900',
+      '1200': '#4f4500',
+      '200': '#ffe1be',
+      '300': '#ffd7a1',
+      '400': '#ffce84',
+      '50': '#fffbf8',
+      '500': '#fcc250',
+      '600': '#f7bb25',
+      '700': '#ecb405',
+      '800': '#dbaf03',
+      '900': '#c3a102'
+    }}
+  />
+  <ColorItem
+    title="--orange-[num]"
+    colors={{
+      '50': '#ffeee2',
+      '100': '#ffdfca',
+      '200': '#ffc199',
+      '300': '#ffa66d',
+      '400': '#ff8d44',
+      '500': '#ff7628',
+      '600': '#fb5b01',
+      '700': '#e25100',
+      '800': '#c74700',
+      '900': '#ac3e00',
+      '1000': '#8b3200',
+      '1100': '#6d2700',
+      '1200': '#541e00'
+    }}
+  />
+  <ColorItem
+    title="--red-[num]"
+    colors={{
+      '50': '#fffbfb',
+      '100': '#ffe4e4',
+      '200': '#ffcccc',
+      '300': '#ffb3b3',
+      '400': '#ff9999',
+      '500': '#f96060',
+      '600': '#f02b2b',
+      '700': '#de221a',
+      '800': '#c62112',
+      '900': '#aa1e0c',
+      '1000': '#8a1a06',
+      '1100': '#6b1502',
+      '1200': '#4d0f00'
+    }}
+  />
+  <ColorItem
+    title="--magenta-[num]"
+    colors={{
+      '50': '#fffaff',
+      '100': '#ffdafe',
+      '200': '#ffbafe',
+      '300': '#ff9afd',
+      '400': '#fe7afe',
+      '500': '#f749f5',
+      '600': '#eb20ea',
+      '700': '#db00db',
+      '800': '#bf01b1',
+      '900': '#9d0488',
+      '1000': '#780761',
+      '1100': '#52083f',
+      '1200': '#2e0722'
+    }}
+  />
+  <ColorItem
+    title="--purple-[num]"
+    colors={{
+      '50': '#f1eafa',
+      '100': '#ecddff',
+      '200': '#ddc2ff',
+      '300': '#cda6ff',
+      '400': '#bb87ff',
+      '500': '#a565f8',
+      '600': '#8843e1',
+      '700': '#6f23d0',
+      '800': '#5c10be',
+      '900': '#5109ad',
+      '1000': '#41048e',
+      '1100': '#30016c',
+      '1200': '#21004b'
+    }}
+  />
+  <ColorItem
+    title="--mono-[num]"
+    colors={{
+      '0': '#ffffff',
+      '50': '#fafafa',
+      '100': '#f2f2f2',
+      '200': '#ebebeb',
+      '300': '#e6e6e6',
+      '400': '#dedede',
+      '500': '#cccccc',
+      '600': '#c4c4c4',
+      '700': '#a8a8a8',
+      '800': '#8f8f8f',
+      '900': '#767676',
+      '1000': '#595959',
+      '1100': '#333333',
+      '1200': '#1a1a1a',
+      '1300': '#000000'
+    }}
+  />
+  <ColorItem
+    title="--transparent-black-[num]"
+    colors={{
+      '3': '#00000008',
+      '5': '#0000000d',
+      '10': '#0000001a',
+      '20': '#00000033',
+      '30': '#0000004d',
+      '40': '#00000066',
+      '50': '#00000080',
+      '60': '#00000099',
+      '80': '#000000b2',
+      '90': '#000000e5'
+    }}
+  />
+  <ColorItem
+    title="--white-[num]"
+    colors={{
+      '3': '#ffffff08',
+      '5': '#ffffff0d',
+      '10': '#ffffff1a',
+      '20': '#ffffff33',
+      '30': '#ffffff4d',
+      '40': '#ffffff66',
+      '50': '#ffffff80',
+      '60': '#ffffff99',
+      '80': '#ffffffb2',
+      '90': '#ffffffe5'
+    }}
+  />
+</ColorPalette>
+
+## セマンティックトークン／Semantic token
+
+UI（コンポーネント）に適用するために設定した配色です。インタラクションや背景色などにも利用しています。  
+ブランドカラーに加えて、9色のカラーで構成しています。Primary／Secondary／Tertiary／Quaternaryは、組み合わせやコントラスト比などを考慮した場合に利用可能な優先度のバリエーションです。
+
+<ColorPalette>
+  <ColorItem
+    title="Brand Color"
+    subtitle="--brand-[name]"
+    colors={{
+      primary: '#1c3177',
+      secondary: '#7f96c2',
+      tertiary: '#cfdbed',
+      quaternary: '#f9fbff'
+    }}
+  />
+  <ColorItem
+    title="Classified Color - Indigo"
+    subtitle="--classified-indigo-[name]"
+    colors={{
+      primary: '#0031d8',
+      secondary: '#00019c',
+      tertiary: '#abc9fc',
+      quaternary: '#f5f9ff',
+      quinary: '#c4dafd'
+    }}
+  />
+  <ColorItem
+    title="Classified Color - Green"
+    subtitle="--classified-green-[name]"
+    colors={{
+      primary: '#2c9a4a',
+      secondary: '#11450e',
+      tertiary: '#9cee98',
+      quaternary: '#f4feee',
+      quinary: '#145e18'
+    }}
+  />
+  <ColorItem
+    title="Classified Color - Cyan"
+    subtitle="--classified-cyan-[name]"
+    colors={{
+      primary: '#00a3bf',
+      secondary: '#004c59',
+      tertiary: '#79e2f2',
+      quaternary: '#e6fcff'
+    }}
+  />
+  <ColorItem
+    title="Classified Color - Beige"
+    subtitle="--classified-beige-[name]"
+    colors={{
+      primary: '#faf7f4',
+      secondary: '#f7f5f1',
+      tertiary: '#f1ede7',
+      quaternary: '#dad4c5',
+      quinary: '#b5ab8b'
+    }}
+  />
+  <ColorItem
+    title="Classified Color - Orange"
+    subtitle="--classified-orange-[name]"
+    colors={{
+      primary: '#fb5b01',
+      secondary: '#6d2700',
+      tertiary: '#ffa66d',
+      quaternary: '#ffdfca'
+    }}
+  />
+  <ColorItem
+    title="Classified Color - Red"
+    subtitle="--classified-red-[name]"
+    colors={{
+      primary: '#f02b2b',
+      secondary: '#6b1502',
+      tertiary: '#ff9999',
+      quaternary: '#ffe4e4'
+    }}
+  />
+  <ColorItem
+    title="Classified Color - Purple"
+    subtitle="--classified-purple-[name]"
+    colors={{
+      primary: '#6f23d0',
+      secondary: '#30016c',
+      tertiary: '#bb87ff',
+      quaternary: '#f1eafa'
+    }}
+  />
+  <ColorItem
+    title="Classified Color - Mono"
+    subtitle="--classified-mono-[name]"
+    colors={{
+      primary: '#1a1a1a',
+      secondary: '#767676',
+      tertiary: '#cccccc',
+      quaternary: '#ebebeb',
+      quinary: '#fafafa',
+      black: '#000000',
+      white: '#ffffff'
+    }}
+  />
+</ColorPalette>

@@ -1,0 +1,117 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set locale = props.locale %}
+  {% set addClass = props.addClass %}
+  <nav class="c-sideNavi{{' ' ~ addClass if addClass}}"
+       aria-label="サイドナビ"
+       data-js-sidenav>
+    <div class="c-sideNavi__button">
+      <button type="button"
+              class="c-iconButton c-iconButton--square c-iconButton--sizeS c-iconButton--noBorder"
+              aria-controls="sidenav"
+              aria-expanded="false"
+              data-js-sidenav-btn>
+        <svg class="c-iconButton__icon icon icon-open"
+             role="img"
+             aria-label="サイドナビを開く">
+          <use xlink:href="/assets/img/sprite.svg#more_vert"></use>
+        </svg>
+        <svg class="c-iconButton__icon icon icon-close"
+             aria-hidden="true"
+             role="img"
+             aria-label="サイドナビを閉じる">
+          <use xlink:href="/assets/img/sprite.svg#close"></use>
+        </svg>
+      </button>
+    </div>
+    <div id="sidenav" class="c-sideNavi__tab" aria-hidden="true">
+      <ul class="c-sideNavi__list">
+        <li class="c-sideNavi__listItem">
+          <a href="#">
+            <svg class="icon" aria-hidden="true" role="img">
+              <use xlink:href="/assets/img/sprite.svg#home-fill"></use>
+            </svg>
+            Science Tokyo
+          </a>
+        </li>
+        <li class="c-sideNavi__listItem">
+          <a href="#">{{ "受験生" if locale === 'ja' else "Prospective students" }}</a>
+        </li>
+        <li class="c-sideNavi__listItem">
+          <a href="#">{{ "企業パートナー" if locale === 'ja' else "Partners and entrepreneurs" }}</a>
+        </li>
+        <li class="c-sideNavi__listItem">
+          <a href="#">{{ "在学生" if locale === 'ja' else "Current students" }}</a>
+        </li>
+        <li class="c-sideNavi__listItem">
+          <a href="#">{{ "病院をご利用の方" if locale === 'ja' else "Hospital users" }}</a>
+        </li>
+      </ul>
+      <div class="c-sideNavi__sub">
+        <ul class="c-sideNavi__subList">
+          <li class="c-sideNavi__subListItem">
+            <a href="#">{{ "アクセス" if locale === 'ja' else "Campus Access" }}</a>
+          </li>
+          <li class="c-sideNavi__subListItem">
+            <a href="#">{{ "資料請求" if locale === 'ja' else "Request documents" }}</a>
+          </li>
+          <li class="c-sideNavi__subListItem">
+            <a href="#">{{ "総合お問い合わせ" if locale === 'ja' else "General inquiries" }}</a>
+          </li>
+        </ul>
+        <div class="c-sideNavi__sitemap">
+          {% if locale === 'ja' %}
+          <a href="#">Science Toyko<br>サイトマップ</a>
+          {% else %}
+          <a href="#">Science Toyko Sitemap</a>
+          {% endif %}
+        </div>
+        <ul class="c-sideNavi__snsList">
+          <li>
+            <a href="#"
+               class="c-iconButton c-iconButton--square c-iconButton--sizeL c-iconButton--noBorder">
+              <svg class="c-iconButton__icon icon" aria-hidden="true" role="img">
+                <use xlink:href="/assets/img/sprite.svg#BrandFacebook"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#"
+               class="c-iconButton c-iconButton--square c-iconButton--sizeL c-iconButton--noBorder">
+              <svg class="c-iconButton__icon icon" aria-hidden="true" role="img">
+                <use xlink:href="/assets/img/sprite.svg#BrandX"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#"
+               class="c-iconButton c-iconButton--square c-iconButton--sizeL c-iconButton--noBorder">
+              <svg class="c-iconButton__icon icon" aria-hidden="true" role="img">
+                <use xlink:href="/assets/img/sprite.svg#BrandLinkedin"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#"
+               class="c-iconButton c-iconButton--square c-iconButton--sizeL c-iconButton--noBorder">
+              <svg class="c-iconButton__icon icon" aria-hidden="true" role="img">
+                <use xlink:href="/assets/img/sprite.svg#BrandYoutube"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="#"
+               class="c-iconButton c-iconButton--square c-iconButton--sizeL c-iconButton--noBorder">
+              <svg class="c-iconButton__icon icon" aria-hidden="true" role="img">
+                <use xlink:href="/assets/img/sprite.svg#BrandInstagram"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

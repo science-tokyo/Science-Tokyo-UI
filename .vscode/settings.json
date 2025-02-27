@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[nunjucks]": {
+    "editor.defaultFormatter": "monosans.djlint",
+    "djlint.enableLinting": true,
+    "djlint.profile": "nunjucks"
+  },
+  "editor.indentSize": "tabSize",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false
+}

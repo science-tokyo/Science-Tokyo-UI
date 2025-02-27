@@ -1,0 +1,133 @@
+import {
+  Meta,
+  Primary,
+  Controls,
+  Story,
+  Canvas,
+  Source
+} from '@storybook/blocks';
+import * as GridStories from '../../scss/globals/foundation/Grid/Grid.stories';
+
+<Meta of={GridStories} />
+
+# レイアウトグリッド Layout grid
+
+各要素はグリッドの線のいずれかに沿うように配置します。  
+高さに関するグリッドは、ページコンテンツの要素間のマージンのみを定義し、各コンポーネントの高さ自体を規定するものではありません。  
+レイアウトグリッドの再現には、`dispaly: flex;`プロパティ用いています。`dispaly: grid; `は用いておりません。
+
+## 基本形
+
+- `.grid`: Grid の行を定義
+- `.grid__col`: Grid の列を定義
+
+ラージ、ミディアムウインドウでは、列が 12 分割されます。  
+スモールウインドウでは、列が 8 分割されます。
+
+```html
+<div class="grid">
+  <div class="grid__col">
+    <!-- ここにコンテンツを入れる -->
+  </div>
+</div>
+```
+
+## 均等割り
+
+`.grid`に次のモディファイアを指定することで、列を均等幅で横並びにすることができます。
+
+- `.grid--cols{1~12}`: 均等割りする列数を指定（オプション）
+
+ミディアム・スモールウインドウ時は次のモディファイアを指定することで、均等割りする列数をブレークポイントごとに追加できます。
+
+- `.md:grid--cols{1~12}`: ミディアムウインドウ時に均等割りする列数を指定（オプション）
+- `.sm:grid--cols{1~8}`: スモールウインドウ時に均等割りする列数を指定（オプション）
+
+  <Canvas of={GridStories.EqualLayout}>
+    <Story />
+  </Canvas>
+  <Controls of={GridStories.EqualLayout} />
+
+## カラム結合
+
+`.grid__col`に次のモディファイアを指定することで、列を結合することができます。
+
+- `.grid__col--span{1~12}`: 結合する列数を指定（オプション）
+
+ミディアム・スモールウインドウ時は次のモディファイアを指定することで、結合する列数をブレークポイントごとに追加できます。
+
+- `.md:grid__col--span{1~12}`: ミディアムウインドウ時に結合する列数を指定（オプション）
+- `.sm:grid__col--span{1~8}`: スモールウインドウ時に結合する列数を指定（オプション）
+
+<Canvas of={GridStories.SpanLayout}>
+  <Story />
+</Canvas>
+
+## 左右揃え
+
+justify-content プロパティを指定できます。（指定をしない場合は Normal）
+
+- `.grid--justifyNormal`: `justify-content: normal`を指定
+- `.grid--justifyCenter`: `justify-content: center`を指定
+- `.grid--justifyStart`: `justify-content: flex-start`を指定
+- `.grid--justifyEnd`: `justify-content: flex-end`を指定
+- `.grid--justifyBetween`: `justify-content: space-between`を指定
+- `.grid--justifyAround`: `justify-content: space-around`を指定
+- `.grid--justifyEvenly`: `justify-content: space-evenly`を指定
+- `.grid--justifyStretch`: `justify-content: stretch`を指定
+
+<Canvas of={GridStories.JustifyContent}>
+  <Story />
+</Canvas>
+
+## 上下揃え
+
+align-items プロパティを指定できます。（指定をしない場合は Stretch）
+
+- `.grid--itemsStretch`: `align-items: stretch`を指定
+- `.grid--itemsCenter`: `align-items: center`を指定
+- `.grid--itemsStart`: `align-items: flex-start`を指定
+- `.grid--itemsEnd`: `align-items: flex-end`を指定
+- `.grid--itemsBaseline`: `align-items: baseline`を指定
+
+<Canvas of={GridStories.AlignItems}>
+  <Story />
+</Canvas>
+
+## 方向指定
+
+flex-direction プロパティを指定できます。（指定をしない場合は Row）
+
+- `.grid--dirRow`: `flex-direction: row`を指定
+- `.grid--dirRowReverse`: `flex-direction: row-reverse`を指定
+- `.grid--dirColumn`: `flex-direction: column`を指定
+- `.grid--dirColumnReverse`: `flex-direction: column-reverse`を指定
+
+<Canvas of={GridStories.FlexDirection}>
+  <Story />
+</Canvas>
+
+## 割合指定
+
+`.grid__col`に次のモディファイアを指定することで、列を結合することができます。
+
+- `.grid__col--per{5~100}`: 表示幅の%を5~100で指定（5刻み、オプション）
+
+ミディアム・スモールウインドウ時は次のモディファイアを指定することで、結合する列数をブレークポイントごとに追加できます。
+
+- `.md:grid__col--per{5~100}`: ミディアムウインドウ時に結合する列数を指定（オプション）
+- `.sm:grid__col--per{5~100}`: スモールウインドウ時に結合する列数を指定（オプション）
+
+<Canvas of={GridStories.PercentLayout}>
+  <Story />
+</Canvas>
+
+## ガター無し
+
+`.grid`に次のモディファイアを指定することで、列間のガターを無くすことができます。
+
+- `.grid--noGutter`
+
+<Canvas of={GridStories.NoGutter}>
+  <Story />
+</Canvas>

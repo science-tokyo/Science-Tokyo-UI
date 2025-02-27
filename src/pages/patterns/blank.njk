@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+title:  HTMLテンプレート
+description: ブランクHTMLテンプレートです。
+permalink: /page-patterns/blank.html
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({
+        text: title,
+        tag: "h1",
+        headingLevel: 1
+        }) }}
+    {{ Paragraph.render({"text": "ページメインエリア"}) }}
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->
+<aside class="contentFooter">
+  <div class="container">{{ Paragraph.render({"text": "ページ下部エリア"}) }}</div>
+  <!-- /.container -->
+</aside>
+<!-- /.contentFooter -->

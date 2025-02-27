@@ -1,0 +1,85 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+
+.c-labelGroup {
+  display: flex;
+  @include dm;
+  flex-wrap: wrap;
+  gap: var(--semantic-space-inner-mms);
+  &--sizeL {
+    gap: var(--semantic-space-inner-m);
+  }
+  &--sizeM {
+    gap: var(--semantic-space-inner-mms);
+  }
+  &--sizeS {
+    gap: var(--semantic-space-inner-s);
+  }
+}
+
+.c-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--semantic-space-hairline-s);
+  @include txt($t-labelM);
+  padding: var(--semantic-space-hairline-l) var(--semantic-space-inner-ss);
+  background-color: var(--ui-background-brand-tertiary);
+  border-radius: var(--semantic-corner-radius-s);
+  color: var(--ui-text-default);
+  &--size {
+    &L {
+      @include txt($t-labelL);
+      padding: var(--semantic-space-inner-sss) var(--semantic-space-inner-s);
+    }
+    &M {
+      @include txt($t-labelM);
+    }
+    &S {
+      @include txt($t-labelS);
+      padding: var(--semantic-space-hairline-m) var(--semantic-space-inner-sss);
+    }
+  }
+  &--color {
+    &Primary {
+      background-color: var(--ui-background-brand-tertiary);
+    }
+    &Secondary {
+      background-color: var(--ui-background-emphasize-mid-quinary);
+      color: var(--ui-text-inverted);
+    }
+    &Tertiary {
+      background-color: var(--ui-background-brand-primary);
+      color: var(--ui-text-inverted);
+    }
+    &Caution {
+      background-color: var(--ui-background-status-caution);
+      color: var(--ui-text-inverted);
+    }
+  }
+  &--weightBold {
+    font-weight: map.get($font-weight, 'bold');
+  }
+}
+a.c-label {
+  background-color: var(--ui-background-default);
+  color: var(--ui-line-status-link);
+  border: 1px solid var(--ui-line-status-link);
+  text-decoration: none;
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--ui-background-emphasize-mid-tertiary);
+      border-color: var(--ui-background-emphasize-mid-tertiary);
+    }
+  }
+  &:visited {
+    color: var(--ui-text-status-visited);
+  }
+  &:active {
+    background-color: var(--ui-background-emphasize-mid-tertiary);
+    border-color: var(--ui-line-status-hover);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--ui-line-status-focus);
+    outline-offset: -2px;
+  }
+}

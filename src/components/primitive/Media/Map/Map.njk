@@ -1,0 +1,13 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set embedCode = props.embedCode %}
+  {% set aspectRatio = props.aspectRatio %}
+  {% set size = props.size %}
+  {% set addClass = props.addClass %}
+  <div class="c-map{{' c-map--size' ~ size if size }}{{' ' ~ addClass if addClass}}">
+    <div class="c-map__inner{{' c-map__inner--aspectRatio' ~ aspectRatio if aspectRatio }}">{{ embedCode | safe }}</div>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

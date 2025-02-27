@@ -1,0 +1,21 @@
+{/* ImportantNotice.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as ImportantNoticeStories from './ImportantNotice.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="ImportantNotice" of={ImportantNoticeStories} />
+
+# 重要なお知らせ Important notice
+
+緊急時など重要なお知らせを表示するコンポーネントです。
+
+## 原則
+
+- Science TokyoのWebサイトにおいて、当コンポーネントは重要な用途にのみ利用し、トップページに掲出します。
+- 「公開日」「タイトル」で構成し、最大3件を表示します。
+	- 重要なお知らせの詳細を記載したページにリンクします。
+- 日付の表記はデザインシステムサイトのライティングガイドラインの章（<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/japanese#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">日本語</a>／<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/english#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">英語</a>）をご確認ください。
+
+<Canvas />

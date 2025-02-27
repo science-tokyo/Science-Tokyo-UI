@@ -1,0 +1,181 @@
+{#
+ # @prop {type} ***
+ #}
+{%- macro render( props ) -%}
+  {%- set caption = props.caption | default(false) -%}
+  {%- set fullWidth = props.fullWidth | default(false) -%}
+  {%- set src = props.src | default('') -%}
+  {%- set width = props.width | default('') -%}
+  {%- set height = props.height | default('') -%}
+  {%- set alt = props.alt | default('') -%}
+  {%- set align = props.align | default('') -%}
+  {%- set size = props.size | default('') -%}
+  {%- set responsiveImage = props.responsiveImage | default('false') -%}
+  {%- set srcsetSmall = props.srcsetSmall -%}
+  {%- set widthSmall = props.widthSmall -%}
+  {%- set heightSmall = props.heightSmall -%}
+  {%- set srcsetMedium = props.srcsetMedium -%}
+  {%- set widthMedium = props.widthMedium -%}
+  {%- set heightMedium = props.heightMedium -%}
+  {%- set addClass = props.addClass -%}
+  {%- set tag = "figure" if caption else "div" -%}
+  {%- set multiple = props.multiple -%}
+  {%- set dataset = props.dataset -%}
+  {%- set items = props.items -%}
+  {%- set columnsNumber = props.columnsNumber | default(2) -%}
+  {%- set columnsNumberMedium = props.columnsNumberMedium | default('') -%}
+  {%- set columnsNumberSmall = props.columnsNumberSmall | default(1) -%}
+  {%- if multiple -%}
+    {%- if dataset -%}
+    {%- for data in dataset -%}
+      <div class="c-imageGroup{{' ' ~ addClass if addClass}}">
+        <div class="grid{{' grid--cols' ~ data.columnsNumber if data.columnsNumber}}{{' md:grid--cols' ~ data.columnsNumberMedium if data.columnsNumberMedium}}{{' sm:grid--cols' ~ data.columnsNumberSmall if data.columnsNumberSmall}}">
+          {%- for item in data.items -%}
+            <div class="grid__col">
+              {%- set itemTag = "figure" if item.caption else "div" -%}
+              <{{ itemTag }} class="c-image{{' c-image--fullWidth' if item.fullWidth }}{{' c-image--size' ~ item.size if item.size }}{{' c-image--align' ~ item.align if item.align }}{{' ' ~ item.addClass if item.addClass}}">
+              {%- if item.responsiveImage -%}
+                <picture>
+                  {%- if item.srcsetSmall -%}
+                    <source srcset="{{ item.srcsetSmall }}"
+                            media="(max-width: 767px)"
+                            width="{{ item.widthSmall }}"
+                            height="{{ item.heightSmall }}">
+                  {%- endif -%}
+                  {%- if srcsetMedium -%}
+                    <source srcset="{{ item.srcsetMedium }}"
+                            media="(max-width: 1024px)"
+                            width="{{ item.widthMedium }}"
+                            height="{{ item.heightMedium }}">
+                  {%- endif -%}
+                  <img src="{{ item.src }}"
+                      width="{{ item.width }}"
+                      height="{{ item.height }}"
+                      alt="{{ '' if item.caption else item.alt }}" />
+                </picture>
+              {%- else -%}
+                <img src="{{ item.src }}"
+                    width="{{ item.width }}"
+                    height="{{ item.height }}"
+                    alt="{{ '' if item.caption else item.alt }}" />
+              {%- endif -%}
+              {%- if item.caption -%}
+                <figcaption class="c-image__caption">{{ item.alt }}</figcaption>
+              {%- endif -%}
+              </{{ itemTag }}>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endfor -%}
+    {%- else -%}
+    <div class="c-imageGroup{{' ' ~ addClass if addClass}}">
+      <div class="grid{{' grid--cols' ~ columnsNumber if columnsNumber}}{{' md:grid--cols' ~ columnsNumberMedium if columnsNumberMedium}}{{' sm:grid--cols' ~ columnsNumberSmall if columnsNumberSmall}}">
+        {%- for item in items -%}
+          <div class="grid__col">
+            {%- set itemTag = "figure" if item.caption else "div" -%}
+            <{{ itemTag }} class="c-image{{' c-image--fullWidth' if item.fullWidth }}{{' c-image--size' ~ item.size if item.size }}{{' c-image--align' ~ item.align if item.align }}{{' ' ~ item.addClass if item.addClass}}">
+            {%- if item.responsiveImage -%}
+              <picture>
+                {%- if item.srcsetSmall -%}
+                  <source srcset="{{ item.srcsetSmall }}"
+                          media="(max-width: 767px)"
+                          width="{{ item.widthSmall }}"
+                          height="{{ item.heightSmall }}">
+                {%- endif -%}
+                {%- if srcsetMedium -%}
+                  <source srcset="{{ item.srcsetMedium }}"
+                          media="(max-width: 1024px)"
+                          width="{{ item.widthMedium }}"
+                          height="{{ item.heightMedium }}">
+                {%- endif -%}
+                <img src="{{ item.src }}"
+                    width="{{ item.width }}"
+                    height="{{ item.height }}"
+                    alt="{{ '' if item.caption else item.alt }}" />
+              </picture>
+            {%- else -%}
+              <img src="{{ item.src }}"
+                  width="{{ item.width }}"
+                  height="{{ item.height }}"
+                  alt="{{ '' if item.caption else item.alt }}" />
+            {%- endif -%}
+            {%- if item.caption -%}
+              <figcaption class="c-image__caption">{{ item.alt }}</figcaption>
+            {%- endif -%}
+            </{{ itemTag }}>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- endif -%}
+  {%- else -%}
+    {%- if items -%}
+    {%- for item in items -%}
+      {%- set itemTag = "figure" if item.caption else "div" -%}
+      <{{ itemTag }} class="c-image{{' c-image--fullWidth' if item.fullWidth }}{{' c-image--size' ~ item.size if item.size }}{{' c-image--align' ~ item.align if item.align }}{{' ' ~ addClass if addClass}}">
+      {%- if item.responsiveImage -%}
+      <picture>
+        {%- if item.srcsetSmall -%}
+          <source srcset="{{ item.srcsetSmall }}"
+                  media="(max-width: 767px)"
+                  width="{{ item.widthSmall }}"
+                  height="{{ item.heightSmall }}">
+        {%- endif -%}
+        {%- if item.srcsetMedium -%}
+          <source srcset="{{ item.srcsetMedium }}"
+                  media="(max-width: 1024px)"
+                  width="{{ item.widthMedium }}"
+                  height="{{ item.heightMedium }}">
+        {%- endif -%}
+        <img src="{{ item.src }}"
+            width="{{ item.width }}"
+            height="{{ item.height }}"
+            alt="{{ '' if item.caption else item.alt }}" />
+      </picture>
+      {%- else -%}
+      <img src="{{ item.src }}"
+          width="{{ item.width }}"
+          height="{{ item.height }}"
+          alt="{{ '' if item.caption else item.alt }}" />
+      {%- endif -%}
+      {%- if item.caption -%}
+        <figcaption class="c-image__caption">{{ item.alt }}</figcaption>
+      {%- endif -%}
+      </{{ itemTag }}>
+    {%- endfor -%}
+    {%- else -%}
+    <{{ tag }} class="c-image{{' c-image--fullWidth' if fullWidth }}{{' c-image--size' ~ size if size }}{{' c-image--align' ~ align if align }}{{' ' ~ addClass if addClass}}">
+      {%- if responsiveImage -%}
+      <picture>
+        {%- if srcsetSmall -%}
+          <source srcset="{{ srcsetSmall }}"
+                  media="(max-width: 767px)"
+                  width="{{ widthSmall }}"
+                  height="{{ heightSmall }}">
+        {%- endif -%}
+        {%- if srcsetMedium -%}
+          <source srcset="{{ srcsetMedium }}"
+                  media="(max-width: 1024px)"
+                  width="{{ widthMedium }}"
+                  height="{{ heightMedium }}">
+        {%- endif -%}
+        <img src="{{ src }}"
+            width="{{ width }}"
+            height="{{ height }}"
+            alt="{{ '' if caption else alt }}" />
+      </picture>
+      {%- else -%}
+      <img src="{{ src }}"
+          width="{{ width }}"
+          height="{{ height }}"
+          alt="{{ '' if caption else alt }}" />
+      {%- endif -%}
+      {%- if caption -%}
+        <figcaption class="c-image__caption">{{ alt }}</figcaption>
+      {%- endif -%}
+      </{{ tag }}>
+    {%- endif -%}
+  {%- endif -%}
+{%- endmacro -%}
+{%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

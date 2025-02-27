@@ -1,0 +1,40 @@
+{#
+    # @prop {boolean} noQuotes
+    # @prop {string} citeURL
+    # @prop {string} text
+    # @prop {string} cite
+#}
+{% macro render( props ) %}
+  {% set noQuotes = props.noQuotes | default(false) %}
+  {% set citeURL = props.citeURL %}
+  {% set text = props.text %}
+  {% set cite = props.cite %}
+  {% set linkType = props.linkType | default('chevron_right') %}
+  {% set addClass = props.addClass %}
+  <blockquote class="c-blockquote{{" c-blockquote--noQuotes" if noQuotes}}{{' ' ~ addClass if addClass}}" {{ " cite=" ~ citeURL if citeURL}}>
+    <p class="c-blockquote__text">{{ text }}</p>
+    {%- if cite -%}
+      <footer class="c-blockquote__footer">
+        <cite class="c-blockquote__cite">
+          {%- if citeURL -%}
+            <a href="{{ citeURL }}"{{ ' target=_blank' if linkType == 'external' }}>
+              {{ cite }}
+              {%- if linkType == 'external' -%}
+                <svg class="icon c-blockquote__icon" role="img" aria-label="新しいウインドウで開く">
+                  <use xlink:href="/assets/img/sprite.svg#new_window"></use>
+                </svg>
+              {%- else -%}
+                <svg class="icon c-blockquote__icon" role="img">
+                  <use xlink:href="/assets/img/sprite.svg#{{ linkType }}"></use>
+                </svg>
+              {%- endif -%}
+            </a>
+          {%- else -%}
+            {{ cite }}
+          {%- endif -%}
+        </cite>
+      </footer>
+    {%- endif -%}
+  </blockquote>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

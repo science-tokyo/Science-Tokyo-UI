@@ -1,0 +1,28 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/semantic/Group/EntryList/EntryList.njk" as EntryList %}
+{% macro render( props ) %}
+  {% set addClass = props.addClass %}
+  {% set title = props.title | default('重要なお知らせ') %}
+  {% set items = props.items | default( [
+      {
+        date: '2024年12月31日',
+        title:
+        'エントリータイトル 情に棹させば流される。智に働けば角が立つ。どこへ越しても住みにくいと悟った時、詩が生れて、画が出来る。とかくに人の世は住みにくい。意地を通せば窮屈だ。 ',
+        url: '#'
+      },
+      {
+        date: '2024年12月31日',
+        title: 'エントリータイトル',
+        url: '#'
+      }
+    ]) %}
+  <div class="c-importantNotice{{ ' ' ~ addClass if addClass }}">
+    <div class="c-importantNotice__header">
+      <h2 class="c-importantNotice__heading">{{ title }}</h2>
+    </div>
+    <div class="c-importantNotice__body">{{ EntryList.render({ items: items }) }}</div>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

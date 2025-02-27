@@ -1,0 +1,360 @@
+---
+layout: layouts/base.njk
+title: インデックスパターン：イベント一覧型（月別表示）
+description: ページパターン：インデックスパターン：イベント一覧型（月別表示）
+permalink: /page-patterns/index/event-list-month.html
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/semantic/Group/EntryList/EntryList.njk" as EntryList %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({
+        text: title,
+        tag: "h1",
+        headingLevel: 1
+        }) }}
+    <div class="p-mediaIndex">
+      <div class="c-tab">
+        <div class="c-tab__head" role="tablist">
+          <div class="c-tab__tabs">
+            <button class="c-tab__trigger" type="button" role="tab">ピックアップ</button>
+            <button class="c-tab__trigger" type="button" role="tab">ストーリー</button>
+            <button class="c-tab__trigger" type="button" role="tab">ニュース</button>
+            <button class="c-tab__trigger is-active" type="button" role="tab">イベント</button>
+            <button class="c-tab__trigger" type="button" role="tab">お知らせ</button>
+            <button class="c-tab__trigger" type="button" role="tab">プレスリリース</button>
+            <button class="c-tab__trigger" type="button" role="tab" aria-selected="true">すべて</button>
+          </div>
+          <!-- /.c-tab__tabs -->
+        </div>
+        <!-- /.c-tab__head -->
+      </div>
+      <!-- /.c-tab -->
+      <div class="c-searchTool">
+        <div class="c-searchTool__header" data-js-search-sort="eventMonth">
+          <div class="c-searchTool__header__link">
+            <a href="/page-patterns/index/event-list.html"
+               class="c-link c-utilityLink">
+              全て表示
+              <svg class="c-link__icon c-link__icon--right icon"
+                   aria-hidden="true"
+                   role="img">
+                <use xlink:href="/assets/img/sprite.svg#chevron_right"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="c-searchTool__header__select">
+            <div class="c-selectGroup">
+              <select class="c-select">
+                <option value="">開催日</option>
+                <option value="2025-04">2025年4月</option>
+                <option value="2025-02">2025年2月</option>
+                <option value="2025-01">2025年1月</option>
+                <option value="2024-12">2024年12月</option>
+                <option value="2024-11">2024年11月</option>
+                <option value="2024-10">2024年10月</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <fieldset class="c-searchTool__tagControls">
+          <legend>絞り込むキーワードを選択</legend>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグE
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグF
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグAA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグAB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグAC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグAD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグADA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            タグADAA
+          </label>
+        </fieldset>
+      </div>
+      <div class="p-mediaIndex__contents" data-js-contents-wrap>
+        {{ EntryList.render({
+          "contentsType": "event",
+          "items": [
+            {
+              "url": "#",
+              "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という",
+              "startDate": "2024年10月1日（月）",
+              "startTime": "11:00",
+              "endTime": "13:00",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": "1440",
+              "imageHeight": "810",
+              "imageAlt": "画像Alt",
+              "venue": "[ダミー]大岡山キャンパス",
+              "tags": [
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                }
+              ]
+            },
+            {
+              "url": "#",
+              "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という",
+              "startDate": "2024年10月1日（月）",
+              "endDate": "2025年1月8日（木）",
+              "startTime": "11:00",
+              "endTime": "13:00",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": "1440",
+              "imageHeight": "810",
+              "imageAlt": "画像Alt",
+              "venue": "[ダミー]大岡山キャンパス",
+              "tags": [
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                }
+              ]
+            },
+            {
+              "url": "#",
+              "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という",
+              "startDate": "2024年2月3日（月）",
+              "endDate": "2025年2月8日（木）",
+              "startTime": "11:00",
+              "endTime": "13:00",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": "1440",
+              "imageHeight": "810",
+              "imageAlt": "画像Alt",
+              "venue": "[ダミー]大岡山キャンパス",
+              "tags": [
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                }
+              ]
+            },
+            {
+              "url": "#",
+              "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という",
+              "startDate": "2024年10月1日（月）",
+              "endDate": "2025年1月8日（木）",
+              "startTime": "11:00",
+              "endTime": "13:00",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": "1440",
+              "imageHeight": "810",
+              "imageAlt": "画像Alt",
+              "venue": "[ダミー]大岡山キャンパス",
+              "tags": [
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                }
+              ]
+            },
+            {
+              "url": "#",
+              "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という",
+              "startDate": "2024年10月1日（月）",
+              "endDate": "2025年1月8日（木）",
+              "startTime": "11:00",
+              "endTime": "13:00",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": "1440",
+              "imageHeight": "810",
+              "imageAlt": "画像Alt",
+              "venue": "[ダミー]大岡山キャンパス",
+              "tags": [
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                }
+              ]
+            },
+            {
+              "url": "#",
+              "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という",
+              "startDate": "2024年10月1日（月）",
+              "endDate": "2025年1月8日（木）",
+              "startTime": "11:00",
+              "endTime": "13:00",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": "1440",
+              "imageHeight": "810",
+              "imageAlt": "画像Alt",
+              "venue": "[ダミー]大岡山キャンパス",
+              "tags": [
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                }
+              ]
+            },
+            {
+              "url": "#",
+              "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という",
+              "startDate": "2024年10月1日（月）",
+              "endDate": "2025年1月8日（木）",
+              "startTime": "11:00",
+              "endTime": "13:00",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": "1440",
+              "imageHeight": "810",
+              "imageAlt": "画像Alt",
+              "venue": "[ダミー]大岡山キャンパス",
+              "tags": [
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                }
+              ]
+            },
+            {
+              "url": "#",
+              "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という",
+              "startDate": "2024年10月1日（月）",
+              "endDate": "2025年1月8日（木）",
+              "startTime": "11:00",
+              "endTime": "13:00",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": "1440",
+              "imageHeight": "810",
+              "imageAlt": "画像Alt",
+              "venue": "[ダミー]大岡山キャンパス",
+              "tags": [
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                }
+              ]
+            },
+            {
+              "url": "#",
+              "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という",
+              "startDate": "2024年10月1日（月）",
+              "endDate": "2025年1月8日（木）",
+              "startTime": "11:00",
+              "endTime": "13:00",
+              "imageSrc": "/assets/img/img-campus.webp",
+              "imageWidth": "1440",
+              "imageHeight": "810",
+              "imageAlt": "画像Alt",
+              "venue": "[ダミー]大岡山キャンパス",
+              "tags": [
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                },
+                {
+                  "label": "カテゴリ"
+                }
+              ]
+            }
+          ]
+        }) }}
+      </div>
+      <div class="c-searchTool__pagination" data-js-pagination="month">
+        <button type="button"
+                class="c-searchTool__pagination__btn"
+                data-js-month-select="prev">
+          <svg class="icon" aria-hidden="true" role="img">
+            <use xlink:href="/assets/img/sprite.svg#chevron_left"></use>
+          </svg>
+          <span>2024年11月</span>
+        </button>
+        <p class="c-searchTool__pagination__text" data-js-current-month="">2024年12月</p>
+        <button type="button"
+                class="c-searchTool__pagination__btn"
+                data-js-month-select="next">
+          <span>2025年1月</span>
+          <svg class="icon" aria-hidden="true" role="img">
+            <use xlink:href="/assets/img/sprite.svg#chevron_right"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

@@ -1,0 +1,22 @@
+{/* GlobalFooter.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as GlobalFooterStories from './GlobalFooter.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="GlobalFooter" of={GlobalFooterStories} />
+
+# グローバルフッター Global footer
+
+Science TokyoのWebサイトで共通で利用することを想定したフッターです。
+
+## 原則
+
+- isct.ac.jpドメイン内で公開するScience TokyoのWebサイトで必ず利用することを想定しています。
+- グローバルフッターナビゲーションと組み合わせて利用する必要があります。
+- 全ての要素の見た目と項目、機能を変更せずに、ページの最下部に表示します。
+- 「サイトマップ」は当該サイトのページへリンクさせます。
+
+<Canvas />
+<Controls />

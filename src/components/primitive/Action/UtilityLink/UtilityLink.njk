@@ -1,0 +1,82 @@
+{#
+ # @prop {type} ***
+#}
+{% macro render( props ) %}
+  {% set href = props.href | default('#') %}
+  {% set label = props.label | default('リンク') %}
+  {% set external = props.external %}
+  {% set leftIcon = props.leftIcon %}
+  {% set rightIcon = props.rightIcon %}
+  {% set size = props.size | default('') %}
+  {% set fontWeight = props.fontWeight | default('') %}
+  {% set rounded = props.rounded | default(false) %}
+  {% set bordered = props.bordered | default(false) %}
+  {% set current = props.current | default(false) %}
+  {% set fixed = props.fixed | default(false) %}
+  {% set align = props.align | default(false) %}
+  {% set multiple = props.multiple | default(false) %}
+  {% set items = props.items | default([]) %}
+  {% set layout = props.layout %}
+  {% set justify = props.justify %}
+  {% set addClass = props.addClass %}
+  {%- if multiple -%}
+    <div class="c-utilityLinkGroup{{ ' c-utilityLinkGroup--' ~ layout if layout }}{{ ' c-utilityLinkGroup--justify' ~ justify if justify }}{{' c-utilityLinkGroup--size' ~ size if size}}">
+      {%- for item in items -%}
+        {% if item.label -%}
+          <div class="c-utilityLinkGroup__item">
+            <a {{" target=_blank" if item.external}} href="{{ item.href }}" class="c-link c-utilityLink {{' c-utilityLink--weight' ~ item.fontWeight if item.fontWeight}}{{' c-utilityLink--size' ~ item.size if item.size}}{{' c-utilityLink--rounded' if item.rounded}}{{' c-utilityLink--bordered' if item.bordered}}{{' c-utilityLink--current' if item.current}}{{ ' c-utilityLink--fixed' if fixed }}{{ ' c-utilityLink--align' ~ align if align }}{{' ' ~ addClass if addClass}}">
+              {% if item.leftIcon -%}
+                <svg class="c-link__icon c-link__icon--left icon"
+                     aria-hidden="true"
+                     role="img">
+                  <use xlink:href="/assets/img/sprite.svg#{{ item.leftIcon }}"></use>
+                </svg>
+              {%- endif %}
+              {{ item.label }}
+              {% if item.rightIcon -%}
+                <svg class="c-link__icon c-link__icon--right icon"
+                     aria-hidden="true"
+                     role="img">
+                  <use xlink:href="/assets/img/sprite.svg#{{ item.rightIcon }}"></use>
+                </svg>
+              {%- endif %}
+              {% if item.external -%}
+                <svg class="c-link__icon c-link__icon--external icon"
+                     role="img"
+                     aria-label="新しいウインドウで開く">
+                  <use xlink:href="/assets/img/sprite.svg#new_window"></use>
+                </svg>
+              {%- endif -%}
+            </a>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- else -%}
+    <a {{" target=_blank" if external}} href="{{ href }}" class="c-link c-utilityLink {{' c-utilityLink--weight' ~ fontWeight if fontWeight}}{{' c-utilityLink--size' ~ size if size}}{{' c-utilityLink--rounded' if rounded}}{{' c-utilityLink--bordered' if bordered}}{{' c-utilityLink--current' if current}}{{ ' c-utilityLink--fixed' if fixed }}{{ ' c-utilityLink--align' ~ align if align }}{{' ' ~ addClass if addClass}}">
+      {% if leftIcon -%}
+        <svg class="c-link__icon c-link__icon--left icon"
+             aria-hidden="true"
+             role="img">
+          <use xlink:href="/assets/img/sprite.svg#{{ props.leftIcon }}"></use>
+        </svg>
+      {%- endif %}
+      {{ label }}
+      {% if rightIcon -%}
+        <svg class="c-link__icon c-link__icon--right icon"
+             aria-hidden="true"
+             role="img">
+          <use xlink:href="/assets/img/sprite.svg#{{ props.rightIcon }}"></use>
+        </svg>
+      {%- endif %}
+      {% if external -%}
+        <svg class="c-link__icon c-link__icon--external icon"
+             role="img"
+             aria-label="新しいウインドウで開く">
+          <use xlink:href="/assets/img/sprite.svg#new_window"></use>
+        </svg>
+      {%- endif -%}
+    </a>
+  {%- endif -%}
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

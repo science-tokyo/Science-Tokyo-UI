@@ -1,0 +1,342 @@
+---
+layout: layouts/base.njk
+title: ホームパターン：バランス型①
+description: ページパターン：ホームパターン：バランス型①
+permalink: /page-patterns/home/balance-1.html
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/media/Image/Image.njk" as Image %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/semantic/Group/Card/Card.njk" as Card %}
+{% import "src/components/semantic/Group/Carousel/Carousel.njk" as Carousel %}
+{% import "src/components/semantic/Group/PickupContents/PickupContents.njk" as PickupContents %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    <div class="grid grid--itemsCenter grid--noGutter grid--fullWidth md:grid--dirColumnReverse">
+      <div class="grid__col grid__col--span3 md:grid__col--span12 grid__col--justifyCenter u-flex u-flex--column u-flex--itemsCenter">
+        <div class="u-px-ll">
+          <p class="c-paragraph c-paragraph--copyM c-paragraph--weightBlack">サイト名</p>
+          <p class="c-paragraph">リード文「自然界はどのようにしてできているのだろう?」という</p>
+        </div>
+      </div>
+      <div class="grid__col grid__col--span9 md:grid__col--span12">
+        {{ Carousel.render({
+                "contentsType": "default",
+                "carouselContents": "hero",
+                "carouselPageTitle": "",
+                "carouselItems": [
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "画像のalt",
+                "width": 1440,
+                "height": 810
+                },
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "画像のalt",
+                "width": 1440,
+                "height": 810
+                },
+                {
+                "src": "/assets/img/img-campus.webp",
+                "alt": "画像のalt",
+                "width": 1440,
+                "height": 810
+                }
+        ]
+        }) }}
+      </div>
+    </div>
+    {{ Heading.render({"text": "見出しテキスト h2「自然界はどのようにしてできて", "tag": "h2", "headingLevel": 2}) }}
+    {{ Card.render({
+      "cardType": "media",
+      "multiple": true,
+      "columnsNumber": 2,
+      "columnsNumberSmall": 1,
+      "linkArea": "none",
+      "multipleCards": [
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な",
+          "titleTag": "h3",
+          "startDate": "2024年12月31日",
+          "tags": [
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 810,
+          "imageAlt": "画像のalt"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な",
+          "titleTag": "h3",
+          "startDate": "2025年1月1日",
+          "tags": [
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "画像のalt"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な",
+          "titleTag": "h3",
+          "startDate": "2024年12月31日",
+          "tags": [
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "画像のalt"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な",
+          "titleTag": "h3",
+          "startDate": "2025年1月1日",
+          "tags": [
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "画像のalt"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な",
+          "titleTag": "h3",
+          "startDate": "2024年12月31日",
+          "tags": [
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "画像のalt"
+        },
+        {
+          "linkArea": "card",
+          "href": "#",
+          "blank": false,
+          "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な",
+          "titleTag": "h3",
+          "startDate": "2025年1月1日",
+          "tags": [
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト",
+            "タグテキスト"
+          ],
+          "imageSrc": "/assets/img/img-campus.webp",
+          "imageWidth": 960,
+          "imageHeight": 540,
+          "imageAlt": "画像のalt"
+        }
+      ]
+    }) }}
+    {{ Heading.render({"text": "イベント", "tag": "h2", "headingLevel": 2}) }}
+    {{ Carousel.render({
+        "contentsType": "tile",
+        "autoplay": false,
+        "loop": false,
+        "carouselItemNum": 3,
+        "carouselItems": [
+        {
+        "cardType": "event",
+        "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心",
+        "titleTag": "p",
+        "text": "",
+        "startDate": "2024年12月24日（月）",
+        "place": "[ダミー]大岡山キャンパス 本館 1F A会議室",
+        "tags": [
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト"
+        ],
+        "linkArea": "card",
+        "blank": false,
+        "href": "#",
+        "imageSrc": "",
+        "addClass": ""
+        },
+        {
+        "cardType": "event",
+        "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心",
+        "titleTag": "p",
+        "text": "",
+        "startDate": "2024年12月26日（水）",
+        "place": "[ダミー]大岡山キャンパス 本館 1F A会議室",
+        "tags": [
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト"
+        ],
+        "linkArea": "card",
+        "blank": false,
+        "href": "#",
+        "imageSrc": "",
+        "addClass": ""
+        },
+        {
+        "cardType": "event",
+        "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心",
+        "titleTag": "p",
+        "text": "",
+        "startDate": "2024年12月29日（土）",
+        "place": "[ダミー]大岡山キャンパス 本館 1F A会議室",
+        "tags": [
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト"
+        ],
+        "linkArea": "card",
+        "blank": false,
+        "href": "#",
+        "imageSrc": "",
+        "addClass": ""
+        },
+        {
+        "cardType": "event",
+        "title": "リンクテキスト「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心",
+        "titleTag": "p",
+        "text": "",
+        "startDate": "2025年1月1日（水）",
+        "place": "[ダミー]大岡山キャンパス 本館 1F A会議室",
+        "tags": [
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト",
+        "タグテキスト"
+        ],
+        "linkArea": "card",
+        "blank": false,
+        "href": "#",
+        "imageSrc": "",
+        "addClass": ""
+        }
+    ]
+    })
+    }}
+    {{ Heading.render({"text": "見出しテキスト h2「自然界はどのようにしてできて", "tag": "h2", "headingLevel": 2}) }}
+    {{ PickupContents.render({
+      "type": "media",
+      "linkType": "area",
+      "title": "メディア情報タイトル「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や",
+      "titleTag": "p",
+      "mediaDate": "2025年1月1日",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 1440,
+      "imageHeight": 540,
+      "imageAlt": "画像のalt",
+      "responsiveImage": false,
+      "href": "#",
+      "mediaLabels": [
+        {
+          "text": "タグテキスト"
+        },
+        {
+          "text": "タグテキスト"
+        },
+        {
+          "text": "タグテキスト"
+        }
+      ]
+    }) }}
+    {{ PickupContents.render({
+      "type": "media",
+      "linkType": "area",
+      "title": "メディア情報タイトル「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や",
+      "titleTag": "p",
+      "mediaDate": "2025年1月1日",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 1440,
+      "imageHeight": 810,
+      "imageAlt": "画像のalt",
+      "responsiveImage": false,
+      "href": "#",
+      "mediaLabels": [
+        {
+          "text": "タグテキスト"
+        },
+        {
+          "text": "タグテキスト"
+        },
+        {
+          "text": "タグテキスト"
+        }
+      ]
+    }) }}
+    {{ PickupContents.render({
+      "type": "media",
+      "linkType": "area",
+      "title": "メディア情報タイトル「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や",
+      "titleTag": "p",
+      "mediaDate": "2025年1月1日",
+      "imageSrc": "/assets/img/img-campus.webp",
+      "imageWidth": 1440,
+      "imageHeight": 810,
+      "imageAlt": "画像のalt",
+      "responsiveImage": false,
+      "href": "#",
+      "mediaLabels": [
+        {
+          "text": "タグテキスト"
+        },
+        {
+          "text": "タグテキスト"
+        },
+        {
+          "text": "タグテキスト"
+        }
+      ]
+    }) }}
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

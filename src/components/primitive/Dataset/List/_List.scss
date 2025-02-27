@@ -1,0 +1,62 @@
+@use '../../../../scss/globals/base/' as *;
+
+.c-list {
+  $_root: &;
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+  @include dm;
+  @include txt($t-bodyM);
+  &--size {
+    &L {
+      #{$_root}__item {
+        @include txt($t-bodyL);
+      }
+    }
+    &M {
+      #{$_root}__item {
+        @include txt($t-bodyM);
+      }
+    }
+    &S {
+      #{$_root}__item {
+        @include txt($t-bodyS);
+        &::before {
+          margin-right: var(--semantic-space-inner-ss);
+        }
+      }
+    }
+  }
+  &__item {
+    #{$_root} > & {
+      display: flex;
+      flex-wrap: nowrap;
+      &:not(:first-child) {
+        margin-top: var(--semantic-space-inner-s);
+      }
+      &::before {
+        content: '・';
+        width: auto;
+        margin: 0;
+        flex-shrink: 0;
+        margin-right: var(--semantic-space-inner-s);
+      }
+      .c-list,
+      .c-orderList {
+        margin-top: var(--semantic-space-inner-s);
+      }
+    }
+  }
+  // 注釈リスト
+  &--notes {
+    > #{$_root}__item {
+      &::before {
+        margin-right: var(--semantic-space-inner-s);
+        content: '※';
+        html[lang='en'] & {
+          content: '*';
+        }
+      }
+    }
+  }
+}

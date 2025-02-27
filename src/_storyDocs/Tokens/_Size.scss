@@ -1,0 +1,152 @@
+.docs-size {
+  list-style: none !important;
+  padding: 0 !important;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  li {
+    margin: 0 !important;
+    padding: 10px;
+    border: 1px solid hsla(203, 50%, 30%, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px 0;
+    &::after {
+      content: '';
+      display: block;
+      margin-top: 4px;
+      background-color: var(--brand-secondary);
+    }
+  }
+  // アイコンサイズ
+  &_icon-ssss::after {
+    width: var(--semantic-size-icon-ssss);
+    height: var(--semantic-size-icon-ssss);
+  }
+  &_icon-sss::after {
+    width: var(--semantic-size-icon-sss);
+    height: var(--semantic-size-icon-sss);
+  }
+  &_icon-ss::after {
+    width: var(--semantic-size-icon-ss);
+    height: var(--semantic-size-icon-ss);
+  }
+  &_icon-s::after {
+    width: var(--semantic-size-icon-s);
+    height: var(--semantic-size-icon-s);
+  }
+  &_icon-ms::after {
+    width: var(--semantic-size-icon-ms);
+    height: var(--semantic-size-icon-ms);
+  }
+  &_icon-mms::after {
+    width: var(--semantic-size-icon-mms);
+    height: var(--semantic-size-icon-mms);
+  }
+  &_icon-m::after {
+    width: var(--semantic-size-icon-m);
+    height: var(--semantic-size-icon-m);
+  }
+  &_icon-mml::after {
+    width: var(--semantic-size-icon-mml);
+    height: var(--semantic-size-icon-mml);
+  }
+  &_icon-ml::after {
+    width: var(--semantic-size-icon-ml);
+    height: var(--semantic-size-icon-ml);
+  }
+  &_icon-l::after {
+    width: var(--semantic-size-icon-l);
+    height: var(--semantic-size-icon-l);
+  }
+  &_icon-ll::after {
+    width: var(--semantic-size-icon-ll);
+    height: var(--semantic-size-icon-ll);
+  }
+  &_icon-lll::after {
+    width: var(--semantic-size-icon-lll);
+    height: var(--semantic-size-icon-lll);
+  }
+  // セクションサイズ
+  &_section-sss::after {
+    width: var(--semantic-size-section-sss);
+    height: var(--semantic-size-section-sss);
+  }
+  &_section-ss::after {
+    width: var(--semantic-size-section-ss);
+    height: var(--semantic-size-section-ss);
+  }
+  &_section-s::after {
+    width: var(--semantic-size-section-s);
+    height: var(--semantic-size-section-s);
+  }
+  &_section-ms::after {
+    width: var(--semantic-size-section-ms);
+    height: var(--semantic-size-section-ms);
+  }
+  &_section-m::after {
+    width: var(--semantic-size-section-m);
+    height: var(--semantic-size-section-m);
+  }
+  &_section-ml::after {
+    width: var(--semantic-size-section-ml);
+    height: var(--semantic-size-section-ml);
+  }
+  &_section-l::after {
+    width: var(--semantic-size-section-l);
+    height: var(--semantic-size-section-l);
+  }
+  &_section-ll::after {
+    width: var(--semantic-size-section-ll);
+    height: var(--semantic-size-section-ll);
+  }
+  // 角丸
+  &_radius-sss::after {
+    width: var(--semantic-size-icon-ss);
+    height: var(--semantic-size-icon-ss);
+    border-radius: var(--semantic-corner-radius-sss);
+  }
+  &_radius-ss::after {
+    width: var(--semantic-size-icon-ms);
+    height: var(--semantic-size-icon-ms);
+    border-radius: var(--semantic-corner-radius-ss);
+  }
+  &_radius-s::after {
+    width: var(--semantic-size-icon-ml);
+    height: var(--semantic-size-icon-ml);
+    border-radius: var(--semantic-corner-radius-s);
+  }
+  &_radius-ms::after {
+    width: var(--semantic-size-icon-lll);
+    height: var(--semantic-size-icon-lll);
+    border-radius: var(--semantic-corner-radius-ms);
+  }
+  &_radius-m::after {
+    width: var(--semantic-size-section-ss);
+    height: var(--semantic-size-section-ss);
+    border-radius: var(--semantic-corner-radius-m);
+  }
+  &_radius-ml::after {
+    width: var(--semantic-size-section-ms);
+    height: var(--semantic-size-section-ms);
+    border-radius: var(--semantic-corner-radius-ml);
+  }
+  &_radius-l::after {
+    width: var(--semantic-size-section-ml);
+    height: var(--semantic-size-section-ml);
+    border-radius: var(--semantic-corner-radius-l);
+  }
+  &_radius-ll::after {
+    width: var(--semantic-size-section-l);
+    height: var(--semantic-size-section-l);
+    border-radius: var(--semantic-corner-radius-ll);
+  }
+  &_radius-lll::after {
+    width: var(--semantic-size-section-ll);
+    height: var(--semantic-size-section-ll);
+    border-radius: var(--semantic-corner-radius-lll);
+  }
+  &_radius-pill::after {
+    width: var(--semantic-size-section-ms);
+    height: var(--semantic-size-section-ms);
+    border-radius: var(--semantic-corner-radius-pill);
+  }
+}

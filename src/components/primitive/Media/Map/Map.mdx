@@ -1,0 +1,21 @@
+{/* Map.mdx */}
+import { Canvas, Meta, Stories, Controls } from '@storybook/blocks';
+
+import * as MapStories from './Map.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Map" of={MapStories} />
+
+# マップ Map
+
+地図を表示するためのコンポーネントです。  
+マップはGoogle Mapsを表示するために利用します。
+
+## 原則
+
+- 基本のアスペクト比（縦横比）は、ブレイクポイントがlg-mdは4:3、smは3:4です。
+- 1:1や16:9も選択可能です。
+
+<Canvas />
+<Controls />

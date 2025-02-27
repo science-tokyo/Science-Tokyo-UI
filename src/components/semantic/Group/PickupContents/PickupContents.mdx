@@ -1,0 +1,26 @@
+{/* PickupContents.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as PickupContentsStories from './PickupContents.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="PickupContents" of={PickupContentsStories} />
+
+# ピックアップコンテンツ Pickup contents
+
+訴求力を高める際に利用します。特定のコンテンツに対する誘導や、ページ内で強調した見せ方を表現します。
+
+## 原則
+
+- 「デフォルト」「関連リンク」「メディア」の3タイプはリンク先のコンテンツへの導線として使用します。
+- 「コンテンツ訴求」タイプはページ内で特に強調したいコンテンツがある場合に使用します。導線を設けられません。
+- 日付の表記はデザインシステムサイトのライティングガイドラインの章（<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/japanese#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">日本語</a>／<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/english#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">英語</a>）をご確認ください。
+	- 日本語の場合
+		- 例「2025年1月1日」「2024年12月31日」
+		- 数字は半角、年は西暦で「年」「月」「日」を用いて表記します。
+	- 英語の場合
+		- 例「January 1, 2025」
+		- 数字は半角、月は省略表記しません。
+
+<Canvas />

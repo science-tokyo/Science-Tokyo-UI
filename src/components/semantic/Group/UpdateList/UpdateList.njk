@@ -1,0 +1,24 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Dataset/List/List.njk" as List %}
+{% macro render( props ) %}
+  {% set addClass = props.addClass %}
+  {% set title = props.title | default('記事更新履歴') %}
+  {% set items = props.items | default( [
+      "記事更新の説明テキストが入ります。記事更新の説明テキストが入ります。記事更新の説明テキストが入ります。記事更新の説明テキストが入ります。記事更新の説明テキストが入ります。",
+      "記事更新の説明テキストが入ります。記事更新の説明テキストが入ります。記事更新の説明テキストが入ります。記事更新の説明テキストが入ります。記事更新の説明テキストが入ります。"
+    ]) %}
+  <div class="c-updateHistory{{ ' ' ~ addClass if addClass }}">
+    <div class="c-updateHistory__header">
+      <h2 class="c-updateHistory__heading">{{ title }}</h2>
+    </div>
+    <div class="c-updateHistory__body">
+      {{ List.render({
+            "isNotes": true,
+            "items": items
+            }) }}
+    </div>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

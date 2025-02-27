@@ -1,0 +1,30 @@
+{/* FacilityList.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as FacilityListStories from './FacilityList.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="FacilityList" of={FacilityListStories} />
+
+# 施設リスト Facility list
+
+施設・設備の情報を表示するコンポーネントです。
+
+## 原則
+
+- 構成要素は必要に応じて表示・非表示を選択して利用します。
+- Google Mapsを利用してマップの表示が可能です。
+- 住所の表記は以下の通りです。
+	- 日本語の表示例「東京都目黒区大岡山2丁目12-1」
+	- 英語の表示例「2-12-1 Ookayama, Meguro-ku, Tokyo, Japan」
+		- 丁目、番地から記入し、最後に県名と住所、国名を記載します。
+- 電話番号の表記は以下の通りです。
+	- 日本語の表示例「03-XXXX-XXXX」
+		- 市外局番、市内局番、加入者番号を「-」でつなぎます。
+	- 英語の表示例「+81-3-XXXX-XXXX」
+		- 日本の国番号「+81」、先頭の0を外した市外局番、市内局番、加入者番号を「-」でつなぎます。
+- 交通アクセスは、アクセス手段ごとに全角スラッシュ（／）で、前後にスペース無しで区切ります。
+	- 例）JR新宿駅南口A5出口から徒歩5分／都営新宿線初台駅B1出口から徒歩15分／都営新宿線初台駅B1出口から徒歩15分
+
+<Canvas />

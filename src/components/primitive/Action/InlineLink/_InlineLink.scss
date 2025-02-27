@@ -1,0 +1,40 @@
+.c-link,
+.c-paragraph > a {
+  color: var(--ui-text-status-link);
+  border-radius: var(--semantic-corner-radius-s);
+  display: inline;
+  align-items: center;
+  gap: var(--semantic-space-inner-sss);
+  position: relative;
+  @media (hover: hover) {
+    &:hover {
+      color: var(--ui-text-status-hover);
+      background-color: var(--ui-background-emphasize-mid-tertiary);
+    }
+  }
+  &:active {
+    color: var(--ui-text-status-active);
+    background-color: var(--ui-background-emphasize-mid-tertiary);
+  }
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--ui-line-status-focus);
+    outline: 2px solid var(--primitive-canary-700);
+  }
+  // &:visited {
+  //   color: var(--ui-text-status-visited);
+  //   &::after {
+  //     border-color: var(--ui-line-status-visited);
+  //   }
+  // }
+  &__icon,
+  > svg {
+    vertical-align: middle;
+    margin-top: -0.2em;
+  }
+}
+.c-paragraph > a {
+  &:visited {
+    color: var(--ui-text-status-visited);
+  }
+}

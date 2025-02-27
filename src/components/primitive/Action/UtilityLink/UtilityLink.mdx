@@ -1,0 +1,25 @@
+{/* UtilityLink.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as UtilityLinkStories from './UtilityLink.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="UtilityLink" of={UtilityLinkStories} />
+
+# ユーティリティリンク Utility link
+
+ブロック要素として配置されるリンクのコンポーネントです。  
+複数のリンクを並列して表示する場合や、組み合わせて他のコンポーネントを作成する際のパーツとして使用します。
+
+## 原則
+
+- 単独で利用する場合はブロック要素で配置されます。
+- リンクの前後にアイコンを設定できます。
+  - 末尾のアイコン：外部リンクに対しては「new-window」アイコンを、リンク先がPDFやワードファイルなどのドキュメントのダウンロードの場合は「pdf（file）」を設定します。同一サイト内へのリンクの場合は「chevron-right」を設定します。
+  - 先頭のアイコン：一つ前のページに戻るリンクの場合は「arrow-left」を設定します。
+
+<Canvas />
+<Controls />
+
+<Stories />

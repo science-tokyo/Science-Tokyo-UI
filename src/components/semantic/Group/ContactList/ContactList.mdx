@@ -1,0 +1,29 @@
+{/* ContactList.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as ContactListStories from './ContactList.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="ContactList" of={ContactListStories} />
+
+# お問い合わせリスト Contact list
+
+お問い合わせ先を表示するコンポーネントです。
+
+## 原則
+
+- 1カラム、または2カラムで表示します。
+- 「担当部署」「担当者名」の2項目は任意で記載してください。
+- 構成要素は必要に応じて表示・非表示を選択して利用します。
+- 住所の表記は以下の通りです。
+	- 日本語の表示例「東京都目黒区大岡山2丁目12-1」
+	- 英語の表示例「2-12-1 Ookayama, Meguro-ku, Tokyo, Japan」
+		- 丁目、番地から記入し、最後に県名と住所、国名を記載します。
+- 電話番号の表記は以下の通りです。
+	- 日本語の表示例「03-XXXX-XXXX」
+		- 市外局番、市内局番、加入者番号を「-」でつなぎます。
+	- 英語の表示例「+81-3-XXXX-XXXX」
+		- 日本の国番号「+81」、先頭の0を外した市外局番、市内局番、加入者番号を「-」でつなぎます。
+
+<Stories />

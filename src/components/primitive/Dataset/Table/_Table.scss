@@ -1,0 +1,83 @@
+@use '../../../../scss/globals/base/' as *;
+
+.c-table {
+  $_root: &;
+  text-align: left;
+  @include dm;
+  @include bp(sm) {
+    overflow: auto;
+    #{$_root}__content {
+      width: 960px;
+      min-width: 100%;
+    }
+  }
+  &--fixed {
+    > table {
+      table-layout: fixed;
+    }
+  }
+  &--firstHalf {
+    th,
+    td {
+      &:first-child {
+        width: 50%;
+      }
+    }
+  }
+  &--firstQuarter {
+    th,
+    td {
+      &:first-child {
+        width: 25%;
+      }
+    }
+  }
+  &--lastHalf {
+    th,
+    td {
+      &:last-child {
+        width: 50%;
+      }
+    }
+  }
+  &--lastQuarter {
+    th,
+    td {
+      &:last-child {
+        width: 25%;
+      }
+    }
+  }
+  &__content {
+    width: 100%;
+    border-collapse: collapse;
+    &--fixed {
+      table-layout: fixed;
+    }
+  }
+  &__caption {
+    padding-block: var(--semantic-space-inner-m);
+    @include txt($t-titleS);
+    text-align: left;
+  }
+  th,
+  td {
+    @include txt($t-bodyM);
+    padding: var(--semantic-space-inner-m);
+    height: 80px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-weight: normal;
+    border: 1px solid #ccc;
+    > * + * {
+      margin-top: var(--semantic-space-inner-s);
+    }
+  }
+  &__head {
+    th,
+    td,
+    &Cell {
+      background-color: #f8f8fb;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set items = props.items | default([
+      {
+        term: 'Beast of Bodmin',
+        description: {
+          multiple: true,
+          subItems: [
+            'A large feline inhabiting Bodmin Moor.',
+            'A large feline inhabiting Bodmin Moor.'
+          ]
+        }
+      },
+      {
+        term: 'Morgawr',
+        description: 'A sea serpent.'
+      },
+      {
+        term: 'Owlman',
+        description: 'A giant owl-like creature.'
+      }
+    ]) %}
+  {%- set size = props.size -%}
+  {%- set cols = props.cols -%}
+  {% set addClass = props.addClass %}
+  <dl class="c-definitionList{{' c-definitionList--size' ~ size if size}}{{' c-definitionList--cols' ~ cols if cols}}{{' ' ~ addClass if addClass}}">
+    {% for item in items %}
+      {% if item.description %}
+        <div class="c-definitionList__item">
+          <dt class="c-definitionList__term">{{ item.term }}</dt>
+          {%- if item.description.multiple == true -%}
+            {%- for subItem in item.description.subItems -%}
+              <dd class="c-definitionList__description">
+                {{ subItem | safe }}
+              </dd>
+            {%- endfor -%}
+          {%- else -%}
+            <dd class="c-definitionList__description">
+              {{ item.description | safe }}
+            </dd>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </dl>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

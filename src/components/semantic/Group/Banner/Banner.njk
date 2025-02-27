@@ -1,0 +1,22 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Media/Image/Image.njk" as Image %}
+{% macro render( props ) %}
+  {%- set columnsNumber = props.columnsNumber | default(3) -%}
+  {%- set columnsNumberMedium = props.columnsNumberMedium | default('') -%}
+  {%- set columnsNumberSmall = props.columnsNumberSmall | default(1) -%}
+  {% set items = props.items %}
+  <div class="c-banner{{' ' ~ addClass if addClass}}">
+    <div class="grid{{' grid--cols' ~ columnsNumber if columnsNumber}}{{' md:grid--cols' ~ columnsNumberMedium if columnsNumberMedium}}{{' sm:grid--cols' ~ columnsNumberSmall if columnsNumberSmall}}">
+      {% for item in items %}
+        <div class="grid__col">
+          <div class="c-banner__item">
+            <a href="{{ item.href }}"{{' target=_blank' if item.external}} class="c-banner__link">{{ Image.render({"src": item.src, "alt": item.alt, "width": item.width, "height": item.height}) }}</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

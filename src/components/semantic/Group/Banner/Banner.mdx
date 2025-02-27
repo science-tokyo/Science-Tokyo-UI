@@ -1,0 +1,21 @@
+{/* Banner.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as BannerStories from './Banner.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Banner" of={BannerStories} />
+
+# バナー Banner
+
+画像のみで構成されたリンクバナーを表示するコンポーネントです。
+
+## 原則
+
+- 1カラムから4カラムまで選択可能です。
+- sm時は1カラムで、複数カラムの場合は縦積みで表示します。
+- Science TokyoのWebサイトでは、基本的には、アイキャッチ等にテキスト表現を積極的に入れることを推奨しておりません。<a href="https://design-system.isct.ac.jp/ja/documents/visual-guidelines/production-points/eye-catch/" target="_blank">ビジュアルガイドライン</a>で推奨対応を確認ください。
+- Science TokyoのWebサイトでは、スクリーンリーダー利用者に向けた代替テキスト（alt）も意識して設定してください。<a href="https://design-system.isct.ac.jp/ja/documents/web-accessibility-support-book/content/images/" target="_blank">ウェブアクセシビリティサポートブック</a>で推奨対応を確認ください。
+
+<Stories />

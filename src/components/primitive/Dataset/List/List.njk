@@ -1,0 +1,68 @@
+{#
+ # @prop {type} ***
+ # @prop {object} items - リストアイテムの配列
+ # @prop {boolean} isNotes - 注釈スタイルのリストを表示するかどうか
+ #}
+{%- macro render( props ) -%}
+  {%- set localeLabel = props.localeLabel -%}
+  {%- set items = props.items | default(
+    [
+    "アイテム1",
+    {
+    listItem:"アイテム2",
+    child: [ "アイテム2-1", "アイテム2-2" ]
+    },
+    {
+    listItem:"アイテム3",
+    child: [
+    {
+    listItem:"アイテム3-1",
+    child: [ "アイテム3-1-1", "アイテム3-1-2" ]
+    },
+    "アイテム3-2"
+    ]
+    }
+    ]
+    ) -%}
+  {%- set isNotes = props.isNotes | default(false) -%}
+  {%- set size = props.size -%}
+  {%- set addClass = props.addClass -%}
+  <ul class="c-list{{' c-list--notes' if isNotes}}{{' c-list--size' ~ size if size}}{{' ' ~ addClass if addClass}}">
+    {%- for item in items -%}
+      {%- if item is string -%}
+        <li class="c-list__item">
+          <span class="c-list__label">{{ localeLabel if localeLabel else item }}</span>
+        </li>
+      {%- else -%}
+        <li class="c-list__item">
+          <span class="c-list__label">{{ localeLabel if localeLabel else item.listItem }}
+            {%- if item.listItem is string -%}
+              <ul class="c-list">
+                {%- for subItem in item.child -%}
+                  {%- if subItem is string -%}
+                    <li class="c-list__item">
+                      <span class="c-list__label">{{ localeLabel if localeLabel else subItem }}</span>
+                    </li>
+                  {%- else -%}
+                    <li class="c-list__item">
+                      <span class="c-list__label">{{ localeLabel if localeLabel else subItem.listItem }}
+                        <ul class="c-list">
+                          {%- for subSubItem in subItem.child -%}
+                            <li class="c-list__item">
+                              <span class="c-list__label">{{ localeLabel if localeLabel else subSubItem }}</span>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </span>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </span>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endmacro -%}
+{%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

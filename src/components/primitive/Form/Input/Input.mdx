@@ -1,0 +1,24 @@
+{/* Input.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as InputStories from './Input.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Input" of={InputStories} />
+
+# インプット（入力フォーム） Input
+
+一行で収まるテキストを入力するためのコンポーネントです。  
+
+## 原則
+
+- 横幅は任意で設定することが可能です。
+- 項目ラベル、入力必須項目、サポートテキストは入力を補助する要素がコンポーネントに予め用意されていますが、必要に応じて表示／非表示を切り替えて利用します。
+- 利用不可（Disabled）の状態を表示させる際は、サポートテキストを利用してユーザーに利用することができない理由を知らせる必要があります。
+- フォーム末尾に表示できるアイコンは2個までの制限があります。
+
+<Canvas />
+<Controls />
+
+<Stories />

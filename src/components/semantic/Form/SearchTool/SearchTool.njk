@@ -1,0 +1,34 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+{% set type = props.type | default("input") %}
+{% if type == "input" %}
+<div class="c-search">
+  <div class="c-search__input">
+    <input class="c-input" type="search" id="search" placeholder="検索キーワードを入力">
+    <svg class="icon" aria-hidden="true" role="img"><use xlink:href="/assets/img/sprite.svg#close"></use></svg>
+    <svg class="icon" aria-hidden="true" role="img"><use xlink:href="/assets/img/sprite.svg#search"></use></svg>
+  </div>
+</div>
+{% else %}
+<div class="c-searchTool">
+  <fieldset class="c-searchTool__tagControls" data-js-taglist="">
+  <legend>絞り込むキーワードを選択</legend>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグA</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグB</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグC</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグE</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグD</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグF</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグAA</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグAB</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグAC</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグAD</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグADA</label>
+  <label class="c-searchTool__tagButton"><input type="checkbox" name="">タグADAA</label>
+  </fieldset>
+</div>
+{% endif %}
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

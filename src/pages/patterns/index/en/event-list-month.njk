@@ -1,0 +1,379 @@
+---
+layout: layouts/base.njk
+title: インデックスパターン：イベント一覧型（月別表示）・英語版
+description: ページパターン：インデックスパターン：イベント一覧型（月別表示）
+permalink: /page-patterns/index/en/event-list-month.html
+lang: en
+---
+
+{# // compornents // #}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% import "src/components/semantic/Group/EntryList/EntryList.njk" as EntryList %}
+{# // page HTML // #}
+<div class="contentArea">
+  <div class="container">
+    {{ Heading.render({
+        text: title,
+        tag: "h1",
+        headingLevel: 1
+        }) }}
+    <div class="p-mediaIndex">
+      <div class="c-tab">
+        <div class="c-tab__head" role="tablist">
+          <div class="c-tab__tabs">
+            <button class="c-tab__trigger" type="button" role="tab">Top picks</button>
+            <button class="c-tab__trigger" type="button" role="tab">Stories</button>
+            <button class="c-tab__trigger" type="button" role="tab">News</button>
+            <button class="c-tab__trigger is-active" type="button" role="tab">Events</button>
+            <button class="c-tab__trigger" type="button" role="tab">Announcements</button>
+            <button class="c-tab__trigger" type="button" role="tab">Press Releases</button>
+            <button class="c-tab__trigger" type="button" role="tab" aria-selected="true">All</button>
+          </div>
+          <!-- /.c-tab__tabs -->
+        </div>
+        <!-- /.c-tab__head -->
+      </div>
+      <!-- /.c-tab -->
+      <div class="c-searchTool">
+        <div class="c-searchTool__header" data-js-search-sort="eventMonth">
+          <div class="c-searchTool__header__link">
+            <a href="/page-patterns/index/en/event-list.html"
+               class="c-link c-utilityLink">
+              Display all
+              <svg class="c-link__icon c-link__icon--right icon"
+                   aria-hidden="true"
+                   role="img">
+                <use xlink:href="/assets/img/sprite.svg#chevron_right"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="c-searchTool__header__select">
+            <div class="c-selectGroup">
+              <select class="c-select">
+                <option value="">Date</option>
+                <option value="2025-04">April 2025</option>
+                <option value="2025-02">February 2025</option>
+                <option value="2025-01">January 2025</option>
+                <option value="2024-12">December 2024</option>
+                <option value="2024-11">November 2024</option>
+                <option value="2024-10">October 2024</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <fieldset class="c-searchTool__tagControls">
+          <legend>Narrow down the keywords</legend>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagE
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagF
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAB
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAC
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagAD
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagADA
+          </label>
+          <label class="c-searchTool__tagButton">
+            <input type="checkbox" name="">
+            tagADAA
+          </label>
+        </fieldset>
+      </div>
+      <div class="p-mediaIndex__contents" data-js-contents-wrap>
+        {{ EntryList.render({
+                locale: lang,
+                contentsType: 'event',
+                items: [
+                {
+                url: "#",
+                title: 'Title title title',
+                startDate: '2024年10月1日（月）',
+                startDateEn: 'Mon, October 1',
+                startTime: '11:00',
+                endTime: '13:00',
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: '1440',
+                imageHeight: '810',
+                imageAlt: '画像Alt',
+                venue: 'place name',
+                tags: [
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                }
+                ]
+                },
+                {
+                url: "#",
+                title: 'Title title title',
+                startDate: '2024年10月1日（月）',
+                startDateEn: 'Mon, October 1',
+                endDate: '2025年1月8日（木）',
+                endDateEn: 'Thu, January 8',
+                startTime: '11:00',
+                endTime: '13:00',
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: '1440',
+                imageHeight: '810',
+                imageAlt: '画像Alt',
+                venue: 'place name',
+                tags: [
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                }
+                ]
+                },
+                {
+                url: "#",
+                title: 'Title title title',
+                startDate: '2024年2月3日（月）',
+                startDateEn: 'Mon, February 3',
+                endDate: '2025年2月8日（木）',
+                endDateEn: 'Thu, February 8',
+                startTime: '11:00',
+                endTime: '13:00',
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: '1440',
+                imageHeight: '810',
+                imageAlt: '画像Alt',
+                venue: 'place name',
+                tags: [
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                }
+                ]
+                },
+                {
+                url: "#",
+                title: 'Title title title',
+                startDate: '2024年10月1日（月）',
+                startDateEn: 'Mon, October 1',
+                endDate: '2025年1月8日（木）',
+                endDateEn: 'Thu, January 8',
+                startTime: '11:00',
+                endTime: '13:00',
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: '1440',
+                imageHeight: '810',
+                imageAlt: '画像Alt',
+                venue: 'place name',
+                tags: [
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                }
+                ]
+                },
+                {
+                url: "#",
+                title: 'Title title title',
+                startDate: '2024年10月1日（月）',
+                startDateEn: 'Mon, October 1',
+                endDate: '2025年1月8日（木）',
+                endDateEn: 'Thu, January 8',
+                startTime: '11:00',
+                endTime: '13:00',
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: '1440',
+                imageHeight: '810',
+                imageAlt: '画像Alt',
+                venue: 'place name',
+                tags: [
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                }
+                ]
+                },
+                {
+                url: "#",
+                title: 'Title title title',
+                startDate: '2024年10月1日（月）',
+                startDateEn: 'Mon, October 1',
+                endDate: '2025年1月8日（木）',
+                endDateEn: 'Thu, January 8',
+                startTime: '11:00',
+                endTime: '13:00',
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: '1440',
+                imageHeight: '810',
+                imageAlt: '画像Alt',
+                venue: 'place name',
+                tags: [
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                }
+                ]
+                },
+                {
+                url: "#",
+                title: 'Title title title',
+                startDate: '2024年10月1日（月）',
+                startDateEn: 'Mon, October 1',
+                endDate: '2025年1月8日（木）',
+                endDateEn: 'Thu, January 8',
+                startTime: '11:00',
+                endTime: '13:00',
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: '1440',
+                imageHeight: '810',
+                imageAlt: '画像Alt',
+                venue: 'place name',
+                tags: [
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                }
+                ]
+                },
+                {
+                url: "#",
+                title: 'Title title title',
+                startDate: '2024年10月1日（月）',
+                startDateEn: 'Mon, October 1',
+                endDate: '2025年1月8日（木）',
+                endDateEn: 'Thu, January 8',
+                startTime: '11:00',
+                endTime: '13:00',
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: '1440',
+                imageHeight: '810',
+                imageAlt: '画像Alt',
+                venue: 'place name',
+                tags: [
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                }
+                ]
+                },
+                {
+                url: "#",
+                title: 'Title title title',
+                startDate: '2024年10月1日（月）',
+                startDateEn: 'Mon, October 1',
+                endDate: '2025年1月8日（木）',
+                endDateEn: 'Thu, January 8',
+                startTime: '11:00',
+                endTime: '13:00',
+                imageSrc: '/assets/img/img-campus.webp',
+                imageWidth: '1440',
+                imageHeight: '810',
+                imageAlt: '画像Alt',
+                venue: 'place name',
+                tags: [
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                },
+                {
+                label: 'category'
+                }
+                ]
+                }
+                ]
+                }) }}
+      </div>
+      <div class="c-searchTool__pagination" data-js-pagination="month">
+        <button type="button"
+                class="c-searchTool__pagination__btn"
+                data-js-month-select="prev">
+          <svg class="icon" aria-hidden="true" role="img">
+            <use xlink:href="/assets/img/sprite.svg#chevron_left"></use>
+          </svg>
+          <span>November 2024</span>
+        </button>
+        <p class="c-searchTool__pagination__text" data-js-current-month="">December 2024</p>
+        <button type="button"
+                class="c-searchTool__pagination__btn"
+                data-js-month-select="next">
+          <span>January 2025</span>
+          <svg class="icon" aria-hidden="true" role="img">
+            <use xlink:href="/assets/img/sprite.svg#chevron_right"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.contentArea -->

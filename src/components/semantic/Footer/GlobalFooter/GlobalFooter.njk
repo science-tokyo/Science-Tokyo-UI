@@ -1,0 +1,40 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set locale = props.locale | default('ja') %}
+  {% if locale === 'ja' %}
+    {% set localeLabels = props.localeLabels | default(
+          [
+            '本サイトについて',
+            'サイトマップ',
+            '個人情報の取り扱い',
+            'ウェブアクセシビリティ方針',
+            'SNSポリシー'
+          ]
+        ) %}
+  {% else %}
+    {% set localeLabels = props.localeLabels | default(
+          [
+            'Terms of use',
+            'Sitemap',
+            'Privacy policy',
+            'Web accessibility policy',
+            'SNS policy'
+          ]
+        ) %}
+  {% endif %}
+  <div class="c-globalFooter">
+    <div class="c-globalFooter__inner">
+      <ul class="c-globalFooter__link">
+        {%- for label in localeLabels %}
+          <li>
+            <a href="#" class="c-globalFooter__linkItem">{{ label }}</a>
+          </li>
+        {% endfor -%}
+      </ul>
+      <p class="c-globalFooter__copy">&copy; Institute of Science Tokyo. All rights reserved.</p>
+    </div>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

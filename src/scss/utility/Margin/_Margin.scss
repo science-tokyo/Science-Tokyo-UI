@@ -1,0 +1,59 @@
+@use '../../globals/base/' as *;
+
+$margin-sizes: (
+  'none': 0,
+  'sss': var(--semantic-space-inner-sss),
+  'ss': var(--semantic-space-inner-ss),
+  's': var(--semantic-space-inner-s),
+  'ms': var(--semantic-space-inner-ms),
+  'mms': var(--semantic-space-inner-mms),
+  'm': var(--semantic-space-inner-m),
+  'ml': var(--semantic-space-inner-ml),
+  'l': var(--semantic-space-inner-l),
+  'll': var(--semantic-space-inner-ll),
+  'lll': var(--semantic-space-inner-lll),
+  'llll': var(--semantic-space-inner-llll)
+);
+
+@mixin loop {
+  @each $size, $value in $margin-sizes {
+    &m-#{$size} {
+      margin: $value;
+    }
+    &mt-#{$size} {
+      margin-top: $value;
+    }
+    &mr-#{$size} {
+      margin-right: $value;
+    }
+    &mb-#{$size} {
+      margin-bottom: $value;
+    }
+    &ml-#{$size} {
+      margin-left: $value;
+    }
+    &mx-#{$size} {
+      margin-left: $value;
+      margin-right: $value;
+    }
+    &my-#{$size} {
+      margin-top: $value;
+      margin-bottom: $value;
+    }
+  }
+}
+
+.u- {
+  @include loop;
+}
+
+.md\:u- {
+  @include bp(md) {
+    @include loop;
+  }
+}
+.sm\:u- {
+  @include bp(sm) {
+    @include loop;
+  }
+}

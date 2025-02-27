@@ -1,0 +1,20 @@
+{/* ArticleContents.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as ArticleContentsStories from './ArticleContents.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="ArticleContents" of={ArticleContentsStories} />
+
+# 記事コンテンツ Article contents
+
+画像とテキスト（キャッチコピー、文章、インタビュー形式の文章）、リンクを組み合わせたコンポーネントです。
+
+## 原則
+
+- 構成要素（キャッチコピー、画像、本文、リンクテキスト）は必要に応じて表示・非表示を選択します。
+- 画像を利用する場合、配置の左右とサイズの大小をそれぞれ指定します。
+- sm時の画像サイズは、大小の選択に関わらず、コンポーネント内で全幅に表示します。
+
+<Canvas />

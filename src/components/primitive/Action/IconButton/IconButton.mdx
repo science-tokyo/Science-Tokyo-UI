@@ -1,0 +1,25 @@
+{/* IconButton.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as IconButtonStories from './IconButton.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="IconButton" of={IconButtonStories} />
+
+# アイコンボタン Icon button
+
+アイコンボタンを表示するためのコンポーネントです。  
+アイコン、2桁の数列、2文字の英字文字を利用し、ユーザーに行為を誘導したい際（シグニファイア）に利用します。
+
+## 原則
+
+- Token > アイコン で定義された基本アイコンを利用します。
+- アイコンの代わりに2桁までの数字、2文字まで英字が設定できます。
+- 小さいサイズのボタンに対しては、クリッカブルエリアが最低44pxを保つように使用します。
+- 組み合わせて他のコンポーネントを作成する際のパーツとして使用します。
+
+<Canvas />
+<Controls />
+
+<Stories />

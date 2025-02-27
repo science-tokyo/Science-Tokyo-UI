@@ -1,0 +1,13 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/semantic/Header/GlobalHeader/GlobalHeader.njk" as GlobalHeader %}
+{% import "src/components/semantic/Header/GlobalNavigation/GlobalNavigation.njk" as GlobalNavigation %}
+{% macro render( props ) %}
+{% set locale = props.locale | default('ja') %}
+<header class="g-header" data-js-header>
+  {{ GlobalHeader.render({locale: locale}) }}
+  {{ GlobalNavigation.render({locale: locale}) }}
+</header>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

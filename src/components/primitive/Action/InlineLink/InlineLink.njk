@@ -1,0 +1,24 @@
+{#
+ # @prop {type} ***
+#}
+{% macro render( props ) %}
+{% set href = props.href | default('#') %}
+{% set label = props.label | default('リンク') %}
+{% set external = props.external %}
+{% set document = props.document %}
+{% set addClass = props.addClass %}
+<a {{" target=_blank" if external}} href="{{ href }}" class="c-link{{' ' ~ addClass if addClass}}">
+  {{ label }}
+  {%- if external %}
+  <svg class="c-link__icon c-link__icon--external icon" role="img" aria-label="新しいウインドウで開く">
+    <use xlink:href="/assets/img/sprite.svg#new_window"></use>
+  </svg>
+  {%- endif %}
+  {%- if document %}
+  <svg class="c-link__icon c-link__icon--pdf icon" role="img" aria-label="ファイルを開く">
+    <use xlink:href="/assets/img/sprite.svg#pdf"></use>
+  </svg>
+  {%- endif %}
+</a>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

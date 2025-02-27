@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Science Tokyo UI" />
+
+# Science Tokyo UI
+
+## 概要
+
+本ドキュメントは、Science Tokyo UI フロントエンドリソースを利用するためのガイドです。  
+この環境は、主に`dist`配下に生成されたファイルを利用者が複製し、個別サイトの実装基盤として利用することを想定しています。  
+多様なケースに対応するため、現時点では特定のフレームワークやCMSに依存しない、HTML/CSS/JavaScriptのみで構成されています。
+
+### 想定される利用シナリオ
+
+- GitHubリポジトリをクローン
+- 利用シナリオ
+  1. **そのまま利用**
+     - dist配下のファイルを複製してサイト実装
+  2. **カスタマイズして利用**:
+     - デザイントークン（CSS変数）の調整
+     - 既存コンポーネントのスタイル調整
+     - 独自コンポーネントの追加
+
+### 主な技術スタック
+
+- **Storybook**: UIコンポーネントの開発・ドキュメント化
+- **11ty**: 静的サイトジェネレーター
+- **Nunjucks（simple-nunjucks-loader）**: コンポーネントの定義とHTML出力処理を行うテンプレートエンジンとして利用
+- **TypeScript**: メインスクリプト (`main.js`) に使用
+- **SCSS**: スタイル記述用
+
+## はじめに
+
+Science Tokyo UIをご利用の際は、以下のページと関連ドキュメントを必ずご確認ください。  
+また、それぞれ記載するライセンス表記と、利用規約の記載事項を遵守し、最新の情報やデータをご利用いただくようお願いいたします。
+
+- [利用方法](?path=/docs/利用方法--docs)
+- [コーディングガイド](?path=/docs/コーディングガイド--docs)
+- [ライセンス](?path=/docs/ライセンス--docs)
+
+### 関連ドキュメント
+
+- <a href="https://design-system.isct.ac.jp/" target="_blank">Science Tokyoデザインシステム</a>
+- <a href="https://www.figma.com/@ScienceTokyo" target="_blank">Science Tokyo Web Style Guide</a>

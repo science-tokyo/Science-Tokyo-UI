@@ -1,0 +1,21 @@
+{/* UpdateList.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as UpdateListStories from './UpdateList.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="UpdateList" of={UpdateListStories} />
+
+# 更新履歴 Update history
+
+更新履歴を表示するコンポーネントです。ニュースページなどのページ下部に表示します。  
+公開後に発生した情報の修正や更新内容をユーザーに案内します。
+
+## 原則
+
+- 日付の表記はデザインシステムサイトのライティングガイドラインの章（<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/japanese#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">日本語</a>／<a href="https://design-system.isct.ac.jp/ja/documents/writing-guidelines/basic-policy/english#%E6%95%B0%E5%AD%97%E3%81%AE%E8%A1%A8%E8%A8%98" target="_blank">英語</a>）をご確認ください。
+- リストの行頭に「※ (日本語ページの場合) 」「* (英語ページの場合) 」が付与されます。
+- 任意で「見出し」を付与することが可能です。
+
+<Canvas />

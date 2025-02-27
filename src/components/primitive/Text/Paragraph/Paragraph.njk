@@ -1,0 +1,13 @@
+{#
+ # @prop {type} ***
+#}
+{%- macro render( props ) -%}
+  {%- set isCopy = props.isCopy -%}
+  {%- set size = props.size -%}
+  {%- set copySize = props.copySize -%}
+  {%- set addClass = props.addClass -%}
+  {%- set textAlign = props.textAlign -%}
+  {%- set fontWeight = props.fontWeight -%}
+  <p class="c-paragraph{{ ' c-paragraph--size' ~ size if size }}{{ ' c-paragraph--copy' ~ copySize if isCopy }}{{ ' c-paragraph--align' ~ textAlign if textAlign }}{{ ' c-paragraph--weight' ~ fontWeight if fontWeight }}{{' ' ~ addClass if addClass}}">{{ props.text }}</p>
+{%- endmacro -%}
+{%- if storybookArgs -%}{{ render(storybookArgs) }}{%- endif -%}

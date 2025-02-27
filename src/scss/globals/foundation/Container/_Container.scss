@@ -1,0 +1,52 @@
+@use '../../../globals/base/' as *;
+
+.container {
+  @include container;
+}
+.contentArea {
+  padding-bottom: var(--semantic-space-outer-m);
+  @include bp(sm) {
+    padding-bottom: var(--semantic-space-outer-sss);
+  }
+  &__summary {
+    @include dm;
+    border: var(--semantic-line-thickness-default) solid
+      var(--ui-line-status-link);
+    padding: 0 var(--semantic-space-outer-sss) var(--semantic-space-inner-llll);
+    border-radius: var(--semantic-corner-radius-ll);
+    margin-bottom: var(--semantic-space-inner-llll);
+    @include bp(sm) {
+      padding: var(--semantic-space-inner-l) var(--semantic-space-inner-m);
+    }
+    .c-heading--h2 {
+      padding-top: var(--semantic-space-inner-llll);
+      @include bp(sm) {
+        padding-top: 0;
+      }
+    }
+    .c-heading--h5 {
+      margin-top: var(--semantic-space-inner-m);
+      + .c-heading--h5 {
+        margin-top: var(--semantic-space-inner-s);
+      }
+    }
+  }
+  &__bottom {
+    @include dm;
+    padding-top: var(--semantic-space-outer-sss);
+    padding-bottom: var(--semantic-space-inner-ll);
+  }
+}
+.contentAside {
+  padding-top: var(--semantic-space-inner-ll);
+  padding-bottom: var(--semantic-space-outer-m);
+}
+.contentFooter {
+  background-color: var(--ui-background-separated-area-primary);
+  padding-top: var(--semantic-space-inner-ll);
+  padding-bottom: var(--semantic-space-outer-l);
+  @include bp(sm) {
+    padding-top: 0;
+    padding-bottom: var(--semantic-space-outer-sss);
+  }
+}

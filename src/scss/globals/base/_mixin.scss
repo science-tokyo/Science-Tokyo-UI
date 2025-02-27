@@ -1,0 +1,140 @@
+@use 'sass:map';
+
+/* -------------------- *\
+## expand
+sass の連想配列を css のプロパティ、値として展開
+呼び出しは`@include ex($valiable)`
+例)
+$example:(display:block,margin:0)
+.example { @include global.ex($example); }
+-> .example { display:block; margin:0; }
+\* -------------------- */
+@mixin ex($valiable) {
+  @if $valiable != null {
+    @each $prop, $value in $valiable {
+      #{$prop}: $value;
+    }
+  }
+}
+/* -------------------- *\
+## text expand
+expandのtext版
+呼び出しは`@include txt($valiable)`
+\* -------------------- */
+@mixin txt($valiable) {
+  @if $valiable != null {
+    @each $prop, $value in $valiable {
+      @if type-of($value) == 'map' {
+        html[lang='#{$prop}'] & {
+          @include ex($value);
+        }
+      } @else {
+        #{$prop}: $value;
+      }
+    }
+  }
+}
+
+/* -------------------- *\
+## breakpoint
+\* -------------------- */
+$breakpoints: (
+  'sm': 'screen and (max-width: 767px)',
+  'md': 'screen and (max-width: 1024px)'
+);
+@mixin bp($breakpoint: sm) {
+  @media #{map.get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/* -------------------- *\
+## defaultMargin
+呼び出しは`@include dm`
+\* -------------------- */
+@mixin dm() {
+  margin-top: var(--semantic-space-inner-ll);
+  &:first-child {
+    margin-top: 0;
+  }
+  @include bp(sm) {
+    margin-top: var(--semantic-space-inner-l);
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+/* -------------------- *\
+## container
+呼び出しは`@include container`
+\* -------------------- */
+@mixin container() {
+  width: 100%;
+  max-width: calc(960px + (var(--semantic-space-inner-ll) * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--semantic-space-inner-ll);
+  padding-left: var(--semantic-space-inner-ll);
+  @include bp(sm) {
+    min-width: calc(320px - (var(--semantic-space-inner-m) * 2));
+    padding-right: var(--semantic-space-inner-m);
+    padding-left: var(--semantic-space-inner-m);
+  }
+}
+/* -------------------- *\
+## container
+呼び出しは`@include fullWidth`
+\* -------------------- */
+@mixin fullWidth() {
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+}
+
+/* -------------------- *\
+## flexAlign
+\* -------------------- */
+@mixin flexAlign() {
+  &--justify {
+    &Normal {
+      justify-content: normal;
+    }
+    &Center {
+      justify-content: center;
+    }
+    &Start {
+      justify-content: flex-start;
+    }
+    &End {
+      justify-content: flex-end;
+    }
+    &Between {
+      justify-content: space-between;
+    }
+    &Around {
+      justify-content: space-around;
+    }
+    &Evenly {
+      justify-content: space-evenly;
+    }
+    &Stretch {
+      justify-content: stretch;
+    }
+  }
+  &--items {
+    &Stretch {
+      align-items: stretch;
+    }
+    &Center {
+      align-items: center;
+    }
+    &Start {
+      align-items: flex-start;
+    }
+    &End {
+      align-items: flex-end;
+    }
+    &Baseline {
+      align-items: baseline;
+    }
+  }
+}

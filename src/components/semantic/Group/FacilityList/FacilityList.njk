@@ -1,0 +1,43 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Media/Map/Map.njk" as Map %}
+{% import "src/components/primitive/Text/Paragraph/Paragraph.njk" as Paragraph %}
+{% import "src/components/primitive/Dataset/List/List.njk" as List %}
+{% import "src/components/primitive/Dataset/DefinitionList/DefinitionList.njk" as DefinitionList %}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{% macro render( props ) %}
+  {% set title = props.title %}
+  {% set description = props.description %}
+  {% set address = props.address %}
+  {% set tel = props.tel %}
+  {% set access = props.access | default('') %}
+  {% set href = props.href | default('') %}
+  {% set external = props.external | default(false) %}
+  {% set buttonLabel = props.buttonLabel | default('ボタンラベル') %}
+  {% set mapEmbedCode = props.mapEmbedCode %}
+  {% set addClass = props.addClass %}
+  {% set telHTML = '<a class="c-link" href="tel:' ~ tel ~ '">' ~ tel ~ '</a>' if tel %}
+  {% set accessHTML = List.render({ "items": access }) if access %}
+  <div class="c-facilityList{{ '' ~ addClass if addClass }}">
+    <div class="c-facilityList__body">
+      {% if title %}{{ Paragraph.render({ "text": title, "addClass": "c-facilityList__title" }) }}{% endif %}
+      {% if description %}
+        {{ Paragraph.render({ "text": description, "addClass": "c-facilityList__description" }) }}
+      {% endif %}
+      {{ DefinitionList.render({ "addClass": "c-facilityList__items",
+            "items": [
+            { "term": "所在地", "description": address },
+            { "term": "Tel", "description": telHTML },
+            { "term": "交通アクセス", "description": accessHTML }
+            ] }) }}
+      {%- if href -%}
+        {{ Button.render({ "label": buttonLabel, type:"link", "href": href, "addClass": "c-facilityList__button", "external":external, rightIcon: "chevron_right" }) }}
+      {%- endif -%}
+    </div>
+    {% if mapEmbedCode %}
+      <div class="c-facilityList__map">{{ Map.render({ "embedCode": mapEmbedCode, "aspectRatio": '4-3'}) }}</div>
+    {% endif %}
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

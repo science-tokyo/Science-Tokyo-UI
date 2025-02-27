@@ -1,0 +1,91 @@
+{%- import "src/components/semantic/Header/GlobalHeader/GlobalHeader.njk" as GlobalHeader -%}
+{%- import "src/components/semantic/Header/GlobalNavigation/GlobalNavigation.njk" as GlobalNavigation -%}
+{%- import "src/components/semantic/Sticky/SideNavigation/SideNavigation.njk" as SideNavigation -%}
+{%- import "src/components/semantic/Footer/SiteFooter/SiteFooter.njk" as SiteFooter -%}
+{%- import "src/components/semantic/Footer/GlobalFooter/GlobalFooter.njk" as GlobalFooter -%}
+{%- import "src/components/semantic/Sticky/PageTopButton/PageTopButton.njk" as PageTopButton -%}
+<!DOCTYPE html>
+<html lang="{{ lang if lang else 'ja' }}" dir="ltr">
+  <head prefix="og:http://ogp.me/ns# fb:http://ogp.me/ns/fb# website:http://ogp.me/ns/website#">
+    <meta charset="UTF-8" />
+    <title>{{ title if title else 'タイトルが入ります。' }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords"
+          content="{{ keywords if keywords else 'keywordsが入ります。' }}">
+    <meta name="description"
+          content="{{ description if description else 'descriptionが入ります。' }}" />
+    <meta property="fb:app_id" content="{{ fbAppID if fbAppID else 'XXXXX' }}" />
+    <meta property="og:url" content="{{ URL if URL else 'URLが入ります。' }}" />
+    <meta property="og:type" content="{{ ogType if ogType else 'website' }}" />
+    <meta property="og:title" content="{{ ogTitle if ogTitle else title }}" />
+    <meta property="og:image"
+          content="{{ ogImage if ogImage else '画像URLが入ります。' }}" />
+    <meta property="og:description"
+          content="{{ ogDescription if ogDescription else description }}" />
+    <meta property="og:site_name" content="ウェブサイト名" />
+    <meta property="og:locale"
+          content="{{ ogLocale if ogLocale else 'ja_JP' }}" />
+    <meta name="twitter:card"
+          content="{{ twitterCard if twitterCard else 'summary_large_image' }}" />
+    <meta name="twitter:site"
+          content="{{ twitterSite if twitterSite else 'sciencetokyo_ja' }}" />
+    <meta name="twitter:title"
+          content="{{ twitterTitle if twitterTitle else title }}" />
+    <meta name="twitter:description"
+          content="{{ twitterDescription if twitterDescription else description }}" />
+    <meta name="twitter:image"
+          content="{{ twtterImage if twtterImage else '画像URLが入ります。' }}" />
+    <link rel="canonical"
+          href="{{ canonical if canonical else '正規のURLが入ります。' }}" />
+    <link rel="icon" sizes="32x32" href="/favicon.ico" />
+    <link rel="preload"
+          as="style"
+          fetchpriority="high"
+          href="/assets/css/font.css" />
+    <link rel="stylesheet" href="/assets/css/font.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script type="application/ld+json">
+    {%- if jsonLD -%}
+      {{  jsonLD }}
+    {%- else %}
+      {
+        "@context": "http://schema.org",
+        "@type": "typeが入ります。",
+        "name": "ウェブサイト名",
+        "url": "{{ URL if URL else 'URLが入ります。' }}",
+        "logo": "画像URLが入ります。"
+      }
+    {% endif -%}
+    </script>
+  </head>
+  <body id="top">
+    <header class="g-header" data-js-header>
+      {%- if lang === 'en' -%}
+        {{ GlobalHeader.render({"locale": "en"}) }}
+        {{ GlobalNavigation.render({"locale": "en"}) }}
+      {%- else -%}
+        {{ GlobalHeader.render({"locale": "ja"}) }}
+        {{ GlobalNavigation.render({"locale": "ja"}) }}
+      {%- endif -%}
+    </header>
+    <main class="main">
+      {%- if lang === 'en' -%}
+        {{ SideNavigation.render({"locale": "en"}) }}
+      {%- else -%}
+        {{ SideNavigation.render({"locale": "ja"}) }}
+      {%- endif -%}
+      {{ content | safe }}
+    </main>
+    <footer class="g-footer">
+      {%- if lang === 'en' -%}
+        {{ SiteFooter.render({"locale": "en"}) }}
+        {{ GlobalFooter.render({"locale": "en"}) }}
+      {%- else -%}
+        {{ SiteFooter.render({"locale": "ja"}) }}
+        {{ GlobalFooter.render({"locale": "ja"}) }}
+      {%- endif -%}
+    </footer>
+    {{ PageTopButton.render({}) }}
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

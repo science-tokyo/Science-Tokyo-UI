@@ -1,0 +1,43 @@
+{#
+ # @prop {type} ***
+ #}
+{% import "src/components/primitive/Action/Button/Button.njk" as Button %}
+{% import "src/components/primitive/Text/Heading/Heading.njk" as Heading %}
+{% macro render( props ) %}
+<div class="contentArea__summary">
+  {{ Heading.render({"text": "概要", "tag": "h2", "headingLevel": 2}) }}
+  {{ Heading.render({
+    "text": "開催日時",
+    "tag": "h3",
+    "headingLevel": 5,
+    "lead": "2024年10月1日（月）〜2025年1月30日（金）　9:00〜16:00"
+  }) }}
+  {{ Heading.render({"text": "開催場所", "tag": "h3", "headingLevel": 5, "lead": "[ダミー]大岡山キャンパス 本館 1F A会議室"}) }}
+  {{ Heading.render({"text": "登壇者", "tag": "h3", "headingLevel": 5, "lead": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"}) }}
+  {{ Heading.render({"text": "参加対象者・定員", "tag": "h3", "headingLevel": 5, "lead": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"}) }}
+  {{ Heading.render({"text": "備考", "tag": "h3", "headingLevel": 5, "lead": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"}) }}
+  {{ Heading.render({
+    "text": "申込方法",
+    "tag": "h3",
+    "headingLevel": 5,
+    "lead": "本文テキスト 「自然界はどのようにしてできているのだろう?」という基本的な原理への興味や関心をモチベーションに、法則や論理を探究するのが理学です。"
+  }) }}
+  {{ Button.render({
+    "multiple": true,
+    "items": [
+      {
+        "type": "link",
+        "label": "「イベント名イベント名イベント名イベント名」参加申込みフォーム",
+        "style": "primary",
+        "href": "#",
+        "external": true,
+        "size": "L"
+      }
+    ]
+  }) }}
+</div>
+{% endmacro %}
+
+{% if storybookArgs %}
+    {{ render( storybookArgs ) }}
+{% endif %}

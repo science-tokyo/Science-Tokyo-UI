@@ -1,0 +1,48 @@
+{#
+ # @prop {type} ***
+ #}
+{% macro render( props ) %}
+  {% set totalPages = props.totalPages | default(5) %}
+  {% set currentPage = props.currentPage | default(1) %}
+  {% set addClass = props.addClass %}
+  <div class="c-pagination{{' ' ~ addClass if addClass}}">
+    <div class="c-pagination__item c-pagination__item--controller">
+      <button type="button" aria-label="最初のページ" {{ "disabled" if currentPage === 1 }}>
+        <svg class="c-button__icon icon" aria-hidden="true" role="img">
+          <use xlink:href="/assets/img/sprite.svg#chevron-line_left"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="c-pagination__item c-pagination__item--controller">
+      <button type="button" aria-label="前へ" {{ "disabled" if currentPage === 1 }}>
+        <svg class="c-button__icon icon" aria-hidden="true" role="img">
+          <use xlink:href="/assets/img/sprite.svg#chevron_left"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="c-selectGroup">
+      <select class="c-select" aria-label="表示するページ">
+        {%- for i in range(totalPages + 1) -%}
+        {%- if i >= 1 -%}
+          <option value="" {{ "selected" if i === currentPage }}>{{i}} / {{ totalPages }}</option>
+        {%- endif -%}
+      {%- endfor -%}
+      </select>
+    </div>
+    <div class="c-pagination__item c-pagination__item--controller">
+      <button type="button" aria-label="次へ" {{ "disabled" if currentPage === totalPages }}>
+        <svg class="c-button__icon icon" aria-hidden="true" role="img">
+          <use xlink:href="/assets/img/sprite.svg#chevron_right"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="c-pagination__item c-pagination__item--controller">
+      <button type="button" aria-label="最後のページ" {{ "disabled" if currentPage === totalPages }}>
+        <svg class="c-button__icon icon" aria-hidden="true" role="img">
+          <use xlink:href="/assets/img/sprite.svg#chevron-line_right"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+{% endmacro %}
+{% if storybookArgs %}{{ render(storybookArgs) }}{% endif %}

@@ -1,0 +1,19 @@
+{/* Breadcrumb.mdx */}
+import { Canvas, Meta, Stories, Controls, Description, Story, Source } from '@storybook/blocks';
+
+import * as BreadcrumbStories from './Breadcrumb.stories';
+
+{/* Metaがないと正しく動作しない */}
+
+<Meta title="Breadcrumb" of={BreadcrumbStories} />
+
+# パンくずリスト Breadcrumb
+
+パンくずリストを表示するコンポーネントです。
+
+## 原則
+
+- グローバルフッターナビゲーションに内包されるパーツであり、最上部に表示します。
+- Science Tokyo のWebサイトではパンくずリスト単独での利用は想定していません。
+
+<Canvas />

@@ -1,0 +1,155 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="利用方法" />
+
+# 利用方法
+
+## 目次
+
+- [環境セットアップ](#環境セットアップ)
+- [開発作業](#開発作業)
+- [カスタマイズ方法](#カスタマイズ方法)
+- [独自サイト構築のステップ](#独自サイト構築のステップ)
+- [言語ごとのスタイル確認](#言語ごとのスタイル確認)
+- [利用時の注意事項](#利用時の注意事項)
+
+## 環境セットアップ
+
+以下の環境でセットアップを実施してください。
+
+### 必要条件
+
+- Node.js v22.11.0
+- npm v10.9.0
+- Git
+
+### クローンとセットアップ手順
+
+1. リポジトリをクローン:
+   ```bash
+   git clone <リポジトリURL>
+   cd <リポジトリ名>
+   ```
+2. 依存関係をインストール:
+   ```bash
+   npm install
+   ```
+
+## 開発作業
+
+以下のコマンドを利用して開発作業を行ってください。
+
+### サーバーの起動
+
+以下のコマンドでローカル開発サーバーを起動します。
+
+```bash
+npm run start
+```
+
+- **11tyサーバー**: [http://localhost:8080](http://localhost:8080)
+- **Storybook**: [http://localhost:6006](http://localhost:6006)
+
+### ビルド
+
+実装基板となるファイルを生成するには、以下のコマンドを実行してください。
+
+```bash
+npm run build
+```
+
+- 11tyによって生成されたHTMLファイル、CSS、JavaScriptが`dist`フォルダに出力されます。
+
+
+## カスタマイズ方法
+
+主に以下のカスタマイズパターンを想定しています。各パターンごとの手順に沿ってご利用ください。
+
+### 1. デザイントークンの調整
+
+1. `src/scss/globals/variables`配下のファイルを編集して、CSS変数を変更します。
+   - _\_typography.scss_: タイポグラフィの設定
+   - _\_var_colors.scss_: カラー設定
+   - _\_var_numbers.scss_: 数値・余白値設定
+2. 保存後、`npm run build`または`npm run start`を実行して変更を反映させます。
+
+### 2. 既存コンポーネントのスタイル調整
+
+1. `src/components`配下の調整したいコンポーネントディレクトリ配下のSCSSファイルを編集します。
+2. 保存後、`npm run build`または`npm run start`を実行して変更を反映させます。
+
+### 3. 独自コンポーネントの追加
+
+1. `npm run build`を実行して、最新のビルドを生成します。
+2. `dist`フォルダ内のHTML、CSS、JavaScript、assetsファイルを複製して、独自サイトの開発環境に組み込みます。
+3. サイト独自のCSSやJavaScriptを追加して、デザインをカスタマイズします。
+
+
+## 独自サイト構築のステップ
+
+Science Tokyo UIを利用した独自サイト構築において想定されるステップは以下の通りです。  
+なお、学内関係者以外の方は、Science Tokyo UIで提供するUIデザインをそのまま利用したWebサイトを公開することはできませんのでご注意ください。
+
+### オリジナルのまま利用
+
+1. ローカルに独自サイト開発環境を準備
+2. dist配下の`assets`を複製して独自サイト開発環境へ設置
+3. dist配下の`page-patterns`からHTMLテンプレートを複製して独自サイト開発環境の任意のディレクトリに設置
+4. Storybook（本ドキュメント）を参照し、「3」で用意したHTMLテンプレートにコンポーネントを配置
+
+### カスタマイズして利用
+
+1. ローカルに独自サイト開発環境を準備
+2. dist配下の`assets`を複製して独自サイト開発環境へ設置
+3. src配下の`assets`を更新してカスタマイズを実施
+     - デザイントークン（CSS変数）の調整
+     - 既存コンポーネントのスタイル調整
+     - 独自コンポーネントの追加
+4. コマンド`npm run build`を実行して最新のビルドを生成
+5. dist配下に生成された`assets`を複製して独自サイト開発環境に新しいスタイルを適用
+6. dist配下の`page-patterns`からHTMLテンプレートを複製して独自サイト開発環境の任意のディレクトリに設置
+7. 新しいスタイルが反映されたStorybook（本ドキュメント）を参照し、「6」で用意したHTMLテンプレートにコンポーネントを配置
+
+#### Science Tokyo UI利用時の留意事項
+
+Science Tokyo UIを利用してWebサイトを開発する際は、「<a href="https://design-system.isct.ac.jp/" target="_blank">Science Tokyoデザインシステム</a>」やFigmaコミュニティで公開する「<a href="https://www.figma.com/@ScienceTokyo" target="_blank">Science Tokyo Web Style Guide</a>」も必ずご確認ください。
+また、それぞれのリンク先に記載するライセンス表記と、利用規約の記載事項を遵守し、最新の情報やデータをご利用いただくようお願いいたします。
+
+## 言語ごとのスタイル確認
+
+Science Tokyo UIのコンポーネントは、基本的には日本語と英語共通で利用できるように構築しています。  
+以下の一部のコンポーネントについては、日本語と英語でスタイルが異なり、Storybookでは画面上部の「言語スタイル」を切り替えることでそれぞれのスタイルを確認することができます。
+
+- [箇条書きリスト List](?path=/docs/プリミティブコンポーネント-primitive-データセット-dataset-箇条書きリスト-list--docs)
+- [順序付きリスト Order list](?path=/docs/プリミティブコンポーネント-primitive-データセット-dataset-順序付きリスト-order-list--docs)
+- [グローバルヘッダー Global header](?path=/docs/セマンティックコンポーネント-semantic-ヘッダー-header-グローバルヘッダー-global-header--docs)
+- [グローバルヘッダーナビゲーション Global header navigation](?path=/docs/セマンティックコンポーネント-semantic-ヘッダー-header-グローバルヘッダーナビゲーション-global-header-navigation--docs)
+- [グローバルフッター Global footer](?path=/docs/セマンティックコンポーネント-semantic-フッター-footer-グローバルフッター-global-footer--docs)
+- [グローバルフッターナビゲーション Global footer navigation](?path=/docs/セマンティックコンポーネント-semantic-フッター-footer-グローバルフッターナビゲーション-global-footer-navigation--docs)
+- カード Card（[メディア](?path=/story/セマンティックコンポーネント-semantic-グループ-group-カード-card--contents-list-media)／[イベント](?path=/story/セマンティックコンポーネント-semantic-グループ-group-カード-card--contents-list-event)／[イベントカレンダー](?path=/story/セマンティックコンポーネント-semantic-グループ-group-カード-card--contents-list-event-carousel)）
+- [記事リスト Entry list](?path=/docs/セマンティックコンポーネント-semantic-グループ-group-記事リスト-entry-list--docs)
+- カルーセル Carousel（[イベント](?path=/story/セマンティックコンポーネント-semantic-グループ-group-カルーセル-carousel--card-event)／[メディア](?path=/story/セマンティックコンポーネント-semantic-グループ-group-カルーセル-carousel--card-media)）
+- [サイドナビゲーション Side navigatio](?path=/docs/セマンティックコンポーネント-semantic-スティッキー-sticky-サイドナビゲーション-side-navigation--docs)
+
+## 利用時の注意事項
+
+利用時は必ず以下の注意事項を確認してください。
+
+### dist配下ファイルの利用
+
+- **そのまま利用する場合**: `dist`フォルダ内のHTML、CSS、JavaScript、assetsファイルをコピーしてご利用ください。
+- **カスタマイズ後**: 必ず`npm run build`を実行して最新のビルドファイルを生成してください。
+
+### Storybookの利用
+
+- UIコンポーネントの確認、ドキュメントとしての利用を目的としています。
+
+### トラブルシューティング
+
+- **ビルドエラーが発生した場合**:
+  1. 依存関係を再インストール: `npm install`
+  2. キャッシュクリア: `npm cache clean --force`
+  3. 再度ビルド実行
+- **ローカルサーバーが起動しない場合**:
+  1. ポートが使用中でないか確認
+  2. 他のターミナルで`npm run start`が実行中でないか確認

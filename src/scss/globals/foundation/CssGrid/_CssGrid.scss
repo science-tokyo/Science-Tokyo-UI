@@ -1,0 +1,90 @@
+@use '../../../globals/base/' as *;
+.cssgrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  @include bp(sm) {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 16px;
+  }
+  @for $i from 1 through 12 {
+    &--cols#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+    }
+  }
+  + .grid {
+    margin-top: 24px;
+  }
+  > *,
+  &__col {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  &--auto {
+    > *,
+    &__col {
+      grid-column: auto;
+    }
+  }
+  &__col {
+    @for $i from 1 through 12 {
+      &--span#{$i} {
+        grid-column: span $i;
+      }
+      &--start#{$i} {
+        grid-column-start: $i;
+      }
+      &--end#{$i} {
+        grid-column-end: $i;
+      }
+    }
+    &--subgrid {
+      grid-template-columns: subgrid;
+    }
+  }
+}
+
+.md\:cssgrid {
+  @include bp(md) {
+    @for $i from 1 through 12 {
+      &--cols#{$i} {
+        grid-template-columns: repeat($i, 1fr);
+      }
+    }
+    &__col {
+      @for $i from 1 through 12 {
+        &--span#{$i} {
+          grid-column: span $i;
+        }
+        &--start#{$i} {
+          grid-column-start: $i;
+        }
+        &--end#{$i} {
+          grid-column-end: $i;
+        }
+      }
+    }
+  }
+}
+.sm\:cssgrid {
+  @include bp(sm) {
+    @for $i from 1 through 8 {
+      &--cols#{$i} {
+        grid-template-columns: repeat($i, 1fr);
+      }
+    }
+    &__col {
+      @for $i from 1 through 8 {
+        &--span#{$i} {
+          grid-column: span $i;
+        }
+        &--start#{$i} {
+          grid-column-start: $i;
+        }
+        &--end#{$i} {
+          grid-column-end: $i;
+        }
+      }
+    }
+  }
+}

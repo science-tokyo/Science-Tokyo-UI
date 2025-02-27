@@ -1,0 +1,85 @@
+@use '../../../../scss/globals/base/' as *;
+@use 'sass:map';
+
+.c-definitionList {
+  $_root: &;
+  @include dm;
+  @include txt($t-bodyM);
+  &--cols {
+    &2 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--semantic-space-inner-ll);
+      #{$_root}__item,
+      #{$_root}__item + #{$_root}__item {
+        margin-top: 0;
+        width: calc((100% - var(--semantic-space-inner-ll)) / 2);
+      }
+    }
+    &3 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--semantic-space-inner-ll);
+      #{$_root}__item,
+      #{$_root}__item + #{$_root}__item {
+        margin-top: 0;
+        width: calc((100% - var(--semantic-space-inner-ll) * 2) / 3);
+      }
+    }
+  }
+  &--size {
+    &L {
+      #{$_root}__item {
+        @include txt($t-bodyL);
+      }
+      #{$_root}__term {
+        @include txt($t-bodyL);
+      }
+      #{$_root}__description {
+        + #{$_root}__description {
+          margin-top: var(--semantic-space-inner-mms);
+        }
+      }
+    }
+    &M {
+      #{$_root}__item {
+        @include txt($t-bodyM);
+      }
+    }
+    &S {
+      #{$_root}__item {
+        @include txt($t-bodyS);
+      }
+      #{$_root}__description {
+        + #{$_root}__description {
+          margin-top: var(--semantic-space-inner-ss);
+        }
+      }
+    }
+  }
+  &__item {
+    & + & {
+      margin-top: var(--semantic-space-inner-s);
+    }
+    display: flex;
+    column-gap: var(--semantic-space-inner-l);
+    @include bp(sm) {
+      flex-direction: column;
+    }
+  }
+  &__term {
+    flex-shrink: 0;
+    min-width: 3em;
+    max-width: 6em;
+    @include bp(sm) {
+      min-width: 0;
+      max-width: none;
+    }
+  }
+  &__description {
+    margin-left: 0;
+    & + & {
+      margin-top: var(--semantic-space-inner-s);
+    }
+  }
+}
