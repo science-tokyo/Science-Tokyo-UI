@@ -12,7 +12,7 @@
     "build:webpack": "webpack --mode=production",
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build -o dist/storybook/",
-    "start": "npm-run-all build:sass --parallel watch:* storybook -s ./public",
+    "start": "npm-run-all build:sass --parallel watch:* storybook",
     "build": "npm-run-all build:*"
   },
   "keywords": [],
