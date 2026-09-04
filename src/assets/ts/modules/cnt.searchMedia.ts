@@ -34,6 +34,7 @@ interface FilterOption {
   lang: string;
   tab: string;
   keywords: string[];
+  mediaTypes: string[];
   date: string;
   page: number;
 }
@@ -76,6 +77,7 @@ export default class SearchMedia {
       lang: '',
       tab: '',
       keywords: [],
+      mediaTypes: [],
       date: '',
       page: 1
     };
@@ -115,7 +117,7 @@ export default class SearchMedia {
     });
     if (this.curationFlag) {
       jsonFileList = {
-        mediaData: `/expansion/get_media_curation_list_json.php?lang_cd=${this.filterOption.lang}`,
+        curationData: `/expansion/get_media_curation_list_json.php?lang_cd=${this.filterOption.lang}`,
         tagList: `/expansion/get_tag_list_json.php?lang_cd=${this.filterOption.lang}`
       };
     } else {
@@ -160,7 +162,7 @@ export default class SearchMedia {
               // 2つのJSONファイルのデータを取得したらresolve()を呼ぶ
               if (self.curationFlag) {
                 if (
-                  self.initialData.length !== 0 &&
+                  self.curationData.length !== 0 &&
                   self.tagMaster.length !== 0
                 ) {
                   resolve();
@@ -225,6 +227,7 @@ export default class SearchMedia {
     const urlParams = new URLSearchParams(window.location.search);
     const tab = urlParams.get('tab');
     const keywords = urlParams.getAll('keywords[]');
+    const mediaTypes = urlParams.getAll('mediaTypes[]');
     const date = urlParams.get('date');
     const page = urlParams.get('page');
     // フィルターオプションを更新
@@ -239,6 +242,7 @@ export default class SearchMedia {
       }
     }
     this.filterOption.keywords = keywords ? keywords : [];
+    this.filterOption.mediaTypes = mediaTypes ? mediaTypes : [];
     this.filterOption.date = date ? date : '';
     this.filterOption.page = page ? Number(page) : 1;
 
@@ -310,30 +314,24 @@ export default class SearchMedia {
    */
   private dataFilter(option: FilterOption) {
     let _filterData: Media[] = [];
-    // ピックアップタブの場合はキュレーションデータを使用する
-    if (this.filterOption.tab === 'top-picks') {
-      _filterData = Object.values(this.curationData);
-    } else {
+    // 全学サイトの「すべて」タブの場合はメディアデータを使用する
+    if (!this.curationFlag && this.filterOption.tab === 'all') {
       _filterData = Object.values(this.initialData);
+    } else {
+      // それ以外はすべてキュレーションデータを使用する
+      _filterData = Object.values(this.curationData);
     }
 
     // --- タブ --- //
-    if (option.tab === 'top-picks') {
-      // SEVERITYの値が142,143,144のいずれかを含むものを抽出
+    // SEVERITYでの絞り込みは全学サイトの「すべて」以外
+    if (!this.curationFlag && this.filterOption.tab !== 'all') {
+      // SEVERITYの値が空でないものを抽出
       _filterData = _filterData.filter((data: Media) => {
-        if (data.SEVERITY !== null) {
-          return ['142', '143', '144'].some((str) =>
-            data.SEVERITY.includes(str)
-          );
-        }
+        if (data.SEVERITY !== null) return data;
       });
-    } else if (option.tab !== 'all' && option.tab !== '') {
-      // PUBLISH_FLGが1のみを抽出（全学サイトの場合のみ）
-      if (!this.curationFlag) {
-        _filterData = _filterData.filter((data: Media) => {
-          return data.PUBLISH_FLG === 1;
-        });
-      }
+    }
+    // MEDIA_TYPESもしくはKEYWORDSでの絞り込み
+    if (option.tab !== 'all' && option.tab !== 'top-picks') {
       // option.tabがthis.mediaTypeListに含まれるか
       if (this.mediaTypeList.includes(option.tab)) {
         // メディアタイプでフィルタリング
@@ -402,7 +400,7 @@ export default class SearchMedia {
       });
     }
 
-    // タグ出力用のデータはキーワードで絞り込まない
+    // タグ出力用のデータはキーワードで絞り込まないのでこの時点でデータを持っておく
     this.forTagsData = new Array(..._filterData);
 
     // --- キーワード --- //
@@ -413,6 +411,16 @@ export default class SearchMedia {
         const TAGLIST = this._getTagList(data.KEYWORDS);
         return TAGLIST.some((tag: Tag) => {
           return option.keywords.includes(tag.TAG_ID);
+        });
+      });
+    }
+    // MEDIA_TYPESに含むものを抽出
+    if (option.mediaTypes.length !== 0) {
+      _filterData = _filterData.filter((data: Media) => {
+        // data.MEDIA_TYPESでフィルタリング
+        const TAGLIST = this._getTagList(data.MEDIA_TYPES);
+        return TAGLIST.some((tag: Tag) => {
+          return option.mediaTypes.includes(tag.TAG_ID);
         });
       });
     }
@@ -574,6 +582,10 @@ export default class SearchMedia {
     this.forTagsData.forEach((data: Media) => {
       // data.KEYWORDSをカンマ区切りで結合
       if (data.KEYWORDS !== null) keywordList += data.KEYWORDS + ',';
+      // 「すべて」タブの場合はMEDIA_TYPEもタグに含める
+      if (!this.curationFlag && option.tab === 'all') {
+        if (data.MEDIA_TYPES !== null) keywordList += data.MEDIA_TYPES + ',';
+      }
     });
     dataTagList = this._getTagList(keywordList);
 
@@ -603,6 +615,9 @@ export default class SearchMedia {
       label.setAttribute('data-js-tag-id', tag.TAG_ID);
       // フィルターオプションに一致するタグをアクティブにする
       if (option.keywords.includes(tag.TAG_ID)) {
+        label.querySelector('input')?.setAttribute('checked', 'checked');
+      }
+      if (option.mediaTypes.includes(tag.TAG_ID)) {
         label.querySelector('input')?.setAttribute('checked', 'checked');
       }
       // 表示エリアの子要素として追加
@@ -655,12 +670,22 @@ export default class SearchMedia {
         );
         // 選択されたタグを配列に格納
         const keywords: string[] = [];
+        const mediaTypes: string[] = [];
         checkedTags.forEach((tag) => {
           const tagID = tag.closest('label')?.dataset.jsTagId;
-          if (tagID) keywords.push(tagID);
+          // tagIDがthis.mediaTypeListに含まれていればmediaTypesに
+          // それ以外はkeywordsに格納
+          if (tagID) {
+            if (this.mediaTypeList.includes(tagID)) {
+              mediaTypes.push(tagID);
+            } else {
+              keywords.push(tagID);
+            }
+          }
         });
         // URLパラメータを更新
         this.updateURLParams('keywords', keywords);
+        this.updateURLParams('mediaTypes', mediaTypes);
         // ページ番号をリセット
         this.updateURLParams('page', '');
         // 初期化実行
@@ -725,6 +750,7 @@ export default class SearchMedia {
         this.updateURLParams('date', selectedDate);
         // タグの絞り込みはリセット
         this.updateURLParams('keywords', []);
+        this.updateURLParams('mediaTypes', []);
         // ページ番号をリセット
         this.updateURLParams('page', '');
         // 初期化実行
@@ -760,6 +786,12 @@ export default class SearchMedia {
         urlSearchParams.delete('keywords[]');
         data.forEach((keyword: string) => {
           urlSearchParams.append('keywords[]', keyword);
+        });
+        break;
+      case 'mediaTypes':
+        urlSearchParams.delete('mediaTypes[]');
+        data.forEach((mediaType: string) => {
+          urlSearchParams.append('mediaTypes[]', mediaType);
         });
         break;
       case 'date':
@@ -832,6 +864,8 @@ export default class SearchMedia {
 
       // currentPageDataをループさせてコンテンツを生成
       currentPageData.forEach((data: Media) => {
+        // 開催開始日が空のものは処理しない
+        if (data.HELD_START_DATE === null) return;
         // テンプレートを複製
         const clone: any = template.content.cloneNode(true);
         // 開始日の文字列を取得
@@ -966,6 +1000,8 @@ export default class SearchMedia {
 
       // currentPageDataをループさせてコンテンツを生成
       currentPageData.forEach((data: Media) => {
+        // 開催開始日が空のものは処理しない
+        if (data.HELD_START_DATE === null) return;
         // テンプレートを複製
         const clone: any = template.content.cloneNode(true);
         // 開始日の文字列を取得
@@ -1332,7 +1368,7 @@ export default class SearchMedia {
   }
   /**
    * タグマスタとマッチングさせてタグ名の配列を返す
-   * @param {string} keywords - キーワードIDの文字列
+   * @param {string} keywords - キーワードIDの文字列（カンマ区切り）
    * @param {string} tags - タグIDの文字列
    * @return {string[]} - タグ名の配列
    */
