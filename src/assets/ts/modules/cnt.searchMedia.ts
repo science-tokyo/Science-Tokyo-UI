@@ -428,14 +428,17 @@ export default class SearchMedia {
     if (this.filterOption.tab === '29') {
       // HELD_START_DATEで降順に並び替え
       _filterData.sort((a: Media, b: Media) => {
+        // New Date(null) は末尾へ送る
+        if (!a.HELD_START_DATE) return 1; //bを前に、aを後ろに
+        if (!b.HELD_START_DATE) return -1; //aを前に、bを後ろに
         // 開催日が同じ場合は、掲載開始日を合わせてUnixTimeで比較
         if (a.HELD_START_DATE === b.HELD_START_DATE) {
           const a_unixTime =
             new Date(a.HELD_START_DATE).getTime() +
-            new Date(a.START_DATE).getTime() / 100;
+            new Date(a.START_DATE.replace(' ', 'T')).getTime() / 100;
           const b_unixTime =
             new Date(b.HELD_START_DATE).getTime() +
-            new Date(b.START_DATE).getTime() / 100;
+            new Date(b.START_DATE.replace(' ', 'T')).getTime() / 100;
           return a_unixTime > b_unixTime ? -1 : 1;
         }
         return a.HELD_START_DATE > b.HELD_START_DATE ? -1 : 1;
