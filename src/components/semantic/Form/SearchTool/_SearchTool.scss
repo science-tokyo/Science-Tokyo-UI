@@ -247,9 +247,9 @@
     border-radius: 8px;
     border: 1px solid var(--ui-line-bold);
     background: var(--ui-background-default);
+    margin-inline: 0;
     table.gsc-search-box {
       margin-bottom: 0;
-      padding-inline: var(--semantic-space-inner-m);
       height: 56px;
       > tbody > tr {
         width: 100%;
@@ -272,9 +272,10 @@
         color: var(--ui-text-default);
       }
       .gsib_a {
-        padding: 0;
-        margin: 0;
+        padding-block: 0;
+        padding-inline-start: var(--semantic-space-inner-llll);
         background-color: transparent;
+        background-position: left 14px center;
       }
     }
     input.gsc-input {
@@ -348,6 +349,7 @@
     }
   }
   .gsc-above-wrapper-area {
+    max-width: 100%;
     margin-top: var(--semantic-space-inner-m);
     padding: var(--semantic-space-inner-ms) 0;
     border-bottom: 0;
@@ -392,6 +394,7 @@
     }
   }
   .gsc-wrapper {
+    max-width: 100%;
     .gsc-webResult.gsc-result,
     .gsc-results .gsc-imageResult {
       border: 0;
@@ -406,6 +409,7 @@
     .gs-result .gs-title,
     .gs-result .gs-title * {
       overflow: visible;
+      text-decoration: none;
       @include txt($t-bodyL-bold);
     }
     .gs-webResult.gs-result a.gs-title:link,
@@ -471,6 +475,8 @@
     }
     .gs-web-image-box .gs-image,
     .gs-promotion-image-box .gs-promotion-image {
+      width: 100%;
+      height: auto;
       max-width: 100%;
       max-height: none;
       aspect-ratio: 16 / 9;
